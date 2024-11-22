@@ -1,6 +1,6 @@
 public class Rose extends Flowers {
-    Rose(int coast)
+    Rose(int cost)
     {
-        super(coast);
+        super(cost);
     }
 }

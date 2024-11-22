@@ -1,6 +1,6 @@
 public class Lily extends Flowers {
-    Lily(int coast)
+    Lily(int cost)
     {
-        super(coast);
+        super(cost);
     }
 }

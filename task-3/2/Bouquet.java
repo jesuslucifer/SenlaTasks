@@ -1,6 +1,7 @@
 public class Bouquet {
-    private int coast = 0;
+    private int cost = 0;
     private int maxCountFlowers = 5;
+    private int countFlowers = 0;
     private final Flowers[] flowers = new Flowers[maxCountFlowers];
 
     public Bouquet(int maxCountFlowers)
@@ -10,17 +11,16 @@ public class Bouquet {
 
     public void addFlower(Flowers flower)
     {
-        int countFlowers = 0;
         if (maxCountFlowers != countFlowers)
         {
             flowers[countFlowers] = flower;
-            coast += flower.coast;
+            cost += flower.cost;
             countFlowers++;
         }
     }
 
-    public int getCoast()
+    public int getCost()
     {
-        return coast;
+        return cost;
     }
 }

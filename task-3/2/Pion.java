@@ -1,6 +1,6 @@
 public class Pion extends Flowers {
-    Pion(int coast)
+    Pion(int cost)
     {
-        super(coast);
+        super(cost);
     }
 }

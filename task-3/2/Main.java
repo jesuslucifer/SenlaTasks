@@ -10,6 +10,6 @@ public class Main {
             bouquet.addFlower(new Pion(5));
             bouquet.addFlower(new Tulip(30));
 
-            System.out.println(bouquet.getCoast());
+            System.out.println(bouquet.getCost());
     }
 }

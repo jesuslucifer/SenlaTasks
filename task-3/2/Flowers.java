@@ -1,7 +1,7 @@
 public abstract class Flowers {
-    public int coast;
-    public Flowers(int coast)
+    public int cost;
+    public Flowers(int cost)
     {
-        this.coast = coast;
+        this.cost = cost;
     }
 }
