@@ -1,8 +1,10 @@
-public class Storage {
-    private Book book;
-    private int countBook;
+import java.util.List;
+import java.util.ArrayList;
 
-    public void addBook(Book book) {
-        this.book = book;
+public class Storage {
+    private List<Book> storageList = new ArrayList<Book>();
+
+    public void addBook() {
+        storageList.add(new Book());
     }
 }
