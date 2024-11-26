@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Hotel {
     private List<Room> rooms = new ArrayList<Room>();
     private List<Service> services = new ArrayList<Service>();
+    private List<Client> clients = new ArrayList<Client>();
     private final int COUNT_ROOMS = 10;
 
     public Hotel() {
@@ -15,7 +16,7 @@ public class Hotel {
 
     public void checkIntoRoom(int roomNumber) {
         for (Room room : rooms) {
-            if (room.getRoomNumber() == roomNumber && room.getStatus().equals("free")) {
+            if ( (room.getRoomNumber() == roomNumber) && ( room.getStatus().equals("free") )  && (room.getCapacity() >= room.getClentList().size()) ) {
                 room.setStatus("busy");
                 System.out.println("The guest is accommodated in " + roomNumber + " room");
                 break;
@@ -25,10 +26,28 @@ public class Hotel {
         }
     }
 
+    public void checkIntoRoom(int roomNumber, Client client) {
+        for (Room room : rooms) {
+            if (room.getRoomNumber() == roomNumber && room.getStatus().equals("free") && room.getCapacity() >= room.getClentList().size()) {
+                room.setClientList(client);
+                System.out.println("The " + client.getFullName() + " is accommodated in " + roomNumber + " room");
+                if ( room.getCapacity() == room.getClentList().size() ) {
+                    room.setStatus("busy");
+                }
+                break;
+            } else if (room.getRoomNumber() == roomNumber && !room.getStatus().equals("free")) {
+                System.out.println("The guest is not accommodated in " + roomNumber + " room is " + room.getStatus());
+            } else if (room.getRoomNumber() == roomNumber && room.getStatus().equals("free") && !( room.getCapacity() >= room.getClentList().size()) ){
+                System.out.println("In room " + room.getRoomNumber() + " is not mest");
+            }
+        }
+    }
+
     public void evictFromRoom(int roomNumber) {
         for (Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
                 room.setStatus("free");
+                room.getClentList().clear();
             }
         }
         System.out.println("The guest has been evicted from the " + roomNumber + " room");
@@ -65,4 +84,9 @@ public class Hotel {
         }
         System.out.println("The service cost " + serviceName + " has been changed to " + cost);
     }
+
+    public void newClient(int passport, String fullName) {
+        clients.add(new Client(passport, fullName));
+    }
+
 }
