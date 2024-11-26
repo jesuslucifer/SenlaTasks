@@ -12,7 +12,7 @@ public class Room {
         this.roomNumber = roomNumber;
         this.cost = 20;
         this.status = "free";
-        this.capacity = new java.util.Random().nextInt(5) + 1;
+        this.capacity = new java.util.Random().nextInt(3) + 1;
     }
 
     public int getRoomNumber() {

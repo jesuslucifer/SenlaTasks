@@ -2,9 +2,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Hotel {
-    private List<Room> rooms = new ArrayList<Room>();
-    private List<Service> services = new ArrayList<Service>();
-    private List<Client> clients = new ArrayList<Client>();
+    private List<Room> rooms = new ArrayList<>();
+    private List<Service> services = new ArrayList<>();
     private final int COUNT_ROOMS = 10;
 
     public Hotel() {
@@ -14,32 +13,54 @@ public class Hotel {
         System.out.println("The hotel is open, there are " + COUNT_ROOMS + " rooms available");
     }
 
-    public void checkIntoRoom(int roomNumber) {
+    public void checkIntoRoom(Client client) {
+        boolean found = false;
         for (Room room : rooms) {
-            if ( (room.getRoomNumber() == roomNumber) && ( room.getStatus().equals("free") )  && (room.getCapacity() >= room.getClentList().size()) ) {
+            if (room.getCapacity() == 1 && room.getStatus().equals("free")) {
                 room.setStatus("busy");
-                System.out.println("The guest is accommodated in " + roomNumber + " room");
+                room.setClientList(client);
+                found = true;
+                System.out.println("The " + client.getFullName() + " is accommodated in " + room.getRoomNumber() + " room");
                 break;
-            } else if (room.getRoomNumber() == roomNumber && !room.getStatus().equals("free")) {
-                System.out.println("The guest is not accommodated in " + roomNumber + " room is " + room.getStatus());
             }
+        }
+        if (!found) {
+            System.out.println("There are no places in the hotel");
         }
     }
 
-    public void checkIntoRoom(int roomNumber, Client client) {
+    public void checkIntoRoom(Client client1, Client client2) {
+        boolean found = false;
         for (Room room : rooms) {
-            if (room.getRoomNumber() == roomNumber && room.getStatus().equals("free") && room.getCapacity() >= room.getClentList().size()) {
-                room.setClientList(client);
-                System.out.println("The " + client.getFullName() + " is accommodated in " + roomNumber + " room");
-                if ( room.getCapacity() == room.getClentList().size() ) {
-                    room.setStatus("busy");
-                }
+            if (room.getCapacity() == 2 && room.getStatus().equals("free")) {
+                room.setStatus("busy");
+                room.setClientList(client1);
+                room.setClientList(client2);
+                found = true;
+                System.out.println("The " + client1.getFullName() + ", " + client2.getFullName() + " is accommodated in " + room.getRoomNumber() + " room");
                 break;
-            } else if (room.getRoomNumber() == roomNumber && !room.getStatus().equals("free")) {
-                System.out.println("The guest is not accommodated in " + roomNumber + " room is " + room.getStatus());
-            } else if (room.getRoomNumber() == roomNumber && room.getStatus().equals("free") && !( room.getCapacity() >= room.getClentList().size()) ){
-                System.out.println("In room " + room.getRoomNumber() + " is not mest");
             }
+        }
+        if (!found) {
+            System.out.println("There are no places in the hotel");
+        }
+    }
+
+    public void checkIntoRoom(Client client1, Client client2, Client client3) {
+        boolean found = false;
+        for (Room room : rooms) {
+            if (room.getCapacity() == 3 && room.getStatus().equals("free")) {
+                room.setStatus("busy");
+                room.setClientList(client1);
+                room.setClientList(client2);
+                room.setClientList(client3);
+                found = true;
+                System.out.println("The " + client1.getFullName() + ", " + client2.getFullName() + ", " + client3.getFullName() + " is accommodated in " + room.getRoomNumber() + " room");
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("There are no places in the hotel");
         }
     }
 
@@ -83,10 +104,6 @@ public class Hotel {
             }
         }
         System.out.println("The service cost " + serviceName + " has been changed to " + cost);
-    }
-
-    public void newClient(int passport, String fullName) {
-        clients.add(new Client(passport, fullName));
     }
 
 }
