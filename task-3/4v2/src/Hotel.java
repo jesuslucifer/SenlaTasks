@@ -4,12 +4,13 @@ import java.util.ArrayList;
 public class Hotel {
     private List<Room> rooms = new ArrayList<Room>();
     private List<Service> services = new ArrayList<Service>();
+    private final int COUNT_ROOMS = 10;
 
     public Hotel() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < COUNT_ROOMS; i++) {
             rooms.add(new Room(i));
         }
-        System.out.println("The hotel is open, there are 10 rooms available");
+        System.out.println("The hotel is open, there are " + COUNT_ROOMS + " rooms available");
     }
 
     public void checkIntoRoom(int roomNumber) {
