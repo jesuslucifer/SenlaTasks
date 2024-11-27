@@ -74,7 +74,7 @@ public class Hotel {
         System.out.println("The guest has been evicted from the " + roomNumber + " room");
     }
 
-    public void ChangeStatusRoom(int roomNumber, String status) {
+    public void changeStatusRoom(int roomNumber, String status) {
         for (Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
                 room.setStatus(status);
@@ -83,7 +83,7 @@ public class Hotel {
         System.out.println("The status of the room " + roomNumber + " has been changed to " + status);
     }
 
-    public void ChangeCostRoom(int roomNumber, int cost) {
+    public void changeCostRoom(int roomNumber, int cost) {
         for (Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
                 room.setCost(cost);
@@ -92,12 +92,12 @@ public class Hotel {
         System.out.println("The room cost has been changed to " + cost);
     }
 
-    public void AddService(String serviceName, int cost) {
+    public void addService(String serviceName, int cost) {
         services.add(new Service(serviceName, cost));
         System.out.println("The service " + serviceName + " has been added to the hotel");
     }
 
-    public void ChangeCostService(String serviceName, int cost) {
+    public void changeCostService(String serviceName, int cost) {
         for (Service service : services) {
             if (service.getServiceName().equals(serviceName)) {
                 service.setCost(cost);
