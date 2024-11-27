@@ -1,5 +1,5 @@
 public class Client {
-    private int passport;
+    private String passport;
     private String fullName;
 
     public Client(int passport, String fullName) {
