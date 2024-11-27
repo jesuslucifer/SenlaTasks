@@ -4,6 +4,8 @@ import java.util.ArrayList;
 public class Hotel {
     private List<Room> rooms = new ArrayList<>();
     private List<Service> services = new ArrayList<>();
+    private List<Client> clients = new ArrayList<>();
+    private List<Client> bufferClients = new ArrayList<>();
     private final int COUNT_ROOMS = 10;
 
     public Hotel() {
@@ -13,49 +15,20 @@ public class Hotel {
         System.out.println("The hotel is open, there are " + COUNT_ROOMS + " rooms available");
     }
 
-    public void checkIntoRoom(Client client) {
-        boolean found = false;
-        for (Room room : rooms) {
-            if (room.getCapacity() == 1 && room.getStatus().equals("free")) {
-                room.setStatus("busy");
-                room.setClientList(client);
-                found = true;
-                System.out.println("The " + client.getFullName() + " is accommodated in " + room.getRoomNumber() + " room");
-                break;
-            }
-        }
-        if (!found) {
-            System.out.println("There are no places in the hotel");
-        }
+    public void addClient(Client client) {
+        bufferClients.add(client);
     }
 
-    public void checkIntoRoom(Client client1, Client client2) {
+    public void checkIntoRoom() {
         boolean found = false;
         for (Room room : rooms) {
-            if (room.getCapacity() == 2 && room.getStatus().equals("free")) {
-                room.setStatus("busy");
-                room.setClientList(client1);
-                room.setClientList(client2);
+            if (room.getCapacity() >= bufferClients.size() && room.getStatus().equals("free")) {
+                room.setClientList(bufferClients);
+                clients.addAll(bufferClients);
+                bufferClients.clear();
                 found = true;
-                System.out.println("The " + client1.getFullName() + ", " + client2.getFullName() + " is accommodated in " + room.getRoomNumber() + " room");
-                break;
-            }
-        }
-        if (!found) {
-            System.out.println("There are no places in the hotel");
-        }
-    }
-
-    public void checkIntoRoom(Client client1, Client client2, Client client3) {
-        boolean found = false;
-        for (Room room : rooms) {
-            if (room.getCapacity() == 3 && room.getStatus().equals("free")) {
                 room.setStatus("busy");
-                room.setClientList(client1);
-                room.setClientList(client2);
-                room.setClientList(client3);
-                found = true;
-                System.out.println("The " + client1.getFullName() + ", " + client2.getFullName() + ", " + client3.getFullName() + " is accommodated in " + room.getRoomNumber() + " room");
+                System.out.println("The clients is accommodated in " + room.getRoomNumber() + " room");
                 break;
             }
         }
@@ -68,6 +41,7 @@ public class Hotel {
         for (Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
                 room.setStatus("free");
+                clients.removeAll(room.getClentList());
                 room.getClentList().clear();
             }
         }

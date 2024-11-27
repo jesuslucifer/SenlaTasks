@@ -2,12 +2,12 @@ public class Client {
     private String passport;
     private String fullName;
 
-    public Client(int passport, String fullName) {
+    public Client(String passport, String fullName) {
         this.passport = passport;
         this.fullName = fullName;
     }
 
-    public int getPassport() {
+    public String getPassport() {
         return passport;
     }
 
@@ -19,7 +19,7 @@ public class Client {
         this.fullName = fullName;
     }
 
-    public void setPassport(int passport) {
+    public void setPassport(String passport) {
         this.passport = passport;
     }
 }

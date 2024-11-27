@@ -35,8 +35,8 @@ public class Room {
         return clentList;
     }
 
-    public void setClientList(Client client) {
-        clentList.add(client);
+    public void setClientList(List<Client> clients) {
+        clentList.addAll(clients);
     }
 
     public int getCapacity() {
