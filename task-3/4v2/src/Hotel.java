@@ -5,7 +5,6 @@ public class Hotel {
     private List<Room> rooms = new ArrayList<>();
     private List<Service> services = new ArrayList<>();
     private List<Client> clients = new ArrayList<>();
-    private List<Client> bufferClients = new ArrayList<>();
     private final int COUNT_ROOMS = 10;
 
     public Hotel() {
@@ -15,17 +14,12 @@ public class Hotel {
         System.out.println("The hotel is open, there are " + COUNT_ROOMS + " rooms available");
     }
 
-    public void addClient(Client client) {
-        bufferClients.add(client);
-    }
-
-    public void checkIntoRoom() {
+    public void checkIntoRoom(List<Client> buffClients) {
         boolean found = false;
         for (Room room : rooms) {
-            if (room.getCapacity() >= bufferClients.size() && room.getStatus().equals("free")) {
-                room.setClientList(bufferClients);
-                clients.addAll(bufferClients);
-                bufferClients.clear();
+            if (room.getCapacity() >= buffClients.size() && room.getStatus().equals("free")) {
+                room.setClientList(buffClients);
+                clients.addAll(buffClients);
                 found = true;
                 room.setStatus("busy");
                 System.out.println("The clients is accommodated in " + room.getRoomNumber() + " room");
