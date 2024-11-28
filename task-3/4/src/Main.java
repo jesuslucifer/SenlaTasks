@@ -5,17 +5,17 @@ public class Main {
     public static void main(String[] args) {
         Hotel hotel = new Hotel();
 
-        hotel.printRooms("CostI");
+        hotel.printRooms("CostI", "free");
         System.out.println();
-        hotel.printRooms("CostD");
+        hotel.printRooms("CostD", "all");
         System.out.println();
-        hotel.printRooms("CapacityD");
+        hotel.printRooms("CapacityD", "free");
         System.out.println();
-        hotel.printRooms("StarsD");
+        hotel.printRooms("StarsD","all");
         System.out.println();
-        hotel.printRooms("StarsI");
+        hotel.printRooms("StarsI", "free");
         System.out.println();
-        hotel.printRooms("dasdada");
+        hotel.printRooms("dasdada", "all");
 
         List<Client> clients = new ArrayList<>();
 
@@ -32,6 +32,12 @@ public class Main {
         clients.add(new Client("545412", "Petrova F.Q."));
         hotel.checkIntoRoom(clients);
         clients.clear();
+
+        System.out.println("111111111111111111111111");
+        hotel.printRooms("CapacityD", "free");
+        System.out.println();
+        hotel.printRooms("CapacityD","all");
+
 
         clients.add(new Client("312122", "Frolov F.K."));
         hotel.checkIntoRoom(clients);

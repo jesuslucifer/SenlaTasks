@@ -1,4 +1,3 @@
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.ArrayList;
@@ -76,10 +75,15 @@ public class Hotel {
         System.out.println("The service cost " + serviceName + " has been changed to " + cost);
     }
 
-    public void printRooms(String type){
+    public void printRooms(String typeSort, String typeRoom){
         var list = rooms;
 
-        switch (type) {
+        if (typeRoom.equals("free"))
+        {
+            list = getListFreeRooms();
+        }
+
+        switch (typeSort) {
             case "CapacityI":
                 list.sort(Comparator.comparing(Room::getCapacity));
                 break;
@@ -105,5 +109,15 @@ public class Hotel {
         for (Room room : list) {
             System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " + room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
         }
+    }
+
+    public List<Room> getListFreeRooms() {
+        var list = new ArrayList<Room>();
+        for (Room room : rooms) {
+            if (room.getStatus().equals("free")) {
+                list.add(room);
+            }
+        }
+        return list;
     }
 }
