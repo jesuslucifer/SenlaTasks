@@ -4,6 +4,19 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         Hotel hotel = new Hotel();
+
+        hotel.printRooms("CostI");
+        System.out.println();
+        hotel.printRooms("CostD");
+        System.out.println();
+        hotel.printRooms("CapacityD");
+        System.out.println();
+        hotel.printRooms("StarsD");
+        System.out.println();
+        hotel.printRooms("StarsI");
+        System.out.println();
+        hotel.printRooms("dasdada");
+
         List<Client> clients = new ArrayList<>();
 
         hotel.addService("Massage", 100);

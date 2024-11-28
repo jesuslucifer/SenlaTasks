@@ -1,3 +1,5 @@
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -74,8 +76,33 @@ public class Hotel {
         System.out.println("The service cost " + serviceName + " has been changed to " + cost);
     }
 
-    public void printRooms(){
-        for (Room room : rooms) {
+    public void printRooms(String type){
+        var list = rooms;
+
+        switch (type) {
+            case "CapacityI":
+                list.sort(Comparator.comparing(Room::getCapacity));
+                break;
+            case "CapacityD":
+                list.sort(Comparator.comparing(Room::getCapacity).reversed());
+                break;
+            case "CostI":
+                list.sort(Comparator.comparing(Room::getCost));
+                break;
+            case "CostD":
+                list.sort(Comparator.comparing(Room::getCost).reversed());
+                break;
+            case "StarsI":
+                list.sort(Comparator.comparing(Room::getCountStars));
+                break;
+            case "StarsD":
+                list.sort(Comparator.comparing(Room::getCountStars).reversed());
+                break;
+            default:
+                list.sort(Comparator.comparing(Room::getRoomNumber));
+                break;
+        }
+        for (Room room : list) {
             System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " + room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
         }
     }
