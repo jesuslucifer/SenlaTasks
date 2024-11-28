@@ -14,13 +14,7 @@ public class Room {
         this.countStars = new java.util.Random().nextInt(5) + 1;
         this.status = "free";
         this.capacity = new java.util.Random().nextInt(3) + 1;
-        switch (countStars) {
-            case 1: cost = 10; break;
-            case 2: cost = 20; break;
-            case 3: cost = 30; break;
-            case 4: cost = 40; break;
-            case 5: cost = 50; break;
-        }
+        this.cost = (capacity + countStars) * 10;
     }
 
     public int getRoomNumber() {
@@ -49,5 +43,13 @@ public class Room {
 
     public int getCapacity() {
         return capacity;
+    }
+
+    public int getCountStars() {
+        return countStars;
+    }
+
+    public int getCost(){
+        return cost;
     }
 }
