@@ -74,4 +74,9 @@ public class Hotel {
         System.out.println("The service cost " + serviceName + " has been changed to " + cost);
     }
 
+    public void printRooms(){
+        for (Room room : rooms) {
+            System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " + room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
+        }
+    }
 }
