@@ -120,4 +120,8 @@ public class Hotel {
         }
         return list;
     }
+
+    public void printCountClients(){
+        System.out.println("Count clients: " + clients.size());
+    }
 }
