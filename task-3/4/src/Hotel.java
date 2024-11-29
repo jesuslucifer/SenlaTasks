@@ -141,7 +141,16 @@ public class Hotel {
     public void printInfoRoom(int roomNumber) {
         for (Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
-                System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " + room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
+                if (room.getStatus().equals("busy")) {
+                    System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " + room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
+                    System.out.print("Clients: ");
+                    for (Client client : room.getClentList()) {
+                        System.out.print(client.getFullName() + " ");
+                    }
+                    System.out.println();
+                } else {
+                    System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " + room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
+                }
             }
         }
     }
