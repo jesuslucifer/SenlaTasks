@@ -78,7 +78,7 @@ public class Hotel {
     }
 
     public void printRooms(String typeSort, String typeRoom){
-        var list = rooms;
+        List<Room> list = rooms;
 
         if (typeRoom.equals("free"))
         {
@@ -114,7 +114,7 @@ public class Hotel {
     }
 
     public List<Room> getListFreeRooms() {
-        var list = new ArrayList<Room>();
+        List<Room> list = new ArrayList<>();
         for (Room room : rooms) {
             if (room.getStatus().equals("free")) {
                 list.add(room);
@@ -128,7 +128,7 @@ public class Hotel {
     }
 
     public void printCountFreeRoom() {
-        var count = 0;
+        int count = 0;
         for (Room room : rooms) {
             if (room.getStatus().equals("free"))
             {
