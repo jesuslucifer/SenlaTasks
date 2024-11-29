@@ -121,7 +121,18 @@ public class Hotel {
         return list;
     }
 
-    public void printCountClients(){
+    public void printCountClients() {
         System.out.println("Count clients: " + clients.size());
+    }
+
+    public void printCountFreeRoom() {
+        var count = 0;
+        for (Room room : rooms) {
+            if (room.getStatus().equals("free"))
+            {
+                count++;
+            }
+        }
+        System.out.println("Count free rooms: " + count);
     }
 }
