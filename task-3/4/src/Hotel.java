@@ -21,6 +21,9 @@ public class Hotel {
         boolean found = false;
         for (Room room : rooms) {
             if (room.getCapacity() >= buffClients.size() && room.getStatus().equals("free")) {
+                for (Client client : buffClients) {
+                    client.setRoomNumber(room.getRoomNumber());
+                }
                 room.setClientList(buffClients);
                 clients.addAll(buffClients);
                 found = true;
