@@ -1,6 +1,8 @@
 import java.util.Comparator;
 import java.util.List;
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Hotel {
     private List<Room> rooms = new ArrayList<>();
@@ -142,5 +144,10 @@ public class Hotel {
                 System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " + room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
             }
         }
+    }
+
+    public LocalDate formatDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yy");
+        return LocalDate.parse(date, formatter);
     }
 }
