@@ -1,6 +1,7 @@
 public class Client {
     private String passport;
     private String fullName;
+    private int roomNumber;
 
     public Client(String passport, String fullName) {
         this.passport = passport;
@@ -21,5 +22,13 @@ public class Client {
 
     public void setPassport(String passport) {
         this.passport = passport;
+    }
+
+    public void setRoomNumber(int roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
     }
 }
