@@ -135,4 +135,12 @@ public class Hotel {
         }
         System.out.println("Count free rooms: " + count);
     }
+
+    public void printInfoRoom(int roomNumber) {
+        for (Room room : rooms) {
+            if (room.getRoomNumber() == roomNumber) {
+                System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " + room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
+            }
+        }
+    }
 }
