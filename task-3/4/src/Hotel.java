@@ -135,14 +135,7 @@ public class Hotel {
     }
 
     public void printCountFreeRoom() {
-        int count = 0;
-        for (Room room : rooms) {
-            if (room.getStatus().equals("free"))
-            {
-                count++;
-            }
-        }
-        System.out.println("Count free rooms: " + count);
+        System.out.println("Count free rooms: " +  getListFreeRooms().size());
     }
 
     public void printInfoRoom(int roomNumber) {
