@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -8,6 +9,8 @@ public class Room {
     private String status;
     private int capacity;
     private List<Client> clentList = new ArrayList<Client>();
+    private LocalDate dateCheckIn;
+    private LocalDate dateEvict;
 
     public Room(int roomNumber) {
         this.roomNumber = roomNumber;
