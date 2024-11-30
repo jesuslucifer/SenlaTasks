@@ -23,6 +23,8 @@ public class Hotel {
             if (room.getCapacity() >= buffClients.size() && room.getStatus().equals("free")) {
                 for (Client client : buffClients) {
                     client.setRoomNumber(room.getRoomNumber());
+                    client.setDateCheckIn(formatDate(dateCheckIn));
+                    client.setDateEvict(formatDate(dateEvict));
                 }
                 room.setClientList(buffClients);
                 room.setDateCheckIn(formatDate(dateCheckIn));
