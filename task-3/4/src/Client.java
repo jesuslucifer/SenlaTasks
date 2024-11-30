@@ -35,4 +35,20 @@ public class Client {
     public int getRoomNumber() {
         return roomNumber;
     }
+
+    public void setDateCheckIn(LocalDate date) {
+        dateCheckIn = date;
+    }
+
+    public LocalDate getDateCheckIn() {
+        return dateCheckIn;
+    }
+
+    public void setDateEvict(LocalDate date) {
+        dateEvict = date;
+    }
+
+    public LocalDate getDateEvict() {
+        return dateEvict;
+    }
 }
