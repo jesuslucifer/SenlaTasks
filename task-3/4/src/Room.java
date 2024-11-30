@@ -18,6 +18,8 @@ public class Room {
         this.status = "free";
         this.capacity = new java.util.Random().nextInt(3) + 1;
         this.cost = (capacity + countStars) * 10;
+        dateCheckIn = LocalDate.of(2020, 1, 1);
+        dateEvict = LocalDate.of(2020, 1, 1);
     }
 
     public int getRoomNumber() {
