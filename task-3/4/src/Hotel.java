@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 public class Hotel {
     private List<Room> rooms = new ArrayList<>();
     private List<Service> services = new ArrayList<>();
@@ -181,6 +183,19 @@ public class Hotel {
         }
         for (Client client : list) {
             System.out.println(client.getFullName() + " " + client.getDateEvict() + " Room: " + client.getRoomNumber());
+        }
+    }
+
+    public void printCostPerRoom(String fullName) {
+        for (Client client : clients) {
+            if (client.getFullName().equals(fullName)) {
+                long daysBetween = DAYS.between(client.getDateCheckIn(), client.getDateEvict());
+                for (Room room : rooms) {
+                    if (room.getRoomNumber() == client.getRoomNumber()) {
+                        System.out.println("Cost per room: " + daysBetween * room.getCost());
+                    }
+                }
+            }
         }
     }
 }
