@@ -166,4 +166,28 @@ public class Hotel {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return LocalDate.parse(date, formatter);
     }
+
+    public void printClientList(String typeSort) {
+        List<Client> list = clients;
+
+        switch (typeSort) {
+            case "AlphabetA":
+                list.sort(Comparator.comparing(Client::getFullName));
+                break;
+            case "AlphabetZ":
+                list.sort(Comparator.comparing(Client::getFullName).reversed());
+                break;
+            case "DateI":
+                list.sort(Comparator.comparing(Client::getDateEvict));
+                break;
+            case "DateD":
+                list.sort(Comparator.comparing(Client::getDateEvict).reversed());
+                break;
+            default:
+                break;
+        }
+        for (Client client : list) {
+            System.out.println(client.getFullName() + " " + client.getDateEvict() + " Room: " + client.getRoomNumber());
+        }
+    }
 }
