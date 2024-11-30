@@ -17,7 +17,7 @@ public class Hotel {
         System.out.println("The hotel is open, there are " + COUNT_ROOMS + " rooms available");
     }
 
-    public void checkIntoRoom(List<Client> buffClients) {
+    public void checkIntoRoom(List<Client> buffClients, String dateCheckIn, String dateEvict) {
         boolean found = false;
         for (Room room : rooms) {
             if (room.getCapacity() >= buffClients.size() && room.getStatus().equals("free")) {
@@ -25,6 +25,8 @@ public class Hotel {
                     client.setRoomNumber(room.getRoomNumber());
                 }
                 room.setClientList(buffClients);
+                room.setDateCheckIn(formatDate(dateCheckIn));
+                room.setDateEvict(formatDate(dateEvict));
                 clients.addAll(buffClients);
                 found = true;
                 room.setStatus("busy");
@@ -159,7 +161,7 @@ public class Hotel {
     }
 
     public LocalDate formatDate(String date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return LocalDate.parse(date, formatter);
     }
 }
