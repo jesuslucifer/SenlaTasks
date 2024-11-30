@@ -1,7 +1,11 @@
+import java.time.LocalDate;
+
 public class Client {
     private String passport;
     private String fullName;
     private int roomNumber;
+    private LocalDate dateCheckIn;
+    private LocalDate dateEvict;
 
     public Client(String passport, String fullName) {
         this.passport = passport;
