@@ -200,4 +200,35 @@ public class Hotel {
             }
         }
     }
+
+    public void printRoomAndService(String typeSort) {
+        switch (typeSort) {
+            case "ChapterR":
+                for (Room room : rooms) {
+                    System.out.println("Room: " + room.getRoomNumber() + " Cost: " + room.getCost());
+                }
+                for (Service service : services) {
+                    System.out.println("Service: " + service.getServiceName() + " Cost: " + service.getCost());
+                }
+                break;
+            case "ChapterS":
+                for (Service service : services) {
+                    System.out.println("Service: " + service.getServiceName() + " Cost: " + service.getCost());
+                }
+                for (Room room : rooms) {
+                    System.out.println("Room: " + room.getRoomNumber() + " Cost: " + room.getCost());
+                }
+                break;
+            case "Cost":
+
+        }
+    }
+
+    public void printRoomFreeByDate(String date) {
+        for (Room room : rooms) {
+            if (room.getDateEvict().isBefore(formatDate(date))) {
+                System.out.println("Room: " + room.getRoomNumber());
+            }
+        }
+    }
 }
