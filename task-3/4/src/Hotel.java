@@ -47,6 +47,8 @@ public class Hotel {
         for (Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
                 room.setStatus("free");
+                room.setDateCheckIn(LocalDate.of(2020, 1, 1));
+                room.setDateEvict(LocalDate.of(2020, 1, 1));
                 clients.removeAll(room.getClentList());
                 room.getClentList().clear();
             }
