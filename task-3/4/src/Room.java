@@ -76,4 +76,12 @@ public class Room {
     public LocalDate getDateEvict() {
         return dateEvict;
     }
+
+    public void addClientToHistory(Client client) {
+        historyClientQueue.add(client);
+    }
+
+    public Deque<Client> getHistoryClientQueue() {
+        return historyClientQueue;
+    }
 }
