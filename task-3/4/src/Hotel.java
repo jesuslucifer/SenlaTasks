@@ -231,4 +231,46 @@ public class Hotel {
             }
         }
     }
+
+    public void addServiceForClient(String serviceName, String fullName, String serviceDate) {
+        for (Client client : clients) {
+            if (client.getFullName().equals(fullName)) {
+                for (Service service : services) {
+                    if (service.getServiceName().equals(serviceName)) {
+                        service.setServiceDate(formatDate(serviceDate));
+                        client.addService(service);
+                    }
+                }
+            }
+        }
+    }
+
+    public void printClientServices(String fullName, String typeSort) {
+        for (Client client : clients) {
+            if (client.getFullName().equals(fullName)) {
+                System.out.println("Services " + client.getFullName() + ":");
+                List<Service> list = client.getServices();
+                switch (typeSort) {
+                    case "CostI":
+                        list.sort(Comparator.comparing(Service::getCost));
+                        break;
+                    case "CostD":
+                        list.sort(Comparator.comparing(Service::getCost).reversed());
+                        break;
+                    case "DateI":
+                        list.sort(Comparator.comparing(Service::getServiceDate));
+                        break;
+                    case "DateD":
+                        list.sort(Comparator.comparing(Service::getServiceDate).reversed());
+                        break;
+                    default:
+                        break;
+                }
+                for (Service service : list) {
+                    System.out.println(service.getServiceName() + " Cost: " + service.getCost() + " Date: " + service.getServiceDate());
+                }
+                break;
+            }
+        }
+    }
 }
