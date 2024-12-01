@@ -223,11 +223,22 @@ public class Hotel {
                 }
                 break;
             case "Cost":
-
+                List<Room> list = rooms;
+                List<Service> list2 = services;
+                list.sort(Comparator.comparing(Room::getCost));
+                list2.sort(Comparator.comparing(Service::getCost));
+                for (Service service : list2) {
+                    System.out.println("Service: " + service.getServiceName() + " Cost: " + service.getCost());
+                }
+                for (Room room : list) {
+                    System.out.println("Room: " + room.getRoomNumber() + " Cost: " + room.getCost());
+                }
+                break;
         }
     }
 
     public void printRoomFreeByDate(String date) {
+        System.out.println("Free rooms by " + date);
         for (Room room : rooms) {
             if (room.getDateEvict().isBefore(formatDate(date))) {
                 System.out.println("Room: " + room.getRoomNumber());
