@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
+import java.util.Deque;
 import static java.time.temporal.ChronoUnit.DAYS;
 
 public class Hotel {
@@ -46,6 +46,9 @@ public class Hotel {
     public void evictFromRoom(int roomNumber) {
         for (Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
+                for (Client client : room.getClentList()) {
+                    room.addClientToHistory(client);
+                }
                 room.setStatus("free");
                 room.setDateCheckIn(LocalDate.of(2020, 1, 1));
                 room.setDateEvict(LocalDate.of(2020, 1, 1));
@@ -270,6 +273,21 @@ public class Hotel {
                     System.out.println(service.getServiceName() + " Cost: " + service.getCost() + " Date: " + service.getServiceDate());
                 }
                 break;
+            }
+        }
+    }
+
+    public void printHistoryRoom(int roomNumber) {
+        for (Room room : rooms) {
+            if (room.getRoomNumber() == roomNumber) {
+                System.out.println("Room " + room.getRoomNumber() + " history:");
+                int i = 3;
+                Deque<Client> deque = room.getHistoryClientQueue();
+                while (i != 0 && !deque.isEmpty()) {
+                    System.out.print(deque.pollLast().getFullName() + " ");
+                    i--;
+                }
+                System.out.println();
             }
         }
     }
