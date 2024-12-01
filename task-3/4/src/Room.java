@@ -1,4 +1,6 @@
 import java.time.LocalDate;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -11,6 +13,7 @@ public class Room {
     private List<Client> clentList = new ArrayList<Client>();
     private LocalDate dateCheckIn;
     private LocalDate dateEvict;
+    private Deque<Client> historyClientQueue = new LinkedList<Client>();
 
     public Room(int roomNumber) {
         this.roomNumber = roomNumber;
