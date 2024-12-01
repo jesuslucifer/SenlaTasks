@@ -54,4 +54,8 @@ public class Client {
     public LocalDate getDateEvict() {
         return dateEvict;
     }
+
+    public void addService(Service service) {
+        services.add(service);
+    }
 }
