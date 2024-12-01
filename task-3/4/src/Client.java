@@ -58,4 +58,8 @@ public class Client {
     public void addService(Service service) {
         services.add(service);
     }
+
+    public List<Service> getServices() {
+        return services;
+    }
 }
