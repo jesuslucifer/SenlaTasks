@@ -1,4 +1,6 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Client {
     private String passport;
@@ -6,6 +8,7 @@ public class Client {
     private int roomNumber;
     private LocalDate dateCheckIn;
     private LocalDate dateEvict;
+    private List<Service> services = new ArrayList<>();
 
     public Client(String passport, String fullName) {
         this.passport = passport;
