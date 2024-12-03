@@ -8,7 +8,7 @@ public class Room {
     private int roomNumber;
     private int cost;
     private int countStars;
-    private String status;
+    private RoomStatus status;
     private int capacity;
     private List<Client> clentList = new ArrayList<Client>();
     private LocalDate dateCheckIn;
@@ -18,7 +18,7 @@ public class Room {
     public Room(int roomNumber) {
         this.roomNumber = roomNumber;
         this.countStars = new java.util.Random().nextInt(5) + 1;
-        this.status = "free";
+        this.status = RoomStatus.free;
         this.capacity = new java.util.Random().nextInt(3) + 1;
         this.cost = (capacity + countStars) * 10;
         dateCheckIn = LocalDate.of(2020, 1, 1);
@@ -29,7 +29,7 @@ public class Room {
         return roomNumber;
     }
 
-    public String getStatus() {
+    public RoomStatus getStatus() {
         return status;
     }
 
@@ -37,7 +37,7 @@ public class Room {
         this.cost = cost;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(RoomStatus status) {
         this.status = status;
     }
 
@@ -83,5 +83,17 @@ public class Room {
 
     public Deque<Client> getHistoryClientQueue() {
         return historyClientQueue;
+    }
+
+    public boolean isFree() {
+        return status == RoomStatus.free;
+    }
+
+    public boolean isBusy() {
+        return status == RoomStatus.busy;
+    }
+
+    public boolean isRepaired() {
+        return status == RoomStatus.repaired;
     }
 }
