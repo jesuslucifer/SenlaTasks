@@ -23,7 +23,7 @@ public class Hotel {
     public void checkIntoRoom(List<Client> buffClients, String dateCheckIn, String dateEvict) {
         boolean found = false;
         for (Room room : rooms) {
-            if (room.getCapacity() >= buffClients.size() && room.getStatus().equals("free")) {
+            if (room.getCapacity() >= buffClients.size() && room.isFree()) {
                 for (Client client : buffClients) {
                     client.setRoomNumber(room.getRoomNumber());
                     client.setDateCheckIn(formatDate(dateCheckIn));
@@ -34,7 +34,7 @@ public class Hotel {
                 room.setDateEvict(formatDate(dateEvict));
                 clients.addAll(buffClients);
                 found = true;
-                room.setStatus("busy");
+                room.setStatus(RoomStatus.busy);
                 System.out.println("The clients is accommodated in " + room.getRoomNumber() + " room");
                 break;
             }
@@ -51,7 +51,7 @@ public class Hotel {
                 for (Client client : room.getClentList()) {
                     room.addClientToHistory(client);
                 }
-                room.setStatus("free");
+                room.setStatus(RoomStatus.free);
                 room.setDateCheckIn(LocalDate.of(2020, 1, 1));
                 room.setDateEvict(LocalDate.of(2020, 1, 1));
                 clients.removeAll(room.getClentList());
@@ -62,7 +62,7 @@ public class Hotel {
     }
 
     //Меняет статус номера
-    public void changeStatusRoom(int roomNumber, String status) {
+    public void changeStatusRoom(int roomNumber, RoomStatus status) {
         for (Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
                 room.setStatus(status);
@@ -138,7 +138,7 @@ public class Hotel {
     public List<Room> getListFreeRooms() {
         List<Room> list = new ArrayList<>();
         for (Room room : rooms) {
-            if (room.getStatus().equals("free")) {
+            if (room.isFree()) {
                 list.add(room);
             }
         }
@@ -159,7 +159,7 @@ public class Hotel {
     public void printInfoRoom(int roomNumber) {
         for (Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
-                if (room.getStatus().equals("busy")) {
+                if (room.isBusy()) {
                     System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " + room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
                     System.out.print("Clients: ");
                     for (Client client : room.getClentList()) {
