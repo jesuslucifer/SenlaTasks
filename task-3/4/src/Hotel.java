@@ -19,6 +19,7 @@ public class Hotel {
         System.out.println("The hotel is open, there are " + COUNT_ROOMS + " rooms available");
     }
 
+    //Заселяет клиентов в номер
     public void checkIntoRoom(List<Client> buffClients, String dateCheckIn, String dateEvict) {
         boolean found = false;
         for (Room room : rooms) {
@@ -43,6 +44,7 @@ public class Hotel {
         }
     }
 
+    //Выселяет клиентов из номера
     public void evictFromRoom(int roomNumber) {
         for (Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
@@ -59,6 +61,7 @@ public class Hotel {
         System.out.println("The guest has been evicted from the " + roomNumber + " room");
     }
 
+    //Меняет статус номера
     public void changeStatusRoom(int roomNumber, String status) {
         for (Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
@@ -68,6 +71,7 @@ public class Hotel {
         System.out.println("The status of the room " + roomNumber + " has been changed to " + status);
     }
 
+    //Меняет стоимость номера
     public void changeCostRoom(int roomNumber, int cost) {
         for (Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
@@ -77,11 +81,13 @@ public class Hotel {
         System.out.println("The room cost has been changed to " + cost);
     }
 
+    //Добавляет услугу
     public void addService(String serviceName, int cost) {
         services.add(new Service(serviceName, cost));
         System.out.println("The service " + serviceName + " has been added to the hotel");
     }
 
+    //Меняет стоимость услуги
     public void changeCostService(String serviceName, int cost) {
         for (Service service : services) {
             if (service.getServiceName().equals(serviceName)) {
@@ -91,6 +97,7 @@ public class Hotel {
         System.out.println("The service cost " + serviceName + " has been changed to " + cost);
     }
 
+    //Выводит отсортированный список номеров
     public void printRooms(String typeSort, String typeRoom){
         List<Room> list = rooms;
 
@@ -127,6 +134,7 @@ public class Hotel {
         }
     }
 
+    //Возвращает список свободныхномеров
     public List<Room> getListFreeRooms() {
         List<Room> list = new ArrayList<>();
         for (Room room : rooms) {
@@ -137,14 +145,17 @@ public class Hotel {
         return list;
     }
 
+    //Выводит количество клиентов в отеле
     public void printCountClients() {
         System.out.println("Count clients: " + clients.size());
     }
 
+    //Выводит кол-во свободных номеров
     public void printCountFreeRoom() {
         System.out.println("Count free rooms: " +  getListFreeRooms().size());
     }
 
+    //Выводит информацию о номере
     public void printInfoRoom(int roomNumber) {
         for (Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
@@ -162,11 +173,13 @@ public class Hotel {
         }
     }
 
+    //Форматирует дату из String в LocalDate
     public LocalDate formatDate(String date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return LocalDate.parse(date, formatter);
     }
 
+    //Выводит отсортированный список клиентов
     public void printClientList(String typeSort) {
         List<Client> list = clients;
 
@@ -191,6 +204,7 @@ public class Hotel {
         }
     }
 
+    //Выводит итоговую стоимость номера
     public void printCostPerRoom(String fullName) {
         for (Client client : clients) {
             if (client.getFullName().equals(fullName)) {
@@ -204,6 +218,7 @@ public class Hotel {
         }
     }
 
+    //Выводит отсортированный список номеров и услуг в них
     public void printRoomAndService(String typeSort) {
         switch (typeSort) {
             case "ChapterR":
@@ -237,6 +252,7 @@ public class Hotel {
         }
     }
 
+    //Выводит список свободных номеров которые будут доступны после определенной даты
     public void printRoomFreeByDate(String date) {
         System.out.println("Free rooms by " + date);
         for (Room room : rooms) {
@@ -246,6 +262,7 @@ public class Hotel {
         }
     }
 
+    //Добавляет услугу клиенту
     public void addServiceForClient(String serviceName, String fullName, String serviceDate) {
         for (Client client : clients) {
             if (client.getFullName().equals(fullName)) {
@@ -259,6 +276,7 @@ public class Hotel {
         }
     }
 
+    //Выводит отсортированные списки клиентов и услуг
     public void printClientServices(String fullName, String typeSort) {
         for (Client client : clients) {
             if (client.getFullName().equals(fullName)) {
@@ -288,6 +306,7 @@ public class Hotel {
         }
     }
 
+    //Выводит 3-х последних постояльцев номера
     public void printHistoryRoom(int roomNumber) {
         for (Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
