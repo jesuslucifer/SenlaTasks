@@ -18,7 +18,7 @@ public class Room {
     public Room(int roomNumber) {
         this.roomNumber = roomNumber;
         this.countStars = new java.util.Random().nextInt(5) + 1;
-        this.status = RoomStatus.free;
+        this.status = RoomStatus.FREE;
         this.capacity = new java.util.Random().nextInt(3) + 1;
         this.cost = (capacity + countStars) * 10;
         dateCheckIn = LocalDate.of(2020, 1, 1);
@@ -86,14 +86,14 @@ public class Room {
     }
 
     public boolean isFree() {
-        return status == RoomStatus.free;
+        return status == RoomStatus.FREE;
     }
 
     public boolean isBusy() {
-        return status == RoomStatus.busy;
+        return status == RoomStatus.BUSY;
     }
 
     public boolean isRepaired() {
-        return status == RoomStatus.repaired;
+        return status == RoomStatus.REPAIRED;
     }
 }

@@ -34,7 +34,7 @@ public class Hotel {
                 room.setDateEvict(formatDate(dateEvict));
                 clients.addAll(buffClients);
                 found = true;
-                room.setStatus(RoomStatus.busy);
+                room.setStatus(RoomStatus.BUSY);
                 System.out.println("The clients is accommodated in " + room.getRoomNumber() + " room");
                 break;
             }
@@ -51,7 +51,7 @@ public class Hotel {
                 for (Client client : room.getClentList()) {
                     room.addClientToHistory(client);
                 }
-                room.setStatus(RoomStatus.free);
+                room.setStatus(RoomStatus.FREE);
                 room.setDateCheckIn(LocalDate.of(2020, 1, 1));
                 room.setDateEvict(LocalDate.of(2020, 1, 1));
                 clients.removeAll(room.getClentList());

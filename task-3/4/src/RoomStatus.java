@@ -1,5 +1,5 @@
 public enum RoomStatus {
-    free,
-    busy,
-    repaired
+    FREE,
+    BUSY,
+    REPAIRED
 }
