@@ -13,38 +13,8 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 public class HotelView {
 
-    public void printRooms(String typeSort, String typeRoom, List<Room> rooms, List<Room> freeRooms){
-        List<Room> list = rooms;
-
-        if (typeRoom.equals("free"))
-        {
-            list = freeRooms;
-        }
-
-        switch (typeSort) {
-            case "CapacityI":
-                list.sort(Comparator.comparing(Room::getCapacity));
-                break;
-            case "CapacityD":
-                list.sort(Comparator.comparing(Room::getCapacity).reversed());
-                break;
-            case "CostI":
-                list.sort(Comparator.comparing(Room::getCost));
-                break;
-            case "CostD":
-                list.sort(Comparator.comparing(Room::getCost).reversed());
-                break;
-            case "StarsI":
-                list.sort(Comparator.comparing(Room::getCountStars));
-                break;
-            case "StarsD":
-                list.sort(Comparator.comparing(Room::getCountStars).reversed());
-                break;
-            default:
-                list.sort(Comparator.comparing(Room::getRoomNumber));
-                break;
-        }
-        for (Room room : list) {
+    public void printRooms(List<Room> rooms){
+        for (Room room : rooms) {
             System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " + room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
         }
     }
@@ -111,26 +81,8 @@ public class HotelView {
         }
     }
 
-    public void printClientList(String typeSort, List<Client> clients) {
-        List<Client> list = clients;
-
-        switch (typeSort) {
-            case "AlphabetA":
-                list.sort(Comparator.comparing(Client::getFullName));
-                break;
-            case "AlphabetZ":
-                list.sort(Comparator.comparing(Client::getFullName).reversed());
-                break;
-            case "DateI":
-                list.sort(Comparator.comparing(Client::getDateEvict));
-                break;
-            case "DateD":
-                list.sort(Comparator.comparing(Client::getDateEvict).reversed());
-                break;
-            default:
-                break;
-        }
-        for (Client client : list) {
+    public void printClientList(List<Client> clients) {
+        for (Client client : clients) {
             System.out.println(client.getFullName() + " " + client.getDateEvict() + " Room: " + client.getRoomNumber());
         }
     }
@@ -168,32 +120,9 @@ public class HotelView {
         }
     }
 
-    public void printClientServices(String fullName, String typeSort, List<Client> clients) {
-        for (Client client : clients) {
-            if (client.getFullName().equals(fullName)) {
-                System.out.println("Services " + client.getFullName() + ":");
-                List<Service> list = client.getServices();
-                switch (typeSort) {
-                    case "CostI":
-                        list.sort(Comparator.comparing(Service::getCost));
-                        break;
-                    case "CostD":
-                        list.sort(Comparator.comparing(Service::getCost).reversed());
-                        break;
-                    case "DateI":
-                        list.sort(Comparator.comparing(Service::getServiceDate));
-                        break;
-                    case "DateD":
-                        list.sort(Comparator.comparing(Service::getServiceDate).reversed());
-                        break;
-                    default:
-                        break;
-                }
-                for (Service service : list) {
+    public void printClientServices(List<Service> services) {
+                for (Service service : services) {
                     System.out.println(service.getServiceName() + " Cost: " + service.getCost() + " Date: " + service.getServiceDate());
                 }
-                break;
             }
-        }
-    }
 }
