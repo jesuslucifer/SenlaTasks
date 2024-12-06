@@ -15,7 +15,8 @@ public class HotelView {
 
     public void printRooms(List<Room> rooms){
         for (Room room : rooms) {
-            System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " + room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
+            System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " +
+                    room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
         }
     }
 
@@ -23,14 +24,16 @@ public class HotelView {
         for (Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
                 if (room.isBusy()) {
-                    System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " + room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
+                    System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: "
+                            + room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
                     System.out.print("Clients: ");
                     for (Client client : room.getClentList()) {
                         System.out.print(client.getFullName() + " ");
                     }
                     System.out.println();
                 } else {
-                    System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " + room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
+                    System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: "
+                            + room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
                 }
             }
         }
@@ -122,7 +125,8 @@ public class HotelView {
 
     public void printClientServices(List<Service> services) {
                 for (Service service : services) {
-                    System.out.println(service.getServiceName() + " Cost: " + service.getCost() + " Date: " + service.getServiceDate());
+                    System.out.println(service.getServiceName() + " Cost: " + service.getCost() + " Date: "
+                            + service.getServiceDate());
                 }
             }
 }
