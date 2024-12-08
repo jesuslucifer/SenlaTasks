@@ -18,6 +18,9 @@ public class Client {
         this.fullName = fullName;
     }
 
+    public Client () {
+    }
+
     public String getPassport() {
         return passport;
     }
@@ -46,12 +49,20 @@ public class Client {
         dateCheckIn = date;
     }
 
+    public void setDateCheckIn(String date) {
+        dateCheckIn = formatDate(date);
+    }
+
     public LocalDate getDateCheckIn() {
         return dateCheckIn;
     }
 
     public void setDateEvict(LocalDate date) {
         dateEvict = date;
+    }
+
+    public void setDateEvict(String date) {
+        dateEvict = formatDate(date);
     }
 
     public LocalDate getDateEvict() {
