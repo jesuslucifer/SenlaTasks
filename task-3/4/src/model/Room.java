@@ -100,17 +100,17 @@ public class Room {
         return status == RoomStatus.REPAIRED;
     }
 
-    public void checkIntoRoom(List<Client> buffClients, String dateCheckIn, String dateEvict, List<Client> clients) {
+    public void checkIntoRoom(List<Client> buffClients, LocalDate dateCheckIn, LocalDate dateEvict, List<Client> clients) {
         boolean found = false;
         if (getCapacity() >= buffClients.size() && isFree()) {
             for (Client client : buffClients) {
                 client.setRoomNumber(getRoomNumber());
-                client.setDateCheckIn(formatDate(dateCheckIn));
-                client.setDateEvict(formatDate(dateEvict));
+                client.setDateCheckIn(dateCheckIn);
+                client.setDateEvict(dateEvict);
             }
             setClientList(buffClients);
-            setDateCheckIn(formatDate(dateCheckIn));
-            setDateEvict(formatDate(dateEvict));
+            setDateCheckIn(dateCheckIn);
+            setDateEvict(dateEvict);
             clients.addAll(buffClients);
             found = true;
             setStatus(RoomStatus.BUSY);

@@ -30,7 +30,7 @@ public class RoomController {
         return null;
     }
 
-    public void checkIntoRoom(List<Client> buffClients, int roomNumber, String dateCheckIn, String dateEvict) {
+    public void checkIntoRoom(List<Client> buffClients, int roomNumber, LocalDate dateCheckIn, LocalDate dateEvict) {
        getRoom(roomNumber).checkIntoRoom(buffClients, dateCheckIn, dateEvict, hotel.getClients());
     }
 
