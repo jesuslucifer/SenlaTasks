@@ -2,10 +2,17 @@ package controller;
 
 import model.Hotel;
 import model.Service;
+import view.ServiceView;
 import java.util.List;
 
 public class ServiceController {
     private final List<Service> services;
+    private ServiceView view;
+
+    public ServiceController(ServiceView view, Hotel hotel) {
+        this.view = view;
+        this.services = hotel.getServices();
+    }
 
     public ServiceController(Hotel hotel) {
         this.services = hotel.getServices();
@@ -22,5 +29,9 @@ public class ServiceController {
 
     public void changeCostService(String serviceName, int cost) {
         getService(serviceName).setCost(cost);
+    }
+
+    public void printServices() {
+        view.printServices(services);
     }
 }
