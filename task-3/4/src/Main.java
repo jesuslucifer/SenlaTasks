@@ -31,6 +31,5 @@ public class Main {
 
         Menu menu = new Menu(new MenuRoom(roomController), new MenuService(hotelController, serviceController), new MenuHotel(hotelController), new MenuClient(serviceController, clientController));
         menu.printMenu();
-        menu.selectMenu();
     }
 }

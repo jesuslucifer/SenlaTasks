@@ -25,11 +25,6 @@ public class Menu {
             System.out.println("4. Service");
             System.out.println("5. Exit");
 
-            selectMenu();
-        }
-    }
-
-    public void selectMenu() {
             switch (sc.nextInt()) {
                 case 1 -> menuHotel.printMenu();
                 case 2 -> menuRoom.printMenu();
@@ -38,9 +33,7 @@ public class Menu {
                 case 5 -> System.exit(0);
                 default -> System.out.println("Invalid choice, try again");
             }
+        }
     }
 
-    public int exitMenu() {
-        return 0;
-    }
 }
