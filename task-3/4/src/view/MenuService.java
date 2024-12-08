@@ -20,14 +20,16 @@ public class MenuService {
             System.out.println("\tMenu Service");
             System.out.println("1. Print services");
             System.out.println("2. Add service in hotel");
-            System.out.println("3. Back");
+            System.out.println("3. Change service cost");
+            System.out.println("4. Back");
             System.out.println("0. Exit");
 
             switch (sc.nextInt()) {
                 case 1 -> serviceController.printServices();
                 case 2 -> addService();
-                case 3 -> flag = false;
-                case 4 -> System.exit(0);
+                case 3 -> changeCostService();
+                case 4 -> flag = false;
+                case 5 -> System.exit(0);
             }
         }
     }
@@ -40,5 +42,14 @@ public class MenuService {
         int serviceCost = new Scanner(System.in).nextInt();
 
         hotelController.addService(serviceName, serviceCost);
+    }
+
+    public void changeCostService() {
+        System.out.println("Enter service name:");
+        String serviceName = new Scanner(System.in).nextLine();
+        System.out.println("Enter service cost:");
+        int serviceCost = new Scanner(System.in).nextInt();
+
+        serviceController.changeCostService(serviceName, serviceCost);
     }
 }
