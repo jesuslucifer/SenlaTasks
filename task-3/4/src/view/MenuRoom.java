@@ -2,6 +2,7 @@ package view;
 
 import controller.RoomController;
 import model.Client;
+import model.RoomStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,8 @@ public class MenuRoom {
             //System.out.println("4. Print cost per room"); TODO: CLIENT
             System.out.println("6. Print history room");
             System.out.println("7. Print room free by date");
-            System.out.println("8. Back");
+            System.out.println("8. Change status of room");
+            System.out.println("9. Back");
             System.out.println("0. Exit");
 
             switch (sc.nextInt()) {
@@ -38,7 +40,8 @@ public class MenuRoom {
                 case 5 -> evictFromRoom();
                 case 6 -> printHistoryRoom();
                 case 7 -> printRoomFreeByDate();
-                case 8 -> flag = false;
+                case 8 -> changeStatus();
+                case 9 -> flag = false;
                 case 0 -> System.exit(0);
             }
         }
@@ -116,5 +119,21 @@ public class MenuRoom {
         int roomNumber = new Scanner(System.in).nextInt();
 
         roomController.evictFromRoom(roomNumber);
+    }
+
+    public void changeStatus() {
+        System.out.println("Enter room number:");
+        int roomNumber = new Scanner(System.in).nextInt();
+
+        System.out.println("Choose status:");
+        System.out.println("1. Free");
+        System.out.println("2. Busy");
+        System.out.println("3. Repaired");
+
+        switch (sc.nextInt()) {
+            case 1 -> roomController.changeStatusRoom(roomNumber, RoomStatus.FREE);
+            case 2 -> roomController.changeStatusRoom(roomNumber, RoomStatus.BUSY);
+            case 3 -> roomController.changeStatusRoom(roomNumber, RoomStatus.REPAIRED);
+        }
     }
 }
