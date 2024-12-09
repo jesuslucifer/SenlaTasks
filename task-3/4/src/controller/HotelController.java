@@ -47,11 +47,17 @@ public class HotelController {
     }
 
     public void printRoomAndService(String typeSort) {
-        List<Room> sortedRooms = getRooms();
-        List<Service> sortedServices = getServices();
-        sortedRooms.sort(Comparator.comparing(Room::getCost));
-        sortedServices.sort(Comparator.comparing(Service::getCost));
-        view.printRoomAndService(typeSort, getRooms(), getServices(), sortedServices, sortedRooms);
+        if (typeSort.equals("Cost")) {
+            List<Room> sortedRooms = getRooms();
+            List<Service> sortedServices = getServices();
+            sortedRooms.sort(Comparator.comparing(Room::getCost));
+            sortedServices.sort(Comparator.comparing(Service::getCost));
+            view.printRoomAndService(typeSort, sortedRooms,sortedServices);
+        }
+        else {
+            view.printRoomAndService(typeSort, getRooms(), getServices());
+        }
+
     }
 
 }

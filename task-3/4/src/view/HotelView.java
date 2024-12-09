@@ -18,7 +18,7 @@ public class HotelView {
         System.out.println("Count clients: " + size);
     }
 
-    public void printRoomAndService(String typeSort, List<Room> rooms, List<Service> services, List<Service> sortedServices, List<Room> sortedRooms) {
+    public void printRoomAndService(String typeSort, List<Room> rooms, List<Service> services) {
         switch (typeSort) {
             case "ChapterR":
                 for (Room room : rooms) {
@@ -28,19 +28,11 @@ public class HotelView {
                     System.out.println("Service: " + service.getServiceName() + " Cost: " + service.getCost());
                 }
                 break;
-            case "ChapterS":
+            case "ChapterS", "Cost":
                 for (Service service : services) {
                     System.out.println("Service: " + service.getServiceName() + " Cost: " + service.getCost());
                 }
                 for (Room room : rooms) {
-                    System.out.println("Room: " + room.getRoomNumber() + " Cost: " + room.getCost());
-                }
-                break;
-            case "Cost":
-                for (Service service : sortedServices) {
-                    System.out.println("Service: " + service.getServiceName() + " Cost: " + service.getCost());
-                }
-                for (Room room : sortedRooms) {
                     System.out.println("Room: " + room.getRoomNumber() + " Cost: " + room.getCost());
                 }
                 break;
