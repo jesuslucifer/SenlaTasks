@@ -9,6 +9,7 @@ import view.RoomView;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Deque;
 import java.util.List;
 
 import static java.time.temporal.ChronoUnit.DAYS;
@@ -103,7 +104,8 @@ public class RoomController {
     }
 
     public void printHistoryRoom(int roomNumber) {
-        view.printHistoryRoom(getRoom(roomNumber));
+        Deque<Client> deque = getRoom(roomNumber).getHistoryClientQueue();
+        view.printHistoryRoom(getRoom(roomNumber), deque);
     }
 
     public void printRoomFreeByDate(String date) {
