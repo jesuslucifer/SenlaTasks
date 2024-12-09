@@ -29,7 +29,8 @@ public class MenuRoom {
             System.out.println("6. Print history room");
             System.out.println("7. Print room free by date");
             System.out.println("8. Change status of room");
-            System.out.println("9. Back");
+            System.out.println("9. Change cost of room");
+            System.out.println("10. Back");
             System.out.println("0. Exit");
 
             switch (sc.nextInt()) {
@@ -41,7 +42,8 @@ public class MenuRoom {
                 case 6 -> printHistoryRoom();
                 case 7 -> printRoomFreeByDate();
                 case 8 -> changeStatus();
-                case 9 -> flag = false;
+                case 9 -> changeCost();
+                case 10 -> flag = false;
                 case 0 -> System.exit(0);
             }
         }
@@ -135,5 +137,15 @@ public class MenuRoom {
             case 2 -> roomController.changeStatusRoom(roomNumber, RoomStatus.BUSY);
             case 3 -> roomController.changeStatusRoom(roomNumber, RoomStatus.REPAIRED);
         }
+    }
+
+    public void changeCost() {
+        System.out.println("Enter room number:");
+        int roomNumber = new Scanner(System.in).nextInt();
+
+        System.out.println("Enter cost");
+        int cost = new Scanner(System.in).nextInt();
+
+        roomController.changeCostRoom(roomNumber, cost);
     }
 }
