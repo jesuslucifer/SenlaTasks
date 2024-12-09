@@ -44,11 +44,11 @@ public class HotelController {
     }
 
     public void printCountFreeRoom() {
-        view.printCountFreeRoom(getListFreeRooms());
+        view.printCountFreeRoom(getListFreeRooms().size());
     }
 
     public void printCountClients() {
-        view.printCountClients(getClients());
+        view.printCountClients(getClients().size());
     }
 
     public void printRoomAndService(String typeSort) {

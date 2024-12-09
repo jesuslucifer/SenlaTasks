@@ -10,12 +10,12 @@ public class HotelView {
 
 
 
-    public void printCountFreeRoom(List<Room> rooms) {
-        System.out.println("Count free rooms: " +  rooms.size());
+    public void printCountFreeRoom(int size) {
+        System.out.println("Count free rooms: " +  size);
     }
 
-    public void printCountClients(List<Client> clients) {
-        System.out.println("Count clients: " + clients.size());
+    public void printCountClients(int size) {
+        System.out.println("Count clients: " + size);
     }
 
     public void printRoomAndService(String typeSort, List<Room> rooms, List<Service> services, List<Service> sortedServices, List<Room> sortedRooms) {
