@@ -2,11 +2,14 @@ package controller;
 
 import model.Client;
 import model.Hotel;
+import model.Room;
 import model.Service;
 import view.ClientView;
 
 import java.util.Comparator;
 import java.util.List;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class ClientController {
     private final Hotel hotel;
@@ -76,5 +79,19 @@ public class ClientController {
                 break;
         }
         view.printClientServices(list);
+    }
+
+    public void printCostPerRoom(String fullName) {
+        for (Client client : hotel.getClients()) {
+            if (client.getFullName().equals(fullName)) {
+                long daysBetween = DAYS.between(client.getDateCheckIn(), client.getDateEvict());
+                for (Room room : hotel.getRooms()) {
+                    if (room.getRoomNumber() == client.getRoomNumber()) {
+                        long cost = daysBetween * room.getCost();
+                        view.printCostPerRoom(cost);
+                    }
+                }
+            }
+        }
     }
 }

@@ -89,20 +89,6 @@ public class RoomController {
         view.printInfoRoom(getRoom(roomNumber));
     }
 
-    public void printCostPerRoom(String fullName) {
-        for (Client client : hotel.getClients()) {
-            if (client.getFullName().equals(fullName)) {
-                long daysBetween = DAYS.between(client.getDateCheckIn(), client.getDateEvict());
-                for (Room room : rooms) {
-                    if (room.getRoomNumber() == client.getRoomNumber()) {
-                        long cost = daysBetween * room.getCost();
-                        view.printCostPerRoom(cost);
-                    }
-                }
-            }
-        }
-    }
-
     public void printHistoryRoom(int roomNumber) {
         Deque<Client> deque = getRoom(roomNumber).getHistoryClientQueue();
         view.printHistoryRoom(getRoom(roomNumber), deque);

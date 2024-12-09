@@ -16,6 +16,7 @@ public class MenuClient{
         this.serviceController = serviceController;
         this.clientController = clientController;
     }
+
     public void printMenu() {
         boolean flag = true;
         while (flag) {
@@ -23,14 +24,16 @@ public class MenuClient{
             System.out.println("1. Print clients");
             System.out.println("2. Print client services");
             System.out.println("3. Add service for client");
-            System.out.println("4. Back");
+            System.out.println("4. Print cost per room");
+            System.out.println("5. Back");
             System.out.println("0. Exit");
 
             switch (sc.nextInt()) {
                 case 1 -> printClients();
                 case 2 -> printClientServices();
                 case 3 -> addServiceForClient();
-                case 4 -> flag = false;
+                case 4 -> printCostPerRoom();
+                case 5 -> flag = false;
                 case 0 -> System.exit(0);
             }
         }
@@ -82,6 +85,13 @@ public class MenuClient{
         String serviceName = new Scanner(System.in).nextLine();
 
         clientController.addServiceForClient(fullName, serviceName, date);
+    }
+
+    public void printCostPerRoom() {
+        System.out.println("Enter full name client:");
+        String fullName = new Scanner(System.in).nextLine();
+
+        clientController.printCostPerRoom(fullName);
     }
 
 }

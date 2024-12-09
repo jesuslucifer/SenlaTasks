@@ -19,4 +19,8 @@ public class ClientView {
                     + service.getServiceDate());
         }
     }
+
+    public void printCostPerRoom(long cost) {
+        System.out.println("Cost per room: " + cost);
+    }
 }

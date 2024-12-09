@@ -33,10 +33,6 @@ public class RoomView {
         }
     }
 
-    public void printCostPerRoom(long cost) {
-        System.out.println("Cost per room: " + cost);
-    }
-
     public void printHistoryRoom(Room room, Deque<Client> deque) {
         System.out.println("Room " + room.getRoomNumber() + " history:");
         int i = 3;
