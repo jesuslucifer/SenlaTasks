@@ -1,16 +1,15 @@
 package view;
 
 import controller.ClientController;
-import controller.HotelController;
 import controller.ServiceController;
 
 import java.util.Scanner;
 
 public class MenuClient{
-    private ClientController clientController;
-    private ServiceController serviceController;
+    private final ClientController clientController;
+    private final ServiceController serviceController;
 
-    private Scanner sc = new Scanner(System.in);
+    private final Scanner sc = new Scanner(System.in);
 
     public MenuClient(ServiceController serviceController, ClientController clientController){
         this.serviceController = serviceController;
@@ -84,7 +83,7 @@ public class MenuClient{
         serviceController.printServices();
         String serviceName = new Scanner(System.in).nextLine();
 
-        clientController.addServiceForClient(fullName, serviceName, date);
+        clientController.addServiceForClient(serviceName, fullName, date);
     }
 
     public void printCostPerRoom() {
