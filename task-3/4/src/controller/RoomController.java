@@ -10,6 +10,8 @@ import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 public class RoomController {
     private final Hotel hotel;
     private final List<Room> rooms;
@@ -86,7 +88,17 @@ public class RoomController {
     }
 
     public void printCostPerRoom(String fullName) {
-        view.printCostPerRoom(fullName, hotel.getClients(), rooms);
+        for (Client client : hotel.getClients()) {
+            if (client.getFullName().equals(fullName)) {
+                long daysBetween = DAYS.between(client.getDateCheckIn(), client.getDateEvict());
+                for (Room room : rooms) {
+                    if (room.getRoomNumber() == client.getRoomNumber()) {
+                        long cost = daysBetween * room.getCost();
+                        view.printCostPerRoom(cost);
+                    }
+                }
+            }
+        }
     }
 
     public void printHistoryRoom(int roomNumber) {

@@ -33,17 +33,8 @@ public class RoomView {
         }
     }
 
-    public void printCostPerRoom(String fullName, List<Client> clients, List<Room> rooms) {
-        for (Client client : clients) {
-            if (client.getFullName().equals(fullName)) {
-                long daysBetween = DAYS.between(client.getDateCheckIn(), client.getDateEvict());
-                for (Room room : rooms) {
-                    if (room.getRoomNumber() == client.getRoomNumber()) {
-                        System.out.println("Cost per room: " + daysBetween * room.getCost());
-                    }
-                }
-            }
-        }
+    public void printCostPerRoom(long cost) {
+        System.out.println("Cost per room: " + cost);
     }
 
     public void printHistoryRoom(Room room) {
