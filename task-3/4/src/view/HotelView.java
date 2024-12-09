@@ -3,7 +3,7 @@ package view;
 import model.Client;
 import model.Room;
 import model.Service;
-import java.util.Comparator;
+
 import java.util.List;
 
 public class HotelView {
@@ -18,7 +18,7 @@ public class HotelView {
         System.out.println("Count clients: " + clients.size());
     }
 
-    public void printRoomAndService(String typeSort, List<Room> rooms, List<Service> services) {
+    public void printRoomAndService(String typeSort, List<Room> rooms, List<Service> services, List<Service> sortedServices, List<Room> sortedRooms) {
         switch (typeSort) {
             case "ChapterR":
                 for (Room room : rooms) {
@@ -37,14 +37,10 @@ public class HotelView {
                 }
                 break;
             case "Cost":
-                List<Room> list = rooms;
-                List<Service> list2 = services;
-                list.sort(Comparator.comparing(Room::getCost));
-                list2.sort(Comparator.comparing(Service::getCost));
-                for (Service service : list2) {
+                for (Service service : sortedServices) {
                     System.out.println("Service: " + service.getServiceName() + " Cost: " + service.getCost());
                 }
-                for (Room room : list) {
+                for (Room room : sortedRooms) {
                     System.out.println("Room: " + room.getRoomNumber() + " Cost: " + room.getCost());
                 }
                 break;

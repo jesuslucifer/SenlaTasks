@@ -6,6 +6,7 @@ import model.Room;
 import model.Service;
 import view.HotelView;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 
 public class HotelController {
@@ -51,7 +52,11 @@ public class HotelController {
     }
 
     public void printRoomAndService(String typeSort) {
-        view.printRoomAndService(typeSort, getRooms(), getServices());
+        List<Room> sortedRooms = getRooms();
+        List<Service> sortedServices = getServices();
+        sortedRooms.sort(Comparator.comparing(Room::getCost));
+        sortedServices.sort(Comparator.comparing(Service::getCost));
+        view.printRoomAndService(typeSort, getRooms(), getServices(), sortedServices, sortedRooms);
     }
 
 }
