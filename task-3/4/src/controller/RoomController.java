@@ -7,6 +7,7 @@ import model.RoomStatus;
 import view.RoomView;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -106,7 +107,13 @@ public class RoomController {
     }
 
     public void printRoomFreeByDate(String date) {
-        view.printRoomFreeByDate(formatDate(date), rooms);
+        List<Room> freeRooms = new ArrayList<>();
+        for (Room room : rooms) {
+            if (room.getDateEvict().isBefore(formatDate(date))) {
+                freeRooms.add(room);
+            }
+        }
+        view.printRoomFreeByDate(formatDate(date), freeRooms);
     }
 
     public LocalDate formatDate(String date) {

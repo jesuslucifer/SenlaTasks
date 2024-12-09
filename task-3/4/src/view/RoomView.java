@@ -51,9 +51,7 @@ public class RoomView {
     public void printRoomFreeByDate(LocalDate date, List<Room> rooms) {
         System.out.println("Free rooms by " + date);
         for (Room room : rooms) {
-            if (room.getDateEvict().isBefore(date)) {
-                System.out.println("Room: " + room.getRoomNumber());
-            }
+            System.out.println("Room: " + room.getRoomNumber());
         }
     }
 }
