@@ -6,6 +6,7 @@ import model.Room;
 import model.Service;
 import view.HotelView;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -48,8 +49,8 @@ public class HotelController {
 
     public void printRoomAndService(String typeSort) {
         if (typeSort.equals("Cost")) {
-            List<Room> sortedRooms = getRooms();
-            List<Service> sortedServices = getServices();
+            List<Room> sortedRooms = new ArrayList<>(getListFreeRooms());
+            List<Service> sortedServices = new ArrayList<>(getServices());
             sortedRooms.sort(Comparator.comparing(Room::getCost));
             sortedServices.sort(Comparator.comparing(Service::getCost));
             view.printRoomAndService(typeSort, sortedRooms,sortedServices);
