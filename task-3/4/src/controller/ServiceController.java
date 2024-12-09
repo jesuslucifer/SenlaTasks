@@ -14,10 +14,6 @@ public class ServiceController {
         this.services = hotel.getServices();
     }
 
-    public ServiceController(Hotel hotel) {
-        this.services = hotel.getServices();
-    }
-
     public Service getService(String serviceName) {
         for (Service service : services) {
             if (service.getServiceName().equals(serviceName)) {
@@ -33,5 +29,9 @@ public class ServiceController {
 
     public void printServices() {
         view.printServices(services);
+    }
+
+    public void addService(String serviceName, int cost) {
+        services.add(new Service(serviceName, cost));
     }
 }
