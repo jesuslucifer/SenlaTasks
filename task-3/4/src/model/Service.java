@@ -33,8 +33,4 @@ public class Service {
         this.serviceDate = serviceDate;
     }
 
-    public void changeCostService(int cost) {
-        setCost(cost);
-        System.out.println("The service cost " + serviceName + " has been changed to " + cost);
-    }
 }
