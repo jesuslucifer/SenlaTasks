@@ -18,11 +18,6 @@ public class Hotel {
         System.out.println("The hotel is open, there are " + COUNT_ROOMS + " rooms available");
     }
 
-    public void addService(String serviceName, int cost) {
-        services.add(new Service(serviceName, cost));
-        System.out.println("The service " + serviceName + " has been added to the hotel");
-    }
-
     public List<Room> getListFreeRooms() {
         List<Room> list = new ArrayList<>();
         for (Room room : rooms) {

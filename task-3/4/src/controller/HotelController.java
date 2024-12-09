@@ -18,11 +18,6 @@ public class HotelController {
         this.view = view;
     }
 
-
-    public void addService(String serviceName, int cost) {
-        hotel.addService(serviceName, cost);
-    }
-
     public List<Room> getListFreeRooms() {
         return hotel.getListFreeRooms();
     }

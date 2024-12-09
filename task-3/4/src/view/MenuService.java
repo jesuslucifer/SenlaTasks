@@ -14,6 +14,7 @@ public class MenuService {
         this.hotelController = hotelController;
         this.serviceController = serviceController;
     }
+
     public void printMenu() {
         boolean flag = true;
         while (flag) {
@@ -41,7 +42,9 @@ public class MenuService {
         System.out.println("Enter service cost:");
         int serviceCost = new Scanner(System.in).nextInt();
 
-        hotelController.addService(serviceName, serviceCost);
+        serviceController.addService(serviceName, serviceCost);
+
+        System.out.println("The service " + serviceName + " has been added to the hotel");
     }
 
     public void changeCostService() {
@@ -51,5 +54,7 @@ public class MenuService {
         int serviceCost = new Scanner(System.in).nextInt();
 
         serviceController.changeCostService(serviceName, serviceCost);
+
+        System.out.println("The service cost " + serviceName + " has been changed to " + serviceCost);
     }
 }
