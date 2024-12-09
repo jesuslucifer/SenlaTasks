@@ -25,7 +25,6 @@ public class MenuRoom {
             System.out.println("3. Print info room");
             System.out.println("4. Check into room");
             System.out.println("5. Evict from room");
-            //System.out.println("4. Print cost per room"); TODO: CLIENT
             System.out.println("6. Print history room");
             System.out.println("7. Print room free by date");
             System.out.println("8. Change status of room");
