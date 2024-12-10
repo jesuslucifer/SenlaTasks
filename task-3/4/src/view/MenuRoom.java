@@ -9,28 +9,19 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MenuRoom {
-    private RoomController roomController;
-    private Scanner sc = new Scanner(System.in);
+    private final RoomController roomController;
+    private final RoomView roomView;
+    private final Scanner sc = new Scanner(System.in);
 
-    public MenuRoom(RoomController roomController) {
+    public MenuRoom(RoomController roomController, RoomView roomView) {
         this.roomController = roomController;
+        this.roomView = roomView;
     }
 
     public void printMenu() {
         boolean flag = true;
         while (flag) {
-            System.out.println("\tMenu Room");
-            System.out.println("1. Print all rooms");
-            System.out.println("2. Print free rooms");
-            System.out.println("3. Print info room");
-            System.out.println("4. Check into room");
-            System.out.println("5. Evict from room");
-            System.out.println("6. Print history room");
-            System.out.println("7. Print room free by date");
-            System.out.println("8. Change status of room");
-            System.out.println("9. Change cost of room");
-            System.out.println("10. Back");
-            System.out.println("0. Exit");
+            roomView.printMenu();
 
             switch (sc.nextInt()) {
                 case 1 -> printRooms("all");
@@ -50,13 +41,7 @@ public class MenuRoom {
     }
 
     public void printRooms(String roomType) {
-        System.out.println("Choose type sort:");
-        System.out.println("1. Capacity increase");
-        System.out.println("2. Capacity decrease");
-        System.out.println("3. Cost increase");
-        System.out.println("4. Cost decrease");
-        System.out.println("5. Stars increase");
-        System.out.println("6. Stars decrease");
+        roomView.printSwitchRooms();
 
         switch (sc.nextInt()) {
             case 1 -> roomController.printRooms("CapacityI", roomType);
