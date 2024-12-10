@@ -117,7 +117,7 @@ public class Room {
             System.out.println("The clients is accommodated in " + getRoomNumber() + " room");
         }
         if (!found) {
-            System.out.println("There are no places in the hotel");
+            System.out.println("This room is not available");
         }
     }
 
