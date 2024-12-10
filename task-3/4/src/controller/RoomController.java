@@ -7,6 +7,7 @@ import model.RoomStatus;
 import view.RoomView;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Deque;
@@ -104,5 +105,24 @@ public class RoomController {
 
     public LocalDate formatDate(String date) {
         return hotel.formatDate(date);
+    }
+
+    public boolean checkRoom(int roomNumber) {
+        return 0 < roomNumber && roomNumber <= rooms.size();
+    }
+
+    public boolean checkCapacityRoom(int roomNumber, int countClients) {
+        return getRoom(roomNumber).getCapacity() >= countClients;
+    }
+
+    public boolean checkDate(String date) {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            LocalDate.parse(date, formatter);
+            return true;
+        }
+        catch (Exception e) {
+            return false;
+        }
     }
 }

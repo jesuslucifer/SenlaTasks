@@ -70,45 +70,31 @@ public class MenuRoom {
     }
 
     public void printInfoRoom() {
-        System.out.println("Enter room number:");
-        int roomNumber = new Scanner(System.in).nextInt();
-
-        roomController.printInfoRoom(roomNumber);
+        roomController.printInfoRoom(enterRoomNumber());
     }
 
     public void printHistoryRoom() {
-        System.out.println("Enter room number:");
-        int roomNumber = new Scanner(System.in).nextInt();
-
-        roomController.printHistoryRoom(roomNumber);
+        roomController.printHistoryRoom(enterRoomNumber());
     }
 
     public void printRoomFreeByDate() {
-        System.out.println("Enter date (dd-MM-yyyy):");
-        String date = new Scanner(System.in).nextLine();
-
-        roomController.printRoomFreeByDate(date);
+        roomController.printRoomFreeByDate(enterDate("Just"));
     }
 
     public void checkIntoRoom() {
-        System.out.println("Enter room number:");
-        int roomNumber = new Scanner(System.in).nextInt();
-
-        System.out.println("Enter number clients:");
-        int clients = new Scanner(System.in).nextInt();
+        int roomNumber = enterRoomNumber();
+        int countClients = enterCountClients(roomNumber);
 
         Client client = new Client();
-        System.out.println("Enter date check in (dd-MM-yyyy):");
-        client.setDateCheckIn(new Scanner(System.in).nextLine());
-        System.out.println("Enter date evict from (dd-MM-yyyy):");
-        client.setDateEvict(new Scanner(System.in).nextLine());
+        client.setDateCheckIn(enterDate("CheckIn"));
+        client.setDateEvict(enterDate("Evict"));
 
         List<Client> clientList = new ArrayList<>();
-        for (int i = 0; i < clients; i++) {
+        for (int i = 0; i < countClients; i++) {
             Client client1 = new Client();
             System.out.println("Enter full name client:");
             client1.setFullName(new Scanner(System.in).nextLine());
-
+            client1.setRoomNumber(roomNumber);
             clientList.add(client1);
         }
 
@@ -116,15 +102,11 @@ public class MenuRoom {
     }
 
     public void evictFromRoom() {
-        System.out.println("Enter room number:");
-        int roomNumber = new Scanner(System.in).nextInt();
-
-        roomController.evictFromRoom(roomNumber);
+        roomController.evictFromRoom(enterRoomNumber());
     }
 
     public void changeStatus() {
-        System.out.println("Enter room number:");
-        int roomNumber = new Scanner(System.in).nextInt();
+        int roomNumber = enterRoomNumber();
 
         System.out.println("Choose status:");
         System.out.println("1. Free");
@@ -139,12 +121,73 @@ public class MenuRoom {
     }
 
     public void changeCost() {
-        System.out.println("Enter room number:");
-        int roomNumber = new Scanner(System.in).nextInt();
+        int roomNumber = enterRoomNumber();
 
         System.out.println("Enter cost");
         int cost = new Scanner(System.in).nextInt();
 
         roomController.changeCostRoom(roomNumber, cost);
+    }
+
+    public int enterRoomNumber() {
+        while (true) {
+            System.out.println("Enter room number:");
+            int roomNumber = new Scanner(System.in).nextInt();
+
+            if (roomController.checkRoom(roomNumber)) {
+                return roomNumber;
+            }
+
+            System.out.println("Invalid room number");
+        }
+    }
+
+    public int enterCountClients(int roomNumber) {
+        while (true) {
+            System.out.println("Enter count clients:");
+            int countClients = new Scanner(System.in).nextInt();
+
+            if (roomController.checkCapacityRoom(roomNumber, countClients)) {
+                return countClients;
+            }
+
+            System.out.println("Invalid count clients");
+        }
+    }
+
+    public String enterDate(String typeDate) {
+        switch (typeDate) {
+            case "CheckIn" -> {
+                while (true) {
+                    System.out.println("Enter date check in (dd-MM-yyyy):");
+                    String date = new Scanner(System.in).nextLine();
+                    if (roomController.checkDate(date)) {
+                        return date;
+                    }
+                    System.out.println("Invalid date check in");
+                }
+            }
+            case "Evict" -> {
+                while (true) {
+                    System.out.println("Enter date evict (dd-MM-yyyy):");
+                    String date = new Scanner(System.in).nextLine();
+                    if (roomController.checkDate(date)) {
+                        return date;
+                    }
+                    System.out.println("Invalid date evict");
+                }
+            }
+        case "Just" -> {
+            while (true) {
+                System.out.println("Enter date (dd-MM-yyyy):");
+                String date = new Scanner(System.in).nextLine();
+                if (roomController.checkDate(date)) {
+                    return date;
+                }
+                System.out.println("Invalid date");
+            }
+        }
+        }
+        return "Invalid";
     }
 }

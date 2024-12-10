@@ -37,7 +37,7 @@ public class RoomView {
         while (i != 0 && !deque.isEmpty()) {
             System.out.println("Full name: " + deque.peekLast().getFullName()
                     + " Date check in: "+ deque.peekLast().getDateCheckIn()
-                    + " Date evict: " + deque.pollLast().getDateCheckIn());
+                    + " Date evict: " + deque.pollLast().getDateEvict());
             i--;
         }
         System.out.println();
