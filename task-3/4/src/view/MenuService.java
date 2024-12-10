@@ -6,24 +6,19 @@ import controller.ServiceController;
 import java.util.Scanner;
 
 public class MenuService {
-    private Scanner sc = new Scanner(System.in);
-    ServiceController serviceController;
-    HotelController hotelController;
+    private final Scanner sc = new Scanner(System.in);
+    private final ServiceController serviceController;
+    private final ServiceView serviceView;
 
-    public MenuService(HotelController hotelController, ServiceController serviceController) {
-        this.hotelController = hotelController;
+    public MenuService(ServiceController serviceController, ServiceView serviceView) {
         this.serviceController = serviceController;
+        this.serviceView = serviceView;
     }
 
     public void printMenu() {
         boolean flag = true;
         while (flag) {
-            System.out.println("\tMenu Service");
-            System.out.println("1. Print services");
-            System.out.println("2. Add service in hotel");
-            System.out.println("3. Change service cost");
-            System.out.println("4. Back");
-            System.out.println("0. Exit");
+            serviceView.printMenu();
 
             switch (sc.nextInt()) {
                 case 1 -> serviceController.printServices();
