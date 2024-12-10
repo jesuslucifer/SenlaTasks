@@ -6,6 +6,8 @@ import model.Room;
 import model.Service;
 import view.ClientView;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.List;
 
@@ -93,5 +95,34 @@ public class ClientController {
                 }
             }
         }
+    }
+
+    public boolean checkDate(String date) {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            LocalDate.parse(date, formatter);
+            return true;
+        }
+        catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean checkService(String service) {
+        for (Service service1 : hotel.getServices()) {
+            if (service1.getServiceName().equals(service)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkFullName(String fullName) {
+        for (Client client : clients) {
+            if (client.getFullName().equals(fullName)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

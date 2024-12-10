@@ -30,63 +30,128 @@ public class MenuClient{
                 case 4 -> printCostPerRoom();
                 case 5 -> flag = false;
                 case 0 -> System.exit(0);
+                default -> System.out.println("Invalid choice");
             }
         }
 
     }
 
     public void printClients() {
-        System.out.println("Choose type sort:");
-        System.out.println("Alphabet a-Z");
-        System.out.println("Alphabet z-A");
-        System.out.println("Date increase");
-        System.out.println("Date decrease");
+        boolean flag = true;
+        while (flag) {
+            System.out.println("\tChoose type sort:");
+            System.out.println("1. Alphabet a-Z");
+            System.out.println("2. Alphabet z-A");
+            System.out.println("3. Date increase");
+            System.out.println("4. Date decrease");
+            System.out.println("5. Back");
 
-        switch (sc.nextInt()) {
-            case 1 -> clientController.printClients("AlphabetA");
-            case 2 -> clientController.printClients("AlphabetZ");
-            case 3 -> clientController.printClients("DateI");
-            case 4 -> clientController.printClients("DateD");
+            switch (sc.nextInt()) {
+                case 1 -> {
+                    clientController.printClients("AlphabetA");
+                    flag = false;
+                }
+                case 2 -> {
+                    clientController.printClients("AlphabetZ");
+                    flag = false;
+                }
+                case 3 -> {
+                    clientController.printClients("DateI");
+                    flag = false;
+                }
+                case 4 -> {
+                    clientController.printClients("DateD");
+                    flag = false;
+                }
+                case 5 -> flag = false;
+                default -> System.out.println("Invalid choice");
+            }
         }
     }
 
     public void printClientServices() {
-        System.out.println("Enter full name client:");
-        String fullName = new Scanner(System.in).nextLine();
+        String fullName = enterFullName();
 
-        System.out.println("Choose type sort:");
-        System.out.println("Cost increase");
-        System.out.println("Cost decrease");
-        System.out.println("Date increase");
-        System.out.println("Date decrease");
+        boolean flag = true;
+        while (flag) {
+            System.out.println("\tChoose type sort:");
+            System.out.println("1. Cost increase");
+            System.out.println("2. Cost decrease");
+            System.out.println("3. Date increase");
+            System.out.println("4. Date decrease");
+            System.out.println("5. Back");
 
-        switch (sc.nextInt()) {
-            case 1 -> clientController.printClientServices(fullName, "CostI");
-            case 2 -> clientController.printClientServices(fullName, "CostD");
-            case 3 -> clientController.printClientServices(fullName, "DateI");
-            case 4 -> clientController.printClientServices(fullName, "DateD");
+            switch (sc.nextInt()) {
+                case 1 -> {
+                    clientController.printClientServices(fullName, "CostI");
+                    flag = false;
+                }
+                case 2 -> {
+                    clientController.printClientServices(fullName, "CostD");
+                    flag = false;
+                }
+                case 3 -> {
+                    clientController.printClientServices(fullName, "DateI");
+                    flag = false;
+                }
+                case 4 -> {
+                    clientController.printClientServices(fullName, "DateD");
+                    flag = false;
+                }
+                case 5 -> flag = false;
+                default -> System.out.println("Invalid choice");
+            }
         }
     }
 
     public void addServiceForClient() {
-        System.out.println("Enter full name client:");
-        String fullName = new Scanner(System.in).nextLine();
-
-        System.out.println("Enter date of service:");
-        String date = new Scanner(System.in).nextLine();
-
-        System.out.println("Choose and enter service:");
-        serviceController.printServices();
-        String serviceName = new Scanner(System.in).nextLine();
+        String fullName = enterFullName();
+        String date = enterDate();
+        String serviceName = enterService();
 
         clientController.addServiceForClient(serviceName, fullName, date);
     }
 
     public void printCostPerRoom() {
-        System.out.println("Enter full name client:");
-        String fullName = new Scanner(System.in).nextLine();
+        String fullName = enterFullName();
 
         clientController.printCostPerRoom(fullName);
+    }
+
+    public String enterDate() {
+        while (true) {
+            System.out.println("Enter date check in (dd-MM-yyyy):");
+            String date = new Scanner(System.in).nextLine();
+            if (clientController.checkDate(date)) {
+                return date;
+            }
+            System.out.println("Invalid date check in");
+        }
+    }
+
+    public String enterService() {
+        while (true) {
+            System.out.println("Choose and enter service name:");
+            serviceController.printServices();
+            String serviceName = new Scanner(System.in).nextLine();
+
+            if (clientController.checkService(serviceName)) {
+                return serviceName;
+            }
+            System.out.println("Invalid service");
+        }
+    }
+
+    public String enterFullName() {
+        while (true) {
+            System.out.println("Enter full name client:");
+            String fullName = new Scanner(System.in).nextLine();
+
+            if (clientController.checkFullName(fullName)) {
+                return fullName;
+            }
+            System.out.println("Invalid full name");
+        }
     }
 
 }
