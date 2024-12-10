@@ -8,24 +8,20 @@ import java.util.Scanner;
 public class MenuClient{
     private final ClientController clientController;
     private final ServiceController serviceController;
+    private final ClientView clientView;
 
     private final Scanner sc = new Scanner(System.in);
 
-    public MenuClient(ServiceController serviceController, ClientController clientController){
+    public MenuClient(ServiceController serviceController, ClientController clientController, ClientView clientView){
         this.serviceController = serviceController;
         this.clientController = clientController;
+        this.clientView = clientView;
     }
 
     public void printMenu() {
         boolean flag = true;
         while (flag) {
-            System.out.println("\tMenu Client");
-            System.out.println("1. Print clients");
-            System.out.println("2. Print client services");
-            System.out.println("3. Add service for client");
-            System.out.println("4. Print cost per room");
-            System.out.println("5. Back");
-            System.out.println("0. Exit");
+            clientView.printMenu();
 
             switch (sc.nextInt()) {
                 case 1 -> printClients();

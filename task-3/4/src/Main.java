@@ -29,7 +29,7 @@ public class Main {
         ServiceView serviceView = new ServiceView();
         ServiceController serviceController = new ServiceController(serviceView, hotel);
 
-        Menu menu = new Menu(new MenuRoom(roomController, roomView), new MenuService(hotelController, serviceController), new MenuHotel(hotelController), new MenuClient(serviceController, clientController));
+        Menu menu = new Menu(new MenuRoom(roomController, roomView), new MenuService(hotelController, serviceController), new MenuHotel(hotelController), new MenuClient(serviceController, clientController, clientView));
         menu.printMenu();
     }
 }
