@@ -5,22 +5,19 @@ import controller.HotelController;
 import java.util.Scanner;
 
 public class MenuHotel {
-    private HotelController hotelController;
-    private Scanner sc = new Scanner(System.in);
+    private final HotelController hotelController;
+    private final Scanner sc = new Scanner(System.in);
+    private final HotelView hotelView;
 
-    public MenuHotel(HotelController hotelController) {
+    public MenuHotel(HotelController hotelController, HotelView hotelView) {
         this.hotelController = hotelController;
+        this.hotelView = hotelView;
     }
 
     public void printMenu() {
         boolean flag = true;
         while (flag) {
-            System.out.println("\tMenu Hotel");
-            System.out.println("1. Print count free rooms");
-            System.out.println("2. Print count clients");
-            System.out.println("3. Print rooms and services");
-            System.out.println("4. Back");
-            System.out.println("0. Exit");
+            hotelView.printMenu();
 
             switch (sc.nextInt()) {
                 case 1 -> hotelController.printCountFreeRoom();

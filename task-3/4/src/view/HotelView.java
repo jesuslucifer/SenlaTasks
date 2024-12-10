@@ -8,7 +8,14 @@ import java.util.List;
 
 public class HotelView {
 
-
+    public void printMenu() {
+        System.out.println("\tMenu Hotel");
+        System.out.println("1. Print count free rooms");
+        System.out.println("2. Print count clients");
+        System.out.println("3. Print rooms and services");
+        System.out.println("4. Back");
+        System.out.println("0. Exit");
+    }
 
     public void printCountFreeRoom(int size) {
         System.out.println("Count free rooms: " +  size);
