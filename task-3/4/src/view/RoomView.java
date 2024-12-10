@@ -7,8 +7,6 @@ import java.time.LocalDate;
 import java.util.Deque;
 import java.util.List;
 
-import static java.time.temporal.ChronoUnit.DAYS;
-
 public class RoomView {
 
     public void printRooms(List<Room> rooms){
@@ -37,7 +35,9 @@ public class RoomView {
         System.out.println("Room " + room.getRoomNumber() + " history:");
         int i = 3;
         while (i != 0 && !deque.isEmpty()) {
-            System.out.print(deque.pollLast().getFullName() + " ");
+            System.out.println("Full name: " + deque.peekLast().getFullName()
+                    + " Date check in: "+ deque.peekLast().getDateCheckIn()
+                    + " Date evict: " + deque.pollLast().getDateCheckIn());
             i--;
         }
         System.out.println();
