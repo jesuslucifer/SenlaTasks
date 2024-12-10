@@ -35,23 +35,46 @@ public class MenuRoom {
                 case 9 -> changeCost();
                 case 10 -> flag = false;
                 case 0 -> System.exit(0);
+                default -> System.out.println("Invalid choice");
             }
         }
 
     }
 
     public void printRooms(String roomType) {
-        roomView.printSwitchRooms();
+        boolean flag = true;
+        while (flag) {
+            roomView.printSwitchRooms();
 
-        switch (sc.nextInt()) {
-            case 1 -> roomController.printRooms("CapacityI", roomType);
-            case 2 -> roomController.printRooms("CapacityD", roomType);
-            case 3 -> roomController.printRooms("CostI", roomType);
-            case 4 -> roomController.printRooms("CostD", roomType);
-            case 5 -> roomController.printRooms("StarsI", roomType);
-            case 6 -> roomController.printRooms("StarsD", roomType);
+            switch (sc.nextInt()) {
+                case 1 -> {
+                    roomController.printRooms("CapacityI", roomType);
+                    flag = false;
+                }
+                case 2 -> {
+                    roomController.printRooms("CapacityD", roomType);
+                    flag = false;
+                }
+                case 3 -> {
+                    roomController.printRooms("CostI", roomType);
+                    flag = false;
+                }
+                case 4 -> {
+                    roomController.printRooms("CostD", roomType);
+                    flag = false;
+                }
+                case 5 -> {
+                    roomController.printRooms("StarsI", roomType);
+                    flag = false;
+                }
+                case 6 -> {
+                    roomController.printRooms("StarsD", roomType);
+                    flag = false;
+                }
+                case 7 -> flag = false;
+                default -> System.out.println("Invalid choice");
+            }
         }
-
     }
 
     public void printInfoRoom() {
@@ -93,15 +116,30 @@ public class MenuRoom {
     public void changeStatus() {
         int roomNumber = enterRoomNumber();
 
-        System.out.println("Choose status:");
-        System.out.println("1. Free");
-        System.out.println("2. Busy");
-        System.out.println("3. Repaired");
+        boolean flag = true;
+        while (flag) {
+            System.out.println("\tChoose status:");
+            System.out.println("1. Free");
+            System.out.println("2. Busy");
+            System.out.println("3. Repaired");
+            System.out.println("4. Back");
 
-        switch (sc.nextInt()) {
-            case 1 -> roomController.changeStatusRoom(roomNumber, RoomStatus.FREE);
-            case 2 -> roomController.changeStatusRoom(roomNumber, RoomStatus.BUSY);
-            case 3 -> roomController.changeStatusRoom(roomNumber, RoomStatus.REPAIRED);
+            switch (sc.nextInt()) {
+                case 1 -> {
+                    roomController.changeStatusRoom(roomNumber, RoomStatus.FREE);
+                    flag = false;
+                }
+                case 2 -> {
+                    roomController.changeStatusRoom(roomNumber, RoomStatus.BUSY);
+                    flag = false;
+                }
+                case 3 -> {
+                    roomController.changeStatusRoom(roomNumber, RoomStatus.REPAIRED);
+                    flag = false;
+                }
+                case 4 -> flag = false;
+                default -> System.out.println("Invalid choice");
+            }
         }
     }
 

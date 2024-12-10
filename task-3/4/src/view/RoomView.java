@@ -26,13 +26,14 @@ public class RoomView {
     }
 
     public void printSwitchRooms() {
-        System.out.println("Choose type sort:");
+        System.out.println("\tChoose type sort:");
         System.out.println("1. Capacity increase");
         System.out.println("2. Capacity decrease");
         System.out.println("3. Cost increase");
         System.out.println("4. Cost decrease");
         System.out.println("5. Stars increase");
         System.out.println("6. Stars decrease");
+        System.out.println("7. Back");
     }
 
     public void printRooms(List<Room> rooms){
