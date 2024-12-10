@@ -1,6 +1,5 @@
 package view;
 
-import model.Client;
 import model.Room;
 import model.Service;
 
