@@ -11,8 +11,8 @@ public class Hotel {
     private final List<Client> clients = new ArrayList<>();
 
     public Hotel() {
-        int COUNT_ROOMS = 10;
-        for (int i = 0; i < COUNT_ROOMS; i++) {
+        int COUNT_ROOMS = 11;
+        for (int i = 1; i < COUNT_ROOMS; i++) {
             rooms.add(new Room(i));
         }
         System.out.println("The hotel is open, there are " + COUNT_ROOMS + " rooms available");
