@@ -1,6 +1,5 @@
 package view;
 
-import controller.HotelController;
 import controller.ServiceController;
 
 import java.util.Scanner;
@@ -26,6 +25,7 @@ public class MenuService {
                 case 3 -> changeCostService();
                 case 4 -> flag = false;
                 case 5 -> System.exit(0);
+                default -> System.out.println("Invalid choice");
             }
         }
     }
@@ -43,13 +43,26 @@ public class MenuService {
     }
 
     public void changeCostService() {
-        System.out.println("Enter service name:");
-        String serviceName = new Scanner(System.in).nextLine();
+        String serviceName = enterService();
+
         System.out.println("Enter service cost:");
         int serviceCost = new Scanner(System.in).nextInt();
 
         serviceController.changeCostService(serviceName, serviceCost);
 
         System.out.println("The service cost " + serviceName + " has been changed to " + serviceCost);
+    }
+
+    public String enterService() {
+        while (true) {
+            System.out.println("Choose and enter service name:");
+            serviceController.printServices();
+            String serviceName = new Scanner(System.in).nextLine();
+
+            if (serviceController.checkService(serviceName)) {
+                return serviceName;
+            }
+            System.out.println("Invalid service");
+        }
     }
 }
