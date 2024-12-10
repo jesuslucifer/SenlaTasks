@@ -12,8 +12,6 @@ import java.util.Comparator;
 import java.util.Deque;
 import java.util.List;
 
-import static java.time.temporal.ChronoUnit.DAYS;
-
 public class RoomController {
     private final Hotel hotel;
     private final List<Room> rooms;
@@ -97,7 +95,7 @@ public class RoomController {
     public void printRoomFreeByDate(String date) {
         List<Room> freeRooms = new ArrayList<>();
         for (Room room : rooms) {
-            if (room.getDateEvict().isBefore(formatDate(date))) {
+            if (room.getDateEvict().isBefore(formatDate(date)) && !room.getStatus().equals(RoomStatus.REPAIRED)) {
                 freeRooms.add(room);
             }
         }
