@@ -120,7 +120,7 @@ public class MenuClient{
 
     public String enterDate() {
         while (true) {
-            System.out.println("Enter date check in (dd-MM-yyyy):");
+            System.out.println("Enter date (dd-MM-yyyy):");
             String date = new Scanner(System.in).nextLine();
             if (clientController.checkDate(date)) {
                 return date;
