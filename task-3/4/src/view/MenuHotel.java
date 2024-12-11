@@ -34,11 +34,7 @@ public class MenuHotel {
     public void printRoomAndService() {
         boolean flag = true;
         while (flag) {
-            System.out.println("\tChoose type sort:");
-            System.out.println("1. Rooms then services");
-            System.out.println("2. Services then room");
-            System.out.println("3. Cost");
-            System.out.println("4. Back");
+            hotelView.printSwitchRoomService();
 
             switch (sc.nextInt()) {
                 case 1 -> {

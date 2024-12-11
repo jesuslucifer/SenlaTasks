@@ -16,6 +16,14 @@ public class HotelView {
         System.out.println("0. Exit");
     }
 
+    public void printSwitchRoomService() {
+        System.out.println("\tChoose type sort:");
+        System.out.println("1. Rooms then services");
+        System.out.println("2. Services then room");
+        System.out.println("3. Cost");
+        System.out.println("4. Back");
+    }
+
     public void printCountFreeRoom(int size) {
         System.out.println("Count free rooms: " +  size);
     }
