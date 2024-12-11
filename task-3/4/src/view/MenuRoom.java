@@ -118,11 +118,7 @@ public class MenuRoom {
 
         boolean flag = true;
         while (flag) {
-            System.out.println("\tChoose status:");
-            System.out.println("1. Free");
-            System.out.println("2. Busy");
-            System.out.println("3. Repaired");
-            System.out.println("4. Back");
+            roomView.printSwitchStatus();
 
             switch (sc.nextInt()) {
                 case 1 -> {

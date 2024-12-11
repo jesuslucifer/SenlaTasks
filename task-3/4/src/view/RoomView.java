@@ -36,6 +36,15 @@ public class RoomView {
         System.out.println("7. Back");
     }
 
+    public void printSwitchStatus() {
+        System.out.println("\tChoose status:");
+        System.out.println("1. Free");
+        System.out.println("2. Busy");
+        System.out.println("3. Repaired");
+        System.out.println("4. Back");
+
+    }
+
     public void printRooms(List<Room> rooms){
         for (Room room : rooms) {
             System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " +
