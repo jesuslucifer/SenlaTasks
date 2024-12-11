@@ -20,11 +20,7 @@ public class Hotel {
 
     public List<Room> getListFreeRooms() {
         List<Room> list = new ArrayList<>();
-        for (Room room : rooms) {
-            if (room.isFree()) {
-                list.add(room);
-            }
-        }
+        rooms.stream().filter(Room::isFree).forEach(list::add);
         return list;
     }
 
