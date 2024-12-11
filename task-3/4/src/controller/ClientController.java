@@ -125,4 +125,8 @@ public class ClientController {
         }
         return false;
     }
+
+    public boolean clientsIsEmpty() {
+        return clients.isEmpty();
+    }
 }

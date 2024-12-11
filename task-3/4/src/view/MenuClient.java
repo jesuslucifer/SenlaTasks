@@ -65,47 +65,61 @@ public class MenuClient{
     }
 
     public void printClientServices() {
-        String fullName = enterFullName();
+        if (clientController.clientsIsEmpty()) {
+            System.out.println("There are no customers in the hotel");
+        } else {
+            String fullName = enterFullName();
 
-        boolean flag = true;
-        while (flag) {
-            clientView.printSwitchClientService();
+            boolean flag = true;
+            while (flag) {
+                clientView.printSwitchClientService();
 
-            switch (sc.nextInt()) {
-                case 1 -> {
-                    clientController.printClientServices(fullName, "CostI");
-                    flag = false;
+                switch (sc.nextInt()) {
+                    case 1 -> {
+                        clientController.printClientServices(fullName, "CostI");
+                        flag = false;
+                    }
+                    case 2 -> {
+                        clientController.printClientServices(fullName, "CostD");
+                        flag = false;
+                    }
+                    case 3 -> {
+                        clientController.printClientServices(fullName, "DateI");
+                        flag = false;
+                    }
+                    case 4 -> {
+                        clientController.printClientServices(fullName, "DateD");
+                        flag = false;
+                    }
+                    case 5 -> flag = false;
+                    default -> System.out.println("Invalid choice");
                 }
-                case 2 -> {
-                    clientController.printClientServices(fullName, "CostD");
-                    flag = false;
-                }
-                case 3 -> {
-                    clientController.printClientServices(fullName, "DateI");
-                    flag = false;
-                }
-                case 4 -> {
-                    clientController.printClientServices(fullName, "DateD");
-                    flag = false;
-                }
-                case 5 -> flag = false;
-                default -> System.out.println("Invalid choice");
             }
         }
     }
 
     public void addServiceForClient() {
-        String fullName = enterFullName();
-        String date = enterDate();
-        String serviceName = enterService();
+        if (clientController.clientsIsEmpty()) {
+            System.out.println("There are no customers in the hotel");
+        } else if (serviceController.servicesIsEmpty()) {
+            System.out.println("There are no services in the hotel");
+        } else {
+            String fullName = enterFullName();
+            String date = enterDate();
+            String serviceName = enterService();
 
-        clientController.addServiceForClient(serviceName, fullName, date);
+            clientController.addServiceForClient(serviceName, fullName, date);
+        }
     }
 
     public void printCostPerRoom() {
-        String fullName = enterFullName();
+        if (clientController.clientsIsEmpty()) {
+            System.out.println("There are no customers in the hotel");
+        } else {
+            String fullName = enterFullName();
 
-        clientController.printCostPerRoom(fullName);
+            clientController.printCostPerRoom(fullName);
+        }
     }
 
     public String enterDate() {

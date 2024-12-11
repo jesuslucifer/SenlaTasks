@@ -43,4 +43,9 @@ public class ServiceController {
         }
         return false;
     }
+
+    public boolean servicesIsEmpty() {
+        return services.isEmpty();
+    }
+
 }
