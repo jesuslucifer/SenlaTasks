@@ -15,7 +15,7 @@ public class Hotel {
         for (int i = 1; i < COUNT_ROOMS; i++) {
             rooms.add(new Room(i));
         }
-        System.out.println("The hotel is open, there are " + COUNT_ROOMS + " rooms available");
+        System.out.println("The hotel is open, there are " + (COUNT_ROOMS - 1) + " rooms available");
     }
 
     public List<Room> getListFreeRooms() {
