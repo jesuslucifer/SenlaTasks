@@ -17,6 +17,24 @@ public class ClientView {
         System.out.println("0. Exit");
     }
 
+    public void printSwitchClient() {
+        System.out.println("\tChoose type sort:");
+        System.out.println("1. Alphabet a-Z");
+        System.out.println("2. Alphabet z-A");
+        System.out.println("3. Date increase");
+        System.out.println("4. Date decrease");
+        System.out.println("5. Back");
+    }
+
+    public void printSwitchClientService() {
+        System.out.println("\tChoose type sort:");
+        System.out.println("1. Cost increase");
+        System.out.println("2. Cost decrease");
+        System.out.println("3. Date increase");
+        System.out.println("4. Date decrease");
+        System.out.println("5. Back");
+    }
+
     public void printClients(List<Client> clients) {
         for (Client client : clients) {
             System.out.println(client.getFullName() + " " + client.getDateEvict() + " Room: " + client.getRoomNumber());

@@ -39,12 +39,7 @@ public class MenuClient{
     public void printClients() {
         boolean flag = true;
         while (flag) {
-            System.out.println("\tChoose type sort:");
-            System.out.println("1. Alphabet a-Z");
-            System.out.println("2. Alphabet z-A");
-            System.out.println("3. Date increase");
-            System.out.println("4. Date decrease");
-            System.out.println("5. Back");
+            clientView.printSwitchClient();
 
             switch (sc.nextInt()) {
                 case 1 -> {
@@ -74,12 +69,7 @@ public class MenuClient{
 
         boolean flag = true;
         while (flag) {
-            System.out.println("\tChoose type sort:");
-            System.out.println("1. Cost increase");
-            System.out.println("2. Cost decrease");
-            System.out.println("3. Date increase");
-            System.out.println("4. Date decrease");
-            System.out.println("5. Back");
+            clientView.printSwitchClientService();
 
             switch (sc.nextInt()) {
                 case 1 -> {
