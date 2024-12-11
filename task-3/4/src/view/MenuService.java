@@ -43,14 +43,18 @@ public class MenuService {
     }
 
     public void changeCostService() {
-        String serviceName = enterService();
+        if (serviceController.servicesIsEmpty()) {
+            System.out.println("There are no services in the hotel");
+        } else {
+            String serviceName = enterService();
 
-        System.out.println("Enter service cost:");
-        int serviceCost = new Scanner(System.in).nextInt();
+            System.out.println("Enter service cost:");
+            int serviceCost = new Scanner(System.in).nextInt();
 
-        serviceController.changeCostService(serviceName, serviceCost);
+            serviceController.changeCostService(serviceName, serviceCost);
 
-        System.out.println("The service cost " + serviceName + " has been changed to " + serviceCost);
+            System.out.println("The service cost " + serviceName + " has been changed to " + serviceCost);
+        }
     }
 
     public String enterService() {
