@@ -47,9 +47,9 @@ public class RoomView {
         if (room.isBusy()) {
             System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: "
                     + room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
-            System.out.print("Clients: ");
+            System.out.println("Clients: ");
             for (Client client : room.getClentList()) {
-                System.out.print(client.getFullName() + " ");
+                System.out.println("Full name: " + client.getFullName() + " date check in: " + client.getDateCheckIn() + " date evict: " + client.getDateEvict());
             }
             System.out.println();
         } else {
