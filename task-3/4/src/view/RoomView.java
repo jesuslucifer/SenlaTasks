@@ -47,6 +47,12 @@ public class RoomView {
 
     public void printRooms(List<Room> rooms){
         for (Room room : rooms) {
+            if (room.isBusy()) {
+                System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " +
+                        room.getCountStars() + " Capacity: " + room.getCapacity() + " Current occupancy: " + room.getClentList().size() +
+                        " Cost: " + room.getCost());
+                continue;
+            }
             System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " +
                     room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
         }
