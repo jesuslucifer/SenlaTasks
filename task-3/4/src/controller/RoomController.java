@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Deque;
 import java.util.List;
+import java.util.Optional;
 
 public class RoomController {
     private final Hotel hotel;
@@ -89,14 +90,14 @@ public class RoomController {
     }
 
     public void printHistoryRoom(int roomNumber) {
-        Deque<Client> deque = getRoom(roomNumber).getHistoryClientQueue();
+        Optional<Deque<Client>> deque = getRoom(roomNumber).getHistoryClientQueue();
         view.printHistoryRoom(getRoom(roomNumber), deque);
     }
 
     public void printRoomFreeByDate(String date) {
         List<Room> freeRooms = new ArrayList<>();
         for (Room room : rooms) {
-            if (room.getDateEvict().isBefore(formatDate(date)) && !room.getStatus().equals(RoomStatus.REPAIRED)) {
+            if (room.getDateEvict().get().isBefore(formatDate(date)) && !room.getStatus().equals(RoomStatus.REPAIRED)) {
                 freeRooms.add(room);
             }
         }

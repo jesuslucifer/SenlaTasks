@@ -6,6 +6,7 @@ import model.Room;
 import java.time.LocalDate;
 import java.util.Deque;
 import java.util.List;
+import java.util.Optional;
 
 public class RoomView {
 
@@ -73,16 +74,21 @@ public class RoomView {
         }
     }
 
-    public void printHistoryRoom(Room room, Deque<Client> deque) {
+    public void printHistoryRoom(Room room, Optional<Deque<Client>> optionalDeque) {
         System.out.println("Room " + room.getRoomNumber() + " history:");
-        int i = 3;
-        while (i != 0 && !deque.isEmpty()) {
-            System.out.println("Full name: " + deque.peekLast().getFullName()
-                    + " Date check in: "+ deque.peekLast().getDateCheckIn()
-                    + " Date evict: " + deque.pollLast().getDateEvict());
-            i--;
-        }
-        System.out.println();
+            optionalDeque.ifPresent(deque -> {
+                if (deque.isEmpty()) {
+                    System.out.println("No history for room " + room.getRoomNumber());
+                } else {
+                    int i = 3;
+                    while (i != 0 && !deque.isEmpty()) {
+                        System.out.println("Full name: " + deque.peekLast().getFullName()
+                                + " Date check in: " + deque.peekLast().getDateCheckIn()
+                                + " Date evict: " + deque.pollLast().getDateEvict());
+                        i--;
+                    }
+                }
+            });
     }
 
     public void printRoomFreeByDate(LocalDate date, List<Room> rooms) {
