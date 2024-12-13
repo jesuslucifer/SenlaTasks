@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 public class RoomController {
@@ -89,7 +90,7 @@ public class RoomController {
     }
 
     public void printHistoryRoom(int roomNumber) {
-        Deque<Client> deque = getRoom(roomNumber).getHistoryClientQueue();
+        Deque<Client> deque = new LinkedList<>(getRoom(roomNumber).getHistoryClientQueue());
         view.printHistoryRoom(getRoom(roomNumber), deque);
     }
 
