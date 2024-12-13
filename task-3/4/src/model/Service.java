@@ -1,14 +1,16 @@
+package model;
+
 import java.time.LocalDate;
 
 public class Service {
-    private String serviceName;
+    private final String serviceName;
     private int cost;
     private LocalDate serviceDate;
 
     public Service(String serviceName, int cost) {
         this.serviceName = serviceName;
         this.cost = cost;
-        this.serviceDate = LocalDate.of(2020, 1, 1);;
+        this.serviceDate = LocalDate.of(2020, 1, 1);
     }
 
     public String getServiceName() {
@@ -30,4 +32,5 @@ public class Service {
     public void setServiceDate(LocalDate serviceDate) {
         this.serviceDate = serviceDate;
     }
+
 }

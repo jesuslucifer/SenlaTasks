@@ -1,4 +1,7 @@
+package model;
+
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,11 +11,14 @@ public class Client {
     private int roomNumber;
     private LocalDate dateCheckIn;
     private LocalDate dateEvict;
-    private List<Service> services = new ArrayList<>();
+    private final List<Service> services = new ArrayList<>();
 
     public Client(String passport, String fullName) {
         this.passport = passport;
         this.fullName = fullName;
+    }
+
+    public Client () {
     }
 
     public String getPassport() {
@@ -43,12 +49,20 @@ public class Client {
         dateCheckIn = date;
     }
 
+    public void setDateCheckIn(String date) {
+        dateCheckIn = formatDate(date);
+    }
+
     public LocalDate getDateCheckIn() {
         return dateCheckIn;
     }
 
     public void setDateEvict(LocalDate date) {
         dateEvict = date;
+    }
+
+    public void setDateEvict(String date) {
+        dateEvict = formatDate(date);
     }
 
     public LocalDate getDateEvict() {
@@ -62,4 +76,20 @@ public class Client {
     public List<Service> getServices() {
         return services;
     }
+
+    public void addServiceForClient(String serviceName, String serviceDate, List<Service> services) {
+        for (Service service : services) {
+            if (service.getServiceName().equals(serviceName)) {
+                service.setServiceDate(formatDate(serviceDate));
+                addService(service);
+            }
+        }
+    }
+
+    public LocalDate formatDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return LocalDate.parse(date, formatter);
+    }
+
+
 }
