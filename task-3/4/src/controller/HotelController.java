@@ -1,10 +1,15 @@
 package controller;
 
+import model.CSV;
 import model.Client;
 import model.Hotel;
 import model.Room;
 import model.Service;
 import view.HotelView;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -59,6 +64,18 @@ public class HotelController {
             view.printRoomAndService(typeSort, getRooms(), getServices());
         }
 
+    }
+
+    public <T> void exportToCSV(List<T> list, String fileName) throws FileNotFoundException {
+        try (PrintWriter writer = new PrintWriter(new File(fileName))) {
+            for (T s : list) {
+                writer.write(((CSV) s).toCSV());
+                writer.println();
+            }
+        }
+        catch (FileNotFoundException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
 }
