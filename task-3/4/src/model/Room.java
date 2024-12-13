@@ -6,7 +6,6 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class Room {
     private final int roomNumber;
@@ -17,7 +16,7 @@ public class Room {
     private final List<Client> clentList = new ArrayList<>();
     private LocalDate dateCheckIn;
     private LocalDate dateEvict;
-    private final Deque<Client> historyClientQueue;
+    private final Deque<Client> historyClientQueue = new LinkedList<>();
 
     public Room(int roomNumber) {
         this.roomNumber = roomNumber;
@@ -27,7 +26,6 @@ public class Room {
         this.cost = (capacity + countStars) * 10;
         dateCheckIn = LocalDate.of(2020, 1, 1);
         dateEvict = LocalDate.of(2020, 1, 1);
-        historyClientQueue = new LinkedList<>();
     }
 
     public int getRoomNumber() {
@@ -78,16 +76,16 @@ public class Room {
         dateEvict = date;
     }
 
-    public Optional<LocalDate> getDateEvict() {
-        return Optional.ofNullable(dateEvict);
+    public LocalDate getDateEvict() {
+        return dateEvict;
     }
 
     public void addClientToHistory(Client client) {
         historyClientQueue.add(client);
     }
 
-    public Optional<Deque<Client>> getHistoryClientQueue() {
-        return Optional.of(historyClientQueue);
+    public Deque<Client> getHistoryClientQueue() {
+        return historyClientQueue;
     }
 
     public boolean isFree() {
