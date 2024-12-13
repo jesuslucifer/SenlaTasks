@@ -5,7 +5,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Client {
+public class Client implements CSV {
+    private static int idInc = 0;
+    private int id;
     private String passport;
     private String fullName;
     private int roomNumber;
@@ -19,6 +21,11 @@ public class Client {
     }
 
     public Client () {
+        this.id = idInc++;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getPassport() {
@@ -91,5 +98,7 @@ public class Client {
         return LocalDate.parse(date, formatter);
     }
 
-
+    public String toCSV() {
+        return String.valueOf(id) + ',' + roomNumber + ',' + fullName + ',' + dateCheckIn + ',' + dateEvict;
+    }
 }

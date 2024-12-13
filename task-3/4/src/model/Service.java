@@ -2,12 +2,15 @@ package model;
 
 import java.time.LocalDate;
 
-public class Service {
+public class Service implements CSV {
+    private static int idInc;
+    private final int id;
     private final String serviceName;
     private int cost;
     private LocalDate serviceDate;
 
     public Service(String serviceName, int cost) {
+        this.id = idInc++;
         this.serviceName = serviceName;
         this.cost = cost;
         this.serviceDate = LocalDate.of(2020, 1, 1);
@@ -33,4 +36,11 @@ public class Service {
         this.serviceDate = serviceDate;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String toCSV() {
+        return String.valueOf(id) + ',' + serviceName + ',' + cost + ',' + serviceDate;
+    }
 }

@@ -7,7 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Room {
+public class Room implements CSV {
+    private static int idInc;
+    private final int id;
     private final int roomNumber;
     private int cost;
     private final int countStars;
@@ -19,6 +21,7 @@ public class Room {
     private final Deque<Client> historyClientQueue = new LinkedList<>();
 
     public Room(int roomNumber) {
+        this.id = idInc++;
         this.roomNumber = roomNumber;
         this.countStars = new java.util.Random().nextInt(5) + 1;
         this.status = RoomStatus.FREE;
@@ -146,5 +149,14 @@ public class Room {
     public LocalDate formatDate(String date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return LocalDate.parse(date, formatter);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String toCSV() {
+        return String.valueOf(id) + ',' + roomNumber + ',' + cost + ',' + countStars + ',' + status + ',' + capacity
+                + ',' + dateCheckIn + ',' + dateEvict;
     }
 }
