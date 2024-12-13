@@ -2,7 +2,7 @@ package model;
 
 import java.time.LocalDate;
 
-public class Service implements CSV {
+public class Service implements ToCSVImpl {
     private static int idInc;
     private final int id;
     private final String serviceName;

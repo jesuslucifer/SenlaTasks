@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Room implements CSV {
+public class Room implements ToCSVImpl {
     private static int idInc;
     private final int id;
     private final int roomNumber;

@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Client implements CSV {
+public class Client implements ToCSVImpl {
     private static int idInc = 0;
     private int id;
     private String passport;

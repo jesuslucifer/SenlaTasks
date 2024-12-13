@@ -1,5 +1,5 @@
 package model;
 
-public interface CSV {
+public interface ToCSVImpl {
     public String toCSV();
 }
