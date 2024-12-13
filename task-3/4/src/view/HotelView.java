@@ -12,7 +12,10 @@ public class HotelView {
         System.out.println("1. Print count free rooms");
         System.out.println("2. Print count clients");
         System.out.println("3. Print rooms and services");
-        System.out.println("4. Back");
+        System.out.println("4. Export clients");
+        System.out.println("5. Export rooms");
+        System.out.println("6. Export services");
+        System.out.println("7. Back");
         System.out.println("0. Exit");
     }
 

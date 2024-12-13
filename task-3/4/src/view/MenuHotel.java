@@ -2,6 +2,7 @@ package view;
 
 import controller.HotelController;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class MenuHotel {
@@ -23,7 +24,28 @@ public class MenuHotel {
                 case 1 -> hotelController.printCountFreeRoom();
                 case 2 -> hotelController.printCountClients();
                 case 3 -> printRoomAndService();
-                case 4 -> flag = false;
+                case 4 -> {
+                    try {
+                        hotelController.exportToCSV(hotelController.getClients(), "clients.csv");
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                case 5 -> {
+                    try {
+                        hotelController.exportToCSV(hotelController.getRooms(), "rooms.csv");
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                case 6-> {
+                    try {
+                        hotelController.exportToCSV(hotelController.getServices(), "services.csv");
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                case 7 -> flag = false;
                 case 0 -> System.exit(0);
                 default -> System.out.println("Invalid choice");
             }
