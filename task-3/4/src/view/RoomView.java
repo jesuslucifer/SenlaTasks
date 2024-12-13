@@ -50,11 +50,11 @@ public class RoomView {
             if (room.isBusy()) {
                 System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " +
                         room.getCountStars() + " Capacity: " + room.getCapacity() + " Current occupancy: " + room.getClentList().size() +
-                        " Cost: " + room.getCost());
+                        " Cost: " + room.getCost() + " ID: " + room.getId());
                 continue;
             }
             System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " +
-                    room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
+                    room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost() + " ID: " + room.getId());
         }
     }
 
