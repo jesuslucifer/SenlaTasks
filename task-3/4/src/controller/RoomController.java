@@ -6,6 +6,8 @@ import model.Room;
 import model.RoomStatus;
 import view.RoomView;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ import java.util.Comparator;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 public class RoomController {
     private final Hotel hotel;
@@ -124,6 +127,20 @@ public class RoomController {
         }
         catch (Exception e) {
             return false;
+        }
+    }
+
+    public void importFromCSV(String fileName) throws FileNotFoundException {
+        try (Scanner scanner = new Scanner(new File(fileName))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] split = line.split(",");
+                for (Room room : rooms) {
+                    if (room.getId() == Integer.parseInt(split[0])) {
+                        room.updateFromCSV(split);
+                    }
+                }
+            }
         }
     }
 }

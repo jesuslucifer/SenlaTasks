@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Client implements ToCSVImpl {
+public class Client implements ToCSVImpl, updateFromCSVImpl {
     private static int idInc = 0;
     private int id;
     private String passport;
@@ -26,6 +26,10 @@ public class Client implements ToCSVImpl {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPassport() {
@@ -100,5 +104,11 @@ public class Client implements ToCSVImpl {
 
     public String toCSV() {
         return String.valueOf(id) + ',' + roomNumber + ',' + fullName + ',' + dateCheckIn + ',' + dateEvict;
+    }
+
+    public void updateFromCSV(String[] split) {
+        setFullName(split[2]);
+        setDateCheckIn(formatDate(split[3]));
+        setDateEvict(formatDate(split[4]));
     }
 }

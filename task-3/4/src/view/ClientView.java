@@ -13,7 +13,8 @@ public class ClientView {
         System.out.println("2. Print client services");
         System.out.println("3. Add service for client");
         System.out.println("4. Print cost per room");
-        System.out.println("5. Back");
+        System.out.println("5. Import client");
+        System.out.println("6. Back");
         System.out.println("0. Exit");
     }
 

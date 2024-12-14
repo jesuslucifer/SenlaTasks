@@ -20,7 +20,8 @@ public class RoomView {
         System.out.println("7. Print room free by date");
         System.out.println("8. Change status of room");
         System.out.println("9. Change cost of room");
-        System.out.println("10. Back");
+        System.out.println("10. Import room");
+        System.out.println("11. Back");
         System.out.println("0. Exit");
 
     }

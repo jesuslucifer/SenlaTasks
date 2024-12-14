@@ -6,10 +6,13 @@ import model.Room;
 import model.Service;
 import view.ClientView;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
@@ -128,5 +131,19 @@ public class ClientController {
 
     public boolean clientsIsEmpty() {
         return clients.isEmpty();
+    }
+
+    public void importFromCSV(String fileName) throws FileNotFoundException {
+        try (Scanner scanner = new Scanner(new File(fileName))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] split = line.split(",");
+                for (Client client : clients) {
+                    if (client.getId() == Integer.parseInt(split[0])) {
+                        client.updateFromCSV(split);
+                    }
+                }
+            }
+        }
     }
 }

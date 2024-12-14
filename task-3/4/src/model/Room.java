@@ -7,14 +7,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Room implements ToCSVImpl {
+public class Room implements ToCSVImpl, updateFromCSVImpl {
     private static int idInc;
-    private final int id;
-    private final int roomNumber;
+    private int id;
+    private int roomNumber;
     private int cost;
-    private final int countStars;
+    private int countStars;
     private RoomStatus status;
-    private final int capacity;
+    private int capacity;
     private final List<Client> clentList = new ArrayList<>();
     private LocalDate dateCheckIn;
     private LocalDate dateEvict;
@@ -29,6 +29,9 @@ public class Room implements ToCSVImpl {
         this.cost = (capacity + countStars) * 10;
         dateCheckIn = LocalDate.of(2020, 1, 1);
         dateEvict = LocalDate.of(2020, 1, 1);
+    }
+
+    public Room() {
     }
 
     public int getRoomNumber() {
@@ -63,8 +66,16 @@ public class Room implements ToCSVImpl {
         return capacity;
     }
 
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
     public int getCountStars() {
         return countStars;
+    }
+
+    public void setCountStars(int countStars) {
+        this.countStars = countStars;
     }
 
     public void setDateCheckIn(LocalDate date) {
@@ -155,8 +166,24 @@ public class Room implements ToCSVImpl {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
     public String toCSV() {
         return String.valueOf(id) + ',' + roomNumber + ',' + cost + ',' + countStars + ',' + status + ',' + capacity
                 + ',' + dateCheckIn + ',' + dateEvict;
     }
+
+    @Override
+    public void updateFromCSV(String[] csv) {
+        setCost(Integer.parseInt(csv[2]));
+        setCountStars(Integer.parseInt(csv[3]));
+        setStatus(RoomStatus.valueOf(csv[4]));
+        setCapacity(Integer.parseInt(csv[5]));
+        setDateCheckIn(LocalDate.parse(csv[6]));
+        setDateEvict(LocalDate.parse(csv[7]));
+    }
+
 }

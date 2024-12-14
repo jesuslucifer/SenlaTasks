@@ -7,7 +7,6 @@ import model.Room;
 import model.Service;
 import view.HotelView;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
@@ -67,7 +66,7 @@ public class HotelController {
     }
 
     public <T extends ToCSVImpl> void exportToCSV(List<T> list, String fileName) throws FileNotFoundException {
-        try (PrintWriter writer = new PrintWriter(new File(fileName))) {
+        try (PrintWriter writer = new PrintWriter(fileName)) {
             for (T s : list) {
                 writer.write(s.toCSV());
                 writer.println();
@@ -77,5 +76,4 @@ public class HotelController {
             System.err.println(e.getMessage());
         }
     }
-
 }

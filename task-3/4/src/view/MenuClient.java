@@ -28,7 +28,15 @@ public class MenuClient{
                 case 2 -> printClientServices();
                 case 3 -> addServiceForClient();
                 case 4 -> printCostPerRoom();
-                case 5 -> flag = false;
+                case 5 -> {
+                    try {
+                        clientController.importFromCSV("clientCS.csv");
+                    }
+                    catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
+                case 6 -> flag = false;
                 case 0 -> System.exit(0);
                 default -> System.out.println("Invalid choice");
             }
