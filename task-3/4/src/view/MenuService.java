@@ -23,8 +23,16 @@ public class MenuService {
                 case 1 -> serviceController.printServices();
                 case 2 -> addService();
                 case 3 -> changeCostService();
-                case 4 -> flag = false;
-                case 5 -> System.exit(0);
+                case 4 -> {
+                    try {
+                        serviceController.importFromCSV("serviceCS.csv");
+                    }
+                    catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
+                case 5 -> flag = false;
+                case 0 -> System.exit(0);
                 default -> System.out.println("Invalid choice");
             }
         }

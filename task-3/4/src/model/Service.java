@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Service implements ToCSVImpl {
     private static int idInc;
     private final int id;
-    private final String serviceName;
+    private String serviceName;
     private int cost;
     private LocalDate serviceDate;
 
@@ -14,6 +14,16 @@ public class Service implements ToCSVImpl {
         this.serviceName = serviceName;
         this.cost = cost;
         this.serviceDate = LocalDate.of(2020, 1, 1);
+    }
+
+    public Service(int id, String serviceName, int cost) {
+        this.id = id;
+        this.serviceName = serviceName;
+        this.cost = cost;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
 
     public String getServiceName() {
@@ -41,6 +51,11 @@ public class Service implements ToCSVImpl {
     }
 
     public String toCSV() {
-        return String.valueOf(id) + ',' + serviceName + ',' + cost + ',' + serviceDate;
+        return String.valueOf(id) + ',' + serviceName + ',' + cost;
+    }
+
+    public void updateFromCSV(String[] csv) {
+        setServiceName(csv[1]);
+        setCost(Integer.parseInt(csv[2]));
     }
 }

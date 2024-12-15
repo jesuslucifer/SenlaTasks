@@ -3,7 +3,11 @@ package controller;
 import model.Hotel;
 import model.Service;
 import view.ServiceView;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Scanner;
 
 public class ServiceController {
     private final List<Service> services;
@@ -46,6 +50,32 @@ public class ServiceController {
 
     public boolean servicesIsEmpty() {
         return services.isEmpty();
+    }
+
+    public void importFromCSV(String fileName) throws FileNotFoundException {
+        try (Scanner scanner = new Scanner(new File(fileName))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] split = line.split(",");
+                Service importService = new Service(
+                        Integer.parseInt(split[0]),
+                        split[1],
+                        Integer.parseInt(split[2]));
+
+                boolean found = false;
+                for (Service service : services) {
+                    if (service.getId() == importService.getId()) {
+                        service.updateFromCSV(split);
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found) {
+                    services.add(importService);
+                }
+            }
+        }
     }
 
 }
