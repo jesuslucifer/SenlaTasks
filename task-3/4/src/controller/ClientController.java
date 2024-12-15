@@ -28,6 +28,10 @@ public class ClientController {
         this.view = view;
     }
 
+    public void addClient(int id, String fullName, int roomNumber, LocalDate dateCheckIn, LocalDate dateEvict) {
+        clients.add(new Client(id, roomNumber, fullName, dateCheckIn, dateEvict));
+    }
+
     public Client getClient(String fullName) {
         for (Client client : clients) {
             if (client.getFullName().equals(fullName)) {
@@ -138,12 +142,39 @@ public class ClientController {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] split = line.split(",");
+
+                Client importClient = new Client(
+                        Integer.parseInt(split[0]), //id
+                        Integer.parseInt(split[1]), //roomNumber
+                        split[2],                   //fullName
+                        formatDate(split[3]),  //checkIn
+                        formatDate(split[4])); //evict
+
+                boolean found = false;
                 for (Client client : clients) {
-                    if (client.getId() == Integer.parseInt(split[0])) {
+                    if (client.getId() == importClient.getId()) {
                         client.updateFromCSV(split);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    clients.add(importClient);
+                    for (Room room : hotel.getRooms()) {
+                        if (room.getRoomNumber() == importClient.getRoomNumber()) {
+                            room.checkIntoRoom(importClient, hotel.getClients());
+                            break;
+                        }
                     }
                 }
             }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+    }
+
+    public LocalDate formatDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return LocalDate.parse(date, formatter);
     }
 }

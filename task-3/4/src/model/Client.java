@@ -24,6 +24,14 @@ public class Client implements ToCSVImpl, updateFromCSVImpl {
         this.id = idInc++;
     }
 
+    public Client(int id, int roomNumber, String fullName, LocalDate dateCheckIn, LocalDate dateEvict) {
+        this.id = id;
+        this.fullName = fullName;
+        this.roomNumber = roomNumber;
+        this.dateCheckIn = dateCheckIn;
+        this.dateEvict = dateEvict;
+    }
+
     public int getId() {
         return id;
     }

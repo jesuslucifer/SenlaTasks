@@ -62,6 +62,10 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
         clentList.addAll(clients);
     }
 
+    public void setClient(Client client) {
+        clentList.add(client);
+    }
+
     public int getCapacity() {
         return capacity;
     }
@@ -133,6 +137,14 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
         if (!found) {
             System.out.println("This room is not available");
         }
+    }
+
+    public void checkIntoRoom(Client client, List<Client> clients) {
+        if (getCapacity() - getClentList().size() < 1) {
+            evictFromRoom(clients);
+        }
+        setClient(client);
+        setStatus(RoomStatus.BUSY);
     }
 
     public void evictFromRoom(List<Client> clients) {
