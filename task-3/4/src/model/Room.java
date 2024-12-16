@@ -34,6 +34,17 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
     public Room() {
     }
 
+    public Room(int id, int roomNumber, int cost, int countStars, RoomStatus status, int capacity, LocalDate dateCheckIn, LocalDate dateEvict) {
+        this.id = id;
+        this.roomNumber = roomNumber;
+        this.cost = cost;
+        this.countStars = countStars;
+        this.status = status;
+        this.capacity = capacity;
+        this.dateCheckIn = dateCheckIn;
+        this.dateEvict = dateEvict;
+    }
+
     public int getRoomNumber() {
         return roomNumber;
     }

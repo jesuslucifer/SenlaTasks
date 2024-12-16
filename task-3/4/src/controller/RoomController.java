@@ -135,10 +135,25 @@ public class RoomController {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] split = line.split(",");
+                boolean found = false;
                 for (Room room : rooms) {
                     if (room.getId() == Integer.parseInt(split[0])) {
                         room.updateFromCSV(split);
+                        found = true;
+                        break;
                     }
+                }
+                if (!found) {
+                    Room room = new Room(
+                            Integer.parseInt(split[0]),
+                            Integer.parseInt(split[1]),
+                            Integer.parseInt(split[2]),
+                            Integer.parseInt(split[3]),
+                            RoomStatus.valueOf(split[4]),
+                            Integer.parseInt(split[5]),
+                            LocalDate.parse(split[6]),
+                            LocalDate.parse(split[7]));
+                    hotel.getRooms().add(room);
                 }
             }
         }
