@@ -7,18 +7,13 @@ import java.util.List;
 
 public class Client implements ToCSVImpl, updateFromCSVImpl {
     private static int idInc = 0;
-    private int id;
+    private final int id;
     private String passport;
     private String fullName;
     private int roomNumber;
     private LocalDate dateCheckIn;
     private LocalDate dateEvict;
     private final List<Service> services = new ArrayList<>();
-
-    public Client(String passport, String fullName) {
-        this.passport = passport;
-        this.fullName = fullName;
-    }
 
     public Client () {
         this.id = idInc++;
@@ -36,24 +31,12 @@ public class Client implements ToCSVImpl, updateFromCSVImpl {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getPassport() {
-        return passport;
-    }
-
     public String getFullName() {
         return fullName;
     }
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
-    }
-
-    public void setPassport(String passport) {
-        this.passport = passport;
     }
 
     public void setRoomNumber(int roomNumber) {
@@ -89,7 +72,7 @@ public class Client implements ToCSVImpl, updateFromCSVImpl {
     }
 
     public void addService(Service service) {
-        services.add(service);
+        services.add(new Service(service.getId(), service.getServiceName(), service.getCost(), service.getServiceDate()));
     }
 
     public List<Service> getServices() {
@@ -105,10 +88,10 @@ public class Client implements ToCSVImpl, updateFromCSVImpl {
         }
     }
 
-    public void addServiceForClient(int id, List<Service> services) {
+    public void addServiceForClient(int id, List<Service> services, LocalDate serviceDate) {
         for (Service service : services) {
             if (service.getId() == id) {
-                service.setServiceDate(LocalDate.parse("2024-01-01"));
+                service.setServiceDate(serviceDate);
                 addService(service);
             }
         }
@@ -122,10 +105,11 @@ public class Client implements ToCSVImpl, updateFromCSVImpl {
     public String toCSV() {
         StringBuilder sr = new StringBuilder();
         for (Service service : services) {
-            sr.append((service.getId())).append(',');
+            sr.append((service.getId())).append(',').append(service.getServiceDate()).append(',');
         }
         return String.valueOf(id) + ',' + roomNumber + ',' + fullName + ',' + dateCheckIn + ',' + dateEvict + ',' + sr;
     }
+
 
     public void updateFromCSV(String[] split) {
         setFullName(split[2]);

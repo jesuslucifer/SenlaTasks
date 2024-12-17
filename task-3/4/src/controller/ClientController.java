@@ -28,10 +28,6 @@ public class ClientController {
         this.view = view;
     }
 
-    public void addClient(int id, String fullName, int roomNumber, LocalDate dateCheckIn, LocalDate dateEvict) {
-        clients.add(new Client(id, roomNumber, fullName, dateCheckIn, dateEvict));
-    }
-
     public Client getClient(String fullName) {
         for (Client client : clients) {
             if (client.getFullName().equals(fullName)) {
@@ -149,20 +145,18 @@ public class ClientController {
                         split[2],                   //fullName
                         formatDate(split[3]),  //checkIn
                         formatDate(split[4])); //evict
-                if (split.length > 5) {
-                    for (int i = 0; i < split.length - 5; i++) {
-                        importClient.addServiceForClient(Integer.parseInt(split[i + 5]), hotel.getServices());
-                    }
-                }
+
                 boolean found = false;
                 for (Client client : clients) {
                     if (client.getId() == importClient.getId()) {
+                        client = addServiceToClient(split, client);
                         client.updateFromCSV(split);
                         found = true;
                         break;
                     }
                 }
                 if (!found) {
+                    importClient = addServiceToClient(split, importClient);
                     clients.add(importClient);
                     for (Room room : hotel.getRooms()) {
                         if (room.getRoomNumber() == importClient.getRoomNumber()) {
@@ -180,5 +174,14 @@ public class ClientController {
     public LocalDate formatDate(String date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return LocalDate.parse(date, formatter);
+    }
+
+    public Client addServiceToClient(String[] split, Client client) {
+        if (split.length > 5) {
+            for (int i = 0; i < split.length - 5; i += 2) {
+                client.addServiceForClient(Integer.parseInt(split[i + 5]), hotel.getServices(), formatDate(split[i + 6]));
+            }
+        }
+        return client;
     }
 }

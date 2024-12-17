@@ -16,6 +16,13 @@ public class Service implements ToCSVImpl {
         this.serviceDate = LocalDate.of(2020, 1, 1);
     }
 
+    public Service(int id, String serviceName, int cost, LocalDate serviceDate) {
+        this.id = id;
+        this.serviceName = serviceName;
+        this.cost = cost;
+        this.serviceDate = serviceDate;
+    }
+
     public Service(int id, String serviceName, int cost) {
         this.id = id;
         this.serviceName = serviceName;
