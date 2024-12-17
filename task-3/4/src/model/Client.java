@@ -105,6 +105,15 @@ public class Client implements ToCSVImpl, updateFromCSVImpl {
         }
     }
 
+    public void addServiceForClient(int id, List<Service> services) {
+        for (Service service : services) {
+            if (service.getId() == id) {
+                service.setServiceDate(LocalDate.parse("2024-01-01"));
+                addService(service);
+            }
+        }
+    }
+
     public LocalDate formatDate(String date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return LocalDate.parse(date, formatter);
@@ -113,7 +122,7 @@ public class Client implements ToCSVImpl, updateFromCSVImpl {
     public String toCSV() {
         StringBuilder sr = new StringBuilder();
         for (Service service : services) {
-            sr.append(String.valueOf(service.getId())).append(',');
+            sr.append((service.getId())).append(',');
         }
         return String.valueOf(id) + ',' + roomNumber + ',' + fullName + ',' + dateCheckIn + ',' + dateEvict + ',' + sr;
     }

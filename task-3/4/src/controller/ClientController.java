@@ -149,7 +149,11 @@ public class ClientController {
                         split[2],                   //fullName
                         formatDate(split[3]),  //checkIn
                         formatDate(split[4])); //evict
-
+                if (split.length > 5) {
+                    for (int i = 0; i < split.length - 5; i++) {
+                        importClient.addServiceForClient(Integer.parseInt(split[i + 5]), hotel.getServices());
+                    }
+                }
                 boolean found = false;
                 for (Client client : clients) {
                     if (client.getId() == importClient.getId()) {
