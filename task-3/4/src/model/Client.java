@@ -111,7 +111,11 @@ public class Client implements ToCSVImpl, updateFromCSVImpl {
     }
 
     public String toCSV() {
-        return String.valueOf(id) + ',' + roomNumber + ',' + fullName + ',' + dateCheckIn + ',' + dateEvict;
+        StringBuilder sr = new StringBuilder();
+        for (Service service : services) {
+            sr.append(String.valueOf(service.getId())).append(',');
+        }
+        return String.valueOf(id) + ',' + roomNumber + ',' + fullName + ',' + dateCheckIn + ',' + dateEvict + ',' + sr;
     }
 
     public void updateFromCSV(String[] split) {
