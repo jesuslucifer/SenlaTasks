@@ -39,18 +39,20 @@ public class HotelView {
         switch (typeSort) {
             case "ChapterR":
                 for (Room room : rooms) {
-                    System.out.println("Room: " + room.getRoomNumber() + " Cost: " + room.getCost());
+                    System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " +
+                            room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost() + " ID: " + room.getId());
                 }
                 for (Service service : services) {
-                    System.out.println("Service: " + service.getServiceName() + " Cost: " + service.getCost());
+                    System.out.println("Service: " + service.getServiceName() + " Cost: " + service.getCost() + " ID: " + service.getId());
                 }
                 break;
             case "ChapterS", "Cost":
                 for (Service service : services) {
-                    System.out.println("Service: " + service.getServiceName() + " Cost: " + service.getCost());
+                    System.out.println("Service: " + service.getServiceName() + " Cost: " + service.getCost() + " ID: " + service.getId());
                 }
                 for (Room room : rooms) {
-                    System.out.println("Room: " + room.getRoomNumber() + " Cost: " + room.getCost());
+                    System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " +
+                            room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost() + " ID: " + room.getId());
                 }
                 break;
         }
