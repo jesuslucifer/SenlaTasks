@@ -143,8 +143,8 @@ public class ClientController {
                         Integer.parseInt(split[0]), //id
                         Integer.parseInt(split[1]), //roomNumber
                         split[2],                   //fullName
-                        formatDate(split[3]),  //checkIn
-                        formatDate(split[4])); //evict
+                        LocalDate.parse(split[3]),  //checkIn
+                        LocalDate.parse(split[4])); //evict
 
                 boolean found = false;
                 for (Client client : clients) {
