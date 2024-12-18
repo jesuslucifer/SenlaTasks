@@ -28,21 +28,21 @@ public class MenuHotel {
                     try {
                         hotelController.exportToCSV(hotelController.getClients(), "clients.csv");
                     } catch (FileNotFoundException e) {
-                        throw new RuntimeException(e);
+                        System.out.println(e.getMessage());
                     }
                 }
                 case 5 -> {
                     try {
                         hotelController.exportToCSV(hotelController.getRooms(), "rooms.csv");
                     } catch (FileNotFoundException e) {
-                        throw new RuntimeException(e);
+                        System.out.println(e.getMessage());
                     }
                 }
                 case 6-> {
                     try {
                         hotelController.exportToCSV(hotelController.getServices(), "services.csv");
                     } catch (FileNotFoundException e) {
-                        throw new RuntimeException(e);
+                        System.out.println(e.getMessage());
                     }
                 }
                 case 7 -> flag = false;
