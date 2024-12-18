@@ -132,6 +132,7 @@ public class RoomController {
 
     public void importFromCSV(String fileName) throws FileNotFoundException {
         try (Scanner scanner = new Scanner(new File(fileName))) {
+            scanner.nextLine();
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] split = line.split(",");
