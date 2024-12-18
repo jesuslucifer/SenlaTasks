@@ -35,7 +35,7 @@ public class MenuRoom {
                 case 9 -> changeCost();
                 case 10 -> {
                     try {
-                        roomController.importFromCSV("roomCS.csv");
+                        roomController.importFromCSV("rooms.csv");
                     }
                     catch (Exception e) {
                         System.out.println(e.getMessage());

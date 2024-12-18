@@ -25,7 +25,7 @@ public class MenuService {
                 case 3 -> changeCostService();
                 case 4 -> {
                     try {
-                        serviceController.importFromCSV("serviceCS.csv");
+                        serviceController.importFromCSV("services.csv");
                     }
                     catch (Exception e) {
                         System.out.println(e.getMessage());

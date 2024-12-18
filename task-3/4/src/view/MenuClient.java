@@ -30,7 +30,7 @@ public class MenuClient{
                 case 4 -> printCostPerRoom();
                 case 5 -> {
                     try {
-                        clientController.importFromCSV("clientCS.csv");
+                        clientController.importFromCSV("clients.csv");
                     }
                     catch (Exception e) {
                         System.out.println(e.getMessage());
