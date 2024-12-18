@@ -157,6 +157,9 @@ public class RoomController {
                     hotel.getRooms().add(room);
                 }
             }
+            System.out.println("Success import Rooms from rooms.csv");
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

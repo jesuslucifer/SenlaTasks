@@ -58,5 +58,11 @@ public class HotelView {
         }
     }
 
-
+    public void printSuccessExport(String fileName) {
+        switch (fileName) {
+            case "clients.csv" -> System.out.println("Success export Clients in clients.csv");
+            case "rooms.csv" -> System.out.println("Success export Rooms in rooms.csv");
+            case "services.csv" -> System.out.println("Success export Services in Services.csv");
+        }
+    }
 }

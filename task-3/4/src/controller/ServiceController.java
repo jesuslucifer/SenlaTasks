@@ -76,6 +76,7 @@ public class ServiceController {
                     services.add(importService);
                 }
             }
+            System.out.println("Success import Services from services.csv");
         }
     }
 

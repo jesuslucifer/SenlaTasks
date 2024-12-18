@@ -167,6 +167,7 @@ public class ClientController {
                     }
                 }
             }
+            System.out.println("Success import Clients from clients.csv");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -74,6 +74,7 @@ public class HotelController {
                 writer.write(s.toCSV());
                 writer.println();
             }
+            view.printSuccessExport(fileName);
         }
         catch (FileNotFoundException | NullPointerException e) {
             System.err.println(e.getMessage());

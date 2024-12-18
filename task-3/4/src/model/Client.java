@@ -86,6 +86,7 @@ public class Client implements ToCSVImpl, updateFromCSVImpl {
                 addService(service);
             }
         }
+        System.out.println("Service: " + serviceName + ", Date: " + formatDate(serviceDate) + "added to client: " + getFullName());
     }
 
     public void addServiceForClient(int id, List<Service> services, LocalDate serviceDate) {
@@ -113,7 +114,7 @@ public class Client implements ToCSVImpl, updateFromCSVImpl {
 
     public void updateFromCSV(String[] split) {
         setFullName(split[2]);
-        setDateCheckIn(formatDate(split[3]));
-        setDateEvict(formatDate(split[4]));
+        setDateCheckIn(LocalDate.parse(split[3]));
+        setDateEvict(LocalDate.parse(split[4]));
     }
 }
