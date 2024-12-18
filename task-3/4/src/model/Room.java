@@ -171,8 +171,12 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
     }
 
     public void changeStatusRoom(RoomStatus status) {
-        setStatus(status);
-        System.out.println("The status of the room " + roomNumber + " has been changed to " + status);
+        if (!isBusy()) {
+            setStatus(status);
+            System.out.println("The status of the room " + roomNumber + " has been changed to " + status);
+        } else {
+            System.out.println("The status of the room " + roomNumber + " cannot be changed, there are visitors in the room");
+        }
     }
 
     public void changeCostRoom(int cost) {
