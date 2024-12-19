@@ -6,12 +6,16 @@ import model.Room;
 import model.RoomStatus;
 import view.RoomView;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 public class RoomController {
     private final Hotel hotel;
@@ -89,7 +93,7 @@ public class RoomController {
     }
 
     public void printHistoryRoom(int roomNumber) {
-        Deque<Client> deque = getRoom(roomNumber).getHistoryClientQueue();
+        Deque<Client> deque = new LinkedList<>(getRoom(roomNumber).getHistoryClientQueue());
         view.printHistoryRoom(getRoom(roomNumber), deque);
     }
 
@@ -123,6 +127,39 @@ public class RoomController {
         }
         catch (Exception e) {
             return false;
+        }
+    }
+
+    public void importFromCSV(String fileName) throws FileNotFoundException {
+        try (Scanner scanner = new Scanner(new File(fileName))) {
+            scanner.nextLine();
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] split = line.split(",");
+                boolean found = false;
+                for (Room room : rooms) {
+                    if (room.getId() == Integer.parseInt(split[0])) {
+                        room.updateFromCSV(split);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    Room room = new Room(
+                            Integer.parseInt(split[0]),
+                            Integer.parseInt(split[1]),
+                            Integer.parseInt(split[2]),
+                            Integer.parseInt(split[3]),
+                            RoomStatus.valueOf(split[4]),
+                            Integer.parseInt(split[5]),
+                            LocalDate.parse(split[6]),
+                            LocalDate.parse(split[7]));
+                    hotel.getRooms().add(room);
+                }
+            }
+            System.out.println("Success import Rooms from rooms.csv");
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

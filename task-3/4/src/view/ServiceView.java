@@ -10,13 +10,14 @@ public class ServiceView {
         System.out.println("1. Print services");
         System.out.println("2. Add service in hotel");
         System.out.println("3. Change service cost");
-        System.out.println("4. Back");
+        System.out.println("4. Import services");
+        System.out.println("5. Back");
         System.out.println("0. Exit");
     }
 
     public void printServices(List<Service> services) {
         for (Service service : services) {
-            System.out.println("Service: " + service.getServiceName() + " Cost: " + service.getCost());
+            System.out.println("Service: " + service.getServiceName() + " Cost: " + service.getCost() + " ID: " + service.getId());
         }
     }
 }

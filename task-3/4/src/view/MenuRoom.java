@@ -33,7 +33,15 @@ public class MenuRoom {
                 case 7 -> printRoomFreeByDate();
                 case 8 -> changeStatus();
                 case 9 -> changeCost();
-                case 10 -> flag = false;
+                case 10 -> {
+                    try {
+                        roomController.importFromCSV("rooms.csv");
+                    }
+                    catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
+                case 11 -> flag = false;
                 case 0 -> System.exit(0);
                 default -> System.out.println("Invalid choice");
             }

@@ -5,7 +5,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Client {
+public class Client implements ToCSVImpl, updateFromCSVImpl {
+    private static int idInc = 0;
+    private final int id;
     private String passport;
     private String fullName;
     private int roomNumber;
@@ -13,16 +15,20 @@ public class Client {
     private LocalDate dateEvict;
     private final List<Service> services = new ArrayList<>();
 
-    public Client(String passport, String fullName) {
-        this.passport = passport;
-        this.fullName = fullName;
-    }
-
     public Client () {
+        this.id = idInc++;
     }
 
-    public String getPassport() {
-        return passport;
+    public Client(int id, int roomNumber, String fullName, LocalDate dateCheckIn, LocalDate dateEvict) {
+        this.id = id;
+        this.fullName = fullName;
+        this.roomNumber = roomNumber;
+        this.dateCheckIn = dateCheckIn;
+        this.dateEvict = dateEvict;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getFullName() {
@@ -31,10 +37,6 @@ public class Client {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
-    }
-
-    public void setPassport(String passport) {
-        this.passport = passport;
     }
 
     public void setRoomNumber(int roomNumber) {
@@ -70,7 +72,7 @@ public class Client {
     }
 
     public void addService(Service service) {
-        services.add(service);
+        services.add(new Service(service.getId(), service.getServiceName(), service.getCost(), service.getServiceDate()));
     }
 
     public List<Service> getServices() {
@@ -84,6 +86,16 @@ public class Client {
                 addService(service);
             }
         }
+        System.out.println("Service: " + serviceName + ", Date: " + formatDate(serviceDate) + "added to client: " + getFullName());
+    }
+
+    public void addServiceForClient(int id, List<Service> services, LocalDate serviceDate) {
+        for (Service service : services) {
+            if (service.getId() == id) {
+                service.setServiceDate(serviceDate);
+                addService(service);
+            }
+        }
     }
 
     public LocalDate formatDate(String date) {
@@ -91,5 +103,18 @@ public class Client {
         return LocalDate.parse(date, formatter);
     }
 
+    public String toCSV() {
+        StringBuilder sr = new StringBuilder();
+        for (Service service : services) {
+            sr.append((service.getId())).append(',').append(service.getServiceDate()).append(',');
+        }
+        return String.valueOf(id) + ',' + roomNumber + ',' + fullName + ',' + dateCheckIn + ',' + dateEvict + ',' + sr;
+    }
 
+
+    public void updateFromCSV(String[] split) {
+        setFullName(split[2]);
+        setDateCheckIn(LocalDate.parse(split[3]));
+        setDateEvict(LocalDate.parse(split[4]));
+    }
 }

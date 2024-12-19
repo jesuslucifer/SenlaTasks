@@ -20,7 +20,8 @@ public class RoomView {
         System.out.println("7. Print room free by date");
         System.out.println("8. Change status of room");
         System.out.println("9. Change cost of room");
-        System.out.println("10. Back");
+        System.out.println("10. Import room");
+        System.out.println("11. Back");
         System.out.println("0. Exit");
 
     }
@@ -50,18 +51,18 @@ public class RoomView {
             if (room.isBusy()) {
                 System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " +
                         room.getCountStars() + " Capacity: " + room.getCapacity() + " Current occupancy: " + room.getClentList().size() +
-                        " Cost: " + room.getCost());
+                        " Cost: " + room.getCost() + " ID: " + room.getId());
                 continue;
             }
             System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " +
-                    room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
+                    room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost() + " ID: " + room.getId());
         }
     }
 
     public void printInfoRoom(Room room) {
         if (room.isBusy()) {
-            System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: "
-                    + room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost());
+            System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " +
+                    room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost() + " ID: " + room.getId());
             System.out.println("Clients: ");
             for (Client client : room.getClentList()) {
                 System.out.println("Full name: " + client.getFullName() + " date check in: " + client.getDateCheckIn() + " date evict: " + client.getDateEvict());
@@ -88,7 +89,8 @@ public class RoomView {
     public void printRoomFreeByDate(LocalDate date, List<Room> rooms) {
         System.out.println("Free rooms by " + date);
         for (Room room : rooms) {
-            System.out.println("Room: " + room.getRoomNumber());
+            System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " +
+                    room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost() + " ID: " + room.getId());
         }
     }
 }

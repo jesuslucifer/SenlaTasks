@@ -28,7 +28,15 @@ public class MenuClient{
                 case 2 -> printClientServices();
                 case 3 -> addServiceForClient();
                 case 4 -> printCostPerRoom();
-                case 5 -> flag = false;
+                case 5 -> {
+                    try {
+                        clientController.importFromCSV("clients.csv");
+                    }
+                    catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
+                case 6 -> flag = false;
                 case 0 -> System.exit(0);
                 default -> System.out.println("Invalid choice");
             }
@@ -37,29 +45,33 @@ public class MenuClient{
     }
 
     public void printClients() {
-        boolean flag = true;
-        while (flag) {
-            clientView.printSwitchClient();
+        if (clientController.clientsIsEmpty()) {
+            System.out.println("There are no customers in the hotel");
+        } else {
+            boolean flag = true;
+            while (flag) {
+                clientView.printSwitchClient();
 
-            switch (sc.nextInt()) {
-                case 1 -> {
-                    clientController.printClients("AlphabetA");
-                    flag = false;
+                switch (sc.nextInt()) {
+                    case 1 -> {
+                        clientController.printClients("AlphabetA");
+                        flag = false;
+                    }
+                    case 2 -> {
+                        clientController.printClients("AlphabetZ");
+                        flag = false;
+                    }
+                    case 3 -> {
+                        clientController.printClients("DateI");
+                        flag = false;
+                    }
+                    case 4 -> {
+                        clientController.printClients("DateD");
+                        flag = false;
+                    }
+                    case 5 -> flag = false;
+                    default -> System.out.println("Invalid choice");
                 }
-                case 2 -> {
-                    clientController.printClients("AlphabetZ");
-                    flag = false;
-                }
-                case 3 -> {
-                    clientController.printClients("DateI");
-                    flag = false;
-                }
-                case 4 -> {
-                    clientController.printClients("DateD");
-                    flag = false;
-                }
-                case 5 -> flag = false;
-                default -> System.out.println("Invalid choice");
             }
         }
     }

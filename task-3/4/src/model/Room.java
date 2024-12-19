@@ -7,18 +7,21 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Room {
-    private final int roomNumber;
+public class Room implements ToCSVImpl, updateFromCSVImpl {
+    private static int idInc;
+    private int id;
+    private int roomNumber;
     private int cost;
-    private final int countStars;
+    private int countStars;
     private RoomStatus status;
-    private final int capacity;
+    private int capacity;
     private final List<Client> clentList = new ArrayList<>();
     private LocalDate dateCheckIn;
     private LocalDate dateEvict;
     private final Deque<Client> historyClientQueue = new LinkedList<>();
 
     public Room(int roomNumber) {
+        this.id = idInc++;
         this.roomNumber = roomNumber;
         this.countStars = new java.util.Random().nextInt(5) + 1;
         this.status = RoomStatus.FREE;
@@ -26,6 +29,20 @@ public class Room {
         this.cost = (capacity + countStars) * 10;
         dateCheckIn = LocalDate.of(2020, 1, 1);
         dateEvict = LocalDate.of(2020, 1, 1);
+    }
+
+    public Room() {
+    }
+
+    public Room(int id, int roomNumber, int cost, int countStars, RoomStatus status, int capacity, LocalDate dateCheckIn, LocalDate dateEvict) {
+        this.id = id;
+        this.roomNumber = roomNumber;
+        this.cost = cost;
+        this.countStars = countStars;
+        this.status = status;
+        this.capacity = capacity;
+        this.dateCheckIn = dateCheckIn;
+        this.dateEvict = dateEvict;
     }
 
     public int getRoomNumber() {
@@ -56,12 +73,24 @@ public class Room {
         clentList.addAll(clients);
     }
 
+    public void setClient(Client client) {
+        clentList.add(client);
+    }
+
     public int getCapacity() {
         return capacity;
     }
 
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
     public int getCountStars() {
         return countStars;
+    }
+
+    public void setCountStars(int countStars) {
+        this.countStars = countStars;
     }
 
     public void setDateCheckIn(LocalDate date) {
@@ -121,6 +150,14 @@ public class Room {
         }
     }
 
+    public void checkIntoRoom(Client client, List<Client> clients) {
+        if (getCapacity() - getClentList().size() < 1) {
+            evictFromRoom(clients);
+        }
+        setClient(client);
+        setStatus(RoomStatus.BUSY);
+    }
+
     public void evictFromRoom(List<Client> clients) {
         for (Client client : getClentList()) {
             addClientToHistory(client);
@@ -134,8 +171,12 @@ public class Room {
     }
 
     public void changeStatusRoom(RoomStatus status) {
-        setStatus(status);
-        System.out.println("The status of the room " + roomNumber + " has been changed to " + status);
+        if (!isBusy()) {
+            setStatus(status);
+            System.out.println("The status of the room " + roomNumber + " has been changed to " + status);
+        } else {
+            System.out.println("The status of the room " + roomNumber + " cannot be changed, there are visitors in the room");
+        }
     }
 
     public void changeCostRoom(int cost) {
@@ -147,4 +188,29 @@ public class Room {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return LocalDate.parse(date, formatter);
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toCSV() {
+        return String.valueOf(id) + ',' + roomNumber + ',' + cost + ',' + countStars + ',' + status + ',' + capacity
+                + ',' + dateCheckIn + ',' + dateEvict;
+    }
+
+    @Override
+    public void updateFromCSV(String[] csv) {
+        setCost(Integer.parseInt(csv[2]));
+        setCountStars(Integer.parseInt(csv[3]));
+        setStatus(RoomStatus.valueOf(csv[4]));
+        setCapacity(Integer.parseInt(csv[5]));
+        setDateCheckIn(LocalDate.parse(csv[6]));
+        setDateEvict(LocalDate.parse(csv[7]));
+    }
+
 }

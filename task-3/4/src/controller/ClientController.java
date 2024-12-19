@@ -6,10 +6,13 @@ import model.Room;
 import model.Service;
 import view.ClientView;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
@@ -128,5 +131,59 @@ public class ClientController {
 
     public boolean clientsIsEmpty() {
         return clients.isEmpty();
+    }
+
+    public void importFromCSV(String fileName) throws FileNotFoundException {
+        try (Scanner scanner = new Scanner(new File(fileName))) {
+            scanner.nextLine();
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] split = line.split(",");
+
+                Client importClient = new Client(
+                        Integer.parseInt(split[0]), //id
+                        Integer.parseInt(split[1]), //roomNumber
+                        split[2],                   //fullName
+                        LocalDate.parse(split[3]),  //checkIn
+                        LocalDate.parse(split[4])); //evict
+
+                boolean found = false;
+                for (Client client : clients) {
+                    if (client.getId() == importClient.getId()) {
+                        client = addServiceToClient(split, client);
+                        client.updateFromCSV(split);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    importClient = addServiceToClient(split, importClient);
+                    clients.add(importClient);
+                    for (Room room : hotel.getRooms()) {
+                        if (room.getRoomNumber() == importClient.getRoomNumber()) {
+                            room.checkIntoRoom(importClient, hotel.getClients());
+                            break;
+                        }
+                    }
+                }
+            }
+            System.out.println("Success import Clients from clients.csv");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public LocalDate formatDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return LocalDate.parse(date, formatter);
+    }
+
+    public Client addServiceToClient(String[] split, Client client) {
+        if (split.length > 5) {
+            for (int i = 0; i < split.length - 5; i += 2) {
+                client.addServiceForClient(Integer.parseInt(split[i + 5]), hotel.getServices(), formatDate(split[i + 6]));
+            }
+        }
+        return client;
     }
 }

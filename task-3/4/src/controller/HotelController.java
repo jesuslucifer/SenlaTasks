@@ -1,14 +1,19 @@
 package controller;
 
+import model.ToCSVImpl;
 import model.Client;
 import model.Hotel;
 import model.Room;
 import model.Service;
 import view.HotelView;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class HotelController {
     Hotel hotel;
@@ -61,4 +66,38 @@ public class HotelController {
 
     }
 
+    public <T extends ToCSVImpl> void exportToCSV(List<T> list, String fileName) throws FileNotFoundException {
+        try (PrintWriter writer = new PrintWriter(fileName)) {
+            writer.write(checkType(list));
+            writer.println();
+            for (T s : list) {
+                writer.write(s.toCSV());
+                writer.println();
+            }
+            view.printSuccessExport(fileName);
+        }
+        catch (FileNotFoundException | NullPointerException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public <T> String checkType(List<T> list) {
+        try {
+            switch (list.getFirst().getClass().getSimpleName()) {
+                case "Client" -> {
+                    return "id,roomNumber,fullName,dateCheckIn,dateEvict,serviceId,serviceDate,...";
+                }
+                case "Room" -> {
+                    return "id,roomNumber,cost,countStars,status,capacity,dateCheckIn,dateEvict";
+                }
+                case "Service" -> {
+                    return "id,serviceName,cost";
+                }
+                default -> {}
+            }
+        } catch (NullPointerException | NoSuchElementException e) {
+            System.err.println("List is empty");
+        }
+        return null;
+    }
 }
