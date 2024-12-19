@@ -41,7 +41,8 @@ public class MenuRoom {
                         System.out.println(e.getMessage());
                     }
                 }
-                case 11 -> flag = false;
+                case 11 -> roomController.importLockedRoomProperty();
+                case 12 -> flag = false;
                 case 0 -> System.exit(0);
                 default -> System.out.println("Invalid choice");
             }

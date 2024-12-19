@@ -13,6 +13,7 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
     private int roomNumber;
     private int cost;
     private int countStars;
+    private boolean lockedChangeStatus;
     private RoomStatus status;
     private int capacity;
     private final List<Client> clentList = new ArrayList<>();
@@ -29,6 +30,7 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
         this.cost = (capacity + countStars) * 10;
         dateCheckIn = LocalDate.of(2020, 1, 1);
         dateEvict = LocalDate.of(2020, 1, 1);
+        lockedChangeStatus = true;
     }
 
     public Room() {
@@ -43,6 +45,7 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
         this.capacity = capacity;
         this.dateCheckIn = dateCheckIn;
         this.dateEvict = dateEvict;
+        lockedChangeStatus = true;
     }
 
     public int getRoomNumber() {
@@ -171,11 +174,15 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
     }
 
     public void changeStatusRoom(RoomStatus status) {
-        if (!isBusy()) {
-            setStatus(status);
-            System.out.println("The status of the room " + roomNumber + " has been changed to " + status);
+        if (lockedChangeStatus) {
+            if (!isBusy()) {
+                setStatus(status);
+                System.out.println("The status of the room " + roomNumber + " has been changed to " + status);
+            } else {
+                System.out.println("The status of the room " + roomNumber + " cannot be changed, there are visitors in the room");
+            }
         } else {
-            System.out.println("The status of the room " + roomNumber + " cannot be changed, there are visitors in the room");
+            System.out.println("The status of the room " + roomNumber + " cannot be changed");
         }
     }
 
@@ -195,6 +202,10 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setLockedChangeStatus(boolean lockedChangeStatus) {
+        this.lockedChangeStatus = lockedChangeStatus;
     }
 
     @Override

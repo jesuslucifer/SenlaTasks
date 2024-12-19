@@ -7,7 +7,9 @@ import model.RoomStatus;
 import view.RoomView;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import java.util.Comparator;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class RoomController {
@@ -47,6 +50,10 @@ public class RoomController {
 
     public void changeStatusRoom(int roomNumber, RoomStatus status) {
         getRoom(roomNumber).changeStatusRoom(status);
+    }
+
+    public void changeLockedStatusRoom(int roomNumber, boolean lockedStatus) {
+        getRoom(roomNumber).setLockedChangeStatus(lockedStatus);
     }
 
     public void changeCostRoom(int roomNumber, int cost) {
@@ -159,6 +166,18 @@ public class RoomController {
             }
             System.out.println("Success import Rooms from rooms.csv");
         } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void importLockedRoomProperty() {
+        try (FileInputStream fis = new FileInputStream("rooms.property")) {
+            Properties prop = new Properties();
+            prop.load(fis);
+            for (String key : prop.stringPropertyNames()) {
+                changeLockedStatusRoom(Integer.parseInt(key), Boolean.parseBoolean(prop.getProperty(key)));
+            }
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
