@@ -77,7 +77,7 @@ public class RoomView {
 
     public void printHistoryRoom(Room room, Deque<Client> deque) {
         System.out.println("Room " + room.getRoomNumber() + " history:");
-        int i = 3;
+        int i = room.getCountRecordsHistory();
         while (i != 0 && !deque.isEmpty()) {
             System.out.println("Full name: " + deque.peekLast().getFullName()
                     + " Date check in: "+ deque.peekLast().getDateCheckIn()

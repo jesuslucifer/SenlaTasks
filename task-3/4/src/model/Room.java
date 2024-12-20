@@ -20,6 +20,7 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
     private LocalDate dateCheckIn;
     private LocalDate dateEvict;
     private final Deque<Client> historyClientQueue = new LinkedList<>();
+    private int countRecordsHistory;
 
     public Room(int roomNumber) {
         this.id = idInc++;
@@ -31,6 +32,7 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
         dateCheckIn = LocalDate.of(2020, 1, 1);
         dateEvict = LocalDate.of(2020, 1, 1);
         lockedChangeStatus = true;
+        countRecordsHistory = 3;
     }
 
     public Room() {
@@ -46,6 +48,7 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
         this.dateCheckIn = dateCheckIn;
         this.dateEvict = dateEvict;
         lockedChangeStatus = true;
+        countRecordsHistory = 3;
     }
 
     public int getRoomNumber() {
@@ -224,4 +227,11 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
         setDateEvict(LocalDate.parse(csv[7]));
     }
 
+    public int getCountRecordsHistory() {
+        return countRecordsHistory;
+    }
+
+    public void setCountRecordsHistory(int countRecordsHistory) {
+        this.countRecordsHistory = countRecordsHistory;
+    }
 }

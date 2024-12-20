@@ -171,11 +171,23 @@ public class RoomController {
     }
 
     public void importLockedRoomProperty() {
-        try (FileInputStream fis = new FileInputStream("rooms.property")) {
+        try (FileInputStream fis = new FileInputStream("task-3/4/src/resources/rooms.property")) {
             Properties prop = new Properties();
             prop.load(fis);
             for (String key : prop.stringPropertyNames()) {
                 changeLockedStatusRoom(Integer.parseInt(key), Boolean.parseBoolean(prop.getProperty(key)));
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void importCountRecordHistory() {
+        try (FileInputStream fis = new FileInputStream("task-3/4/src/resources/history.property")) {
+            Properties prop = new Properties();
+            prop.load(fis);
+            for (String key : prop.stringPropertyNames()) {
+                getRoom(Integer.parseInt(key)).setCountRecordsHistory(Integer.parseInt(prop.getProperty(key)));
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());

@@ -42,7 +42,8 @@ public class MenuRoom {
                     }
                 }
                 case 11 -> roomController.importLockedRoomProperty();
-                case 12 -> flag = false;
+                case 12 -> roomController.importCountRecordHistory();
+                case 13 -> flag = false;
                 case 0 -> System.exit(0);
                 default -> System.out.println("Invalid choice");
             }
