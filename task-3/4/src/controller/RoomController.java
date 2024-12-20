@@ -177,6 +177,7 @@ public class RoomController {
             for (String key : prop.stringPropertyNames()) {
                 changeLockedStatusRoom(Integer.parseInt(key), Boolean.parseBoolean(prop.getProperty(key)));
             }
+            System.out.println("Success import locked room from property");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -189,6 +190,7 @@ public class RoomController {
             for (String key : prop.stringPropertyNames()) {
                 getRoom(Integer.parseInt(key)).setCountRecordsHistory(Integer.parseInt(prop.getProperty(key)));
             }
+            System.out.println("Success import count records in the history room from property");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

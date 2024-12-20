@@ -9,8 +9,9 @@ import java.util.List;
 
 public class RoomView {
 
-    public void printMenu() {
+    public void printMenuPageOne() {
         System.out.println("\tMenu Room");
+        System.out.println("\t page 1");
         System.out.println("1. Print all rooms");
         System.out.println("2. Print free rooms");
         System.out.println("3. Print info room");
@@ -20,11 +21,20 @@ public class RoomView {
         System.out.println("7. Print room free by date");
         System.out.println("8. Change status of room");
         System.out.println("9. Change cost of room");
-        System.out.println("10. Import room");
-        System.out.println("11. Import locked room");
-        System.out.println("12. Back");
+        System.out.println("10. Next page");
+        System.out.println("11. Back");
         System.out.println("0. Exit");
 
+    }
+
+    public void printMenuPageTwo() {
+        System.out.println("\tMenu Room");
+        System.out.println("\t page 2");
+        System.out.println("1. Import room");
+        System.out.println("2. Import locked room");
+        System.out.println("3. Import count records in the history");
+        System.out.println("4. Back");
+        System.out.println("0. Exit");
     }
 
     public void printSwitchRooms() {

@@ -3,11 +3,11 @@ package view;
 import java.util.Scanner;
 
 public class Menu {
-    private MenuRoom menuRoom;
-    private MenuHotel menuHotel;
-    private MenuClient menuClient;
-    private MenuService menuService;
-    private Scanner sc = new Scanner(System.in);
+    private final MenuRoom menuRoom;
+    private final MenuHotel menuHotel;
+    private final MenuClient menuClient;
+    private final MenuService menuService;
+    private final Scanner sc = new Scanner(System.in);
 
     public Menu(MenuRoom menuRoom, MenuService menuService, MenuHotel menuHotel, MenuClient menuClient) {
         this.menuRoom = menuRoom;
@@ -27,7 +27,7 @@ public class Menu {
 
             switch (sc.nextInt()) {
                 case 1 -> menuHotel.printMenu();
-                case 2 -> menuRoom.printMenu();
+                case 2 -> menuRoom.printMenuPageOne();
                 case 3 -> menuClient.printMenu();
                 case 4 -> menuService.printMenu();
                 case 5 -> System.exit(0);

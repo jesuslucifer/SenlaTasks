@@ -18,10 +18,10 @@ public class MenuRoom {
         this.roomView = roomView;
     }
 
-    public void printMenu() {
+    public void printMenuPageOne() {
         boolean flag = true;
         while (flag) {
-            roomView.printMenu();
+            roomView.printMenuPageOne();
 
             switch (sc.nextInt()) {
                 case 1 -> printRooms("all");
@@ -33,7 +33,22 @@ public class MenuRoom {
                 case 7 -> printRoomFreeByDate();
                 case 8 -> changeStatus();
                 case 9 -> changeCost();
-                case 10 -> {
+                case 10 -> printMenuPageTwo();
+                case 11 -> flag = false;
+                case 0 -> System.exit(0);
+                default -> System.out.println("Invalid choice");
+            }
+        }
+
+    }
+
+    public void printMenuPageTwo() {
+        boolean flag = true;
+        while (flag) {
+            roomView.printMenuPageTwo();
+
+            switch (sc.nextInt()) {
+                case 1 -> {
                     try {
                         roomController.importFromCSV("rooms.csv");
                     }
@@ -41,14 +56,13 @@ public class MenuRoom {
                         System.out.println(e.getMessage());
                     }
                 }
-                case 11 -> roomController.importLockedRoomProperty();
-                case 12 -> roomController.importCountRecordHistory();
-                case 13 -> flag = false;
+                case 2 -> roomController.importLockedRoomProperty();
+                case 3 -> roomController.importCountRecordHistory();
+                case 4 -> flag = false;
                 case 0 -> System.exit(0);
                 default -> System.out.println("Invalid choice");
             }
         }
-
     }
 
     public void printRooms(String roomType) {
