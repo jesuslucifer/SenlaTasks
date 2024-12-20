@@ -52,8 +52,8 @@ public class RoomController {
         getRoom(roomNumber).changeStatusRoom(status);
     }
 
-    public void changeLockedStatusRoom(int roomNumber, boolean lockedStatus) {
-        getRoom(roomNumber).setLockedChangeStatus(lockedStatus);
+    public void changeLockedStatusRoom(boolean lockedStatus) {
+        rooms.forEach(room -> room.setLockedChangeStatus(lockedStatus));
     }
 
     public void changeCostRoom(int roomNumber, int cost) {
@@ -137,7 +137,11 @@ public class RoomController {
         }
     }
 
-    public void importFromCSV(String fileName) throws FileNotFoundException {
+    public void changeCountRecordsHistory(int countRecordsHistory) {
+        rooms.forEach(room -> room.setCountRecordsHistory(countRecordsHistory));
+    }
+
+    public void importFromCSV(String fileName) {
         try (Scanner scanner = new Scanner(new File(fileName))) {
             scanner.nextLine();
             while (scanner.hasNextLine()) {
@@ -171,25 +175,21 @@ public class RoomController {
     }
 
     public void importLockedRoomProperty() {
-        try (FileInputStream fis = new FileInputStream("task-3/4/src/resources/rooms.property")) {
+        try (FileInputStream fis = new FileInputStream("task-3/4/src/resources/config.property")) {
             Properties prop = new Properties();
             prop.load(fis);
-            for (String key : prop.stringPropertyNames()) {
-                changeLockedStatusRoom(Integer.parseInt(key), Boolean.parseBoolean(prop.getProperty(key)));
-            }
-            System.out.println("Success import locked room from property");
+            changeLockedStatusRoom(Boolean.parseBoolean(prop.getProperty("lockedChangeStatus")));
+            System.out.println("Success import locked rooms from property");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
 
     public void importCountRecordHistory() {
-        try (FileInputStream fis = new FileInputStream("task-3/4/src/resources/history.property")) {
+        try (FileInputStream fis = new FileInputStream("task-3/4/src/resources/config.property")) {
             Properties prop = new Properties();
             prop.load(fis);
-            for (String key : prop.stringPropertyNames()) {
-                getRoom(Integer.parseInt(key)).setCountRecordsHistory(Integer.parseInt(prop.getProperty(key)));
-            }
+            changeCountRecordsHistory(Integer.parseInt(prop.getProperty("countRecordsHistory")));
             System.out.println("Success import count records in the history room from property");
         } catch (IOException e) {
             System.out.println(e.getMessage());
