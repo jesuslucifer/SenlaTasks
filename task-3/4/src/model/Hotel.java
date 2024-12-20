@@ -1,11 +1,13 @@
 package model;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Hotel {
+
+public class Hotel implements Serializable {
     private final List<Room> rooms = new ArrayList<>();
     private final List<Service> services = new ArrayList<>();
     private final List<Client> clients = new ArrayList<>();

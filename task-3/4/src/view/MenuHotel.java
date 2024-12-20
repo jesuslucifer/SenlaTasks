@@ -46,7 +46,7 @@ public class MenuHotel {
                     }
                 }
                 case 7 -> flag = false;
-                case 0 -> System.exit(0);
+                case 0 -> hotelController.exit();
                 default -> System.out.println("Invalid choice");
             }
 

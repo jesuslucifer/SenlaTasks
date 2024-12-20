@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Service implements ToCSVImpl {
+public class Service implements IToCSV, Serializable {
     private static int idInc;
     private final int id;
     private String serviceName;

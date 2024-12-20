@@ -1,14 +1,15 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Client implements ToCSVImpl, updateFromCSVImpl {
+public class Client implements IToCSV, IUpdateFromCSV, Serializable {
     private static int idInc = 0;
     private final int id;
-    private String passport;
+    //private String passport;
     private String fullName;
     private int roomNumber;
     private LocalDate dateCheckIn;

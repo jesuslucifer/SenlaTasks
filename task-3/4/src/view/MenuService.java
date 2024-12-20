@@ -32,7 +32,7 @@ public class MenuService {
                     }
                 }
                 case 5 -> flag = false;
-                case 0 -> System.exit(0);
+                case 0 -> serviceController.exit();
                 default -> System.out.println("Invalid choice");
             }
         }

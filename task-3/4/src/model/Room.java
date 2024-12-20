@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Deque;
@@ -7,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Room implements ToCSVImpl, updateFromCSVImpl {
+public class Room implements IToCSV, IUpdateFromCSV, Serializable {
     private static int idInc;
     private int id;
     private int roomNumber;

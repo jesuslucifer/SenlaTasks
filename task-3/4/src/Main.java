@@ -1,35 +1,11 @@
-import controller.ClientController;
-import controller.HotelController;
-import controller.RoomController;
-import controller.ServiceController;
-import model.Hotel;
-import view.ClientView;
-import view.HotelView;
-import view.Menu;
-import view.MenuClient;
-import view.MenuHotel;
-import view.MenuRoom;
-import view.MenuService;
-import view.RoomView;
-import view.ServiceView;
+import controller.MainController;
 
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
-        Hotel hotel = new Hotel();
-        HotelView hotelView = new HotelView();
-        HotelController hotelController = new HotelController(hotel, hotelView);
+    public static void main(String[] args) throws IOException {
+        MainController mainController = new MainController();
 
-        ClientView clientView = new ClientView();
-        ClientController clientController = new ClientController(hotel, clientView);
-
-        RoomView roomView = new RoomView();
-        RoomController roomController = new RoomController(hotel, roomView);
-
-        ServiceView serviceView = new ServiceView();
-        ServiceController serviceController = new ServiceController(serviceView, hotel);
-
-        Menu menu = new Menu(new MenuRoom(roomController, roomView), new MenuService(serviceController, serviceView), new MenuHotel(hotelController, hotelView), new MenuClient(serviceController, clientController, clientView));
-        menu.printMenu();
+        mainController.run();
     }
 }

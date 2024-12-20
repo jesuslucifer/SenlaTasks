@@ -35,7 +35,7 @@ public class MenuRoom {
                 case 9 -> changeCost();
                 case 10 -> printMenuPageTwo();
                 case 11 -> flag = false;
-                case 0 -> System.exit(0);
+                case 0 -> roomController.exit();
                 default -> System.out.println("Invalid choice");
             }
         }
@@ -59,7 +59,7 @@ public class MenuRoom {
                 case 2 -> roomController.importLockedRoomProperty();
                 case 3 -> roomController.importCountRecordHistory();
                 case 4 -> flag = false;
-                case 0 -> System.exit(0);
+                case 0 -> roomController.exit();
                 default -> System.out.println("Invalid choice");
             }
         }

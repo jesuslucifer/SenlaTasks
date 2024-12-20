@@ -37,7 +37,7 @@ public class MenuClient{
                     }
                 }
                 case 6 -> flag = false;
-                case 0 -> System.exit(0);
+                case 0 -> clientController.exit();
                 default -> System.out.println("Invalid choice");
             }
         }
