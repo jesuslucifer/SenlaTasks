@@ -32,6 +32,8 @@ public class RoomController implements IExitProgram {
         this.hotel = hotel;
         this.rooms = hotel.getRooms();
         this.view = view;
+        importLockedRoomProperty();
+        importCountRecordHistory();
     }
 
     public Room getRoom(int roomNumber) {
@@ -182,7 +184,7 @@ public class RoomController implements IExitProgram {
             Properties prop = new Properties();
             prop.load(fis);
             changeLockedStatusRoom(Boolean.parseBoolean(prop.getProperty("lockedChangeStatus")));
-            System.out.println("Success import locked rooms from property");
+            System.out.println("Success import locked rooms from property, lockedChangeStatus=" + prop.getProperty("lockedChangeStatus"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -193,7 +195,7 @@ public class RoomController implements IExitProgram {
             Properties prop = new Properties();
             prop.load(fis);
             changeCountRecordsHistory(Integer.parseInt(prop.getProperty("countRecordsHistory")));
-            System.out.println("Success import count records in the history room from property");
+            System.out.println("Success import count records in the history room from property, countRecordsHistory=" + prop.getProperty("countRecordsHistory"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
