@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -9,6 +10,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Room implements IToCSV, IUpdateFromCSV, Serializable {
+    @Serial
+    private static final long serialVersionUID = 3L;
     private static int idInc;
     private int id;
     private int roomNumber;

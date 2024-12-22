@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -7,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client implements IToCSV, IUpdateFromCSV, Serializable {
+    @Serial
+    private static final long serialVersionUID = 2L;
     private static int idInc = 0;
     private final int id;
     //private String passport;
