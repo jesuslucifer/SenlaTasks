@@ -21,7 +21,7 @@ public class MenuRoom {
     public void printMenuPageOne() {
         boolean flag = true;
         while (flag) {
-            roomView.printMenuPageOne();
+            roomView.printMenuPageOne(roomController.getRoom(1).getLockedChangeStatus());
 
             switch (sc.nextInt()) {
                 case 1 -> printRooms("all");

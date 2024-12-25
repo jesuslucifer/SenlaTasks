@@ -215,6 +215,10 @@ public class Room implements IToCSV, IUpdateFromCSV, Serializable {
         this.lockedChangeStatus = lockedChangeStatus;
     }
 
+    public boolean getLockedChangeStatus() {
+        return lockedChangeStatus;
+    }
+
     @Override
     public String toCSV() {
         return String.valueOf(id) + ',' + roomNumber + ',' + cost + ',' + countStars + ',' + status + ',' + capacity
