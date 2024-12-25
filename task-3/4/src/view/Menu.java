@@ -1,5 +1,10 @@
 package view;
 
+import model.Hotel;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class Menu {
@@ -16,7 +21,7 @@ public class Menu {
         this.menuClient = menuClient;
     }
 
-    public void printMenu() {
+    public void printMenu(Hotel hotel) {
         while (true) {
             System.out.println("\tMenu");
             System.out.println("1. Hotel");
@@ -30,7 +35,14 @@ public class Menu {
                 case 2 -> menuRoom.printMenuPageOne();
                 case 3 -> menuClient.printMenu();
                 case 4 -> menuService.printMenu();
-                case 5 -> System.exit(0);
+                case 5 -> {
+                    try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("task-3/4/src/resources/save.dat"))) {
+                        oos.writeObject(hotel);
+                        System.exit(0);
+                    } catch (IOException e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
                 default -> System.out.println("Invalid choice, try again");
             }
         }

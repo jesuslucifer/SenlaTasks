@@ -19,9 +19,9 @@ import java.io.ObjectInputStream;
 
 public class MainController {
     private final Menu menu;
+    private  Hotel hotel;
 
     public MainController() throws IOException {
-        Hotel hotel;
         try (ObjectInputStream os = new ObjectInputStream(new FileInputStream("task-3/4/src/resources/save.dat"))) {
             hotel = (Hotel) os.readObject();
         } catch (FileNotFoundException | IIOException | ClassNotFoundException e) {
@@ -43,6 +43,6 @@ public class MainController {
     }
 
     public void run() {
-        menu.printMenu();
+        menu.printMenu(hotel);
     }
 }
