@@ -1,6 +1,5 @@
 package controller;
 
-import model.IExitProgram;
 import model.IToCSV;
 import model.Client;
 import model.Hotel;
@@ -9,9 +8,6 @@ import model.Service;
 import view.HotelView;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,7 +15,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class HotelController implements IExitProgram {
+public class HotelController {
     Hotel hotel;
     HotelView view;
 
@@ -103,14 +99,5 @@ public class HotelController implements IExitProgram {
             System.err.println("List is empty");
         }
         return null;
-    }
-
-    public void exit() {
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("task-3/4/src/resources/save.dat"))) {
-            oos.writeObject(hotel);
-            System.exit(0);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
     }
 }

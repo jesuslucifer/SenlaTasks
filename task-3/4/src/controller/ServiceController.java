@@ -6,21 +6,16 @@ import view.ServiceView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.List;
 import java.util.Scanner;
 
 public class ServiceController {
     private final List<Service> services;
     private final ServiceView view;
-    private final Hotel hotel;
 
     public ServiceController(Hotel hotel, ServiceView view) {
         this.view = view;
         this.services = hotel.getServices();
-        this.hotel = hotel;
     }
 
     public Service getService(String serviceName) {
@@ -84,14 +79,4 @@ public class ServiceController {
             System.out.println("Success import Services from services.csv");
         }
     }
-
-    public void exit() {
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("task-3/4/src/resources/save.dat"))) {
-            oos.writeObject(hotel);
-            System.exit(0);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
 }

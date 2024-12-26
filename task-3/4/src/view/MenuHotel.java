@@ -1,6 +1,7 @@
 package view;
 
 import controller.HotelController;
+import controller.SerializableController;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -9,10 +10,12 @@ public class MenuHotel {
     private final HotelController hotelController;
     private final Scanner sc = new Scanner(System.in);
     private final HotelView hotelView;
+    private final SerializableController serializableController;
 
-    public MenuHotel(HotelController hotelController, HotelView hotelView) {
+    public MenuHotel(HotelController hotelController, HotelView hotelView, SerializableController serializableController) {
         this.hotelController = hotelController;
         this.hotelView = hotelView;
+        this.serializableController = serializableController;
     }
 
     public void printMenu() {
@@ -46,7 +49,7 @@ public class MenuHotel {
                     }
                 }
                 case 7 -> flag = false;
-                case 0 -> hotelController.exit();
+                case 0 -> serializableController.exit();
                 default -> System.out.println("Invalid choice");
             }
 

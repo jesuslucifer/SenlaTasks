@@ -1,6 +1,7 @@
 package view;
 
 import controller.RoomController;
+import controller.SerializableController;
 import model.Client;
 import model.RoomStatus;
 
@@ -12,10 +13,12 @@ public class MenuRoom {
     private final RoomController roomController;
     private final RoomView roomView;
     private final Scanner sc = new Scanner(System.in);
+    private final SerializableController serializableController;
 
-    public MenuRoom(RoomController roomController, RoomView roomView) {
+    public MenuRoom(RoomController roomController, RoomView roomView, SerializableController serializableController) {
         this.roomController = roomController;
         this.roomView = roomView;
+        this.serializableController = serializableController;
     }
 
     public void printMenuPageOne() {
@@ -42,7 +45,7 @@ public class MenuRoom {
                     }
                 }
                 case 11 -> flag = false;
-                case 0 -> roomController.exit();
+                case 0 -> serializableController.exit();
                 default -> System.out.println("Invalid choice");
             }
         }

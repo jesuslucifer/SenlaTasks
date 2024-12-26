@@ -19,9 +19,9 @@ import java.io.ObjectInputStream;
 
 public class MainController {
     private final Menu menu;
-    private  Hotel hotel;
 
     public MainController() throws IOException {
+        Hotel hotel;
         try (ObjectInputStream os = new ObjectInputStream(new FileInputStream("task-3/4/src/resources/save.dat"))) {
             hotel = (Hotel) os.readObject();
         } catch (FileNotFoundException | IIOException | ClassNotFoundException e) {
@@ -39,10 +39,16 @@ public class MainController {
         ServiceView serviceView = new ServiceView();
         ServiceController serviceController = new ServiceController(hotel, serviceView);
 
-        menu = new Menu(new MenuRoom(roomController, roomView), new MenuService(serviceController, serviceView), new MenuHotel(hotelController, hotelView), new MenuClient(serviceController, clientController, clientView));
+        SerializableController serializableController = new SerializableController(hotel);
+
+        menu = new Menu(
+                new MenuRoom(roomController, roomView, serializableController),
+                new MenuService(serviceController, serviceView, serializableController),
+                new MenuHotel(hotelController, hotelView, serializableController),
+                new MenuClient(serviceController, clientController, clientView, serializableController), serializableController);
     }
 
     public void run() {
-        menu.printMenu(hotel);
+        menu.printMenu();
     }
 }

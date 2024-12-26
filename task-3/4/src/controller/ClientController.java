@@ -2,16 +2,12 @@ package controller;
 
 import model.Client;
 import model.Hotel;
-import model.IExitProgram;
 import model.Room;
 import model.Service;
 import view.ClientView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
@@ -20,7 +16,7 @@ import java.util.Scanner;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
-public class ClientController implements IExitProgram {
+public class ClientController {
     private final Hotel hotel;
     private final List<Client> clients;
     private final ClientView view;
@@ -188,14 +184,5 @@ public class ClientController implements IExitProgram {
             }
         }
         return client;
-    }
-
-    public void exit() {
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("task-3/4/src/resources/save.dat"))) {
-            oos.writeObject(hotel);
-            System.exit(0);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
     }
 }

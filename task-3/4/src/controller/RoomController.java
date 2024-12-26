@@ -2,7 +2,6 @@ package controller;
 
 import model.Client;
 import model.Hotel;
-import model.IExitProgram;
 import model.Room;
 import model.RoomStatus;
 import view.RoomView;
@@ -10,9 +9,7 @@ import view.RoomView;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -23,7 +20,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 
-public class RoomController implements IExitProgram {
+public class RoomController {
     private final Hotel hotel;
     private final List<Room> rooms;
     private final RoomView view;
@@ -196,15 +193,6 @@ public class RoomController implements IExitProgram {
             prop.load(fis);
             changeCountRecordsHistory(Integer.parseInt(prop.getProperty("countRecordsHistory")));
             System.out.println("Success import count records in the history room from property, countRecordsHistory=" + prop.getProperty("countRecordsHistory"));
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    public void exit() {
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("task-3/4/src/resources/save.dat"))) {
-            oos.writeObject(hotel);
-            System.exit(0);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
