@@ -9,7 +9,7 @@ import java.util.List;
 
 public class RoomView {
 
-    public void printMenuPageOne(Boolean lockStatus) {
+    public void printMenuPageOne() {
         System.out.println("\tMenu Room");
         System.out.println("\t page 1");
         System.out.println("1. Print all rooms");
@@ -19,14 +19,19 @@ public class RoomView {
         System.out.println("5. Evict from room");
         System.out.println("6. Print history room");
         System.out.println("7. Print room free by date");
-        if (lockStatus) {
-            System.out.println("8. Change status of room");
-        }
-        System.out.println("9. Change cost of room");
-        System.out.println("10. Import room");
+        System.out.println("8. Change cost of room");
+        System.out.println("9. Import room");
+    }
+
+    public void printMenuWithChangeStatus() {
+        System.out.println("10. Change room status");
         System.out.println("11. Back");
         System.out.println("0. Exit");
+    }
 
+    public void printMenuWithoutChangeStatus() {
+        System.out.println("10. Back");
+        System.out.println("0. Exit");
     }
 
 //    public void printMenuPageTwo() {

@@ -24,29 +24,57 @@ public class MenuRoom {
     public void printMenuPageOne() {
         boolean flag = true;
         while (flag) {
-            roomView.printMenuPageOne(roomController.getRoom(1).getLockedChangeStatus());
+            roomView.printMenuPageOne();
 
-            switch (sc.nextInt()) {
-                case 1 -> printRooms("all");
-                case 2 -> printRooms("free");
-                case 3 -> printInfoRoom();
-                case 4 -> checkIntoRoom();
-                case 5 -> evictFromRoom();
-                case 6 -> printHistoryRoom();
-                case 7 -> printRoomFreeByDate();
-                case 8 -> changeStatus();
-                case 9 -> changeCost();
-                case 10 -> {
-                    try {
-                        roomController.importFromCSV("rooms.csv");
+            if (roomController.getRoom(1).getLockedChangeStatus()) {
+                roomView.printMenuWithChangeStatus();
+
+                switch (sc.nextInt()) {
+                    case 1 -> printRooms("all");
+                    case 2 -> printRooms("free");
+                    case 3 -> printInfoRoom();
+                    case 4 -> checkIntoRoom();
+                    case 5 -> evictFromRoom();
+                    case 6 -> printHistoryRoom();
+                    case 7 -> printRoomFreeByDate();
+                    case 8 -> changeCost();
+                    case 9 -> {
+                        try {
+                            roomController.importFromCSV("rooms.csv");
+                        }
+                        catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                     }
-                    catch (Exception e) {
-                        System.out.println(e.getMessage());
-                    }
+                    case 10 -> changeStatus();
+                    case 11 -> flag = false;
+                    case 0 -> serializableController.exit();
+                    default -> System.out.println("Invalid choice");
                 }
-                case 11 -> flag = false;
-                case 0 -> serializableController.exit();
-                default -> System.out.println("Invalid choice");
+            } else {
+                roomView.printMenuWithoutChangeStatus();
+
+                switch (sc.nextInt()) {
+                    case 1 -> printRooms("all");
+                    case 2 -> printRooms("free");
+                    case 3 -> printInfoRoom();
+                    case 4 -> checkIntoRoom();
+                    case 5 -> evictFromRoom();
+                    case 6 -> printHistoryRoom();
+                    case 7 -> printRoomFreeByDate();
+                    case 8 -> changeCost();
+                    case 9 -> {
+                        try {
+                            roomController.importFromCSV("rooms.csv");
+                        }
+                        catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                    }
+                    case 10 -> flag = false;
+                    case 0 -> serializableController.exit();
+                    default -> System.out.println("Invalid choice");
+                }
             }
         }
 
