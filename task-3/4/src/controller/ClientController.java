@@ -21,7 +21,6 @@ public class ClientController {
     private final List<Client> clients;
     private final ClientView view;
 
-
     public ClientController(Hotel hotel, ClientView view) {
         this.hotel = hotel;
         this.clients = hotel.getClients();

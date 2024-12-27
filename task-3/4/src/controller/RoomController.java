@@ -7,7 +7,9 @@ import model.RoomStatus;
 import view.RoomView;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import java.util.Comparator;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class RoomController {
@@ -26,6 +29,8 @@ public class RoomController {
         this.hotel = hotel;
         this.rooms = hotel.getRooms();
         this.view = view;
+        importLockedRoomProperty();
+        importCountRecordHistory();
     }
 
     public Room getRoom(int roomNumber) {
@@ -47,6 +52,10 @@ public class RoomController {
 
     public void changeStatusRoom(int roomNumber, RoomStatus status) {
         getRoom(roomNumber).changeStatusRoom(status);
+    }
+
+    public void changeLockedStatusRoom(boolean lockedStatus) {
+        rooms.forEach(room -> room.setLockedChangeStatus(lockedStatus));
     }
 
     public void changeCostRoom(int roomNumber, int cost) {
@@ -130,7 +139,11 @@ public class RoomController {
         }
     }
 
-    public void importFromCSV(String fileName) throws FileNotFoundException {
+    public void changeCountRecordsHistory(int countRecordsHistory) {
+        rooms.forEach(room -> room.setCountRecordsHistory(countRecordsHistory));
+    }
+
+    public void importFromCSV(String fileName) {
         try (Scanner scanner = new Scanner(new File(fileName))) {
             scanner.nextLine();
             while (scanner.hasNextLine()) {
@@ -159,6 +172,28 @@ public class RoomController {
             }
             System.out.println("Success import Rooms from rooms.csv");
         } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void importLockedRoomProperty() {
+        try (FileInputStream fis = new FileInputStream("task-3/4/src/resources/config.property")) {
+            Properties prop = new Properties();
+            prop.load(fis);
+            changeLockedStatusRoom(Boolean.parseBoolean(prop.getProperty("lockedChangeStatus")));
+            System.out.println("Success import locked rooms from property, lockedChangeStatus=" + prop.getProperty("lockedChangeStatus"));
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void importCountRecordHistory() {
+        try (FileInputStream fis = new FileInputStream("task-3/4/src/resources/config.property")) {
+            Properties prop = new Properties();
+            prop.load(fis);
+            changeCountRecordsHistory(Integer.parseInt(prop.getProperty("countRecordsHistory")));
+            System.out.println("Success import count records in the history room from property, countRecordsHistory=" + prop.getProperty("countRecordsHistory"));
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }

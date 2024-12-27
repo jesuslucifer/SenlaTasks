@@ -1,6 +1,7 @@
 package view;
 
 import controller.RoomController;
+import controller.SerializableController;
 import model.Client;
 import model.RoomStatus;
 
@@ -12,42 +13,85 @@ public class MenuRoom {
     private final RoomController roomController;
     private final RoomView roomView;
     private final Scanner sc = new Scanner(System.in);
+    private final SerializableController serializableController;
 
-    public MenuRoom(RoomController roomController, RoomView roomView) {
+    public MenuRoom(RoomController roomController, RoomView roomView, SerializableController serializableController) {
         this.roomController = roomController;
         this.roomView = roomView;
+        this.serializableController = serializableController;
     }
 
-    public void printMenu() {
+    public void printMenuPageOne() {
         boolean flag = true;
         while (flag) {
-            roomView.printMenu();
+            roomView.printMenuPageOne();
 
-            switch (sc.nextInt()) {
-                case 1 -> printRooms("all");
-                case 2 -> printRooms("free");
-                case 3 -> printInfoRoom();
-                case 4 -> checkIntoRoom();
-                case 5 -> evictFromRoom();
-                case 6 -> printHistoryRoom();
-                case 7 -> printRoomFreeByDate();
-                case 8 -> changeStatus();
-                case 9 -> changeCost();
-                case 10 -> {
-                    try {
-                        roomController.importFromCSV("rooms.csv");
+            if (roomController.getRoom(1).getLockedChangeStatus()) {
+                roomView.printMenuWithChangeStatus();
+
+                switch (sc.nextInt()) {
+                    case 1 -> printRooms("all");
+                    case 2 -> printRooms("free");
+                    case 3 -> printInfoRoom();
+                    case 4 -> checkIntoRoom();
+                    case 5 -> evictFromRoom();
+                    case 6 -> printHistoryRoom();
+                    case 7 -> printRoomFreeByDate();
+                    case 8 -> changeCost();
+                    case 9 -> {
+                        try {
+                            roomController.importFromCSV("rooms.csv");
+                        }
+                        catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                     }
-                    catch (Exception e) {
-                        System.out.println(e.getMessage());
-                    }
+                    case 10 -> changeStatus();
+                    case 11 -> flag = false;
+                    case 0 -> serializableController.exit();
+                    default -> System.out.println("Invalid choice");
                 }
-                case 11 -> flag = false;
-                case 0 -> System.exit(0);
-                default -> System.out.println("Invalid choice");
+            } else {
+                roomView.printMenuWithoutChangeStatus();
+
+                switch (sc.nextInt()) {
+                    case 1 -> printRooms("all");
+                    case 2 -> printRooms("free");
+                    case 3 -> printInfoRoom();
+                    case 4 -> checkIntoRoom();
+                    case 5 -> evictFromRoom();
+                    case 6 -> printHistoryRoom();
+                    case 7 -> printRoomFreeByDate();
+                    case 8 -> changeCost();
+                    case 9 -> {
+                        try {
+                            roomController.importFromCSV("rooms.csv");
+                        }
+                        catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                    }
+                    case 10 -> flag = false;
+                    case 0 -> serializableController.exit();
+                    default -> System.out.println("Invalid choice");
+                }
             }
         }
 
     }
+
+//    public void printMenuPageTwo() {
+//        boolean flag = true;
+//        while (flag) {
+//            roomView.printMenuPageTwo();
+//
+//            switch (sc.nextInt()) {
+//                case 4 -> flag = false;
+//                case 0 -> roomController.exit();
+//                default -> System.out.println("Invalid choice");
+//            }
+//        }
+//    }
 
     public void printRooms(String roomType) {
         boolean flag = true;

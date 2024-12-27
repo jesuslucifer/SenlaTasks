@@ -1,5 +1,7 @@
 package model;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Deque;
@@ -7,18 +9,22 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Room implements ToCSVImpl, updateFromCSVImpl {
+public class Room implements IToCSV, IUpdateFromCSV, Serializable {
+    @Serial
+    private static final long serialVersionUID = 3L;
     private static int idInc;
     private int id;
     private int roomNumber;
     private int cost;
     private int countStars;
+    private boolean lockedChangeStatus;
     private RoomStatus status;
     private int capacity;
     private final List<Client> clentList = new ArrayList<>();
     private LocalDate dateCheckIn;
     private LocalDate dateEvict;
     private final Deque<Client> historyClientQueue = new LinkedList<>();
+    private int countRecordsHistory;
 
     public Room(int roomNumber) {
         this.id = idInc++;
@@ -29,6 +35,8 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
         this.cost = (capacity + countStars) * 10;
         dateCheckIn = LocalDate.of(2020, 1, 1);
         dateEvict = LocalDate.of(2020, 1, 1);
+        lockedChangeStatus = true;
+        countRecordsHistory = 3;
     }
 
     public Room() {
@@ -43,6 +51,8 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
         this.capacity = capacity;
         this.dateCheckIn = dateCheckIn;
         this.dateEvict = dateEvict;
+        lockedChangeStatus = true;
+        countRecordsHistory = 3;
     }
 
     public int getRoomNumber() {
@@ -171,11 +181,15 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
     }
 
     public void changeStatusRoom(RoomStatus status) {
-        if (!isBusy()) {
-            setStatus(status);
-            System.out.println("The status of the room " + roomNumber + " has been changed to " + status);
+        if (lockedChangeStatus) {
+            if (!isBusy()) {
+                setStatus(status);
+                System.out.println("The status of the room " + roomNumber + " has been changed to " + status);
+            } else {
+                System.out.println("The status of the room " + roomNumber + " cannot be changed, there are visitors in the room");
+            }
         } else {
-            System.out.println("The status of the room " + roomNumber + " cannot be changed, there are visitors in the room");
+            System.out.println("The status of the room " + roomNumber + " cannot be changed");
         }
     }
 
@@ -197,6 +211,14 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
         this.id = id;
     }
 
+    public void setLockedChangeStatus(boolean lockedChangeStatus) {
+        this.lockedChangeStatus = lockedChangeStatus;
+    }
+
+    public boolean getLockedChangeStatus() {
+        return lockedChangeStatus;
+    }
+
     @Override
     public String toCSV() {
         return String.valueOf(id) + ',' + roomNumber + ',' + cost + ',' + countStars + ',' + status + ',' + capacity
@@ -213,4 +235,11 @@ public class Room implements ToCSVImpl, updateFromCSVImpl {
         setDateEvict(LocalDate.parse(csv[7]));
     }
 
+    public int getCountRecordsHistory() {
+        return countRecordsHistory;
+    }
+
+    public void setCountRecordsHistory(int countRecordsHistory) {
+        this.countRecordsHistory = countRecordsHistory;
+    }
 }

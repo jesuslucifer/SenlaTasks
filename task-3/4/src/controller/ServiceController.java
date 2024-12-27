@@ -13,7 +13,7 @@ public class ServiceController {
     private final List<Service> services;
     private final ServiceView view;
 
-    public ServiceController(ServiceView view, Hotel hotel) {
+    public ServiceController(Hotel hotel, ServiceView view) {
         this.view = view;
         this.services = hotel.getServices();
     }
@@ -79,5 +79,4 @@ public class ServiceController {
             System.out.println("Success import Services from services.csv");
         }
     }
-
 }

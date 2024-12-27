@@ -1,5 +1,6 @@
 package view;
 
+import controller.SerializableController;
 import controller.ServiceController;
 
 import java.util.Scanner;
@@ -8,10 +9,12 @@ public class MenuService {
     private final Scanner sc = new Scanner(System.in);
     private final ServiceController serviceController;
     private final ServiceView serviceView;
+    private final SerializableController serializableController;
 
-    public MenuService(ServiceController serviceController, ServiceView serviceView) {
+    public MenuService(ServiceController serviceController, ServiceView serviceView, SerializableController serializableController) {
         this.serviceController = serviceController;
         this.serviceView = serviceView;
+        this.serializableController = serializableController;
     }
 
     public void printMenu() {
@@ -32,7 +35,7 @@ public class MenuService {
                     }
                 }
                 case 5 -> flag = false;
-                case 0 -> System.exit(0);
+                case 0 -> serializableController.exit();
                 default -> System.out.println("Invalid choice");
             }
         }

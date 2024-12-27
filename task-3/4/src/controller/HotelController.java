@@ -1,6 +1,6 @@
 package controller;
 
-import model.ToCSVImpl;
+import model.IToCSV;
 import model.Client;
 import model.Hotel;
 import model.Room;
@@ -66,7 +66,7 @@ public class HotelController {
 
     }
 
-    public <T extends ToCSVImpl> void exportToCSV(List<T> list, String fileName) throws FileNotFoundException {
+    public <T extends IToCSV> void exportToCSV(List<T> list, String fileName) throws FileNotFoundException {
         try (PrintWriter writer = new PrintWriter(fileName)) {
             writer.write(checkType(list));
             writer.println();
