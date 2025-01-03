@@ -1,5 +1,7 @@
 package model;
 
+import controller.ConfigProperty;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -9,8 +11,13 @@ public class Service implements IToCSV, Serializable {
     private static final long serialVersionUID = 4L;
     private static int idInc;
     private final int id;
+
+    @ConfigProperty(propertyName = "service.serviceName", type = String.class)
     private String serviceName;
+
+    @ConfigProperty(propertyName = "service.cost", type = Integer.class)
     private int cost;
+
     private LocalDate serviceDate;
 
     public Service(String serviceName, int cost) {

@@ -27,11 +27,19 @@ public class MainController {
         } catch (FileNotFoundException | IIOException | ClassNotFoundException e) {
             hotel = new Hotel();
         }
+
         HotelView hotelView = new HotelView();
         HotelController hotelController = new HotelController(hotel, hotelView);
 
         RoomView roomView = new RoomView();
         RoomController roomController = new RoomController(hotel, roomView);
+
+        try {
+            Configurator configurator = new Configurator();
+            configurator.configure(roomController.getRoom(1));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         ClientView clientView = new ClientView();
         ClientController clientController = new ClientController(hotel, clientView);
