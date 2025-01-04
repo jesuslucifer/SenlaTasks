@@ -1,5 +1,7 @@
 package controller;
 
+import model.RoomStatus;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -17,19 +19,22 @@ public class Configurator {
         }
 
         for(Field field : clazz.getDeclaredFields()) {
-            ConfigProperty annotation = field.getAnnotation(ConfigProperty.class);
-            if(annotation != null) {
-                String value = properties.getProperty(annotation.propertyName());
+            if(field.isAnnotationPresent(ConfigProperty.class)) {
+                String value = properties.getProperty(field.getAnnotation(ConfigProperty.class).propertyName());
 
                 field.setAccessible(true);
                 if(value != null) {
-                    System.out.println(field.getName() + " : " + value + " : " + field.getType());
                     if(field.getType() == Integer.class || field.getType() == int.class) {
                         field.set(object, Integer.parseInt(value));
+                    } else  if (field.getType() == Boolean.class || field.getType() == boolean.class) {
+                        field.set(object, Boolean.parseBoolean(value));
+                    } else if (field.getType() == RoomStatus.class){
+                        field.set(object, RoomStatus.valueOf(value));
                     } else {
                         field.set(object, value);
                     }
                 }
+
             }
         }
     }

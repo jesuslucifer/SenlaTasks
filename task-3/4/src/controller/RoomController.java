@@ -29,8 +29,16 @@ public class RoomController {
         this.hotel = hotel;
         this.rooms = hotel.getRooms();
         this.view = view;
-        importLockedRoomProperty();
-        importCountRecordHistory();
+        Configurator configurator = new Configurator();
+        rooms.forEach(room -> {
+            try {
+                configurator.configure(room);
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+            }
+        });
+        //importLockedRoomProperty();
+        //importCountRecordHistory();
     }
 
     public Room getRoom(int roomNumber) {

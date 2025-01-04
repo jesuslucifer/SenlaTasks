@@ -24,7 +24,10 @@ public class Room implements IToCSV, IUpdateFromCSV, Serializable {
     @ConfigProperty(propertyName = "room.countStars", type = Integer.class)
     private int countStars;
 
+    @ConfigProperty(propertyName = "room.lockedChangeStatus", type = Boolean.class)
     private boolean lockedChangeStatus;
+
+    @ConfigProperty(propertyName = "room.status", type = RoomStatus.class)
     private RoomStatus status;
 
     @ConfigProperty(propertyName = "room.capacity", type = Integer.class)
@@ -34,6 +37,8 @@ public class Room implements IToCSV, IUpdateFromCSV, Serializable {
     private LocalDate dateCheckIn;
     private LocalDate dateEvict;
     private final Deque<Client> historyClientQueue = new LinkedList<>();
+
+    @ConfigProperty(propertyName = "room.countRecordHistory", type = Integer.class)
     private int countRecordsHistory;
 
     public Room(int roomNumber) {
