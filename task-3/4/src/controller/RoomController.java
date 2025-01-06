@@ -21,24 +21,28 @@ import java.util.Properties;
 import java.util.Scanner;
 
 public class RoomController {
-    private final Hotel hotel;
-    private final List<Room> rooms;
-    private final RoomView view;
+    @Inject
+    private Hotel hotel;
 
-    public RoomController(Hotel hotel, RoomView view) {
-        this.hotel = hotel;
-        this.rooms = hotel.getRooms();
-        this.view = view;
-        Configurator configurator = new Configurator();
-        rooms.forEach(room -> {
-            try {
-                configurator.configure(room);
-            } catch (Exception e) {
-                System.err.println(e.getMessage());
-            }
-        });
+    private List<Room> rooms;
+    @Inject
+    private RoomView view;
+
+    public RoomController() {
         //importLockedRoomProperty();
         //importCountRecordHistory();
+    }
+
+    public void init() {
+            rooms = hotel.getRooms();
+            Configurator configurator = new Configurator();
+            rooms.forEach(room -> {
+                try {
+                    configurator.configure(room);
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+            });
     }
 
     public Room getRoom(int roomNumber) {

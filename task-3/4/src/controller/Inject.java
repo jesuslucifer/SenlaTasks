@@ -7,8 +7,5 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface ConfigProperty {
-    String configFileName() default "config.property";
-    String propertyName() default "";
-    Class<?> type() default String.class;
+public @interface Inject {
 }

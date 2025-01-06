@@ -10,12 +10,19 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ServiceController {
-    private final List<Service> services;
-    private final ServiceView view;
+    @Inject
+    private Hotel hotel;
 
-    public ServiceController(Hotel hotel, ServiceView view) {
-        this.view = view;
-        this.services = hotel.getServices();
+    private List<Service> services;
+
+    @Inject
+    private ServiceView view;
+
+    public ServiceController() {
+    }
+
+    public void init() {
+        services = hotel.getServices();
     }
 
     public Service getService(String serviceName) {

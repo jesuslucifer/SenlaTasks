@@ -17,14 +17,19 @@ import java.util.Scanner;
 import static java.time.temporal.ChronoUnit.DAYS;
 
 public class ClientController {
-    private final Hotel hotel;
-    private final List<Client> clients;
-    private final ClientView view;
+    @Inject
+    private Hotel hotel;
 
-    public ClientController(Hotel hotel, ClientView view) {
-        this.hotel = hotel;
-        this.clients = hotel.getClients();
-        this.view = view;
+    private List<Client> clients;
+
+    @Inject
+    private ClientView view;
+
+    public ClientController() {
+    }
+
+    public void init() {
+        clients = hotel.getClients();
     }
 
     public Client getClient(String fullName) {

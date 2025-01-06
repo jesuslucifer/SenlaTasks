@@ -21,26 +21,37 @@ public class MainController {
     private final Menu menu;
 
     public MainController() throws IOException {
-        Hotel hotel;
-        try (ObjectInputStream os = new ObjectInputStream(new FileInputStream("task-3/4/src/resources/save.dat"))) {
-            hotel = (Hotel) os.readObject();
-        } catch (FileNotFoundException | IIOException | ClassNotFoundException e) {
-            hotel = new Hotel();
-        }
+        Hotel hotel =  loadHotelFromSave();
+        DI.register(Hotel.class, hotel);
 
         HotelView hotelView = new HotelView();
-        HotelController hotelController = new HotelController(hotel, hotelView);
+        DI.register(HotelView.class, hotelView);
+        HotelController hotelController = new HotelController();
+        DI.injectDependencies(hotelController);
 
         RoomView roomView = new RoomView();
-        RoomController roomController = new RoomController(hotel, roomView);
+        DI.register(RoomView.class, roomView);
+
+        RoomController roomController = new RoomController();
+        DI.injectDependencies(roomController);
+        roomController.init();
 
         ClientView clientView = new ClientView();
-        ClientController clientController = new ClientController(hotel, clientView);
+        DI.register(ClientView.class, clientView);
+
+        ClientController clientController = new ClientController();
+        DI.injectDependencies(clientController);
+        clientController.init();
 
         ServiceView serviceView = new ServiceView();
-        ServiceController serviceController = new ServiceController(hotel, serviceView);
+        DI.register(ServiceView.class, serviceView);
 
-        SerializableController serializableController = new SerializableController(hotel);
+        ServiceController serviceController = new ServiceController();
+        DI.injectDependencies(serviceController);
+        serviceController.init();
+
+        SerializableController serializableController = new SerializableController();
+        DI.injectDependencies(serializableController);
 
         menu = new Menu(
                 new MenuRoom(roomController, roomView, serializableController),
@@ -51,5 +62,15 @@ public class MainController {
 
     public void run() {
         menu.printMenu();
+    }
+
+    public Hotel loadHotelFromSave() {
+        try (ObjectInputStream os = new ObjectInputStream(new FileInputStream("task-3/4/src/resources/save.dat"))) {
+            return (Hotel) os.readObject();
+        } catch (FileNotFoundException | IIOException | ClassNotFoundException e) {
+            return new Hotel();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

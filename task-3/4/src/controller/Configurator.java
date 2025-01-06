@@ -12,7 +12,7 @@ public class Configurator {
         Class<?> clazz = object.getClass();
         Properties properties = new Properties();
 
-        try(FileInputStream fis = new FileInputStream("task-3/4/src/resources/annotationConfig.property")) {
+        try(FileInputStream fis = new FileInputStream("task-3/4/src/resources/config.property")) {
             properties.load(fis);
         } catch (IOException e) {
             throw new RuntimeException(e);
