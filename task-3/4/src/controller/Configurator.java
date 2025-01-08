@@ -20,7 +20,13 @@ public class Configurator {
 
         for(Field field : clazz.getDeclaredFields()) {
             if(field.isAnnotationPresent(ConfigProperty.class)) {
-                String value = properties.getProperty(field.getAnnotation(ConfigProperty.class).propertyName());
+                String propertyName = field.getAnnotation(ConfigProperty.class).propertyName();
+
+                if(propertyName.isEmpty()) {
+                    propertyName = clazz.getSimpleName() + "." + field.getName();
+                }
+
+                String value = properties.getProperty(propertyName);
 
                 field.setAccessible(true);
                 if(value != null) {
