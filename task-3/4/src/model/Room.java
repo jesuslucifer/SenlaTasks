@@ -17,22 +17,14 @@ public class Room implements IToCSV, IUpdateFromCSV, Serializable {
     private static int idInc;
     private int id;
     private int roomNumber;
-
-    @ConfigProperty(propertyName = "room.cost", type = Integer.class)
     private int cost;
-
-    @ConfigProperty(propertyName = "room.countStars", type = Integer.class)
     private int countStars;
 
     @ConfigProperty(propertyName = "room.lockedChangeStatus", type = Boolean.class)
     private boolean lockedChangeStatus;
 
-    @ConfigProperty(propertyName = "room.status", type = RoomStatus.class)
     private RoomStatus status;
-
-    @ConfigProperty(propertyName = "room.capacity", type = Integer.class)
     private int capacity;
-
     private final List<Client> clentList = new ArrayList<>();
     private LocalDate dateCheckIn;
     private LocalDate dateEvict;
