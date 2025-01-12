@@ -10,6 +10,7 @@ public class TestThread extends Thread {
             synchronized (lock) {
                 try {
                     System.out.println(Thread.currentThread().getName());
+                    Thread.sleep(500);
                     lock.notify();
                     lock.wait();
                 } catch (InterruptedException e) {
