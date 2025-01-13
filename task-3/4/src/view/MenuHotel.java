@@ -1,21 +1,24 @@
 package view;
 
+import controller.DI;
 import controller.HotelController;
+import controller.Inject;
 import controller.SerializableController;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class MenuHotel {
-    private final HotelController hotelController;
+    @Inject
+    HotelController hotelController;
     private final Scanner sc = new Scanner(System.in);
-    private final HotelView hotelView;
-    private final SerializableController serializableController;
+    @Inject
+    HotelView hotelView;
+    @Inject
+    SerializableController serializableController;
 
-    public MenuHotel(HotelController hotelController, HotelView hotelView, SerializableController serializableController) {
-        this.hotelController = hotelController;
-        this.hotelView = hotelView;
-        this.serializableController = serializableController;
+    public MenuHotel() {
+        DI.injectDependencies(this);
     }
 
     public void printMenu() {

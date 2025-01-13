@@ -8,9 +8,10 @@ import java.io.ObjectOutputStream;
 
 public class SerializableController {
     @Inject
-    private Hotel hotel;
+    Hotel hotel;
 
     public SerializableController() {
+        DI.injectDependencies(this);
     }
 
     public void exit() {

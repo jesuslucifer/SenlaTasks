@@ -1,5 +1,7 @@
 package view;
 
+import controller.DI;
+import controller.Inject;
 import controller.RoomController;
 import controller.SerializableController;
 import model.Client;
@@ -10,15 +12,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MenuRoom {
-    private final RoomController roomController;
-    private final RoomView roomView;
+    @Inject
+    RoomController roomController;
+    @Inject
+    RoomView roomView;
     private final Scanner sc = new Scanner(System.in);
-    private final SerializableController serializableController;
+    @Inject
+    SerializableController serializableController;
 
-    public MenuRoom(RoomController roomController, RoomView roomView, SerializableController serializableController) {
-        this.roomController = roomController;
-        this.roomView = roomView;
-        this.serializableController = serializableController;
+    public MenuRoom() {
+        DI.injectDependencies(this);
     }
 
     public void printMenuPageOne() {

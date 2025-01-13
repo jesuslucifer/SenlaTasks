@@ -22,13 +22,15 @@ import java.util.Scanner;
 
 public class RoomController {
     @Inject
-    private Hotel hotel;
+    Hotel hotel;
 
     private List<Room> rooms;
     @Inject
-    private RoomView view;
+    RoomView view;
 
     public RoomController() {
+        DI.injectDependencies(this);
+        init();
         //importLockedRoomProperty();
         //importCountRecordHistory();
     }

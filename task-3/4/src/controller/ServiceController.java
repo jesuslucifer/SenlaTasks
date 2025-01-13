@@ -11,14 +11,16 @@ import java.util.Scanner;
 
 public class ServiceController {
     @Inject
-    private Hotel hotel;
+    Hotel hotel;
 
     private List<Service> services;
 
     @Inject
-    private ServiceView view;
+    ServiceView view;
 
     public ServiceController() {
+        DI.injectDependencies(this);
+        init();
     }
 
     public void init() {

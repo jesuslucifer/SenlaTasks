@@ -1,23 +1,26 @@
 package view;
 
+import controller.DI;
+import controller.Inject;
 import controller.SerializableController;
 
 import java.util.Scanner;
 
 public class Menu {
-    private final MenuRoom menuRoom;
-    private final MenuHotel menuHotel;
-    private final MenuClient menuClient;
-    private final MenuService menuService;
+    @Inject
+    MenuRoom menuRoom;
+    @Inject
+    MenuHotel menuHotel;
+    @Inject
+    MenuClient menuClient;
+    @Inject
+    MenuService menuService;
     private final Scanner sc = new Scanner(System.in);
-    private final SerializableController serializableController;
+    @Inject
+    SerializableController serializableController;
 
-    public Menu(MenuRoom menuRoom, MenuService menuService, MenuHotel menuHotel, MenuClient menuClient, SerializableController serializableController) {
-        this.menuRoom = menuRoom;
-        this.menuService = menuService;
-        this.menuHotel = menuHotel;
-        this.menuClient = menuClient;
-        this.serializableController = serializableController;
+    public Menu() {
+        DI.injectDependencies(this);
     }
 
     public void printMenu() {
