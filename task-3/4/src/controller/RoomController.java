@@ -29,10 +29,6 @@ public class RoomController {
     RoomView view;
 
     public RoomController() {
-        DI.injectDependencies(this);
-        init();
-        //importLockedRoomProperty();
-        //importCountRecordHistory();
     }
 
     public void init() {
@@ -45,6 +41,7 @@ public class RoomController {
                     System.err.println(e.getMessage());
                 }
             });
+            System.out.println("Initializing rooms...");
     }
 
     public Room getRoom(int roomNumber) {

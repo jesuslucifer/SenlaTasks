@@ -11,7 +11,6 @@ public class SerializableController {
     Hotel hotel;
 
     public SerializableController() {
-        DI.injectDependencies(this);
     }
 
     public void exit() {

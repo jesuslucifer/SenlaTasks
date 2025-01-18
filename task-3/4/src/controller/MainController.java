@@ -14,15 +14,24 @@ public class MainController {
     Hotel hotel;
     @Inject
     Menu menu;
+    @Inject
+    RoomController roomController;
+    @Inject
+    ClientController clientController;
+    @Inject
+    ServiceController serviceController;
 
-    public MainController(){
+
+    public MainController() {
     }
 
     public void run() {
         hotel = loadHotelFromSave();
         DI.register(Hotel.class, hotel);
-
         DI.injectDependencies(this);
+        roomController.init();
+        clientController.init();
+        serviceController.init();
         menu.printMenu();
     }
 

@@ -24,7 +24,6 @@ public class HotelController {
     HotelView view;
 
     public HotelController() {
-        DI.injectDependencies(this);
     }
 
     public List<Room> getListFreeRooms() {

@@ -19,8 +19,6 @@ public class ServiceController {
     ServiceView view;
 
     public ServiceController() {
-        DI.injectDependencies(this);
-        init();
     }
 
     public void init() {

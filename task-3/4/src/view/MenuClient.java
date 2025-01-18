@@ -1,7 +1,6 @@
 package view;
 
 import controller.ClientController;
-import controller.DI;
 import controller.Inject;
 import controller.SerializableController;
 import controller.ServiceController;
@@ -21,7 +20,6 @@ public class MenuClient{
     private final Scanner sc = new Scanner(System.in);
 
     public MenuClient(){
-        DI.injectDependencies(this);
     }
 
     public void printMenu() {

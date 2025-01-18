@@ -1,6 +1,5 @@
 package view;
 
-import controller.DI;
 import controller.Inject;
 import controller.SerializableController;
 import controller.ServiceController;
@@ -17,7 +16,6 @@ public class MenuService {
     SerializableController serializableController;
 
     public MenuService() {
-        DI.injectDependencies(this);
     }
 
     public void printMenu() {

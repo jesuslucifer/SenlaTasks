@@ -25,12 +25,11 @@ public class ClientController {
     ClientView view;
 
     public ClientController() {
-        DI.injectDependencies(this);
-        init();
     }
 
     public void init() {
         clients = hotel.getClients();
+        System.out.println("Initializing clients...");
     }
 
     public Client getClient(String fullName) {

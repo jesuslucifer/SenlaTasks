@@ -35,6 +35,7 @@ public class DI {
         Object instance = createInstance(clazz);
         if (instance != null) {
             instances.put(clazz, instance);
+            injectDependencies(instance);
         }
         return instance;
     }
