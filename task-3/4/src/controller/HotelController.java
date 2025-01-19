@@ -16,12 +16,14 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class HotelController {
+
+    @Inject
     Hotel hotel;
+
+    @Inject
     HotelView view;
 
-    public HotelController(Hotel hotel, HotelView view) {
-        this.hotel = hotel;
-        this.view = view;
+    public HotelController() {
     }
 
     public List<Room> getListFreeRooms() {

@@ -1,5 +1,7 @@
 package model;
 
+import controller.ConfigProperty;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -17,13 +19,18 @@ public class Room implements IToCSV, IUpdateFromCSV, Serializable {
     private int roomNumber;
     private int cost;
     private int countStars;
+
+    @ConfigProperty(propertyName = "room.lockedChangeStatus", type = Boolean.class)
     private boolean lockedChangeStatus;
+
     private RoomStatus status;
     private int capacity;
     private final List<Client> clentList = new ArrayList<>();
     private LocalDate dateCheckIn;
     private LocalDate dateEvict;
     private final Deque<Client> historyClientQueue = new LinkedList<>();
+
+    @ConfigProperty(propertyName = "room.countRecordHistory", type = Integer.class)
     private int countRecordsHistory;
 
     public Room(int roomNumber) {

@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 public class SerializableController {
-    private final Hotel hotel;
+    @Inject
+    Hotel hotel;
 
-    public SerializableController(Hotel hotel) {
-        this.hotel = hotel;
+    public SerializableController() {
     }
 
     public void exit() {

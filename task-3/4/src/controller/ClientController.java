@@ -7,7 +7,6 @@ import model.Service;
 import view.ClientView;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
@@ -17,14 +16,20 @@ import java.util.Scanner;
 import static java.time.temporal.ChronoUnit.DAYS;
 
 public class ClientController {
-    private final Hotel hotel;
-    private final List<Client> clients;
-    private final ClientView view;
+    @Inject
+    Hotel hotel;
 
-    public ClientController(Hotel hotel, ClientView view) {
-        this.hotel = hotel;
-        this.clients = hotel.getClients();
-        this.view = view;
+    private List<Client> clients;
+
+    @Inject
+    ClientView view;
+
+    public ClientController() {
+    }
+
+    public void init() {
+        clients = hotel.getClients();
+        System.out.println("Initializing clients...");
     }
 
     public Client getClient(String fullName) {
@@ -132,7 +137,7 @@ public class ClientController {
         return clients.isEmpty();
     }
 
-    public void importFromCSV(String fileName) throws FileNotFoundException {
+    public void importFromCSV(String fileName){
         try (Scanner scanner = new Scanner(new File(fileName))) {
             scanner.nextLine();
             while (scanner.hasNextLine()) {

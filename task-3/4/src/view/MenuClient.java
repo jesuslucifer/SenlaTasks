@@ -1,24 +1,25 @@
 package view;
 
 import controller.ClientController;
+import controller.Inject;
 import controller.SerializableController;
 import controller.ServiceController;
 
 import java.util.Scanner;
 
 public class MenuClient{
-    private final ClientController clientController;
-    private final ServiceController serviceController;
-    private final ClientView clientView;
-    private final SerializableController serializableController;
+    @Inject
+    ClientController clientController;
+    @Inject
+    ServiceController serviceController;
+    @Inject
+    ClientView clientView;
+    @Inject
+    SerializableController serializableController;
 
     private final Scanner sc = new Scanner(System.in);
 
-    public MenuClient(ServiceController serviceController, ClientController clientController, ClientView clientView, SerializableController serializableController){
-        this.serviceController = serviceController;
-        this.clientController = clientController;
-        this.clientView = clientView;
-        this.serializableController = serializableController;
+    public MenuClient(){
     }
 
     public void printMenu() {
