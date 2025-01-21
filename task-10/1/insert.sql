@@ -79,7 +79,7 @@ INSERT INTO printer(model, color, type, price) VALUES
 ('L1261', 'n', 'Matrix', '20.31'),
 ('P2207', 'y', 'Matrix', '10.31'),
 ('P2211', 'n', 'Matrix', '15.22'),
-('P2103', 'n', 'Matrix', '10.55'),
+('P2103', 'n', 'Matrix', '10.31'),
 ('SL-M2020', 'y', 'Laser', '50.35'),
 ('SM-M2022', 'y', 'Laser', '60.78'),
 ('SL-M2023', 'y', 'Laser', '90.99');

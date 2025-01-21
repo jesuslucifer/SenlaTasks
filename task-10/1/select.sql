@@ -60,7 +60,7 @@ FROM pc pc1 JOIN pc pc2 WHERE pc1.speed = pc2.speed AND pc1.ram = pc2.ram AND pc
 SELECT type, laptop.model, speed FROM laptop JOIN product ON laptop.model = product.model WHERE speed < (SELECT MIN(speed) FROM pc);
 
 #18.Найти производителей самых дешевых цветных принтеров. Вывести поля: maker, price.
-SELECT maker, price FROM printer JOIN product ON printer.model = product.model WHERE color = 'y' and price = (SELECT MIN(price) FROM printer);
+SELECT maker, price FROM printer JOIN product ON printer.model = product.model WHERE color = 'y' and price = (SELECT MIN(price) FROM printer WHERE color = 'y');
 
 #19.Для каждого производителя найти средний размер экрана выпускаемых им ноутбуков.
 #Вывести поля: maker, средний размер экрана.
