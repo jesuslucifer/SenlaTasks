@@ -6,8 +6,9 @@ import model.Client;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClientDAO implements IGenericDAO<Client> {
@@ -48,6 +49,28 @@ public class ClientDAO implements IGenericDAO<Client> {
 
     @Override
     public List<Client> findAll() {
-        return List.of();
+        List<Client> clients = new ArrayList<>();
+        String query = "SELECT * FROM Clients";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                clients.add(toClient(resultSet));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return clients;
     }
+
+    public Client toClient(ResultSet resultSet) throws SQLException {
+        return new Client(
+                resultSet.getInt("id"),
+                resultSet.getString("fullName"),
+                resultSet.getInt("roomNumber"),
+                resultSet.getString("dateCheckIn"),
+                resultSet.getString("dateEvict")
+        );
+    }
+
 }

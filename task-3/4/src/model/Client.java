@@ -31,6 +31,14 @@ public class Client implements IToCSV, IUpdateFromCSV, Serializable {
         this.dateEvict = dateEvict;
     }
 
+    public Client(int id, String fullName, int roomNumber, String dateCheckIn, String dateEvict) {
+        this.id = id;
+        this.fullName = fullName;
+        this.roomNumber = roomNumber;
+        this.dateCheckIn = LocalDate.parse(dateCheckIn);
+        this.dateEvict = LocalDate.parse(dateEvict);
+    }
+
     public int getId() {
         return id;
     }
