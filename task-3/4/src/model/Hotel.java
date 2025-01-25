@@ -1,6 +1,8 @@
 package model;
 
+import dao.ClientDAO;
 import dao.RoomDAO;
+import dao.ServiceDAO;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -17,6 +19,8 @@ public class Hotel implements Serializable {
     private final List<Service> services = new ArrayList<>();
     private final List<Client> clients = new ArrayList<>();
     private RoomDAO roomDAO = new RoomDAO();
+    private ServiceDAO serviceDAO = new ServiceDAO();
+    private ClientDAO clientDAO = new ClientDAO();
 
     public Hotel() {
         int COUNT_ROOMS = 11;
@@ -26,22 +30,23 @@ public class Hotel implements Serializable {
         System.out.println("The hotel is open, there are " + (COUNT_ROOMS - 1) + " rooms available");
     }
 
+    public Hotel(int i) {
+    }
+
     public List<Room> getListFreeRooms() {
-        List<Room> list = new ArrayList<>();
-        rooms.stream().filter(Room::isFree).forEach(list::add);
-        return list;
+        return roomDAO.findByStatus("FREE");
     }
 
     public List<Room> getRooms() {
-        return rooms;
+        return roomDAO.findAll();
     }
 
     public List<Client> getClients() {
-        return clients;
+        return clientDAO.findAll();
     }
 
     public List<Service> getServices() {
-        return services;
+        return serviceDAO.findAll();
     }
 
     public LocalDate formatDate(String date) {

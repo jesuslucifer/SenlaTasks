@@ -33,21 +33,22 @@ public class MainController {
     public void run() {
         if (!isHotelInitialized()) {
             hotel = new Hotel();
+        } else {
+            hotel = new Hotel(1);
         }
         DI.register(Hotel.class, hotel);
         DI.injectDependencies(this);
-        roomController.init();
-        clientController.init();
-        serviceController.init();
         menu.printMenu();
     }
 
     public boolean isHotelInitialized() {
         String query = "SELECT COUNT(*) FROM Rooms";
-        try (Connection connection = DatabaseConnection.getInstance().getConnection()) {
+        try {
+            Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
+                System.out.println(resultSet.getInt(1));
                 return resultSet.getInt(1) > 0;
             }
         } catch (SQLException e) {
