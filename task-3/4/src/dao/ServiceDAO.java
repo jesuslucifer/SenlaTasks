@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +20,8 @@ public class ServiceDAO implements IGenericDAO<Service> {
     @Override
     public void create(Service service) {
         String query = "INSERT INTO Services (serviceName, cost) VALUES (?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, service.getServiceName());
             statement.setInt(2, service.getCost());
             statement.executeUpdate();
@@ -36,8 +36,16 @@ public class ServiceDAO implements IGenericDAO<Service> {
     }
 
     @Override
-    public void update(Service entity) {
-
+    public void update(Service service) {
+        String query = "UPDATE Services SET cost = ? WHERE serviceName = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, service.getCost());
+            preparedStatement.setString(2, service.getServiceName());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     @Override

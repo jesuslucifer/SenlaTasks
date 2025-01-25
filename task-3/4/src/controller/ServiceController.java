@@ -37,7 +37,7 @@ public class ServiceController {
     }
 
     public void changeCostService(String serviceName, int cost) {
-        getService(serviceName).setCost(cost);
+        serviceDAO.update(new Service(serviceName, cost));
     }
 
     public void printServices() {
@@ -45,11 +45,11 @@ public class ServiceController {
     }
 
     public void addService(String serviceName, int cost) {
-        services.add(new Service(serviceName, cost));
+        serviceDAO.create(new Service(serviceName, cost));
     }
 
     public boolean checkService(String service) {
-        for (Service service1 : services) {
+        for (Service service1 : serviceDAO.findAll()) {
             if (service1.getServiceName().equals(service)) {
                 return true;
             }
@@ -58,7 +58,7 @@ public class ServiceController {
     }
 
     public boolean servicesIsEmpty() {
-        return services.isEmpty();
+        return serviceDAO.findAll().isEmpty();
     }
 
     public void importFromCSV(String fileName) throws FileNotFoundException {
