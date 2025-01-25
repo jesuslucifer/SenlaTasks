@@ -62,6 +62,17 @@ public class Room implements IToCSV, IUpdateFromCSV, Serializable {
         countRecordsHistory = 3;
     }
 
+    public Room(int id, int roomNumber, int cost, int countStars, String status, int capacity, String dateCheckIn, String dateEvict) {
+        this.id = id;
+        this.roomNumber = roomNumber;
+        this.cost = cost;
+        this.countStars = countStars;
+        this.status = stringToRoomStatus(status);
+        this.capacity = capacity;
+        this.dateCheckIn = LocalDate.parse(dateCheckIn);
+        this.dateEvict = LocalDate.parse(dateEvict);
+    }
+
     public int getRoomNumber() {
         return roomNumber;
     }
@@ -116,6 +127,10 @@ public class Room implements IToCSV, IUpdateFromCSV, Serializable {
 
     public LocalDate getDateCheckIn() {
         return dateCheckIn;
+    }
+
+    public RoomStatus stringToRoomStatus(String status) {
+        return RoomStatus.valueOf(status.toUpperCase());
     }
 
     public void setDateEvict(LocalDate date) {

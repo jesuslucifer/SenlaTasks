@@ -6,11 +6,13 @@ import model.Room;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RoomDAO implements IGenericDAO<Room> {
-    private Connection connection;
+    private final Connection connection;
 
     public RoomDAO() {
         connection = DatabaseConnection.getInstance().getConnection();
@@ -19,7 +21,8 @@ public class RoomDAO implements IGenericDAO<Room> {
     @Override
     public void create(Room room) {
         String query = "INSERT INTO Rooms(roomNumber, cost, status, capacity, dateCheckIn, dateEvict, countStars)  VALUES (?, ?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, room.getRoomNumber());
             statement.setInt(2, room.getCost());
             statement.setString(3, room.getStatus().toString());
@@ -49,6 +52,45 @@ public class RoomDAO implements IGenericDAO<Room> {
 
     @Override
     public List<Room> findAll() {
-        return List.of();
+        List<Room> rooms = new ArrayList<>();
+        String query = "SELECT * FROM Rooms";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                rooms.add(toRoom(resultSet));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return rooms;
+    }
+
+    public List<Room> findByStatus(String status) {
+        List<Room> rooms = new ArrayList<>();
+        String query = "SELECT * FROM Rooms WHERE status = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, status);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                rooms.add(toRoom(resultSet));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return rooms;
+    }
+
+    public Room toRoom(ResultSet resultSet) throws SQLException {
+        return new Room(
+                resultSet.getInt("id"),
+                resultSet.getInt("roomNumber"),
+                resultSet.getInt("cost"),
+                resultSet.getInt("countStars"),
+                resultSet.getString("status"),
+                resultSet.getInt("capacity"),
+                resultSet.getString("dateCheckIn"),
+                resultSet.getString("dateEvict"));
     }
 }
