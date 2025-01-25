@@ -5,7 +5,10 @@ import model.Service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceDAO implements IGenericDAO<Service> {
@@ -44,6 +47,21 @@ public class ServiceDAO implements IGenericDAO<Service> {
 
     @Override
     public List<Service> findAll() {
-        return List.of();
+        List<Service> services = new ArrayList<>();
+        String query = "SELECT * FROM Services";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                services.add(toService(resultSet));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return services;
+    }
+
+    public Service toService(ResultSet resultSet) throws SQLException {
+        return new Service(resultSet.getString("serviceName"), resultSet.getInt("cost"));
     }
 }

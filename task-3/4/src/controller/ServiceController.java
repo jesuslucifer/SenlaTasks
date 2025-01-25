@@ -1,5 +1,6 @@
 package controller;
 
+import dao.ServiceDAO;
 import model.Hotel;
 import model.Service;
 import view.ServiceView;
@@ -14,6 +15,7 @@ public class ServiceController {
     Hotel hotel;
 
     private List<Service> services;
+    private ServiceDAO serviceDAO = new ServiceDAO();
 
     @Inject
     ServiceView view;
@@ -39,7 +41,7 @@ public class ServiceController {
     }
 
     public void printServices() {
-        view.printServices(services);
+        view.printServices(serviceDAO.findAll());
     }
 
     public void addService(String serviceName, int cost) {
