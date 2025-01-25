@@ -35,8 +35,24 @@ public class RoomDAO implements IGenericDAO<Room> {
         }
     }
 
+//    @Override
+//    public Room read(int id) {
+//        return null;
+//    }
+
     @Override
-    public Room read(int id) {
+    public Room read(int roomNumber) {
+        String query = "SELECT * FROM Rooms WHERE roomNumber = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, roomNumber);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return toRoom(resultSet);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
         return null;
     }
 

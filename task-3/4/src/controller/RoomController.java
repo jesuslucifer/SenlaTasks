@@ -1,5 +1,6 @@
 package controller;
 
+import dao.RoomDAO;
 import model.Client;
 import model.Hotel;
 import model.Room;
@@ -25,6 +26,7 @@ public class RoomController {
     Hotel hotel;
 
     private List<Room> rooms;
+    private RoomDAO roomDAO = new RoomDAO();
     @Inject
     RoomView view;
 
@@ -45,12 +47,7 @@ public class RoomController {
     }
 
     public Room getRoom(int roomNumber) {
-        for (Room room : rooms) {
-            if (room.getRoomNumber() == roomNumber) {
-                return room;
-            }
-        }
-        return null;
+       return roomDAO.read(roomNumber);
     }
 
     public void checkIntoRoom(List<Client> buffClients, int roomNumber, LocalDate dateCheckIn, LocalDate dateEvict) {
@@ -74,11 +71,11 @@ public class RoomController {
     }
 
     public void printRooms(String typeSort, String typeRoom) {
-        List<Room> list = rooms;
+        List<Room> list = roomDAO.findAll();
 
         if (typeRoom.equals("free"))
         {
-            list = hotel.getListFreeRooms();
+            list = roomDAO.findByStatus("FREE");
         }
 
         switch (typeSort) {
@@ -132,7 +129,7 @@ public class RoomController {
     }
 
     public boolean checkRoom(int roomNumber) {
-        return 0 < roomNumber && roomNumber <= rooms.size();
+        return 0 < roomNumber && roomNumber <= roomDAO.findAll().size();
     }
 
     public boolean checkCapacityRoom(int roomNumber, int countClients) {
