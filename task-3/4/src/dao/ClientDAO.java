@@ -21,7 +21,8 @@ public class ClientDAO implements IGenericDAO<Client> {
     @Override
     public void create(Client client) {
         String query = "INSERT INTO Clients (fullName, roomNumber, dateCheckIn, dateEvict) VALUES (?, ?, ?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, client.getFullName());
             statement.setInt(2, client.getRoomNumber());
             statement.setDate(3, Date.valueOf(client.getDateCheckIn()));
@@ -53,6 +54,22 @@ public class ClientDAO implements IGenericDAO<Client> {
         String query = "SELECT * FROM Clients";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                clients.add(toClient(resultSet));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return clients;
+    }
+
+    public List<Client> findInRoom(int roomNumber) {
+        List<Client> clients = new ArrayList<>();
+        String query = "SELECT * FROM Clients WHERE ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, roomNumber);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 clients.add(toClient(resultSet));
