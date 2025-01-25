@@ -159,6 +159,8 @@ public class MenuRoom {
             clientList.add(client1);
         }
 
+
+
         roomController.checkIntoRoom(clientList, roomNumber, client.getDateCheckIn(), client.getDateEvict());
     }
 

@@ -1,5 +1,7 @@
 package model;
 
+import dao.RoomDAO;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
@@ -14,11 +16,12 @@ public class Hotel implements Serializable {
     private final List<Room> rooms = new ArrayList<>();
     private final List<Service> services = new ArrayList<>();
     private final List<Client> clients = new ArrayList<>();
+    private RoomDAO roomDAO = new RoomDAO();
 
     public Hotel() {
         int COUNT_ROOMS = 11;
         for (int i = 1; i < COUNT_ROOMS; i++) {
-            rooms.add(new Room(i));
+            roomDAO.create(new Room(i));
         }
         System.out.println("The hotel is open, there are " + (COUNT_ROOMS - 1) + " rooms available");
     }
