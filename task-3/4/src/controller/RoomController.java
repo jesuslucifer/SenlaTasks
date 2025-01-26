@@ -1,5 +1,6 @@
 package controller;
 
+import dao.ClientDAO;
 import dao.RoomDAO;
 import model.Client;
 import model.Hotel;
@@ -24,26 +25,14 @@ import java.util.Scanner;
 public class RoomController {
     @Inject
     Hotel hotel;
-
-    private List<Room> rooms;
-    private RoomDAO roomDAO = new RoomDAO();
+    @Inject
+    RoomDAO roomDAO;
+    @Inject
+    ClientDAO clientDAO;
     @Inject
     RoomView view;
 
     public RoomController() {
-    }
-
-    public void init() {
-            rooms = hotel.getRooms();
-            Configurator configurator = new Configurator();
-            rooms.forEach(room -> {
-                try {
-                    configurator.configure(room);
-                } catch (Exception e) {
-                    System.err.println(e.getMessage());
-                }
-            });
-            System.out.println("Initializing rooms...");
     }
 
     public Room getRoom(int roomNumber) {
@@ -51,11 +40,36 @@ public class RoomController {
     }
 
     public void checkIntoRoom(List<Client> buffClients, int roomNumber, LocalDate dateCheckIn, LocalDate dateEvict) {
-       getRoom(roomNumber).checkIntoRoom(buffClients, dateCheckIn, dateEvict, hotel.getClients());
+       //getRoom(roomNumber).checkIntoRoom(buffClients, dateCheckIn, dateEvict, hotel.getClients());
+       Room room = getRoom(roomNumber);
+       if (room.isFree() && room.getCapacity() >= buffClients.size()) {
+           room.setStatus(RoomStatus.BUSY);
+           room.setDateCheckIn(dateCheckIn);
+           room.setDateEvict(dateEvict);
+           roomDAO.update(room);
+           for (Client client : buffClients) {
+               client.setRoomNumber(roomNumber);
+               client.setDateCheckIn(dateCheckIn);
+               client.setDateEvict(dateEvict);
+               clientDAO.create(client);
+           }
+           System.out.println("The clients is accommodated in " + room.getRoomNumber() + " room");
+       } else {
+           System.out.println("This room is not available");
+       }
     }
 
     public void evictFromRoom(int roomNumber) {
-        getRoom(roomNumber).evictFromRoom(hotel.getClients());
+        Room room = getRoom(roomNumber);
+        room.setStatus(RoomStatus.FREE);
+        room.setDateCheckIn(LocalDate.of(2020, 1, 1));
+        room.setDateEvict(LocalDate.of(2020, 1, 1));
+        roomDAO.update(room);
+        List<Client> clients = clientDAO.findInRoom(roomNumber);
+        for (Client client : clients) {
+            clientDAO.delete(client);
+        }
+        System.out.println("The guest has been evicted from the " + roomNumber + " room");
     }
 
     public void changeStatusRoom(int roomNumber, RoomStatus status) {
@@ -63,11 +77,11 @@ public class RoomController {
     }
 
     public void changeLockedStatusRoom(boolean lockedStatus) {
-        rooms.forEach(room -> room.setLockedChangeStatus(lockedStatus));
+        roomDAO.findAll().forEach(room -> room.setLockedChangeStatus(lockedStatus));
     }
 
     public void changeCostRoom(int roomNumber, int cost) {
-        getRoom(roomNumber).changeCostRoom(cost);
+        roomDAO.update(new Room(roomNumber, cost));
     }
 
     public void printRooms(String typeSort, String typeRoom) {
@@ -106,7 +120,7 @@ public class RoomController {
     }
 
     public void printInfoRoom(int roomNumber) {
-        view.printInfoRoom(getRoom(roomNumber));
+        view.printInfoRoom(roomDAO.read(roomNumber), clientDAO.findInRoom(roomNumber));
     }
 
     public void printHistoryRoom(int roomNumber) {
@@ -116,7 +130,7 @@ public class RoomController {
 
     public void printRoomFreeByDate(String date) {
         List<Room> freeRooms = new ArrayList<>();
-        for (Room room : rooms) {
+        for (Room room : roomDAO.findAll()) {
             if (room.getDateEvict().isBefore(formatDate(date)) && !room.getStatus().equals(RoomStatus.REPAIRED)) {
                 freeRooms.add(room);
             }
@@ -148,7 +162,7 @@ public class RoomController {
     }
 
     public void changeCountRecordsHistory(int countRecordsHistory) {
-        rooms.forEach(room -> room.setCountRecordsHistory(countRecordsHistory));
+        roomDAO.findAll().forEach(room -> room.setCountRecordsHistory(countRecordsHistory));
     }
 
     public void importFromCSV(String fileName) {
@@ -158,7 +172,7 @@ public class RoomController {
                 String line = scanner.nextLine();
                 String[] split = line.split(",");
                 boolean found = false;
-                for (Room room : rooms) {
+                for (Room room : roomDAO.findAll()) {
                     if (room.getId() == Integer.parseInt(split[0])) {
                         room.updateFromCSV(split);
                         found = true;

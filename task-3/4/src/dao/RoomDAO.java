@@ -57,8 +57,19 @@ public class RoomDAO implements IGenericDAO<Room> {
     }
 
     @Override
-    public void update(Room entity) {
-
+    public void update(Room room) {
+        String query = "UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ? WHERE roomNumber = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, room.getCost());
+            preparedStatement.setString(2, room.getStatus().toString());
+            preparedStatement.setDate(3, Date.valueOf(room.getDateCheckIn()));
+            preparedStatement.setDate(4, Date.valueOf(room.getDateEvict()));
+            preparedStatement.setInt(5, room.getRoomNumber());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     @Override

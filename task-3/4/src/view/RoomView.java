@@ -77,12 +77,12 @@ public class RoomView {
         }
     }
 
-    public void printInfoRoom(Room room) {
+    public void printInfoRoom(Room room, List<Client> clients) {
         if (room.isBusy()) {
             System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " +
                     room.getCountStars() + " Capacity: " + room.getCapacity() + " Cost: " + room.getCost() + " ID: " + room.getId());
             System.out.println("Clients: ");
-            for (Client client : room.getClentList()) {
+            for (Client client : clients) {
                 System.out.println("Full name: " + client.getFullName() + " date check in: " + client.getDateCheckIn() + " date evict: " + client.getDateEvict());
             }
             System.out.println();
