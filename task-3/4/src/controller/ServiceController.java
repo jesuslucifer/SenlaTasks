@@ -13,22 +13,16 @@ import java.util.Scanner;
 public class ServiceController {
     @Inject
     Hotel hotel;
-
-    private List<Service> services;
-    private ServiceDAO serviceDAO = new ServiceDAO();
-
+    @Inject
+    ServiceDAO serviceDAO;
     @Inject
     ServiceView view;
 
     public ServiceController() {
     }
 
-    public void init() {
-        services = hotel.getServices();
-    }
-
     public Service getService(String serviceName) {
-        for (Service service : services) {
+        for (Service service : serviceDAO.findAll()) {
             if (service.getServiceName().equals(serviceName)) {
                 return service;
             }
@@ -73,7 +67,7 @@ public class ServiceController {
                         Integer.parseInt(split[2]));
 
                 boolean found = false;
-                for (Service service : services) {
+                for (Service service : serviceDAO.findAll()) {
                     if (service.getId() == importService.getId()) {
                         service.updateFromCSV(split);
                         found = true;
@@ -82,7 +76,7 @@ public class ServiceController {
                 }
 
                 if (!found) {
-                    services.add(importService);
+                    serviceDAO.findAll().add(importService);
                 }
             }
             System.out.println("Success import Services from services.csv");

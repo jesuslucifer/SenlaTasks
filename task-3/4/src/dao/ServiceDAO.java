@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceDAO implements IGenericDAO<Service> {
-    private Connection connection;
+    private final Connection connection;
 
     public ServiceDAO() {
         connection = DatabaseConnection.getInstance().getConnection();
@@ -69,7 +69,22 @@ public class ServiceDAO implements IGenericDAO<Service> {
         return services;
     }
 
+    public Service findServiceName(String serviceName) {
+        String query = "SELECT * FROM Services WHERE serviceName = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, serviceName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return toService(resultSet);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return null;
+    }
+
     public Service toService(ResultSet resultSet) throws SQLException {
-        return new Service(resultSet.getString("serviceName"), resultSet.getInt("cost"));
+        return new Service(resultSet.getInt("id"), resultSet.getString("serviceName"), resultSet.getInt("cost"));
     }
 }
