@@ -1,5 +1,8 @@
 package controller;
 
+import dao.ClientDAO;
+import dao.RoomDAO;
+import dao.ServiceDAO;
 import model.Client;
 import model.Hotel;
 import model.Room;
@@ -18,22 +21,20 @@ import static java.time.temporal.ChronoUnit.DAYS;
 public class ClientController {
     @Inject
     Hotel hotel;
-
-    private List<Client> clients;
-
+    @Inject
+    ClientDAO clientDAO;
+    @Inject
+    ServiceDAO serviceDAO;
+    @Inject
+    RoomDAO roomDAO;
     @Inject
     ClientView view;
 
     public ClientController() {
     }
 
-    public void init() {
-        clients = hotel.getClients();
-        System.out.println("Initializing clients...");
-    }
-
     public Client getClient(String fullName) {
-        for (Client client : clients) {
+        for (Client client : clientDAO.findAll()) {
             if (client.getFullName().equals(fullName)) {
                 return client;
             }
@@ -42,11 +43,11 @@ public class ClientController {
     }
 
     public void addServiceForClient(String serviceName, String fullName, String serviceDate) {
-        getClient(fullName).addServiceForClient(serviceName, serviceDate, hotel.getServices());
+        clientDAO.addService(clientDAO.findFullName(fullName), serviceDAO.findServiceName(serviceName), formatDate(serviceDate));
     }
 
     public void printClients(String typeSort) {
-        List<Client> list = clients;
+        List<Client> list = clientDAO.findAll();
 
         switch (typeSort) {
             case "AlphabetA":
@@ -69,8 +70,9 @@ public class ClientController {
     }
 
     public void printClientServices(String fullName, String typeSort) {
-        System.out.println("Services " + getClient(fullName).getFullName() + ":");
-        List<Service> list = getClient(fullName).getServices();
+        Client client = clientDAO.findFullName(fullName);
+        System.out.println("Services " + client.getFullName() + ":");
+        List<Service> list = clientDAO.getServices(client);
         switch (typeSort) {
             case "CostI":
                 list.sort(Comparator.comparing(Service::getCost));
@@ -91,16 +93,14 @@ public class ClientController {
     }
 
     public void printCostPerRoom(String fullName) {
-        for (Client client : hotel.getClients()) {
-            if (client.getFullName().equals(fullName)) {
-                long daysBetween = DAYS.between(client.getDateCheckIn(), client.getDateEvict());
-                for (Room room : hotel.getRooms()) {
-                    if (room.getRoomNumber() == client.getRoomNumber()) {
-                        long cost = daysBetween * room.getCost();
-                        view.printCostPerRoom(cost);
-                    }
-                }
-            }
+        try {
+            Client client = clientDAO.findFullName(fullName);
+            long daysBetween = DAYS.between(client.getDateCheckIn(), client.getDateEvict());
+            Room room = roomDAO.read(client.getRoomNumber());
+            long cost = daysBetween * room.getCost();
+            view.printCostPerRoom(cost);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
     }
 
@@ -116,7 +116,7 @@ public class ClientController {
     }
 
     public boolean checkService(String service) {
-        for (Service service1 : hotel.getServices()) {
+        for (Service service1 : serviceDAO.findAll()) {
             if (service1.getServiceName().equals(service)) {
                 return true;
             }
@@ -125,7 +125,7 @@ public class ClientController {
     }
 
     public boolean checkFullName(String fullName) {
-        for (Client client : clients) {
+        for (Client client : clientDAO.findAll()) {
             if (client.getFullName().equals(fullName)) {
                 return true;
             }
@@ -134,7 +134,7 @@ public class ClientController {
     }
 
     public boolean clientsIsEmpty() {
-        return clients.isEmpty();
+        return clientDAO.findAll().isEmpty();
     }
 
     public void importFromCSV(String fileName){
@@ -152,7 +152,7 @@ public class ClientController {
                         LocalDate.parse(split[4])); //evict
 
                 boolean found = false;
-                for (Client client : clients) {
+                for (Client client : clientDAO.findAll()) {
                     if (client.getId() == importClient.getId()) {
                         client = addServiceToClient(split, client);
                         client.updateFromCSV(split);
@@ -162,7 +162,7 @@ public class ClientController {
                 }
                 if (!found) {
                     importClient = addServiceToClient(split, importClient);
-                    clients.add(importClient);
+                    clientDAO.findAll().add(importClient);
                     for (Room room : hotel.getRooms()) {
                         if (room.getRoomNumber() == importClient.getRoomNumber()) {
                             room.checkIntoRoom(importClient, hotel.getClients());
