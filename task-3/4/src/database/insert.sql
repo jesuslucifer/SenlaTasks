@@ -23,3 +23,7 @@ INSERT INTO Rooms(roomNumber, cost, status, capacity, dateCheckIn, dateEvict, co
 INSERT INTO Services(serviceName, cost) VALUES
 ('Massage', '300'),
 ('Sauna', '200');
+
+INSERT INTO ClientService(clientId, serviceId, serviceDate) VALUES
+('1', '1', '2024-01-25'),
+('1', '2', '2024-01-26');
