@@ -22,6 +22,8 @@ public class ClientController {
     @Inject
     Hotel hotel;
     @Inject
+    HotelController hotelController;
+    @Inject
     ClientDAO clientDAO;
     @Inject
     ServiceDAO serviceDAO;
@@ -163,9 +165,9 @@ public class ClientController {
                 if (!found) {
                     importClient = addServiceToClient(split, importClient);
                     clientDAO.findAll().add(importClient);
-                    for (Room room : hotel.getRooms()) {
+                    for (Room room : hotelController.getRooms()) {
                         if (room.getRoomNumber() == importClient.getRoomNumber()) {
-                            room.checkIntoRoom(importClient, hotel.getClients());
+                            room.checkIntoRoom(importClient, hotelController.getClients());
                             break;
                         }
                     }
@@ -185,7 +187,7 @@ public class ClientController {
     public Client addServiceToClient(String[] split, Client client) {
         if (split.length > 5) {
             for (int i = 0; i < split.length - 5; i += 2) {
-                client.addServiceForClient(Integer.parseInt(split[i + 5]), hotel.getServices(), formatDate(split[i + 6]));
+                client.addServiceForClient(Integer.parseInt(split[i + 5]), hotelController.getServices(), formatDate(split[i + 6]));
             }
         }
         return client;
