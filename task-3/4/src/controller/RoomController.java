@@ -26,6 +26,8 @@ public class RoomController {
     @Inject
     Hotel hotel;
     @Inject
+    HotelController hotelController;
+    @Inject
     RoomDAO roomDAO;
     @Inject
     ClientDAO clientDAO;
@@ -81,7 +83,9 @@ public class RoomController {
     }
 
     public void changeCostRoom(int roomNumber, int cost) {
-        roomDAO.update(new Room(roomNumber, cost));
+        Room room = getRoom(roomNumber);
+        room.setCost(cost);
+        roomDAO.update(room);
     }
 
     public void printRooms(String typeSort, String typeRoom) {
@@ -129,17 +133,12 @@ public class RoomController {
     }
 
     public void printRoomFreeByDate(String date) {
-        List<Room> freeRooms = new ArrayList<>();
-        for (Room room : roomDAO.findAll()) {
-            if (room.getDateEvict().isBefore(formatDate(date)) && !room.getStatus().equals(RoomStatus.REPAIRED)) {
-                freeRooms.add(room);
-            }
-        }
-        view.printRoomFreeByDate(formatDate(date), freeRooms);
+        view.printRoomFreeByDate(formatDate(date), roomDAO.findFreeByDate(formatDate(date)));
     }
 
     public LocalDate formatDate(String date) {
-        return hotel.formatDate(date);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return LocalDate.parse(date, formatter);
     }
 
     public boolean checkRoom(int roomNumber) {
@@ -189,7 +188,7 @@ public class RoomController {
                             Integer.parseInt(split[5]),
                             LocalDate.parse(split[6]),
                             LocalDate.parse(split[7]));
-                    hotel.getRooms().add(room);
+                    hotelController.getRooms().add(room);
                 }
             }
             System.out.println("Success import Rooms from rooms.csv");

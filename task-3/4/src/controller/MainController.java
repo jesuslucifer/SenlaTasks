@@ -48,7 +48,6 @@ public class MainController {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                System.out.println(resultSet.getInt(1));
                 return resultSet.getInt(1) > 0;
             }
         } catch (SQLException e) {
