@@ -8,6 +8,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,9 +28,10 @@ public class RoomDAO implements IGenericDAO<Room> {
             statement.setInt(2, room.getCost());
             statement.setString(3, room.getStatus().toString());
             statement.setInt(4, room.getCapacity());
-            statement.setDate(5, Date.valueOf(room.getDateCheckIn()));
-            statement.setDate(6, Date.valueOf(room.getDateEvict()));
+            statement.setNull(5, java.sql.Types.DATE);
+            statement.setNull(6, java.sql.Types.DATE);
             statement.setInt(7, room.getCountStars());
+            statement.execute();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
@@ -63,8 +65,16 @@ public class RoomDAO implements IGenericDAO<Room> {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, room.getCost());
             preparedStatement.setString(2, room.getStatus().toString());
-            preparedStatement.setDate(3, Date.valueOf(room.getDateCheckIn()));
-            preparedStatement.setDate(4, Date.valueOf(room.getDateEvict()));
+            if (room.getDateCheckIn() != null) {
+                preparedStatement.setDate(3, Date.valueOf(room.getDateCheckIn()));
+            } else {
+                preparedStatement.setNull(3, java.sql.Types.DATE);
+            }
+            if (room.getDateEvict() != null) {
+                preparedStatement.setDate(4, Date.valueOf(room.getDateEvict()));
+            } else {
+                preparedStatement.setNull(4, java.sql.Types.DATE);
+            }
             preparedStatement.setInt(5, room.getRoomNumber());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -110,15 +120,24 @@ public class RoomDAO implements IGenericDAO<Room> {
     }
 
     public Room toRoom(ResultSet resultSet) throws SQLException {
-        return new Room(
+        Room room = new Room(
                 resultSet.getInt("id"),
                 resultSet.getInt("roomNumber"),
                 resultSet.getInt("cost"),
                 resultSet.getInt("countStars"),
                 resultSet.getString("status"),
-                resultSet.getInt("capacity"),
-                resultSet.getString("dateCheckIn"),
-                resultSet.getString("dateEvict"));
+                resultSet.getInt("capacity")
+        );
+        Date checkIn = resultSet.getDate("dateCheckIn");
+        LocalDate localCheckIn = (checkIn != null) ? checkIn.toLocalDate() : null;
+
+        Date checkOut = resultSet.getDate("dateEvict");
+        LocalDate localCheckOut = (checkOut != null) ? checkOut.toLocalDate() : null;
+
+        room.setDateCheckIn(localCheckIn);
+        room.setDateEvict(localCheckOut);
+
+        return room;
     }
 
     public List<Room> findFreeByDate(LocalDate date) {

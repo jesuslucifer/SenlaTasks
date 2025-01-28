@@ -34,24 +34,15 @@ public class Room implements IToCSV, IUpdateFromCSV, Serializable {
     private int countRecordsHistory;
 
     public Room(int roomNumber) {
-        this.id = idInc++;
         this.roomNumber = roomNumber;
         this.countStars = new java.util.Random().nextInt(5) + 1;
         this.status = RoomStatus.FREE;
         this.capacity = new java.util.Random().nextInt(3) + 1;
         this.cost = (capacity + countStars) * 10;
-        dateCheckIn = LocalDate.of(2020, 1, 1);
-        dateEvict = LocalDate.of(2020, 1, 1);
+        dateCheckIn = null;
+        dateEvict = null;
         lockedChangeStatus = true;
         countRecordsHistory = 3;
-    }
-
-    public Room(int roomNumber, int cost) {
-        this.roomNumber = roomNumber;
-        this.cost = cost;
-    }
-
-    public Room() {
     }
 
     public Room(int id, int roomNumber, int cost, int countStars, RoomStatus status, int capacity, LocalDate dateCheckIn, LocalDate dateEvict) {
@@ -67,15 +58,13 @@ public class Room implements IToCSV, IUpdateFromCSV, Serializable {
         countRecordsHistory = 3;
     }
 
-    public Room(int id, int roomNumber, int cost, int countStars, String status, int capacity, String dateCheckIn, String dateEvict) {
+    public Room(int id, int roomNumber, int cost, int countStars, String status, int capacity) {
         this.id = id;
         this.roomNumber = roomNumber;
         this.cost = cost;
         this.countStars = countStars;
         this.status = stringToRoomStatus(status);
         this.capacity = capacity;
-        this.dateCheckIn = LocalDate.parse(dateCheckIn);
-        this.dateEvict = LocalDate.parse(dateEvict);
     }
 
     public int getRoomNumber() {
