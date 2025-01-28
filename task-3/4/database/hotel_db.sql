@@ -17,7 +17,7 @@ CREATE TABLE Rooms (
     status ENUM('BUSY', 'FREE', 'REPAIRED'),
     capacity INT,
     countStars INT,
-    dateCheckIn DATE,
+    dateCheckIn DATE NULL,
     dateEvict DATE
 );
 
@@ -28,10 +28,10 @@ CREATE TABLE Services (
 );
 
 CREATE TABLE ClientService (
-clientId INT,
-serviceId INT,
-serviceDate DATE,
-PRIMARY KEY (clientId, serviceId),
-FOREIGN KEY (clientId) REFERENCES Clients(id),
-FOREIGN KEY (serviceId) REFERENCES Services(id)
+    clientId INT,
+    serviceId INT,
+    serviceDate DATE,
+    PRIMARY KEY (clientId, serviceId),
+    FOREIGN KEY (clientId) REFERENCES Clients(id),
+    FOREIGN KEY (serviceId) REFERENCES Services(id)
 );

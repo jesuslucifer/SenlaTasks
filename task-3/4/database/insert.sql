@@ -9,16 +9,16 @@ INSERT INTO Clients(fullName, roomNumber, dateCheckIn, dateEvict) VALUES
 ('Aleksey Lobachev', 9, '2024-01-10', '2024-01-25');
 
 INSERT INTO Rooms(roomNumber, cost, status, capacity, dateCheckIn, dateEvict, countStars)  VALUES
-('1', '100', 'FREE', '3', '2020-01-01', '2020-01-01', '3'),
+('1', '100', 'FREE', '3', NULL, NULL, '3'),
 ('2', '200', 'BUSY', '3', '2024-01-24', '2024-01-29', '2'),
-('3', '150', 'FREE', '3', '2020-01-01', '2020-01-01', '1'),
-('4', '400', 'FREE', '3', '2020-01-01', '2020-01-01', '2'),
-('5', '300', 'FREE', '3', '2020-01-01', '2020-01-01', '3'),
-('6', '200', 'REPAIRED', '3', '2020-01-01', '2020-01-01', '1'),
-('7', '100', 'FREE', '3', '2020-01-01', '2020-01-01', '2'),
-('8', '100', 'FREE', '3', '2020-01-01', '2020-01-01', '3'),
+('3', '150', 'FREE', '3', NULL, NULL, '1'),
+('4', '400', 'FREE', '3', NULL, NULL, '2'),
+('5', '300', 'FREE', '3', NULL, NULL, '3'),
+('6', '200', 'REPAIRED', '3', NULL, NULL, '1'),
+('7', '100', 'FREE', '3', NULL, NULL, '2'),
+('8', '100', 'FREE', '3', NULL, NULL, '3'),
 ('9', '170', 'BUSY', '3', '2024-01-10', '2024-01-25', '1'),
-('10', '190', 'FREE', '3', '2020-01-01', '2020-01-01', '2');
+('10', '190', 'FREE', '3', NULL, NULL, '2');
 
 INSERT INTO Services(serviceName, cost) VALUES
 ('Massage', '300'),
