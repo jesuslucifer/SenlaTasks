@@ -47,20 +47,20 @@ public class ClientController {
     }
 
     public void printClients(String typeSort) {
-        List<Client> list = clientDAO.findAll();
+        List<Client> list = List.of();
 
         switch (typeSort) {
             case "AlphabetA":
-                list.sort(Comparator.comparing(Client::getFullName));
+                 list = clientDAO.findAllWithSort("fullName ASC");
                 break;
             case "AlphabetZ":
-                list.sort(Comparator.comparing(Client::getFullName).reversed());
+                list = clientDAO.findAllWithSort("fullName DESC");
                 break;
             case "DateI":
-                list.sort(Comparator.comparing(Client::getDateEvict));
+                list = clientDAO.findAllWithSort("dateCheckIn ASC");
                 break;
             case "DateD":
-                list.sort(Comparator.comparing(Client::getDateEvict).reversed());
+                list = clientDAO.findAllWithSort("dateCheckIn DESC");
                 break;
             default:
                 break;
@@ -72,19 +72,19 @@ public class ClientController {
     public void printClientServices(String fullName, String typeSort) {
         Client client = clientDAO.findFullName(fullName);
         System.out.println("Services " + client.getFullName() + ":");
-        List<Service> list = clientDAO.getServices(client);
+        List<Service> list = List.of();
         switch (typeSort) {
             case "CostI":
-                list.sort(Comparator.comparing(Service::getCost));
+                list = clientDAO.getServices(client, "cost");
                 break;
             case "CostD":
-                list.sort(Comparator.comparing(Service::getCost).reversed());
+                list = clientDAO.getServices(client, "cost DESC");
                 break;
             case "DateI":
-                list.sort(Comparator.comparing(Service::getServiceDate));
+                list = clientDAO.getServices(client, "serviceDate");
                 break;
             case "DateD":
-                list.sort(Comparator.comparing(Service::getServiceDate).reversed());
+                list = clientDAO.getServices(client, "serviceDate DESC");
                 break;
             default:
                 break;

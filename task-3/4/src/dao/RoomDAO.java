@@ -120,4 +120,20 @@ public class RoomDAO implements IGenericDAO<Room> {
                 resultSet.getString("dateCheckIn"),
                 resultSet.getString("dateEvict"));
     }
+
+    public List<Room> findFreeByDate(LocalDate date) {
+        List<Room> rooms = new ArrayList<>();
+        String query = "SELECT * FROM Rooms WHERE status != 'REPAIRED' AND ((dateCheckIn IS NULL OR dateEvict IS NULL) OR dateEvict < ?)";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setDate(1, Date.valueOf(date));
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                rooms.add(toRoom(resultSet));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return rooms;
+    }
 }

@@ -117,10 +117,10 @@ public class ClientDAO implements IGenericDAO<Client> {
         }
     }
 
-    public List<Service> getServices (Client client) {
+    public List<Service> getServices (Client client, String typeSort) {
         List<Service> services = new ArrayList<>();
         String query = "SELECT s.id, s.serviceName, s.cost, cs.serviceDate FROM Services s " +
-                       "JOIN ClientService cs ON s.id = cs.serviceId WHERE cs.clientId = ?";
+                       "JOIN ClientService cs ON s.id = cs.serviceId WHERE cs.clientId = ? ORDER BY " + typeSort;
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, client.getId());
             ResultSet resultSet = statement.executeQuery();
@@ -147,5 +147,21 @@ public class ClientDAO implements IGenericDAO<Client> {
                 resultSet.getString("dateCheckIn"),
                 resultSet.getString("dateEvict")
         );
+    }
+
+    public List<Client> findAllWithSort(String typeSort) {
+        List<Client> clients = new ArrayList<>();
+        String query = "SELECT * FROM Clients ORDER BY " + typeSort + " ";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                clients.add(toClient(resultSet));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return clients;
     }
 }
