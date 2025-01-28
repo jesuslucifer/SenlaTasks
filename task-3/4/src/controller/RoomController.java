@@ -89,36 +89,17 @@ public class RoomController {
     }
 
     public void printRooms(String typeSort, String typeRoom) {
-        List<Room> list = roomDAO.findAll();
+        List<Room> list;
 
-        if (typeRoom.equals("free"))
-        {
-            list = roomDAO.findByStatus("FREE");
-        }
-
-        switch (typeSort) {
-            case "CapacityI":
-                list.sort(Comparator.comparing(Room::getCapacity));
-                break;
-            case "CapacityD":
-                list.sort(Comparator.comparing(Room::getCapacity).reversed());
-                break;
-            case "CostI":
-                list.sort(Comparator.comparing(Room::getCost));
-                break;
-            case "CostD":
-                list.sort(Comparator.comparing(Room::getCost).reversed());
-                break;
-            case "StarsI":
-                list.sort(Comparator.comparing(Room::getCountStars));
-                break;
-            case "StarsD":
-                list.sort(Comparator.comparing(Room::getCountStars).reversed());
-                break;
-            default:
-                list.sort(Comparator.comparing(Room::getRoomNumber));
-                break;
-        }
+        list = switch (typeSort) {
+            case "CapacityI" -> roomDAO.findWithSort(typeRoom, "capacity");
+            case "CapacityD" -> roomDAO.findWithSort(typeRoom, "capacity DESC");
+            case "CostI" -> roomDAO.findWithSort(typeRoom, "cost");
+            case "CostD" -> roomDAO.findWithSort(typeRoom, "cost DESC");
+            case "StarsI" -> roomDAO.findWithSort(typeRoom, "countStars");
+            case "StarsD" -> roomDAO.findWithSort(typeRoom, "countStars DESC");
+            default -> roomDAO.findWithSort(typeRoom, "roomNumber");
+        };
 
         view.printRooms(list);
     }

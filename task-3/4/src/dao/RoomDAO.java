@@ -89,8 +89,12 @@ public class RoomDAO implements IGenericDAO<Room> {
 
     @Override
     public List<Room> findAll() {
-        List<Room> rooms = new ArrayList<>();
         String query = "SELECT * FROM Rooms";
+        return getRooms(query);
+    }
+
+    private List<Room> getRooms(String query) {
+        List<Room> rooms = new ArrayList<>();
         try {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
@@ -154,5 +158,10 @@ public class RoomDAO implements IGenericDAO<Room> {
             System.err.println(e.getMessage());
         }
         return rooms;
+    }
+
+    public List<Room> findWithSort(String typeRoom, String typeSort) {
+        String query = "SELECT * FROM Rooms WHERE status IN (" + typeRoom + ") ORDER BY " + typeSort;
+        return getRooms(query);
     }
 }

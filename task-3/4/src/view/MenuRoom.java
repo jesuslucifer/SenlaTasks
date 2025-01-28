@@ -31,8 +31,8 @@ public class MenuRoom {
                 roomView.printMenuWithChangeStatus();
 
                 switch (sc.nextInt()) {
-                    case 1 -> printRooms("all");
-                    case 2 -> printRooms("free");
+                    case 1 -> printRooms("'FREE', 'BUSY', 'REPAIRED'");
+                    case 2 -> printRooms("'FREE'");
                     case 3 -> printInfoRoom();
                     case 4 -> checkIntoRoom();
                     case 5 -> evictFromRoom();
@@ -56,8 +56,8 @@ public class MenuRoom {
                 roomView.printMenuWithoutChangeStatus();
 
                 switch (sc.nextInt()) {
-                    case 1 -> printRooms("all");
-                    case 2 -> printRooms("free");
+                    case 1 -> printRooms("'FREE', 'BUSY', 'REPAIRED'");
+                    case 2 -> printRooms("'FREE'");
                     case 3 -> printInfoRoom();
                     case 4 -> checkIntoRoom();
                     case 5 -> evictFromRoom();
@@ -94,34 +94,34 @@ public class MenuRoom {
 //        }
 //    }
 
-    public void printRooms(String roomType) {
+    public void printRooms(String typeRoom) {
         boolean flag = true;
         while (flag) {
             roomView.printSwitchRooms();
 
             switch (sc.nextInt()) {
                 case 1 -> {
-                    roomController.printRooms("CapacityI", roomType);
+                    roomController.printRooms("CapacityI", typeRoom);
                     flag = false;
                 }
                 case 2 -> {
-                    roomController.printRooms("CapacityD", roomType);
+                    roomController.printRooms("CapacityD", typeRoom);
                     flag = false;
                 }
                 case 3 -> {
-                    roomController.printRooms("CostI", roomType);
+                    roomController.printRooms("CostI", typeRoom);
                     flag = false;
                 }
                 case 4 -> {
-                    roomController.printRooms("CostD", roomType);
+                    roomController.printRooms("CostD", typeRoom);
                     flag = false;
                 }
                 case 5 -> {
-                    roomController.printRooms("StarsI", roomType);
+                    roomController.printRooms("StarsI", typeRoom);
                     flag = false;
                 }
                 case 6 -> {
-                    roomController.printRooms("StarsD", roomType);
+                    roomController.printRooms("StarsD", typeRoom);
                     flag = false;
                 }
                 case 7 -> flag = false;
