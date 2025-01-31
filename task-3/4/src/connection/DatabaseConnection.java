@@ -1,5 +1,8 @@
 package connection;
 
+import controller.ConfigProperty;
+import controller.Configurator;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,15 +10,18 @@ import java.sql.SQLException;
 public class DatabaseConnection {
     private Connection connection;
     private static DatabaseConnection instance;
-
-    private static final String URL ="jdbc:mysql://localhost:3306/hotel_db";
-    private static final String USER = "root";
-    private static final String PASSWORD = "root";
+    @ConfigProperty(propertyName = "db.url")
+    private String URL;
+    @ConfigProperty(propertyName = "db.user")
+    private String USER;
+    @ConfigProperty(propertyName = "db.password")
+    private String PASSWORD;
 
     private DatabaseConnection() {
         try {
+            Configurator.configure(this);
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.err.println(e.getMessage());
         }
     }
