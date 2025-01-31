@@ -18,7 +18,9 @@ CREATE TABLE Rooms (
     capacity INT,
     countStars INT,
     dateCheckIn DATE NULL,
-    dateEvict DATE
+    dateEvict DATE,
+    lockedChangeStatus BOOLEAN NOT NULL DEFAULT TRUE,
+    countRecordsHistory INT DEFAULT 3
 );
 
 CREATE TABLE Services (

@@ -60,7 +60,8 @@ public class RoomDAO implements IGenericDAO<Room> {
 
     @Override
     public void update(Room room) {
-        String query = "UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ? WHERE roomNumber = ?";
+        String query = "UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, " +
+                "countRecordsHistory = ? WHERE roomNumber = ?";
         try {
             Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -76,7 +77,9 @@ public class RoomDAO implements IGenericDAO<Room> {
             } else {
                 preparedStatement.setNull(4, java.sql.Types.DATE);
             }
-            preparedStatement.setInt(5, room.getRoomNumber());
+            preparedStatement.setBoolean(5, room.getLockedChangeStatus());
+            preparedStatement.setInt(6, room.getCountRecordsHistory());
+            preparedStatement.setInt(7, room.getRoomNumber());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -133,7 +136,9 @@ public class RoomDAO implements IGenericDAO<Room> {
                 resultSet.getInt("cost"),
                 resultSet.getInt("countStars"),
                 resultSet.getString("status"),
-                resultSet.getInt("capacity")
+                resultSet.getInt("capacity"),
+                resultSet.getBoolean("lockedChangeStatus"),
+                resultSet.getInt("countRecordsHistory")
         );
         Date checkIn = resultSet.getDate("dateCheckIn");
         LocalDate localCheckIn = (checkIn != null) ? checkIn.toLocalDate() : null;

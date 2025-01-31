@@ -14,8 +14,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -81,7 +79,10 @@ public class RoomController {
     }
 
     public void changeLockedStatusRoom(boolean lockedStatus) {
-        roomDAO.findAll().forEach(room -> room.setLockedChangeStatus(lockedStatus));
+        for (Room room : roomDAO.findAll()) {
+            room.setLockedChangeStatus(lockedStatus);
+            roomDAO.update(room);
+        }
     }
 
     public void changeCostRoom(int roomNumber, int cost) {
@@ -144,7 +145,10 @@ public class RoomController {
     }
 
     public void changeCountRecordsHistory(int countRecordsHistory) {
-        roomDAO.findAll().forEach(room -> room.setCountRecordsHistory(countRecordsHistory));
+        for (Room room : roomDAO.findAll()) {
+            room.setCountRecordsHistory(countRecordsHistory);
+            roomDAO.update(room);
+        }
     }
 
     public void importFromCSV(String fileName) {
@@ -184,8 +188,8 @@ public class RoomController {
         try (FileInputStream fis = new FileInputStream("task-3/4/src/resources/config.property")) {
             Properties prop = new Properties();
             prop.load(fis);
-            changeLockedStatusRoom(Boolean.parseBoolean(prop.getProperty("lockedChangeStatus")));
-            System.out.println("Success import locked rooms from property, lockedChangeStatus=" + prop.getProperty("lockedChangeStatus"));
+            changeLockedStatusRoom(Boolean.parseBoolean(prop.getProperty("room.lockedChangeStatus")));
+            System.out.println("Success import locked rooms from property, lockedChangeStatus=" + prop.getProperty("room.lockedChangeStatus"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -195,8 +199,8 @@ public class RoomController {
         try (FileInputStream fis = new FileInputStream("task-3/4/src/resources/config.property")) {
             Properties prop = new Properties();
             prop.load(fis);
-            changeCountRecordsHistory(Integer.parseInt(prop.getProperty("countRecordsHistory")));
-            System.out.println("Success import count records in the history room from property, countRecordsHistory=" + prop.getProperty("countRecordsHistory"));
+            changeCountRecordsHistory(Integer.parseInt(prop.getProperty("room.countRecordsHistory")));
+            System.out.println("Success import count records in the history room from property, countRecordsHistory=" + prop.getProperty("room.countRecordsHistory"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

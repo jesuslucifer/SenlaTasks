@@ -58,13 +58,15 @@ public class Room implements IToCSV, IUpdateFromCSV, Serializable {
         countRecordsHistory = 3;
     }
 
-    public Room(int id, int roomNumber, int cost, int countStars, String status, int capacity) {
+    public Room(int id, int roomNumber, int cost, int countStars, String status, int capacity, Boolean lockedChangeStatus, int countRecordsHistory) {
         this.id = id;
         this.roomNumber = roomNumber;
         this.cost = cost;
         this.countStars = countStars;
         this.status = stringToRoomStatus(status);
         this.capacity = capacity;
+        this.lockedChangeStatus = lockedChangeStatus;
+        this.countRecordsHistory = countRecordsHistory;
     }
 
     public int getRoomNumber() {

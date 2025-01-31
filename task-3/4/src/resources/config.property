@@ -1,2 +1,2 @@
-room.lockedChangeStatus=false
+room.lockedChangeStatus=true
 room.countRecordsHistory=3

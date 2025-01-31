@@ -38,6 +38,8 @@ public class MainController {
         }
         DI.register(Hotel.class, hotel);
         DI.injectDependencies(this);
+        roomController.importLockedRoomProperty();
+        roomController.importCountRecordHistory();
         menu.printMenu();
     }
 
