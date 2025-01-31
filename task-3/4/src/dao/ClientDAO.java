@@ -14,16 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClientDAO implements IGenericDAO<Client> {
-    private final Connection connection;
+
 
     public ClientDAO() {
-        connection = DatabaseConnection.getInstance().getConnection();
     }
 
     @Override
     public void create(Client client) {
         String query = "INSERT INTO Clients (fullName, roomNumber, dateCheckIn, dateEvict) VALUES (?, ?, ?, ?)";
         try {
+            Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, client.getFullName());
             statement.setInt(2, client.getRoomNumber());
@@ -49,6 +49,7 @@ public class ClientDAO implements IGenericDAO<Client> {
     public void delete(Client client) {
         String query = "DELETE FROM Clients WHERE id = ?";
         try {
+            Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, client.getId());
             statement.executeUpdate();
@@ -62,6 +63,7 @@ public class ClientDAO implements IGenericDAO<Client> {
         List<Client> clients = new ArrayList<>();
         String query = "SELECT * FROM Clients";
         try {
+            Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -76,6 +78,7 @@ public class ClientDAO implements IGenericDAO<Client> {
     public Client findFullName(String fullName) {
         String query = "SELECT * FROM Clients WHERE fullName = ?";
         try {
+            Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, fullName);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -92,6 +95,7 @@ public class ClientDAO implements IGenericDAO<Client> {
         List<Client> clients = new ArrayList<>();
         String query = "SELECT * FROM Clients WHERE roomNumber = ?";
         try {
+            Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, roomNumber);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -107,6 +111,7 @@ public class ClientDAO implements IGenericDAO<Client> {
     public void addService(Client client, Service service, LocalDate date) {
         String query = "INSERT INTO ClientService (clientId, serviceId, serviceDate) VALUES (?, ?, ?)";
         try {
+            Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, client.getId());
             preparedStatement.setInt(2, service.getId());
@@ -121,7 +126,9 @@ public class ClientDAO implements IGenericDAO<Client> {
         List<Service> services = new ArrayList<>();
         String query = "SELECT s.id, s.serviceName, s.cost, cs.serviceDate FROM Services s " +
                        "JOIN ClientService cs ON s.id = cs.serviceId WHERE cs.clientId = ? ORDER BY " + typeSort;
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try {
+            Connection connection = DatabaseConnection.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, client.getId());
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -154,6 +161,7 @@ public class ClientDAO implements IGenericDAO<Client> {
         String query = "SELECT * FROM Clients ORDER BY " + typeSort + " ";
 
         try {
+            Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
