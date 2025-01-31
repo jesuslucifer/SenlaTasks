@@ -75,7 +75,9 @@ public class RoomController {
     }
 
     public void changeStatusRoom(int roomNumber, RoomStatus status) {
-        getRoom(roomNumber).changeStatusRoom(status);
+        Room room = getRoom(roomNumber);
+        room.setStatus(status);
+        roomDAO.update(room);
     }
 
     public void changeLockedStatusRoom(boolean lockedStatus) {
