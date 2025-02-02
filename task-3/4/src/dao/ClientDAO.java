@@ -41,8 +41,17 @@ public class ClientDAO implements IGenericDAO<Client> {
     }
 
     @Override
-    public void update(Client Client) {
-
+    public void update(Client client) {
+        String query = "UPDATE Clients SET occupied = ? WHERE id = ?";
+        try {
+            Connection connection = DatabaseConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setBoolean(1, client.getOccupied());
+            preparedStatement.setInt(2, client.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     @Override
@@ -93,7 +102,7 @@ public class ClientDAO implements IGenericDAO<Client> {
 
     public List<Client> findInRoom(int roomNumber) {
         List<Client> clients = new ArrayList<>();
-        String query = "SELECT * FROM Clients WHERE roomNumber = ?";
+        String query = "SELECT * FROM Clients WHERE roomNumber = ? and occupied = true";
         try {
             Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -163,6 +172,24 @@ public class ClientDAO implements IGenericDAO<Client> {
         try {
             Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                clients.add(toClient(resultSet));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return clients;
+    }
+
+    public List<Client> printHistory(int roomNumber, int countRecordsHistory) {
+        List<Client> clients = new ArrayList<>();
+        String query = "SELECT * FROM Clients WHERE roomNumber = ? AND occupied = false ORDER BY dateEvict DESC LIMIT ?";
+        try {
+            Connection connection = DatabaseConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, roomNumber);
+            preparedStatement.setInt(2, countRecordsHistory);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 clients.add(toClient(resultSet));

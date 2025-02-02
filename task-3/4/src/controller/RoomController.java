@@ -14,8 +14,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
@@ -62,12 +60,13 @@ public class RoomController {
     public void evictFromRoom(int roomNumber) {
         Room room = getRoom(roomNumber);
         room.setStatus(RoomStatus.FREE);
-        room.setDateCheckIn(LocalDate.of(2020, 1, 1));
-        room.setDateEvict(LocalDate.of(2020, 1, 1));
+        room.setDateCheckIn(null);
+        room.setDateEvict(null);
         roomDAO.update(room);
         List<Client> clients = clientDAO.findInRoom(roomNumber);
         for (Client client : clients) {
-            clientDAO.delete(client);
+            client.setOccupied(false);
+            clientDAO.update(client);
         }
         System.out.println("The guest has been evicted from the " + roomNumber + " room");
     }
@@ -112,8 +111,8 @@ public class RoomController {
     }
 
     public void printHistoryRoom(int roomNumber) {
-        Deque<Client> deque = new LinkedList<>(getRoom(roomNumber).getHistoryClientQueue());
-        view.printHistoryRoom(getRoom(roomNumber), deque);
+        List<Client> clients = clientDAO.printHistory(roomNumber, getRoom(roomNumber).getCountRecordsHistory());
+        view.printHistoryRoom(getRoom(roomNumber), clients);
     }
 
     public void printRoomFreeByDate(String date) {

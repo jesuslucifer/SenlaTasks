@@ -4,7 +4,6 @@ import model.Client;
 import model.Room;
 
 import java.time.LocalDate;
-import java.util.Deque;
 import java.util.List;
 
 public class RoomView {
@@ -92,14 +91,10 @@ public class RoomView {
         }
     }
 
-    public void printHistoryRoom(Room room, Deque<Client> deque) {
+    public void printHistoryRoom(Room room, List<Client> clients) {
         System.out.println("Room " + room.getRoomNumber() + " history:");
-        int i = room.getCountRecordsHistory();
-        while (i != 0 && !deque.isEmpty()) {
-            System.out.println("Full name: " + deque.peekLast().getFullName()
-                    + " Date check in: "+ deque.peekLast().getDateCheckIn()
-                    + " Date evict: " + deque.pollLast().getDateEvict());
-            i--;
+        for (Client client : clients) {
+            System.out.println("Client: " + client.getFullName() + " date check in: " + client.getDateCheckIn() + " date evict: " + client.getDateEvict());
         }
         System.out.println();
     }

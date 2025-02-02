@@ -18,6 +18,7 @@ public class Client implements IToCSV, IUpdateFromCSV, Serializable {
     private LocalDate dateCheckIn;
     private LocalDate dateEvict;
     private final List<Service> services = new ArrayList<>();
+    private Boolean occupied;
 
     public Client () {
         this.id = idInc++;
@@ -37,6 +38,7 @@ public class Client implements IToCSV, IUpdateFromCSV, Serializable {
         this.roomNumber = roomNumber;
         this.dateCheckIn = LocalDate.parse(dateCheckIn);
         this.dateEvict = LocalDate.parse(dateEvict);
+        occupied = true;
     }
 
     public int getId() {
@@ -45,6 +47,14 @@ public class Client implements IToCSV, IUpdateFromCSV, Serializable {
 
     public String getFullName() {
         return fullName;
+    }
+
+    public Boolean getOccupied() {
+        return occupied;
+    }
+
+    public void setOccupied(Boolean occupied) {
+        this.occupied = occupied;
     }
 
     public void setFullName(String fullName) {

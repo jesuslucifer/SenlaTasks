@@ -7,7 +7,8 @@ CREATE TABLE Clients (
     fullName VARCHAR(25),
     roomNumber INT,
     dateCheckIn DATE,
-    dateEvict DATE
+    dateEvict DATE,
+    occupied BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE Rooms (
