@@ -37,6 +37,18 @@ public class ClientDAO implements IGenericDAO<Client> {
 
     @Override
     public Client read(int id) {
+        String query = "SELECT * FROM Clients WHERE id = ?";
+        try {
+            Connection connection = DatabaseConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return toClient(resultSet);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
         return null;
     }
 
@@ -167,7 +179,7 @@ public class ClientDAO implements IGenericDAO<Client> {
 
     public List<Client> findAllWithSort(String typeSort) {
         List<Client> clients = new ArrayList<>();
-        String query = "SELECT * FROM Clients ORDER BY " + typeSort + " ";
+        String query = "SELECT * FROM Clients WHERE occupied = true ORDER BY " + typeSort + " ";
 
         try {
             Connection connection = DatabaseConnection.getInstance().getConnection();

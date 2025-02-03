@@ -84,7 +84,7 @@ public class MenuClient{
         if (clientController.clientsIsEmpty()) {
             System.out.println("There are no customers in the hotel");
         } else {
-            String fullName = enterFullName();
+            int id = enterID();
 
             boolean flag = true;
             while (flag) {
@@ -92,19 +92,19 @@ public class MenuClient{
 
                 switch (sc.nextInt()) {
                     case 1 -> {
-                        clientController.printClientServices(fullName, "CostI");
+                        clientController.printClientServices(id, "CostI");
                         flag = false;
                     }
                     case 2 -> {
-                        clientController.printClientServices(fullName, "CostD");
+                        clientController.printClientServices(id, "CostD");
                         flag = false;
                     }
                     case 3 -> {
-                        clientController.printClientServices(fullName, "DateI");
+                        clientController.printClientServices(id, "DateI");
                         flag = false;
                     }
                     case 4 -> {
-                        clientController.printClientServices(fullName, "DateD");
+                        clientController.printClientServices(id, "DateD");
                         flag = false;
                     }
                     case 5 -> flag = false;
@@ -120,11 +120,11 @@ public class MenuClient{
         } else if (serviceController.servicesIsEmpty()) {
             System.out.println("There are no services in the hotel");
         } else {
-            String fullName = enterFullName();
+            int id = enterID();
             String date = enterDate();
             String serviceName = enterService();
 
-            clientController.addServiceForClient(serviceName, fullName, date);
+            clientController.addServiceForClient(serviceName, id, date);
         }
     }
 
@@ -132,9 +132,9 @@ public class MenuClient{
         if (clientController.clientsIsEmpty()) {
             System.out.println("There are no customers in the hotel");
         } else {
-            String fullName = enterFullName();
+            int id = enterID();
 
-            clientController.printCostPerRoom(fullName);
+            clientController.printCostPerRoom(id);
         }
     }
 
@@ -171,6 +171,18 @@ public class MenuClient{
                 return fullName;
             }
             System.out.println("Invalid full name");
+        }
+    }
+
+    public int enterID() {
+        while (true) {
+            System.out.println("Enter id client:");
+            int id = new Scanner(System.in).nextInt();
+
+            if (clientController.checkID(id)) {
+                return id;
+            }
+            System.out.println("Invalid id");
         }
     }
 

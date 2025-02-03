@@ -12,7 +12,6 @@ import view.ClientView;
 import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -44,8 +43,8 @@ public class ClientController {
         return null;
     }
 
-    public void addServiceForClient(String serviceName, String fullName, String serviceDate) {
-        clientDAO.addService(clientDAO.findFullName(fullName), serviceDAO.findServiceName(serviceName), formatDate(serviceDate));
+    public void addServiceForClient(String serviceName, int id, String serviceDate) {
+        clientDAO.addService(clientDAO.read(id), serviceDAO.findServiceName(serviceName), formatDate(serviceDate));
     }
 
     public void printClients(String typeSort) {
@@ -71,8 +70,8 @@ public class ClientController {
         view.printClients(list);
     }
 
-    public void printClientServices(String fullName, String typeSort) {
-        Client client = clientDAO.findFullName(fullName);
+    public void printClientServices(int id, String typeSort) {
+        Client client = clientDAO.read(id);
         System.out.println("Services " + client.getFullName() + ":");
         List<Service> list = List.of();
         switch (typeSort) {
@@ -94,9 +93,9 @@ public class ClientController {
         view.printClientServices(list);
     }
 
-    public void printCostPerRoom(String fullName) {
+    public void printCostPerRoom(int id) {
         try {
-            Client client = clientDAO.findFullName(fullName);
+            Client client = clientDAO.read(id);
             long daysBetween = DAYS.between(client.getDateCheckIn(), client.getDateEvict());
             Room room = roomDAO.read(client.getRoomNumber());
             long cost = daysBetween * room.getCost();
@@ -129,6 +128,15 @@ public class ClientController {
     public boolean checkFullName(String fullName) {
         for (Client client : clientDAO.findAll()) {
             if (client.getFullName().equals(fullName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkID(int id) {
+        for (Client client : clientDAO.findAll()) {
+            if (client.getId() == id) {
                 return true;
             }
         }
