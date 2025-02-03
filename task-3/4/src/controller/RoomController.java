@@ -73,8 +73,12 @@ public class RoomController {
 
     public void changeStatusRoom(int roomNumber, RoomStatus status) {
         Room room = getRoom(roomNumber);
-        room.setStatus(status);
-        roomDAO.update(room);
+        if (!(room.isBusy() && status == RoomStatus.REPAIRED)) {
+            room.setStatus(status);
+            roomDAO.update(room);
+        } else {
+            System.out.println("The status of the room " + roomNumber + " cannot be changed, there are visitors in the room");
+        }
     }
 
     public void changeLockedStatusRoom(boolean lockedStatus) {
