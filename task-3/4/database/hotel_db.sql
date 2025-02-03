@@ -13,7 +13,7 @@ CREATE TABLE Clients (
 
 CREATE TABLE Rooms (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    roomNumber INT,
+    roomNumber INT UNIQUE,
     cost INT,
     status ENUM('BUSY', 'FREE', 'REPAIRED'),
     capacity INT,
@@ -26,7 +26,7 @@ CREATE TABLE Rooms (
 
 CREATE TABLE Services (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    serviceName VARCHAR(25),
+    serviceName VARCHAR(25) UNIQUE,
     cost INT
 );
 
