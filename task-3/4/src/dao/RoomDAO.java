@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RoomDAO implements IGenericDAO<Room> {
+    Connection connection;
 
     public RoomDAO() {
     }
@@ -21,7 +22,7 @@ public class RoomDAO implements IGenericDAO<Room> {
     public void create(Room room) {
         String query = "INSERT INTO Rooms(roomNumber, cost, status, capacity, dateCheckIn, dateEvict, countStars)  VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
-            Connection connection = DatabaseConnection.getInstance().getConnection();
+            connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, room.getRoomNumber());
             statement.setInt(2, room.getCost());
@@ -45,7 +46,7 @@ public class RoomDAO implements IGenericDAO<Room> {
     public Room read(int roomNumber) {
         String query = "SELECT * FROM Rooms WHERE roomNumber = ?";
         try {
-            Connection connection = DatabaseConnection.getInstance().getConnection();
+            connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, roomNumber);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -63,7 +64,7 @@ public class RoomDAO implements IGenericDAO<Room> {
         String query = "UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, " +
                 "countRecordsHistory = ? WHERE roomNumber = ?";
         try {
-            Connection connection = DatabaseConnection.getInstance().getConnection();
+            connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, room.getCost());
             preparedStatement.setString(2, room.getStatus().toString());
@@ -100,7 +101,7 @@ public class RoomDAO implements IGenericDAO<Room> {
     private List<Room> getRooms(String query) {
         List<Room> rooms = new ArrayList<>();
         try {
-            Connection connection = DatabaseConnection.getInstance().getConnection();
+            connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -116,7 +117,7 @@ public class RoomDAO implements IGenericDAO<Room> {
         List<Room> rooms = new ArrayList<>();
         String query = "SELECT * FROM Rooms WHERE status = ?";
         try {
-            Connection connection = DatabaseConnection.getInstance().getConnection();
+            connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, status);
             ResultSet resultSet = statement.executeQuery();
@@ -156,14 +157,21 @@ public class RoomDAO implements IGenericDAO<Room> {
         List<Room> rooms = new ArrayList<>();
         String query = "SELECT * FROM Rooms WHERE status != 'REPAIRED' AND ((dateCheckIn IS NULL OR dateEvict IS NULL) OR dateEvict < ?)";
         try {
-            Connection connection = DatabaseConnection.getInstance().getConnection();
+            connection = DatabaseConnection.getInstance().getConnection();
+            connection.setAutoCommit(false);
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setDate(1, Date.valueOf(date));
             ResultSet resultSet = preparedStatement.executeQuery();
+            connection.commit();
             while (resultSet.next()) {
                 rooms.add(toRoom(resultSet));
             }
         } catch (SQLException e) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
             System.err.println(e.getMessage());
         }
         return rooms;

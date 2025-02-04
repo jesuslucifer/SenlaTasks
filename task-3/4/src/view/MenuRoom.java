@@ -6,6 +6,7 @@ import controller.SerializableController;
 import model.Client;
 import model.RoomStatus;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

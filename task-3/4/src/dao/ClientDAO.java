@@ -132,6 +132,7 @@ public class ClientDAO implements IGenericDAO<Client> {
     public void addService(Client client, Service service, LocalDate date) {
         String query = "INSERT INTO ClientService (clientId, serviceId, serviceDate) VALUES (?, ?, ?)";
         try {
+
             Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, client.getId());
