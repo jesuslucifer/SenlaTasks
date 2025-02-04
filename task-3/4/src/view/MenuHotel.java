@@ -1,5 +1,6 @@
 package view;
 
+import controller.ExitController;
 import controller.HotelController;
 import controller.Inject;
 import controller.SerializableController;
@@ -50,7 +51,7 @@ public class MenuHotel {
                     }
                 }
                 case 7 -> flag = false;
-                case 0 -> serializableController.exit();
+                case 0 -> ExitController.exit();
                 default -> System.out.println("Invalid choice");
             }
 

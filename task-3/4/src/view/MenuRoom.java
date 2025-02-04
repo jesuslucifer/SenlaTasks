@@ -1,12 +1,12 @@
 package view;
 
+import controller.ExitController;
 import controller.Inject;
 import controller.RoomController;
 import controller.SerializableController;
 import model.Client;
 import model.RoomStatus;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -50,7 +50,7 @@ public class MenuRoom {
                     }
                     case 10 -> changeStatus();
                     case 11 -> flag = false;
-                    case 0 -> serializableController.exit();
+                    case 0 -> ExitController.exit();
                     default -> System.out.println("Invalid choice");
                 }
             } else {
@@ -74,7 +74,7 @@ public class MenuRoom {
                         }
                     }
                     case 10 -> flag = false;
-                    case 0 -> serializableController.exit();
+                    case 0 -> ExitController.exit();
                     default -> System.out.println("Invalid choice");
                 }
             }

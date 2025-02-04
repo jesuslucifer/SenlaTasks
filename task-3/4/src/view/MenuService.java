@@ -1,5 +1,6 @@
 package view;
 
+import controller.ExitController;
 import controller.Inject;
 import controller.SerializableController;
 import controller.ServiceController;
@@ -36,7 +37,7 @@ public class MenuService {
                     }
                 }
                 case 5 -> flag = false;
-                case 0 -> serializableController.exit();
+                case 0 -> ExitController.exit();
                 default -> System.out.println("Invalid choice");
             }
         }
