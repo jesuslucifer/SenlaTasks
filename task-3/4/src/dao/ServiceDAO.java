@@ -80,6 +80,7 @@ public class ServiceDAO implements IGenericDAO<Service> {
             preparedStatement.setString(1, serviceName);
             ResultSet resultSet = preparedStatement.executeQuery();
             connection.commit();
+            connection.setAutoCommit(true);
             if (resultSet.next()) {
                 return toService(resultSet);
             }

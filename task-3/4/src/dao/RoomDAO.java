@@ -163,6 +163,7 @@ public class RoomDAO implements IGenericDAO<Room> {
             preparedStatement.setDate(1, Date.valueOf(date));
             ResultSet resultSet = preparedStatement.executeQuery();
             connection.commit();
+            connection.setAutoCommit(true);
             while (resultSet.next()) {
                 rooms.add(toRoom(resultSet));
             }
