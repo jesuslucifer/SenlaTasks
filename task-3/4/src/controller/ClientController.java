@@ -1,5 +1,8 @@
 package controller;
 
+import dao.ClientDAO;
+import dao.RoomDAO;
+import dao.ServiceDAO;
 import model.Client;
 import model.Hotel;
 import model.Room;
@@ -7,9 +10,9 @@ import model.Service;
 import view.ClientView;
 
 import java.io.File;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,22 +21,22 @@ import static java.time.temporal.ChronoUnit.DAYS;
 public class ClientController {
     @Inject
     Hotel hotel;
-
-    private List<Client> clients;
-
+    @Inject
+    HotelController hotelController;
+    @Inject
+    ClientDAO clientDAO;
+    @Inject
+    ServiceDAO serviceDAO;
+    @Inject
+    RoomDAO roomDAO;
     @Inject
     ClientView view;
 
     public ClientController() {
     }
 
-    public void init() {
-        clients = hotel.getClients();
-        System.out.println("Initializing clients...");
-    }
-
     public Client getClient(String fullName) {
-        for (Client client : clients) {
+        for (Client client : clientDAO.findAll()) {
             if (client.getFullName().equals(fullName)) {
                 return client;
             }
@@ -41,25 +44,25 @@ public class ClientController {
         return null;
     }
 
-    public void addServiceForClient(String serviceName, String fullName, String serviceDate) {
-        getClient(fullName).addServiceForClient(serviceName, serviceDate, hotel.getServices());
+    public void addServiceForClient(String serviceName, int id, String serviceDate) {
+        clientDAO.addService(clientDAO.read(id), serviceDAO.findServiceName(serviceName), formatDate(serviceDate));
     }
 
     public void printClients(String typeSort) {
-        List<Client> list = clients;
+        List<Client> list = List.of();
 
         switch (typeSort) {
             case "AlphabetA":
-                list.sort(Comparator.comparing(Client::getFullName));
+                 list = clientDAO.findAllWithSort("fullName ASC");
                 break;
             case "AlphabetZ":
-                list.sort(Comparator.comparing(Client::getFullName).reversed());
+                list = clientDAO.findAllWithSort("fullName DESC");
                 break;
             case "DateI":
-                list.sort(Comparator.comparing(Client::getDateEvict));
+                list = clientDAO.findAllWithSort("dateCheckIn ASC");
                 break;
             case "DateD":
-                list.sort(Comparator.comparing(Client::getDateEvict).reversed());
+                list = clientDAO.findAllWithSort("dateCheckIn DESC");
                 break;
             default:
                 break;
@@ -68,21 +71,22 @@ public class ClientController {
         view.printClients(list);
     }
 
-    public void printClientServices(String fullName, String typeSort) {
-        System.out.println("Services " + getClient(fullName).getFullName() + ":");
-        List<Service> list = getClient(fullName).getServices();
+    public void printClientServices(int id, String typeSort) {
+        Client client = clientDAO.read(id);
+        System.out.println("Services " + client.getFullName() + ":");
+        List<Service> list = List.of();
         switch (typeSort) {
             case "CostI":
-                list.sort(Comparator.comparing(Service::getCost));
+                list = clientDAO.getServices(client, "cost");
                 break;
             case "CostD":
-                list.sort(Comparator.comparing(Service::getCost).reversed());
+                list = clientDAO.getServices(client, "cost DESC");
                 break;
             case "DateI":
-                list.sort(Comparator.comparing(Service::getServiceDate));
+                list = clientDAO.getServices(client, "serviceDate");
                 break;
             case "DateD":
-                list.sort(Comparator.comparing(Service::getServiceDate).reversed());
+                list = clientDAO.getServices(client, "serviceDate DESC");
                 break;
             default:
                 break;
@@ -90,17 +94,15 @@ public class ClientController {
         view.printClientServices(list);
     }
 
-    public void printCostPerRoom(String fullName) {
-        for (Client client : hotel.getClients()) {
-            if (client.getFullName().equals(fullName)) {
-                long daysBetween = DAYS.between(client.getDateCheckIn(), client.getDateEvict());
-                for (Room room : hotel.getRooms()) {
-                    if (room.getRoomNumber() == client.getRoomNumber()) {
-                        long cost = daysBetween * room.getCost();
-                        view.printCostPerRoom(cost);
-                    }
-                }
-            }
+    public void printCostPerRoom(int id) {
+        try {
+            Client client = clientDAO.read(id);
+            long daysBetween = DAYS.between(client.getDateCheckIn(), client.getDateEvict());
+            Room room = roomDAO.read(client.getRoomNumber());
+            long cost = daysBetween * room.getCost();
+            view.printCostPerRoom(cost);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
     }
 
@@ -116,7 +118,7 @@ public class ClientController {
     }
 
     public boolean checkService(String service) {
-        for (Service service1 : hotel.getServices()) {
+        for (Service service1 : serviceDAO.findAll()) {
             if (service1.getServiceName().equals(service)) {
                 return true;
             }
@@ -125,7 +127,7 @@ public class ClientController {
     }
 
     public boolean checkFullName(String fullName) {
-        for (Client client : clients) {
+        for (Client client : clientDAO.findAll()) {
             if (client.getFullName().equals(fullName)) {
                 return true;
             }
@@ -133,8 +135,17 @@ public class ClientController {
         return false;
     }
 
+    public boolean checkID(int id) {
+        for (Client client : clientDAO.findAll()) {
+            if (client.getId() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean clientsIsEmpty() {
-        return clients.isEmpty();
+        return clientDAO.findAll().isEmpty();
     }
 
     public void importFromCSV(String fileName){
@@ -152,7 +163,7 @@ public class ClientController {
                         LocalDate.parse(split[4])); //evict
 
                 boolean found = false;
-                for (Client client : clients) {
+                for (Client client : clientDAO.findAll()) {
                     if (client.getId() == importClient.getId()) {
                         client = addServiceToClient(split, client);
                         client.updateFromCSV(split);
@@ -162,10 +173,10 @@ public class ClientController {
                 }
                 if (!found) {
                     importClient = addServiceToClient(split, importClient);
-                    clients.add(importClient);
-                    for (Room room : hotel.getRooms()) {
+                    clientDAO.findAll().add(importClient);
+                    for (Room room : hotelController.getRooms()) {
                         if (room.getRoomNumber() == importClient.getRoomNumber()) {
-                            room.checkIntoRoom(importClient, hotel.getClients());
+                            room.checkIntoRoom(importClient, hotelController.getClients());
                             break;
                         }
                     }
@@ -185,7 +196,7 @@ public class ClientController {
     public Client addServiceToClient(String[] split, Client client) {
         if (split.length > 5) {
             for (int i = 0; i < split.length - 5; i += 2) {
-                client.addServiceForClient(Integer.parseInt(split[i + 5]), hotel.getServices(), formatDate(split[i + 6]));
+                client.addServiceForClient(Integer.parseInt(split[i + 5]), hotelController.getServices(), formatDate(split[i + 6]));
             }
         }
         return client;

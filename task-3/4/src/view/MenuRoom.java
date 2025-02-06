@@ -1,5 +1,6 @@
 package view;
 
+import controller.ExitController;
 import controller.Inject;
 import controller.RoomController;
 import controller.SerializableController;
@@ -31,8 +32,8 @@ public class MenuRoom {
                 roomView.printMenuWithChangeStatus();
 
                 switch (sc.nextInt()) {
-                    case 1 -> printRooms("all");
-                    case 2 -> printRooms("free");
+                    case 1 -> printRooms("'FREE', 'BUSY', 'REPAIRED'");
+                    case 2 -> printRooms("'FREE'");
                     case 3 -> printInfoRoom();
                     case 4 -> checkIntoRoom();
                     case 5 -> evictFromRoom();
@@ -49,15 +50,15 @@ public class MenuRoom {
                     }
                     case 10 -> changeStatus();
                     case 11 -> flag = false;
-                    case 0 -> serializableController.exit();
+                    case 0 -> ExitController.exit();
                     default -> System.out.println("Invalid choice");
                 }
             } else {
                 roomView.printMenuWithoutChangeStatus();
 
                 switch (sc.nextInt()) {
-                    case 1 -> printRooms("all");
-                    case 2 -> printRooms("free");
+                    case 1 -> printRooms("'FREE', 'BUSY', 'REPAIRED'");
+                    case 2 -> printRooms("'FREE'");
                     case 3 -> printInfoRoom();
                     case 4 -> checkIntoRoom();
                     case 5 -> evictFromRoom();
@@ -73,7 +74,7 @@ public class MenuRoom {
                         }
                     }
                     case 10 -> flag = false;
-                    case 0 -> serializableController.exit();
+                    case 0 -> ExitController.exit();
                     default -> System.out.println("Invalid choice");
                 }
             }
@@ -94,34 +95,34 @@ public class MenuRoom {
 //        }
 //    }
 
-    public void printRooms(String roomType) {
+    public void printRooms(String typeRoom) {
         boolean flag = true;
         while (flag) {
             roomView.printSwitchRooms();
 
             switch (sc.nextInt()) {
                 case 1 -> {
-                    roomController.printRooms("CapacityI", roomType);
+                    roomController.printRooms("CapacityI", typeRoom);
                     flag = false;
                 }
                 case 2 -> {
-                    roomController.printRooms("CapacityD", roomType);
+                    roomController.printRooms("CapacityD", typeRoom);
                     flag = false;
                 }
                 case 3 -> {
-                    roomController.printRooms("CostI", roomType);
+                    roomController.printRooms("CostI", typeRoom);
                     flag = false;
                 }
                 case 4 -> {
-                    roomController.printRooms("CostD", roomType);
+                    roomController.printRooms("CostD", typeRoom);
                     flag = false;
                 }
                 case 5 -> {
-                    roomController.printRooms("StarsI", roomType);
+                    roomController.printRooms("StarsI", typeRoom);
                     flag = false;
                 }
                 case 6 -> {
-                    roomController.printRooms("StarsD", roomType);
+                    roomController.printRooms("StarsD", typeRoom);
                     flag = false;
                 }
                 case 7 -> flag = false;
@@ -158,6 +159,8 @@ public class MenuRoom {
             client1.setRoomNumber(roomNumber);
             clientList.add(client1);
         }
+
+
 
         roomController.checkIntoRoom(clientList, roomNumber, client.getDateCheckIn(), client.getDateEvict());
     }

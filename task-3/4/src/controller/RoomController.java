@@ -1,5 +1,7 @@
 package controller;
 
+import dao.ClientDAO;
+import dao.RoomDAO;
 import model.Client;
 import model.Hotel;
 import model.Room;
@@ -10,12 +12,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
@@ -23,116 +22,115 @@ import java.util.Scanner;
 public class RoomController {
     @Inject
     Hotel hotel;
-
-    private List<Room> rooms;
+    @Inject
+    HotelController hotelController;
+    @Inject
+    RoomDAO roomDAO;
+    @Inject
+    ClientDAO clientDAO;
     @Inject
     RoomView view;
 
     public RoomController() {
     }
 
-    public void init() {
-            rooms = hotel.getRooms();
-            Configurator configurator = new Configurator();
-            rooms.forEach(room -> {
-                try {
-                    configurator.configure(room);
-                } catch (Exception e) {
-                    System.err.println(e.getMessage());
-                }
-            });
-            System.out.println("Initializing rooms...");
-    }
-
     public Room getRoom(int roomNumber) {
-        for (Room room : rooms) {
-            if (room.getRoomNumber() == roomNumber) {
-                return room;
-            }
-        }
-        return null;
+       return roomDAO.read(roomNumber);
     }
 
     public void checkIntoRoom(List<Client> buffClients, int roomNumber, LocalDate dateCheckIn, LocalDate dateEvict) {
-       getRoom(roomNumber).checkIntoRoom(buffClients, dateCheckIn, dateEvict, hotel.getClients());
+       //getRoom(roomNumber).checkIntoRoom(buffClients, dateCheckIn, dateEvict, hotel.getClients());
+       Room room = getRoom(roomNumber);
+       if (room.isFree() && room.getCapacity() >= buffClients.size()) {
+           room.setStatus(RoomStatus.BUSY);
+           room.setDateCheckIn(dateCheckIn);
+           room.setDateEvict(dateEvict);
+           roomDAO.update(room);
+           for (Client client : buffClients) {
+               client.setRoomNumber(roomNumber);
+               client.setDateCheckIn(dateCheckIn);
+               client.setDateEvict(dateEvict);
+               clientDAO.create(client);
+           }
+           System.out.println("The clients is accommodated in " + room.getRoomNumber() + " room");
+       } else {
+           System.out.println("This room is not available");
+       }
     }
 
     public void evictFromRoom(int roomNumber) {
-        getRoom(roomNumber).evictFromRoom(hotel.getClients());
+        Room room = getRoom(roomNumber);
+        room.setStatus(RoomStatus.FREE);
+        room.setDateCheckIn(null);
+        room.setDateEvict(null);
+        roomDAO.update(room);
+        List<Client> clients = clientDAO.findInRoom(roomNumber);
+        for (Client client : clients) {
+            client.setOccupied(false);
+            clientDAO.update(client);
+        }
+        System.out.println("The guest has been evicted from the " + roomNumber + " room");
     }
 
     public void changeStatusRoom(int roomNumber, RoomStatus status) {
-        getRoom(roomNumber).changeStatusRoom(status);
+        Room room = getRoom(roomNumber);
+        if (!(room.isBusy() && status == RoomStatus.REPAIRED)) {
+            room.setStatus(status);
+            roomDAO.update(room);
+        } else {
+            System.out.println("The status of the room " + roomNumber + " cannot be changed, there are visitors in the room");
+        }
     }
 
     public void changeLockedStatusRoom(boolean lockedStatus) {
-        rooms.forEach(room -> room.setLockedChangeStatus(lockedStatus));
+        for (Room room : roomDAO.findAll()) {
+            room.setLockedChangeStatus(lockedStatus);
+            roomDAO.update(room);
+        }
     }
 
     public void changeCostRoom(int roomNumber, int cost) {
-        getRoom(roomNumber).changeCostRoom(cost);
+        Room room = getRoom(roomNumber);
+        room.setCost(cost);
+        roomDAO.update(room);
     }
 
     public void printRooms(String typeSort, String typeRoom) {
-        List<Room> list = rooms;
+        List<Room> list;
 
-        if (typeRoom.equals("free"))
-        {
-            list = hotel.getListFreeRooms();
-        }
-
-        switch (typeSort) {
-            case "CapacityI":
-                list.sort(Comparator.comparing(Room::getCapacity));
-                break;
-            case "CapacityD":
-                list.sort(Comparator.comparing(Room::getCapacity).reversed());
-                break;
-            case "CostI":
-                list.sort(Comparator.comparing(Room::getCost));
-                break;
-            case "CostD":
-                list.sort(Comparator.comparing(Room::getCost).reversed());
-                break;
-            case "StarsI":
-                list.sort(Comparator.comparing(Room::getCountStars));
-                break;
-            case "StarsD":
-                list.sort(Comparator.comparing(Room::getCountStars).reversed());
-                break;
-            default:
-                list.sort(Comparator.comparing(Room::getRoomNumber));
-                break;
-        }
+        list = switch (typeSort) {
+            case "CapacityI" -> roomDAO.findWithSort(typeRoom, "capacity");
+            case "CapacityD" -> roomDAO.findWithSort(typeRoom, "capacity DESC");
+            case "CostI" -> roomDAO.findWithSort(typeRoom, "cost");
+            case "CostD" -> roomDAO.findWithSort(typeRoom, "cost DESC");
+            case "StarsI" -> roomDAO.findWithSort(typeRoom, "countStars");
+            case "StarsD" -> roomDAO.findWithSort(typeRoom, "countStars DESC");
+            default -> roomDAO.findWithSort(typeRoom, "roomNumber");
+        };
 
         view.printRooms(list);
     }
 
     public void printInfoRoom(int roomNumber) {
-        view.printInfoRoom(getRoom(roomNumber));
+        view.printInfoRoom(roomDAO.read(roomNumber), clientDAO.findInRoom(roomNumber));
     }
 
     public void printHistoryRoom(int roomNumber) {
-        Deque<Client> deque = new LinkedList<>(getRoom(roomNumber).getHistoryClientQueue());
-        view.printHistoryRoom(getRoom(roomNumber), deque);
+        List<Client> clients = clientDAO.printHistory(roomNumber, getRoom(roomNumber).getCountRecordsHistory());
+        view.printHistoryRoom(getRoom(roomNumber), clients);
     }
 
     public void printRoomFreeByDate(String date) {
-        List<Room> freeRooms = new ArrayList<>();
-        for (Room room : rooms) {
-            if (room.getDateEvict().isBefore(formatDate(date)) && !room.getStatus().equals(RoomStatus.REPAIRED)) {
-                freeRooms.add(room);
-            }
-        }
-        view.printRoomFreeByDate(formatDate(date), freeRooms);
+        view.printRoomFreeByDate(formatDate(date), roomDAO.findFreeByDate(formatDate(date)));
     }
 
     public LocalDate formatDate(String date) {
-        return hotel.formatDate(date);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return LocalDate.parse(date, formatter);
     }
 
     public boolean checkRoom(int roomNumber) {
-        return 0 < roomNumber && roomNumber <= rooms.size();
+        return 0 < roomNumber && roomNumber <= roomDAO.findAll().size();
     }
 
     public boolean checkCapacityRoom(int roomNumber, int countClients) {
@@ -151,7 +149,10 @@ public class RoomController {
     }
 
     public void changeCountRecordsHistory(int countRecordsHistory) {
-        rooms.forEach(room -> room.setCountRecordsHistory(countRecordsHistory));
+        for (Room room : roomDAO.findAll()) {
+            room.setCountRecordsHistory(countRecordsHistory);
+            roomDAO.update(room);
+        }
     }
 
     public void importFromCSV(String fileName) {
@@ -161,7 +162,7 @@ public class RoomController {
                 String line = scanner.nextLine();
                 String[] split = line.split(",");
                 boolean found = false;
-                for (Room room : rooms) {
+                for (Room room : roomDAO.findAll()) {
                     if (room.getId() == Integer.parseInt(split[0])) {
                         room.updateFromCSV(split);
                         found = true;
@@ -178,7 +179,7 @@ public class RoomController {
                             Integer.parseInt(split[5]),
                             LocalDate.parse(split[6]),
                             LocalDate.parse(split[7]));
-                    hotel.getRooms().add(room);
+                    hotelController.getRooms().add(room);
                 }
             }
             System.out.println("Success import Rooms from rooms.csv");
@@ -191,8 +192,8 @@ public class RoomController {
         try (FileInputStream fis = new FileInputStream("task-3/4/src/resources/config.property")) {
             Properties prop = new Properties();
             prop.load(fis);
-            changeLockedStatusRoom(Boolean.parseBoolean(prop.getProperty("lockedChangeStatus")));
-            System.out.println("Success import locked rooms from property, lockedChangeStatus=" + prop.getProperty("lockedChangeStatus"));
+            changeLockedStatusRoom(Boolean.parseBoolean(prop.getProperty("room.lockedChangeStatus")));
+            System.out.println("Success import locked rooms from property, lockedChangeStatus=" + prop.getProperty("room.lockedChangeStatus"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -202,8 +203,8 @@ public class RoomController {
         try (FileInputStream fis = new FileInputStream("task-3/4/src/resources/config.property")) {
             Properties prop = new Properties();
             prop.load(fis);
-            changeCountRecordsHistory(Integer.parseInt(prop.getProperty("countRecordsHistory")));
-            System.out.println("Success import count records in the history room from property, countRecordsHistory=" + prop.getProperty("countRecordsHistory"));
+            changeCountRecordsHistory(Integer.parseInt(prop.getProperty("room.countRecordsHistory")));
+            System.out.println("Success import count records in the history room from property, countRecordsHistory=" + prop.getProperty("room.countRecordsHistory"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

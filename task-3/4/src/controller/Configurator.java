@@ -8,7 +8,7 @@ import java.lang.reflect.Field;
 import java.util.Properties;
 
 public class Configurator {
-    public void configure(Object object) throws Exception {
+    public static void configure(Object object) throws Exception {
         Class<?> clazz = object.getClass();
         Properties properties = new Properties();
 

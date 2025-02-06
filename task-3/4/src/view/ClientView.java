@@ -38,7 +38,7 @@ public class ClientView {
 
     public void printClients(List<Client> clients) {
         for (Client client : clients) {
-            System.out.println(client.getFullName() + " " + client.getDateEvict() + " Room: " + client.getRoomNumber() + " ID: " + client.getId());
+            System.out.println("ID: " + client.getId() + " " + client.getFullName() + " " + client.getDateEvict() + " Room: " + client.getRoomNumber() + " ID: " + client.getId());
         }
     }
 

@@ -1,8 +1,10 @@
 package view;
 
+import controller.ExitController;
 import controller.Inject;
 import controller.SerializableController;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Menu {
@@ -35,7 +37,7 @@ public class Menu {
                 case 2 -> menuRoom.printMenuPageOne();
                 case 3 -> menuClient.printMenu();
                 case 4 -> menuService.printMenu();
-                case 0 -> serializableController.exit();
+                case 0 -> ExitController.exit();
                 default -> System.out.println("Invalid choice, try again");
             }
         }

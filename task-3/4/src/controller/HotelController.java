@@ -1,5 +1,8 @@
 package controller;
 
+import dao.ClientDAO;
+import dao.RoomDAO;
+import dao.ServiceDAO;
 import model.IToCSV;
 import model.Client;
 import model.Hotel;
@@ -9,7 +12,6 @@ import view.HotelView;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -22,28 +24,30 @@ public class HotelController {
 
     @Inject
     HotelView view;
+    @Inject
+    RoomDAO roomDAO;
+    @Inject
+    ServiceDAO serviceDAO;
+    @Inject
+    ClientDAO clientDAO;
 
     public HotelController() {
     }
 
     public List<Room> getListFreeRooms() {
-        return hotel.getListFreeRooms();
+        return roomDAO.findByStatus("FREE");
     }
 
     public List<Room> getRooms() {
-        return hotel.getRooms();
+        return roomDAO.findAll();
     }
 
     public List<Client> getClients() {
-        return hotel.getClients();
+        return clientDAO.findAll();
     }
 
     public List<Service> getServices() {
-        return hotel.getServices();
-    }
-
-    public LocalDate formatDate(String date) {
-        return hotel.formatDate(date);
+        return serviceDAO.findAll();
     }
 
     public void printCountFreeRoom() {

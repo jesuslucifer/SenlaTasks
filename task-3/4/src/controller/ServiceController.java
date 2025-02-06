@@ -1,32 +1,27 @@
 package controller;
 
+import dao.ServiceDAO;
 import model.Hotel;
 import model.Service;
 import view.ServiceView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.List;
 import java.util.Scanner;
 
 public class ServiceController {
     @Inject
     Hotel hotel;
-
-    private List<Service> services;
-
+    @Inject
+    ServiceDAO serviceDAO;
     @Inject
     ServiceView view;
 
     public ServiceController() {
     }
 
-    public void init() {
-        services = hotel.getServices();
-    }
-
     public Service getService(String serviceName) {
-        for (Service service : services) {
+        for (Service service : serviceDAO.findAll()) {
             if (service.getServiceName().equals(serviceName)) {
                 return service;
             }
@@ -35,19 +30,19 @@ public class ServiceController {
     }
 
     public void changeCostService(String serviceName, int cost) {
-        getService(serviceName).setCost(cost);
+        serviceDAO.update(new Service(serviceName, cost));
     }
 
     public void printServices() {
-        view.printServices(services);
+        view.printServices(serviceDAO.findAll());
     }
 
     public void addService(String serviceName, int cost) {
-        services.add(new Service(serviceName, cost));
+        serviceDAO.create(new Service(serviceName, cost));
     }
 
     public boolean checkService(String service) {
-        for (Service service1 : services) {
+        for (Service service1 : serviceDAO.findAll()) {
             if (service1.getServiceName().equals(service)) {
                 return true;
             }
@@ -56,7 +51,7 @@ public class ServiceController {
     }
 
     public boolean servicesIsEmpty() {
-        return services.isEmpty();
+        return serviceDAO.findAll().isEmpty();
     }
 
     public void importFromCSV(String fileName) throws FileNotFoundException {
@@ -71,7 +66,7 @@ public class ServiceController {
                         Integer.parseInt(split[2]));
 
                 boolean found = false;
-                for (Service service : services) {
+                for (Service service : serviceDAO.findAll()) {
                     if (service.getId() == importService.getId()) {
                         service.updateFromCSV(split);
                         found = true;
@@ -80,7 +75,7 @@ public class ServiceController {
                 }
 
                 if (!found) {
-                    services.add(importService);
+                    serviceDAO.findAll().add(importService);
                 }
             }
             System.out.println("Success import Services from services.csv");
