@@ -1,6 +1,8 @@
 package controller;
 
 import connection.DatabaseConnection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import view.Menu;
 import model.Hotel;
 
@@ -25,6 +27,7 @@ public class MainController {
     ClientController clientController;
     @Inject
     ServiceController serviceController;
+    private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
 
     public MainController() {

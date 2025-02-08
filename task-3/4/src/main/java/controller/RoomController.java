@@ -189,7 +189,7 @@ public class RoomController {
     }
 
     public void importLockedRoomProperty() {
-        try (FileInputStream fis = new FileInputStream("task-3/4/src/resources/config.property")) {
+        try (FileInputStream fis = new FileInputStream("task-3/4/src/main/java/resources/config.property")) {
             Properties prop = new Properties();
             prop.load(fis);
             changeLockedStatusRoom(Boolean.parseBoolean(prop.getProperty("room.lockedChangeStatus")));
@@ -200,7 +200,7 @@ public class RoomController {
     }
 
     public void importCountRecordHistory() {
-        try (FileInputStream fis = new FileInputStream("task-3/4/src/resources/config.property")) {
+        try (FileInputStream fis = new FileInputStream("task-3/4/src/main/java/resources/config.property")) {
             Properties prop = new Properties();
             prop.load(fis);
             changeCountRecordsHistory(Integer.parseInt(prop.getProperty("room.countRecordsHistory")));
