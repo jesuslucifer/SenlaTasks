@@ -8,6 +8,8 @@ import model.Client;
 import model.Hotel;
 import model.Room;
 import model.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import view.HotelView;
 
 import java.io.FileNotFoundException;
@@ -30,6 +32,8 @@ public class HotelController {
     ServiceDAO serviceDAO;
     @Inject
     ClientDAO clientDAO;
+
+    private static final Logger logger = LoggerFactory.getLogger(HotelController.class);
 
     public HotelController() {
     }
@@ -81,9 +85,10 @@ public class HotelController {
                 writer.println();
             }
             view.printSuccessExport(fileName);
+            logger.info("Successfully exported to CSV file");
         }
         catch (FileNotFoundException | NullPointerException e) {
-            System.err.println(e.getMessage());
+            logger.error("Error exporting to CSV file", e);
         }
     }
 
@@ -102,7 +107,7 @@ public class HotelController {
                 default -> {}
             }
         } catch (NullPointerException | NoSuchElementException e) {
-            System.err.println("List is empty");
+            logger.error("Error checking type", e);
         }
         return null;
     }

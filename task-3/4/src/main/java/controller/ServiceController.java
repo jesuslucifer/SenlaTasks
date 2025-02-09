@@ -3,10 +3,11 @@ package controller;
 import dao.ServiceDAO;
 import model.Hotel;
 import model.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import view.ServiceView;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ServiceController {
@@ -16,6 +17,7 @@ public class ServiceController {
     ServiceDAO serviceDAO;
     @Inject
     ServiceView view;
+    private static final Logger logger = LoggerFactory.getLogger(ServiceController.class);
 
     public ServiceController() {
     }
@@ -44,6 +46,7 @@ public class ServiceController {
     public boolean checkService(String service) {
         for (Service service1 : serviceDAO.findAll()) {
             if (service1.getServiceName().equals(service)) {
+                logger.info("Successfully checked service name");
                 return true;
             }
         }
@@ -54,7 +57,7 @@ public class ServiceController {
         return serviceDAO.findAll().isEmpty();
     }
 
-    public void importFromCSV(String fileName) throws FileNotFoundException {
+    public void importFromCSV(String fileName) {
         try (Scanner scanner = new Scanner(new File(fileName))) {
             scanner.nextLine();
             while (scanner.hasNextLine()) {
@@ -79,6 +82,9 @@ public class ServiceController {
                 }
             }
             System.out.println("Success import Services from services.csv");
+            logger.info("Success import Services from services.csv");
+        } catch (Exception e) {
+            logger.error("Error import services from services.csv: ", e);
         }
     }
 }

@@ -34,6 +34,7 @@ public class MainController {
     }
 
     public void run() {
+        logger.info("Starting Program");
         if (!isHotelInitialized()) {
             hotel = new Hotel();
         } else {
@@ -53,10 +54,11 @@ public class MainController {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
+                logger.info("Hotel initialized");
                 return resultSet.getInt(1) > 0;
             }
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            logger.error("Error initializing Hotel", e);
         }
         return false;
     }

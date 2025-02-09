@@ -2,6 +2,8 @@ package dao;
 
 import connection.DatabaseConnection;
 import model.Room;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -14,6 +16,7 @@ import java.util.List;
 
 public class RoomDAO implements IGenericDAO<Room> {
     Connection connection;
+    private static final Logger logger = LoggerFactory.getLogger(RoomDAO.class);
 
     public RoomDAO() {
     }
@@ -32,8 +35,9 @@ public class RoomDAO implements IGenericDAO<Room> {
             statement.setNull(6, java.sql.Types.DATE);
             statement.setInt(7, room.getCountStars());
             statement.execute();
+            logger.info("Room created");
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            logger.error("Error creating room: ", e);
         }
     }
 
@@ -51,10 +55,11 @@ public class RoomDAO implements IGenericDAO<Room> {
             preparedStatement.setInt(1, roomNumber);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
+                logger.info("Room read");
                 return toRoom(resultSet);
             }
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            logger.error("Error reading room: ", e);
         }
         return null;
     }
@@ -82,8 +87,9 @@ public class RoomDAO implements IGenericDAO<Room> {
             preparedStatement.setInt(6, room.getCountRecordsHistory());
             preparedStatement.setInt(7, room.getRoomNumber());
             preparedStatement.executeUpdate();
+            logger.info("Room updated");
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            logger.error("Error updating room: ", e);
         }
     }
 
@@ -107,8 +113,9 @@ public class RoomDAO implements IGenericDAO<Room> {
             while (resultSet.next()) {
                 rooms.add(toRoom(resultSet));
             }
+            logger.info("Rooms found");
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            logger.error("Error reading rooms: ", e);
         }
         return rooms;
     }
@@ -124,8 +131,9 @@ public class RoomDAO implements IGenericDAO<Room> {
             while (resultSet.next()) {
                 rooms.add(toRoom(resultSet));
             }
+            logger.info("Rooms found by status");
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            logger.error("Error found rooms by status: ", e);
         }
         return rooms;
     }
@@ -167,13 +175,14 @@ public class RoomDAO implements IGenericDAO<Room> {
             while (resultSet.next()) {
                 rooms.add(toRoom(resultSet));
             }
+            logger.info("Rooms free by date found");
         } catch (SQLException e) {
             try {
                 connection.rollback();
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
-            System.err.println(e.getMessage());
+            logger.error("Error found room free by date: ", e);
         }
         return rooms;
     }
