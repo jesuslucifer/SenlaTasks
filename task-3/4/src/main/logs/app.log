@@ -1,0 +1,143 @@
+2025-02-09 23:08:24 INFO  controller.MainController - Starting Program
+2025-02-09 23:08:25 INFO  controller.MainController - Hotel initialized
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Rooms found
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 1 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 2 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 3 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 4 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 5 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 6 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 7 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 8 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 9 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 10 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 1 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 2 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 3 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 4 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 5 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 6 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 7 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 8 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 9 has been changed to true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The LockedStatusRoom, room 10 has been changed to true
+2025-02-09 23:08:25 INFO  controller.RoomController - Success import locked rooms from property, lockedChangeStatus=true
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Rooms found
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:25 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-09 23:08:25 INFO  controller.RoomController - Success import count records in the history room from property, countRecordsHistory=3
+2025-02-09 23:08:27 INFO  dao.RoomDAO - Rooms found by status
+2025-02-09 23:08:34 INFO  dao.RoomDAO - Room read
+2025-02-09 23:08:42 INFO  dao.RoomDAO - Rooms found
+2025-02-09 23:08:42 INFO  dao.RoomDAO - Room read
+2025-02-09 23:08:45 INFO  controller.RoomController - Successfully checked format date
+2025-02-09 23:08:48 INFO  controller.RoomController - Successfully checked format date
+2025-02-09 23:08:56 INFO  dao.RoomDAO - Room read
+2025-02-09 23:08:56 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:08:56 INFO  dao.ClientDAO - Client created
+2025-02-09 23:08:56 INFO  dao.ClientDAO - Client created
+2025-02-09 23:08:56 INFO  dao.ClientDAO - Client created
+2025-02-09 23:08:56 INFO  controller.RoomController - The clients is accommodated in 5 room
+2025-02-09 23:08:56 INFO  dao.RoomDAO - Room read
+2025-02-09 23:09:01 INFO  dao.RoomDAO - Rooms found
+2025-02-09 23:09:01 INFO  dao.RoomDAO - Room read
+2025-02-09 23:09:01 INFO  dao.RoomDAO - Room updated
+2025-02-09 23:09:01 INFO  dao.ClientDAO - Clients in room found
+2025-02-09 23:09:01 INFO  dao.ClientDAO - Client updated
+2025-02-09 23:09:01 INFO  dao.ClientDAO - Client updated
+2025-02-09 23:09:01 INFO  dao.ClientDAO - Client updated
+2025-02-09 23:09:01 INFO  controller.RoomController - The guest has been evicted from the 5 room
+2025-02-09 23:09:01 INFO  dao.RoomDAO - Room read
+2025-02-09 23:09:05 INFO  dao.ClientDAO - Clients found
+2025-02-09 23:09:05 INFO  dao.ServiceDAO - Services found
+2025-02-09 23:09:06 INFO  dao.ClientDAO - Clients found
+2025-02-09 23:09:06 INFO  controller.MainController - Successfully checked id
+2025-02-09 23:09:09 INFO  controller.MainController - Successfully checked format date
+2025-02-09 23:09:09 INFO  dao.ServiceDAO - Services found
+2025-02-09 23:09:12 INFO  dao.ServiceDAO - Services found
+2025-02-09 23:09:12 INFO  controller.MainController - Service not found
+2025-02-09 23:09:12 INFO  dao.ServiceDAO - Services found
+2025-02-09 23:09:19 INFO  dao.ServiceDAO - Services found
+2025-02-09 23:09:19 INFO  controller.MainController - Successfully checked service name
+2025-02-09 23:09:19 INFO  dao.ClientDAO - Client read
+2025-02-09 23:09:19 INFO  dao.ServiceDAO - Service found
+2025-02-09 23:09:19 ERROR dao.ClientDAO - Error adding service for client: 
+java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1-1' for key 'clientservice.PRIMARY'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.ClientDAO.addService(ClientDAO.java:149)
+	at controller.ClientController.addServiceForClient(ClientController.java:52)
+	at view.MenuClient.addServiceForClient(MenuClient.java:128)
+	at view.MenuClient.printMenu(MenuClient.java:34)
+	at view.Menu.printMenu(Menu.java:38)
+	at controller.MainController.run(MainController.java:47)
+	at Main.main(Main.java:6)
+2025-02-09 23:09:28 INFO  dao.ClientDAO - Clients found
+2025-02-09 23:09:30 INFO  dao.ClientDAO - Clients found
+2025-02-09 23:09:30 INFO  controller.MainController - Successfully checked id
+2025-02-09 23:09:30 INFO  dao.ClientDAO - Client read
+2025-02-09 23:09:30 INFO  dao.RoomDAO - Room read
+2025-02-09 23:09:49 INFO  dao.ServiceDAO - Service created
