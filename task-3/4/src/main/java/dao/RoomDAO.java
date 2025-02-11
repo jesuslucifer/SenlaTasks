@@ -34,7 +34,7 @@ public class RoomDAO implements IGenericDAO<Room> {
             statement.setNull(6, java.sql.Types.DATE);
             statement.setInt(7, room.getCountStars());
             statement.execute();
-            log.info("Room created");
+            log.info("Room created ID {} QUERY {}", room.getId(), query);
         } catch (SQLException e) {
             log.error("Error creating room: ", e);
         }
@@ -54,7 +54,7 @@ public class RoomDAO implements IGenericDAO<Room> {
             preparedStatement.setInt(1, roomNumber);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                log.info("Room read");
+                log.info("Room read ID {} QUERY {}", roomNumber, query);
                 return toRoom(resultSet);
             }
         } catch (SQLException e) {
@@ -86,7 +86,7 @@ public class RoomDAO implements IGenericDAO<Room> {
             preparedStatement.setInt(6, room.getCountRecordsHistory());
             preparedStatement.setInt(7, room.getRoomNumber());
             preparedStatement.executeUpdate();
-            log.info("Room updated");
+            log.info("Room updated ID {} QUERY {}", room.getId(), query);
         } catch (SQLException e) {
             log.error("Error updating room: ", e);
         }
@@ -111,8 +111,9 @@ public class RoomDAO implements IGenericDAO<Room> {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 rooms.add(toRoom(resultSet));
+                log.info("Room ID {}", rooms.getLast().getId());
             }
-            log.info("Rooms found");
+            log.info("Rooms found QUERY {}", query);
         } catch (SQLException e) {
             log.error("Error reading rooms: ", e);
         }
@@ -129,8 +130,9 @@ public class RoomDAO implements IGenericDAO<Room> {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 rooms.add(toRoom(resultSet));
+                log.info("Rooms by status {} ID {}", rooms.getLast().getStatus(), rooms.getLast().getId());
             }
-            log.info("Rooms found by status");
+            log.info("Rooms found by status QUERY {}", query);
         } catch (SQLException e) {
             log.error("Error found rooms by status: ", e);
         }
@@ -173,8 +175,9 @@ public class RoomDAO implements IGenericDAO<Room> {
             connection.setAutoCommit(true);
             while (resultSet.next()) {
                 rooms.add(toRoom(resultSet));
+                log.info("Rooms free by date {} ID {}", date, rooms.getLast().getId());
             }
-            log.info("Rooms free by date found");
+            log.info("Rooms free by date found QUERY {}", query);
         } catch (SQLException e) {
             try {
                 connection.rollback();

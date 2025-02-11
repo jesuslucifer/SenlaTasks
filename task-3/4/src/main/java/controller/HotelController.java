@@ -106,7 +106,7 @@ public class HotelController {
                 default -> {}
             }
         } catch (NullPointerException | NoSuchElementException e) {
-            logger.error("Error checking type", e);
+            log.error("Error checking type", e);
         }
         return null;
     }

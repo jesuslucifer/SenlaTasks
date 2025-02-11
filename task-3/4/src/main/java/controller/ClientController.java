@@ -104,7 +104,7 @@ public class ClientController {
             long cost = daysBetween * room.getCost();
             view.printCostPerRoom(cost);
         } catch (Exception e) {
-            log.error("Error printing cost per room", e);
+            log.error("Error printing cost per room ID {}", id, e);
         }
     }
 
@@ -112,11 +112,11 @@ public class ClientController {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             LocalDate.parse(date, formatter);
-            log.info("Successfully checked format date");
+            log.info("Successfully checked format date {}", date);
             return true;
         }
         catch (Exception e) {
-            log.error("Error checking format date", e);
+            log.error("Error checking format date {}", date, e);
             return false;
         }
     }
@@ -124,33 +124,33 @@ public class ClientController {
     public boolean checkService(String service) {
         for (Service service1 : serviceDAO.findAll()) {
             if (service1.getServiceName().equals(service)) {
-                log.info("Successfully checked service name");
+                log.info("Successfully checked service name {}", service);
                 return true;
             }
         }
-        log.info("Service not found");
+        log.info("Service not found {}", service);
         return false;
     }
 
     public boolean checkFullName(String fullName) {
         for (Client client : clientDAO.findAll()) {
             if (client.getFullName().equals(fullName)) {
-                log.info("Successfully checked full name");
+                log.info("Successfully checked full name {}", fullName);
                 return true;
             }
         }
-        log.info("Full name not found");
+        log.info("Full name not  {}", fullName);
         return false;
     }
 
     public boolean checkID(int id) {
         for (Client client : clientDAO.findAll()) {
             if (client.getId() == id) {
-                log.info("Successfully checked id");
+                log.info("Successfully checked id {}", id);
                 return true;
             }
         }
-        log.info("ID not found");
+        log.info("ID not found {}", id);
         return false;
     }
 

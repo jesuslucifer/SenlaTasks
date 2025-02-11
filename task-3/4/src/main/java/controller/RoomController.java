@@ -56,7 +56,7 @@ public class RoomController {
            log.info("The clients is accommodated in {} room", room.getRoomNumber());
            System.out.println("The clients is accommodated in " + room.getRoomNumber() + " room");
        } else {
-           log.info("This room is not available");
+           log.info("This room ID {} is not available", roomNumber);
            System.out.println("This room is not available");
        }
     }
@@ -72,7 +72,7 @@ public class RoomController {
             client.setOccupied(false);
             clientDAO.update(client);
         }
-        log.info("The guest has been evicted from the {} room", roomNumber);
+        log.info("The guest's has been evicted from the {} room", roomNumber);
         System.out.println("The guest has been evicted from the " + roomNumber + " room");
     }
 

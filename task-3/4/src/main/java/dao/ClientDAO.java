@@ -31,7 +31,7 @@ public class ClientDAO implements IGenericDAO<Client> {
             statement.setDate(3, Date.valueOf(client.getDateCheckIn()));
             statement.setDate(4, Date.valueOf(client.getDateEvict()));
             statement.executeUpdate();
-            log.info("Client created");
+            log.info("Client created ID {} QUERY: {}", client.getId(), query);
         } catch (SQLException e) {
             log.error("Error creating client", e);
         }
@@ -46,7 +46,7 @@ public class ClientDAO implements IGenericDAO<Client> {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                log.info("Client read");
+                log.info("Client read ID {} QUERY: {}", id, query);
                 return toClient(resultSet);
             }
         } catch (SQLException e) {
@@ -64,7 +64,7 @@ public class ClientDAO implements IGenericDAO<Client> {
             preparedStatement.setBoolean(1, client.getOccupied());
             preparedStatement.setInt(2, client.getId());
             preparedStatement.executeUpdate();
-            log.info("Client updated");
+            log.info("Client updated ID {} QUERY: {}", client.getId(), query);
         } catch (SQLException e) {
             log.error("Error updating client: ", e);
         }
@@ -78,7 +78,7 @@ public class ClientDAO implements IGenericDAO<Client> {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, client.getId());
             statement.executeUpdate();
-            log.info("Client deleted");
+            log.info("Client deleted ID {} QUERY: {}", client.getId(), query);
         } catch (SQLException e) {
             log.error("Error deleting client: ", e);
         }
@@ -94,8 +94,9 @@ public class ClientDAO implements IGenericDAO<Client> {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 clients.add(toClient(resultSet));
+                log.info("Client ID {}", clients.getLast().getId());
             }
-            log.info("Clients found");
+            log.info("Clients found QUERY: {}", query);
         } catch (SQLException e) {
             log.error("Error finding clients: ", e);
         }
@@ -128,8 +129,9 @@ public class ClientDAO implements IGenericDAO<Client> {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 clients.add(toClient(resultSet));
+                log.info("Client ID {} in room {}", clients.getLast().getId(), roomNumber);
             }
-            log.info("Clients in room found");
+            log.info("Clients in room ID {} found QUERY: {}", roomNumber, query);
         } catch (SQLException e) {
             log.error("Error finding clients in room: ", e);
         }
@@ -145,7 +147,7 @@ public class ClientDAO implements IGenericDAO<Client> {
             preparedStatement.setInt(2, service.getId());
             preparedStatement.setDate(3, Date.valueOf(date));
             preparedStatement.executeUpdate();
-            log.info("Service added for client");
+            log.info("Service ID {} added for client ID {} QUERY: {}", service.getId(), client.getId(), query);
         } catch (SQLException e) {
             log.error("Error adding service for client: ", e);
         }
@@ -168,8 +170,9 @@ public class ClientDAO implements IGenericDAO<Client> {
                         resultSet.getDate("serviceDate").toLocalDate()
                 );
                 services.add(service);
+                log.info("Service ID {}", service.getId());
             }
-            log.info("Services found");
+            log.info("Services found for client ID {} QUERY: {}", client.getId(), query);
         } catch (SQLException e) {
             log.error("Error finding services for client: ", e);
         }
@@ -196,8 +199,9 @@ public class ClientDAO implements IGenericDAO<Client> {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 clients.add(toClient(resultSet));
+                log.info("Client with sort {} ID {}", typeSort, clients.getLast().getId());
             }
-            log.info("Clients found with sort {}", typeSort);
+            log.info("Clients found with sort {} QUERY: {}", typeSort, query);
         } catch (SQLException e) {
             log.error("Error finding clients with sort: ", e);
         }
@@ -215,8 +219,9 @@ public class ClientDAO implements IGenericDAO<Client> {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 clients.add(toClient(resultSet));
+                log.info("Client ID {}", clients.getLast().getId());
             }
-            log.info("Successfully printed history");
+            log.info("Successfully printed history QUERY: {}", query);
         } catch (SQLException e) {
             log.error("Error printing history: ", e);
         }

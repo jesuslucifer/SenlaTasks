@@ -27,7 +27,7 @@ public class ServiceDAO implements IGenericDAO<Service> {
             statement.setString(1, service.getServiceName());
             statement.setInt(2, service.getCost());
             statement.executeUpdate();
-            log.info("Service created");
+            log.info("Service created ID {} QUERY {}", service.getId(), query);
         } catch (SQLException e) {
             log.error("Error creating service: ", e);
         }
@@ -47,7 +47,7 @@ public class ServiceDAO implements IGenericDAO<Service> {
             preparedStatement.setInt(1, service.getCost());
             preparedStatement.setString(2, service.getServiceName());
             preparedStatement.executeUpdate();
-            log.info("Service updated");
+            log.info("Service updated ID {} QUERY {}", service.getId(), query);
         } catch (SQLException e) {
             log.error("Error updating service: ", e);
         }
@@ -68,8 +68,9 @@ public class ServiceDAO implements IGenericDAO<Service> {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 services.add(toService(resultSet));
+                log.info("Service ID {}", services.getLast().getId());
             }
-            log.info("Services found");
+            log.info("Services found QUERY {}", query);
         } catch (SQLException e) {
             log.error("Error finding services: ", e);
         }
@@ -87,7 +88,7 @@ public class ServiceDAO implements IGenericDAO<Service> {
             connection.commit();
             connection.setAutoCommit(true);
             if (resultSet.next()) {
-                log.info("Service found");
+                log.info("Service found ID {} QUERY {}", resultSet.getInt("id"), query);
                 return toService(resultSet);
             }
         } catch (SQLException e) {
