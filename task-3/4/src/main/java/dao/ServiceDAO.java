@@ -1,9 +1,8 @@
 package dao;
 
 import connection.DatabaseConnection;
+import lombok.extern.slf4j.Slf4j;
 import model.Service;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,9 +11,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class ServiceDAO implements IGenericDAO<Service> {
     private Connection connection;
-    private static final Logger logger = LoggerFactory.getLogger(ServiceDAO.class);
 
     public ServiceDAO() {
     }
@@ -28,9 +27,9 @@ public class ServiceDAO implements IGenericDAO<Service> {
             statement.setString(1, service.getServiceName());
             statement.setInt(2, service.getCost());
             statement.executeUpdate();
-            logger.info("Service created");
+            log.info("Service created");
         } catch (SQLException e) {
-            logger.error("Error creating service: ", e);
+            log.error("Error creating service: ", e);
         }
     }
 
@@ -48,9 +47,9 @@ public class ServiceDAO implements IGenericDAO<Service> {
             preparedStatement.setInt(1, service.getCost());
             preparedStatement.setString(2, service.getServiceName());
             preparedStatement.executeUpdate();
-            logger.info("Service updated");
+            log.info("Service updated");
         } catch (SQLException e) {
-            logger.error("Error updating service: ", e);
+            log.error("Error updating service: ", e);
         }
     }
 
@@ -70,9 +69,9 @@ public class ServiceDAO implements IGenericDAO<Service> {
             while (resultSet.next()) {
                 services.add(toService(resultSet));
             }
-            logger.info("Services found");
+            log.info("Services found");
         } catch (SQLException e) {
-            logger.error("Error finding services: ", e);
+            log.error("Error finding services: ", e);
         }
         return services;
     }
@@ -88,7 +87,7 @@ public class ServiceDAO implements IGenericDAO<Service> {
             connection.commit();
             connection.setAutoCommit(true);
             if (resultSet.next()) {
-                logger.info("Service found");
+                log.info("Service found");
                 return toService(resultSet);
             }
         } catch (SQLException e) {
@@ -97,7 +96,7 @@ public class ServiceDAO implements IGenericDAO<Service> {
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
-            logger.error("Error finding service: ", e);
+            log.error("Error finding service: ", e);
         }
         return null;
     }

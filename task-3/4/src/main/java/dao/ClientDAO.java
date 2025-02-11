@@ -1,10 +1,9 @@
 package dao;
 
 import connection.DatabaseConnection;
+import lombok.extern.slf4j.Slf4j;
 import model.Client;
 import model.Service;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -15,8 +14,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class ClientDAO implements IGenericDAO<Client> {
-    private static final Logger logger = LoggerFactory.getLogger(ClientDAO.class);
 
     public ClientDAO() {
     }
@@ -32,9 +31,9 @@ public class ClientDAO implements IGenericDAO<Client> {
             statement.setDate(3, Date.valueOf(client.getDateCheckIn()));
             statement.setDate(4, Date.valueOf(client.getDateEvict()));
             statement.executeUpdate();
-            logger.info("Client created");
+            log.info("Client created");
         } catch (SQLException e) {
-            logger.error("Error creating client", e);
+            log.error("Error creating client", e);
         }
     }
 
@@ -47,11 +46,11 @@ public class ClientDAO implements IGenericDAO<Client> {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                logger.info("Client read");
+                log.info("Client read");
                 return toClient(resultSet);
             }
         } catch (SQLException e) {
-            logger.error("Error reading client", e);
+            log.error("Error reading client", e);
         }
         return null;
     }
@@ -65,9 +64,9 @@ public class ClientDAO implements IGenericDAO<Client> {
             preparedStatement.setBoolean(1, client.getOccupied());
             preparedStatement.setInt(2, client.getId());
             preparedStatement.executeUpdate();
-            logger.info("Client updated");
+            log.info("Client updated");
         } catch (SQLException e) {
-            logger.error("Error updating client: ", e);
+            log.error("Error updating client: ", e);
         }
     }
 
@@ -79,9 +78,9 @@ public class ClientDAO implements IGenericDAO<Client> {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, client.getId());
             statement.executeUpdate();
-            logger.info("Client deleted");
+            log.info("Client deleted");
         } catch (SQLException e) {
-            logger.error("Error deleting client: ", e);
+            log.error("Error deleting client: ", e);
         }
     }
 
@@ -96,9 +95,9 @@ public class ClientDAO implements IGenericDAO<Client> {
             while (resultSet.next()) {
                 clients.add(toClient(resultSet));
             }
-            logger.info("Clients found");
+            log.info("Clients found");
         } catch (SQLException e) {
-            logger.error("Error finding clients: ", e);
+            log.error("Error finding clients: ", e);
         }
         return clients;
     }
@@ -130,9 +129,9 @@ public class ClientDAO implements IGenericDAO<Client> {
             while (resultSet.next()) {
                 clients.add(toClient(resultSet));
             }
-            logger.info("Clients in room found");
+            log.info("Clients in room found");
         } catch (SQLException e) {
-            logger.error("Error finding clients in room: ", e);
+            log.error("Error finding clients in room: ", e);
         }
         return clients;
     }
@@ -146,9 +145,9 @@ public class ClientDAO implements IGenericDAO<Client> {
             preparedStatement.setInt(2, service.getId());
             preparedStatement.setDate(3, Date.valueOf(date));
             preparedStatement.executeUpdate();
-            logger.info("Service added for client");
+            log.info("Service added for client");
         } catch (SQLException e) {
-            logger.error("Error adding service for client: ", e);
+            log.error("Error adding service for client: ", e);
         }
     }
 
@@ -170,9 +169,9 @@ public class ClientDAO implements IGenericDAO<Client> {
                 );
                 services.add(service);
             }
-            logger.info("Services found");
+            log.info("Services found");
         } catch (SQLException e) {
-            logger.error("Error finding services for client: ", e);
+            log.error("Error finding services for client: ", e);
         }
         return services;
     }
@@ -198,9 +197,9 @@ public class ClientDAO implements IGenericDAO<Client> {
             while (resultSet.next()) {
                 clients.add(toClient(resultSet));
             }
-            logger.info("Clients found with sort {}", typeSort);
+            log.info("Clients found with sort {}", typeSort);
         } catch (SQLException e) {
-            logger.error("Error finding clients with sort: ", e);
+            log.error("Error finding clients with sort: ", e);
         }
         return clients;
     }
@@ -217,9 +216,9 @@ public class ClientDAO implements IGenericDAO<Client> {
             while (resultSet.next()) {
                 clients.add(toClient(resultSet));
             }
-            logger.info("Successfully printed history");
+            log.info("Successfully printed history");
         } catch (SQLException e) {
-            logger.error("Error printing history: ", e);
+            log.error("Error printing history: ", e);
         }
         return clients;
     }

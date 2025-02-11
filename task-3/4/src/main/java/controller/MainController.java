@@ -1,8 +1,7 @@
 package controller;
 
 import connection.DatabaseConnection;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import view.Menu;
 import model.Hotel;
 
@@ -16,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Slf4j
 public class MainController {
     @Inject
     Hotel hotel;
@@ -27,14 +27,13 @@ public class MainController {
     ClientController clientController;
     @Inject
     ServiceController serviceController;
-    private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
 
     public MainController() {
     }
 
     public void run() {
-        logger.info("Starting Program");
+        log.info("Starting Program");
         if (!isHotelInitialized()) {
             hotel = new Hotel();
         } else {
@@ -54,11 +53,11 @@ public class MainController {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                logger.info("Hotel initialized");
+                log.info("Hotel initialized");
                 return resultSet.getInt(1) > 0;
             }
         } catch (SQLException e) {
-            logger.error("Error initializing Hotel", e);
+            log.error("Error initializing Hotel", e);
         }
         return false;
     }

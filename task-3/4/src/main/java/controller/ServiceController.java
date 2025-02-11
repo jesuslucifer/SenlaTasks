@@ -1,15 +1,15 @@
 package controller;
 
 import dao.ServiceDAO;
+import lombok.extern.slf4j.Slf4j;
 import model.Hotel;
 import model.Service;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import view.ServiceView;
 
 import java.io.File;
 import java.util.Scanner;
 
+@Slf4j
 public class ServiceController {
     @Inject
     Hotel hotel;
@@ -17,7 +17,6 @@ public class ServiceController {
     ServiceDAO serviceDAO;
     @Inject
     ServiceView view;
-    private static final Logger logger = LoggerFactory.getLogger(ServiceController.class);
 
     public ServiceController() {
     }
@@ -46,7 +45,7 @@ public class ServiceController {
     public boolean checkService(String service) {
         for (Service service1 : serviceDAO.findAll()) {
             if (service1.getServiceName().equals(service)) {
-                logger.info("Successfully checked service name");
+                log.info("Successfully checked service name");
                 return true;
             }
         }
@@ -82,9 +81,9 @@ public class ServiceController {
                 }
             }
             System.out.println("Success import Services from services.csv");
-            logger.info("Success import Services from services.csv");
+            log.info("Success import Services from services.csv");
         } catch (Exception e) {
-            logger.error("Error import services from services.csv: ", e);
+            log.error("Error import services from services.csv: ", e);
         }
     }
 }

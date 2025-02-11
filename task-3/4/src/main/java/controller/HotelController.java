@@ -3,13 +3,12 @@ package controller;
 import dao.ClientDAO;
 import dao.RoomDAO;
 import dao.ServiceDAO;
+import lombok.extern.slf4j.Slf4j;
 import model.IToCSV;
 import model.Client;
 import model.Hotel;
 import model.Room;
 import model.Service;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import view.HotelView;
 
 import java.io.FileNotFoundException;
@@ -19,6 +18,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@Slf4j
 public class HotelController {
 
     @Inject
@@ -33,7 +33,6 @@ public class HotelController {
     @Inject
     ClientDAO clientDAO;
 
-    private static final Logger logger = LoggerFactory.getLogger(HotelController.class);
 
     public HotelController() {
     }
@@ -85,10 +84,10 @@ public class HotelController {
                 writer.println();
             }
             view.printSuccessExport(fileName);
-            logger.info("Successfully exported to CSV file");
+            log.info("Successfully exported to CSV file");
         }
         catch (FileNotFoundException | NullPointerException e) {
-            logger.error("Error exporting to CSV file", e);
+            log.error("Error exporting to CSV file", e);
         }
     }
 
