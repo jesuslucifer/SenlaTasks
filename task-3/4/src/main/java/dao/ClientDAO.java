@@ -23,6 +23,7 @@ public class ClientDAO implements IGenericDAO<Client> {
     @Override
     public void create(Client client) {
         String query = "INSERT INTO Clients (fullName, roomNumber, dateCheckIn, dateEvict) VALUES (?, ?, ?, ?)";
+        printLogQuery(query);
         try {
             Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
@@ -31,7 +32,7 @@ public class ClientDAO implements IGenericDAO<Client> {
             statement.setDate(3, Date.valueOf(client.getDateCheckIn()));
             statement.setDate(4, Date.valueOf(client.getDateEvict()));
             statement.executeUpdate();
-            log.info("Client created ID {} QUERY: {}", client.getId(), query);
+            log.info("Client created ID {}", client.getId());
         } catch (SQLException e) {
             log.error("Error creating client", e);
         }
@@ -40,13 +41,14 @@ public class ClientDAO implements IGenericDAO<Client> {
     @Override
     public Client read(int id) {
         String query = "SELECT * FROM Clients WHERE id = ?";
+        printLogQuery(query);
         try {
             Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                log.info("Client read ID {} QUERY: {}", id, query);
+                log.info("Client read ID {}", id);
                 return toClient(resultSet);
             }
         } catch (SQLException e) {
@@ -58,13 +60,14 @@ public class ClientDAO implements IGenericDAO<Client> {
     @Override
     public void update(Client client) {
         String query = "UPDATE Clients SET occupied = ? WHERE id = ?";
+        printLogQuery(query);
         try {
             Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setBoolean(1, client.getOccupied());
             preparedStatement.setInt(2, client.getId());
             preparedStatement.executeUpdate();
-            log.info("Client updated ID {} QUERY: {}", client.getId(), query);
+            log.info("Client updated ID {}", client.getId());
         } catch (SQLException e) {
             log.error("Error updating client: ", e);
         }
@@ -73,12 +76,13 @@ public class ClientDAO implements IGenericDAO<Client> {
     @Override
     public void delete(Client client) {
         String query = "DELETE FROM Clients WHERE id = ?";
+        printLogQuery(query);
         try {
             Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, client.getId());
             statement.executeUpdate();
-            log.info("Client deleted ID {} QUERY: {}", client.getId(), query);
+            log.info("Client deleted ID {}", client.getId());
         } catch (SQLException e) {
             log.error("Error deleting client: ", e);
         }
@@ -88,6 +92,7 @@ public class ClientDAO implements IGenericDAO<Client> {
     public List<Client> findAll() {
         List<Client> clients = new ArrayList<>();
         String query = "SELECT * FROM Clients";
+        printLogQuery(query);
         try {
             Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -96,7 +101,7 @@ public class ClientDAO implements IGenericDAO<Client> {
                 clients.add(toClient(resultSet));
                 log.info("Client ID {}", clients.getLast().getId());
             }
-            log.info("Clients found QUERY: {}", query);
+            log.info("Clients found");
         } catch (SQLException e) {
             log.error("Error finding clients: ", e);
         }
@@ -122,6 +127,7 @@ public class ClientDAO implements IGenericDAO<Client> {
     public List<Client> findInRoom(int roomNumber) {
         List<Client> clients = new ArrayList<>();
         String query = "SELECT * FROM Clients WHERE roomNumber = ? and occupied = true";
+        printLogQuery(query);
         try {
             Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -131,7 +137,7 @@ public class ClientDAO implements IGenericDAO<Client> {
                 clients.add(toClient(resultSet));
                 log.info("Client ID {} in room {}", clients.getLast().getId(), roomNumber);
             }
-            log.info("Clients in room ID {} found QUERY: {}", roomNumber, query);
+            log.info("Clients in room ID {} found", roomNumber);
         } catch (SQLException e) {
             log.error("Error finding clients in room: ", e);
         }
@@ -140,6 +146,7 @@ public class ClientDAO implements IGenericDAO<Client> {
 
     public void addService(Client client, Service service, LocalDate date) {
         String query = "INSERT INTO ClientService (clientId, serviceId, serviceDate) VALUES (?, ?, ?)";
+        printLogQuery(query);
         try {
             Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -147,7 +154,7 @@ public class ClientDAO implements IGenericDAO<Client> {
             preparedStatement.setInt(2, service.getId());
             preparedStatement.setDate(3, Date.valueOf(date));
             preparedStatement.executeUpdate();
-            log.info("Service ID {} added for client ID {} QUERY: {}", service.getId(), client.getId(), query);
+            log.info("Service ID {} added for client ID {}", service.getId(), client.getId());
         } catch (SQLException e) {
             log.error("Error adding service for client: ", e);
         }
@@ -157,6 +164,7 @@ public class ClientDAO implements IGenericDAO<Client> {
         List<Service> services = new ArrayList<>();
         String query = "SELECT s.id, s.serviceName, s.cost, cs.serviceDate FROM Services s " +
                        "JOIN ClientService cs ON s.id = cs.serviceId WHERE cs.clientId = ? ORDER BY " + typeSort;
+        printLogQuery(query);
         try {
             Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
@@ -172,7 +180,7 @@ public class ClientDAO implements IGenericDAO<Client> {
                 services.add(service);
                 log.info("Service ID {}", service.getId());
             }
-            log.info("Services found for client ID {} QUERY: {}", client.getId(), query);
+            log.info("Services found for client ID {}", client.getId());
         } catch (SQLException e) {
             log.error("Error finding services for client: ", e);
         }
@@ -192,7 +200,7 @@ public class ClientDAO implements IGenericDAO<Client> {
     public List<Client> findAllWithSort(String typeSort) {
         List<Client> clients = new ArrayList<>();
         String query = "SELECT * FROM Clients WHERE occupied = true ORDER BY " + typeSort + " ";
-
+        printLogQuery(query);
         try {
             Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -201,7 +209,7 @@ public class ClientDAO implements IGenericDAO<Client> {
                 clients.add(toClient(resultSet));
                 log.info("Client with sort {} ID {}", typeSort, clients.getLast().getId());
             }
-            log.info("Clients found with sort {} QUERY: {}", typeSort, query);
+            log.info("Clients found with sort {}", typeSort);
         } catch (SQLException e) {
             log.error("Error finding clients with sort: ", e);
         }
@@ -211,6 +219,7 @@ public class ClientDAO implements IGenericDAO<Client> {
     public List<Client> printHistory(int roomNumber, int countRecordsHistory) {
         List<Client> clients = new ArrayList<>();
         String query = "SELECT * FROM Clients WHERE roomNumber = ? AND occupied = false ORDER BY dateEvict DESC LIMIT ?";
+        printLogQuery(query);
         try {
             Connection connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -221,10 +230,14 @@ public class ClientDAO implements IGenericDAO<Client> {
                 clients.add(toClient(resultSet));
                 log.info("Client ID {}", clients.getLast().getId());
             }
-            log.info("Successfully printed history QUERY: {}", query);
+            log.info("Successfully printed history");
         } catch (SQLException e) {
             log.error("Error printing history: ", e);
         }
         return clients;
+    }
+
+    public void printLogQuery(String query) {
+        log.info("Try QUERY {}", query);
     }
 }

@@ -23,6 +23,7 @@ public class RoomDAO implements IGenericDAO<Room> {
     @Override
     public void create(Room room) {
         String query = "INSERT INTO Rooms(roomNumber, cost, status, capacity, dateCheckIn, dateEvict, countStars)  VALUES (?, ?, ?, ?, ?, ?, ?)";
+        printLogQuery(query);
         try {
             connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
@@ -34,7 +35,7 @@ public class RoomDAO implements IGenericDAO<Room> {
             statement.setNull(6, java.sql.Types.DATE);
             statement.setInt(7, room.getCountStars());
             statement.execute();
-            log.info("Room created ID {} QUERY {}", room.getId(), query);
+            log.info("Room created ID {}", room.getId());
         } catch (SQLException e) {
             log.error("Error creating room: ", e);
         }
@@ -48,13 +49,14 @@ public class RoomDAO implements IGenericDAO<Room> {
     @Override
     public Room read(int roomNumber) {
         String query = "SELECT * FROM Rooms WHERE roomNumber = ?";
+        printLogQuery(query);
         try {
             connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, roomNumber);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                log.info("Room read ID {} QUERY {}", roomNumber, query);
+                log.info("Room read ID {}", roomNumber);
                 return toRoom(resultSet);
             }
         } catch (SQLException e) {
@@ -67,6 +69,7 @@ public class RoomDAO implements IGenericDAO<Room> {
     public void update(Room room) {
         String query = "UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, " +
                 "countRecordsHistory = ? WHERE roomNumber = ?";
+        printLogQuery(query);
         try {
             connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -86,7 +89,7 @@ public class RoomDAO implements IGenericDAO<Room> {
             preparedStatement.setInt(6, room.getCountRecordsHistory());
             preparedStatement.setInt(7, room.getRoomNumber());
             preparedStatement.executeUpdate();
-            log.info("Room updated ID {} QUERY {}", room.getId(), query);
+            log.info("Room updated ID {}", room.getId());
         } catch (SQLException e) {
             log.error("Error updating room: ", e);
         }
@@ -105,6 +108,7 @@ public class RoomDAO implements IGenericDAO<Room> {
 
     private List<Room> getRooms(String query) {
         List<Room> rooms = new ArrayList<>();
+        printLogQuery(query);
         try {
             connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
@@ -113,7 +117,7 @@ public class RoomDAO implements IGenericDAO<Room> {
                 rooms.add(toRoom(resultSet));
                 log.info("Room ID {}", rooms.getLast().getId());
             }
-            log.info("Rooms found QUERY {}", query);
+            log.info("Rooms found");
         } catch (SQLException e) {
             log.error("Error reading rooms: ", e);
         }
@@ -123,6 +127,7 @@ public class RoomDAO implements IGenericDAO<Room> {
     public List<Room> findByStatus(String status) {
         List<Room> rooms = new ArrayList<>();
         String query = "SELECT * FROM Rooms WHERE status = ?";
+        printLogQuery(query);
         try {
             connection = DatabaseConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
@@ -132,7 +137,7 @@ public class RoomDAO implements IGenericDAO<Room> {
                 rooms.add(toRoom(resultSet));
                 log.info("Rooms by status {} ID {}", rooms.getLast().getStatus(), rooms.getLast().getId());
             }
-            log.info("Rooms found by status QUERY {}", query);
+            log.info("Rooms found by status");
         } catch (SQLException e) {
             log.error("Error found rooms by status: ", e);
         }
@@ -165,6 +170,7 @@ public class RoomDAO implements IGenericDAO<Room> {
     public List<Room> findFreeByDate(LocalDate date) {
         List<Room> rooms = new ArrayList<>();
         String query = "SELECT * FROM Rooms WHERE status != 'REPAIRED' AND ((dateCheckIn IS NULL OR dateEvict IS NULL) OR dateEvict < ?)";
+        printLogQuery(query);
         try {
             connection = DatabaseConnection.getInstance().getConnection();
             connection.setAutoCommit(false);
@@ -177,7 +183,7 @@ public class RoomDAO implements IGenericDAO<Room> {
                 rooms.add(toRoom(resultSet));
                 log.info("Rooms free by date {} ID {}", date, rooms.getLast().getId());
             }
-            log.info("Rooms free by date found QUERY {}", query);
+            log.info("Rooms free by date found");
         } catch (SQLException e) {
             try {
                 connection.rollback();
@@ -192,5 +198,9 @@ public class RoomDAO implements IGenericDAO<Room> {
     public List<Room> findWithSort(String typeRoom, String typeSort) {
         String query = "SELECT * FROM Rooms WHERE status IN (" + typeRoom + ") ORDER BY " + typeSort;
         return getRooms(query);
+    }
+
+    public void printLogQuery(String query) {
+        log.info("Try QUERY {}", query);
     }
 }
