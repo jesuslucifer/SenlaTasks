@@ -4,7 +4,6 @@ import controller.ExitController;
 import controller.Inject;
 import controller.SerializableController;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Menu {

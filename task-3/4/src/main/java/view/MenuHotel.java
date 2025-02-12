@@ -43,7 +43,7 @@ public class MenuHotel {
                         System.out.println(e.getMessage());
                     }
                 }
-                case 6-> {
+                case 6 -> {
                     try {
                         hotelController.exportToCSV(hotelController.getServices(), "services.csv");
                     } catch (FileNotFoundException e) {
@@ -54,7 +54,6 @@ public class MenuHotel {
                 case 0 -> ExitController.exit();
                 default -> System.out.println("Invalid choice");
             }
-
         }
     }
 

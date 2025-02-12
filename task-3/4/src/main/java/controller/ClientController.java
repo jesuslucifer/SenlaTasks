@@ -114,8 +114,7 @@ public class ClientController {
             LocalDate.parse(date, formatter);
             log.info("Successfully checked format date {}", date);
             return true;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             log.error("Error checking format date {}", date, e);
             return false;
         }
@@ -158,7 +157,7 @@ public class ClientController {
         return clientDAO.findAll().isEmpty();
     }
 
-    public void importFromCSV(String fileName){
+    public void importFromCSV(String fileName) {
         try (Scanner scanner = new Scanner(new File(fileName))) {
             scanner.nextLine();
             while (scanner.hasNextLine()) {

@@ -67,12 +67,10 @@ public class HotelController {
             List<Service> sortedServices = new ArrayList<>(getServices());
             sortedRooms.sort(Comparator.comparing(Room::getCost));
             sortedServices.sort(Comparator.comparing(Service::getCost));
-            view.printRoomAndService(typeSort, sortedRooms,sortedServices);
-        }
-        else {
+            view.printRoomAndService(typeSort, sortedRooms, sortedServices);
+        } else {
             view.printRoomAndService(typeSort, getRooms(), getServices());
         }
-
     }
 
     public <T extends IToCSV> void exportToCSV(List<T> list, String fileName) throws FileNotFoundException {
@@ -85,8 +83,7 @@ public class HotelController {
             }
             view.printSuccessExport(fileName);
             log.info("Successfully exported to CSV file");
-        }
-        catch (FileNotFoundException | NullPointerException e) {
+        } catch (FileNotFoundException | NullPointerException e) {
             log.error("Error exporting to CSV file", e);
         }
     }
@@ -103,7 +100,7 @@ public class HotelController {
                 case "Service" -> {
                     return "id,serviceName,cost";
                 }
-                default -> {}
+                default -> { }
             }
         } catch (NullPointerException | NoSuchElementException e) {
             log.error("Error checking type", e);

@@ -31,8 +31,7 @@ public class MenuService {
                 case 4 -> {
                     try {
                         serviceController.importFromCSV("services.csv");
-                    }
-                    catch (Exception e) {
+                    } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
                 }

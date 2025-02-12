@@ -60,10 +60,9 @@ public class RoomView {
         System.out.println("2. Busy");
         System.out.println("3. Repaired");
         System.out.println("4. Back");
-
     }
 
-    public void printRooms(List<Room> rooms){
+    public void printRooms(List<Room> rooms) {
         for (Room room : rooms) {
             if (room.isBusy()) {
                 System.out.println("Room: " + room.getRoomNumber() + " Status: " + room.getStatus() + " Stars: " +

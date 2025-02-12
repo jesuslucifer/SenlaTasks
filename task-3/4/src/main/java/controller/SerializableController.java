@@ -14,7 +14,7 @@ public class SerializableController {
     }
 
     public void exit() {
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("task-3/4/src/resources/save.dat"))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("task-3/4/src/resources/save.dat"))) {
             oos.writeObject(hotel);
             System.exit(0);
         } catch (IOException e) {

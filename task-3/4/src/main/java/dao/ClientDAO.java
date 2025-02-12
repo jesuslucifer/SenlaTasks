@@ -160,7 +160,7 @@ public class ClientDAO implements IGenericDAO<Client> {
         }
     }
 
-    public List<Service> getServices (Client client, String typeSort) {
+    public List<Service> getServices(Client client, String typeSort) {
         List<Service> services = new ArrayList<>();
         String query = "SELECT s.id, s.serviceName, s.cost, cs.serviceDate FROM Services s " +
                        "JOIN ClientService cs ON s.id = cs.serviceId WHERE cs.clientId = ? ORDER BY " + typeSort;

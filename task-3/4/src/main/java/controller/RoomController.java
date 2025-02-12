@@ -152,8 +152,7 @@ public class RoomController {
             LocalDate.parse(date, formatter);
             log.info("Successfully checked format date");
             return true;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             log.error("Error checking format date", e);
             return false;
         }
