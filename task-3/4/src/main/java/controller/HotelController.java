@@ -3,6 +3,7 @@ package controller;
 import dao.ClientDAO;
 import dao.RoomDAO;
 import dao.ServiceDAO;
+import lombok.extern.slf4j.Slf4j;
 import model.IToCSV;
 import model.Client;
 import model.Hotel;
@@ -17,6 +18,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@Slf4j
 public class HotelController {
 
     @Inject
@@ -30,6 +32,7 @@ public class HotelController {
     ServiceDAO serviceDAO;
     @Inject
     ClientDAO clientDAO;
+
 
     public HotelController() {
     }
@@ -64,12 +67,10 @@ public class HotelController {
             List<Service> sortedServices = new ArrayList<>(getServices());
             sortedRooms.sort(Comparator.comparing(Room::getCost));
             sortedServices.sort(Comparator.comparing(Service::getCost));
-            view.printRoomAndService(typeSort, sortedRooms,sortedServices);
-        }
-        else {
+            view.printRoomAndService(typeSort, sortedRooms, sortedServices);
+        } else {
             view.printRoomAndService(typeSort, getRooms(), getServices());
         }
-
     }
 
     public <T extends IToCSV> void exportToCSV(List<T> list, String fileName) throws FileNotFoundException {
@@ -81,9 +82,9 @@ public class HotelController {
                 writer.println();
             }
             view.printSuccessExport(fileName);
-        }
-        catch (FileNotFoundException | NullPointerException e) {
-            System.err.println(e.getMessage());
+            log.info("Successfully exported to CSV file");
+        } catch (FileNotFoundException | NullPointerException e) {
+            log.error("Error exporting to CSV file", e);
         }
     }
 
@@ -99,10 +100,10 @@ public class HotelController {
                 case "Service" -> {
                     return "id,serviceName,cost";
                 }
-                default -> {}
+                default -> { }
             }
         } catch (NullPointerException | NoSuchElementException e) {
-            System.err.println("List is empty");
+            log.error("Error checking type", e);
         }
         return null;
     }

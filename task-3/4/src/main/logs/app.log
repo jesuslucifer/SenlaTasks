@@ -1,0 +1,303 @@
+2025-02-12 14:19:38 INFO  controller.MainController - Starting Program
+2025-02-12 14:19:38 INFO  controller.MainController - Hotel initialized
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY SELECT * FROM Rooms
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 1
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 2
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 4
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 5
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 6
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 7
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 8
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 9
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 10
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 11
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 12
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 13
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 14
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 15
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 16
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 17
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 18
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 19
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 20
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Rooms found
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 1
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 1 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 2
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 2 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 3
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 3 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 4
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 4 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 5
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 5 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 6
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 6 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 7
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 7 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 8
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 8 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 9
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 9 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 10
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 10 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 11
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 1 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 12
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 2 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 13
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 3 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 14
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 4 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 15
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 5 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 16
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 6 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 17
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 7 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 18
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 8 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 19
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 9 has been changed to true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 20
+2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 10 has been changed to true
+2025-02-12 14:19:38 INFO  controller.RoomController - Success import locked rooms from property, lockedChangeStatus=true
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY SELECT * FROM Rooms
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 1
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 2
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 4
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 5
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 6
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 7
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 8
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 9
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 10
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 11
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 12
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 13
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 14
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 15
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 16
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 17
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 18
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 19
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 20
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Rooms found
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 1
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 2
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 3
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 4
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 5
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 6
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 7
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 8
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 9
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 10
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 11
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 12
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 13
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 14
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 15
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 16
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 17
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 18
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 19
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
+2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 20
+2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-12 14:19:38 INFO  controller.RoomController - Success import count records in the history room from property, countRecordsHistory=3
+2025-02-12 14:19:41 INFO  dao.RoomDAO - Try QUERY SELECT * FROM Rooms WHERE roomNumber = ?
+2025-02-12 14:19:41 INFO  dao.RoomDAO - Room read ID 1
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Try QUERY SELECT * FROM Rooms WHERE status IN ('FREE', 'BUSY', 'REPAIRED') ORDER BY capacity
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 1
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 2
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 3
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 4
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 5
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 6
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 7
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 8
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 9
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 10
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 11
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 12
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 13
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 14
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 15
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 16
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 17
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 18
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 19
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 20
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Rooms found
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Try QUERY SELECT * FROM Rooms WHERE roomNumber = ?
+2025-02-12 14:19:42 INFO  dao.RoomDAO - Room read ID 1
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Try QUERY SELECT * FROM Rooms WHERE status IN ('FREE') ORDER BY capacity
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 3
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 4
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 5
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 7
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 8
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 9
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 10
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 13
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 14
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 15
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 17
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 18
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 19
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 20
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Rooms found
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Try QUERY SELECT * FROM Rooms WHERE roomNumber = ?
+2025-02-12 14:19:44 INFO  dao.RoomDAO - Room read ID 1
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 1
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 2
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 3
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 4
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 5
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 6
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 7
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 8
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 9
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 10
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 11
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 12
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 13
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 14
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 15
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 16
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 17
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 18
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 19
+2025-02-12 14:19:50 INFO  dao.ClientDAO - Clients found
+2025-02-12 14:19:51 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients WHERE occupied = true ORDER BY fullName ASC 
+2025-02-12 14:19:51 INFO  dao.ClientDAO - Client with sort fullName ASC ID 10
+2025-02-12 14:19:51 INFO  dao.ClientDAO - Client with sort fullName ASC ID 8
+2025-02-12 14:19:51 INFO  dao.ClientDAO - Client with sort fullName ASC ID 9
+2025-02-12 14:19:51 INFO  dao.ClientDAO - Client with sort fullName ASC ID 19
+2025-02-12 14:19:51 INFO  dao.ClientDAO - Clients found with sort fullName ASC
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 1
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 2
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 3
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 4
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 5
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 6
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 7
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 8
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 9
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 10
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 11
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 12
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 13
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 14
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 15
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 16
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 17
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 18
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 19
+2025-02-12 14:19:53 INFO  dao.ClientDAO - Clients found
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 1
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 2
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 3
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 4
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 5
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 6
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 7
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 8
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 9
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 10
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 11
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 12
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 13
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 14
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 15
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 16
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 17
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 18
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 19
+2025-02-12 14:19:54 INFO  dao.ClientDAO - Clients found
+2025-02-12 14:19:54 INFO  controller.ClientController - Successfully checked id 1
+2025-02-12 14:19:55 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients WHERE id = ?
+2025-02-12 14:19:55 INFO  dao.ClientDAO - Client read ID 1
+2025-02-12 14:19:55 INFO  dao.ClientDAO - Try QUERY SELECT s.id, s.serviceName, s.cost, cs.serviceDate FROM Services s JOIN ClientService cs ON s.id = cs.serviceId WHERE cs.clientId = ? ORDER BY cost
+2025-02-12 14:19:55 INFO  dao.ClientDAO - Service ID 2
+2025-02-12 14:19:55 INFO  dao.ClientDAO - Service ID 1
+2025-02-12 14:19:55 INFO  dao.ClientDAO - Services found for client ID 1
+2025-02-12 14:19:59 INFO  dao.ServiceDAO - Try QUERY SELECT * FROM Services
+2025-02-12 14:19:59 INFO  dao.ServiceDAO - Service ID 1
+2025-02-12 14:19:59 INFO  dao.ServiceDAO - Service ID 2
+2025-02-12 14:19:59 INFO  dao.ServiceDAO - Service ID 3
+2025-02-12 14:19:59 INFO  dao.ServiceDAO - Service ID 4
+2025-02-12 14:19:59 INFO  dao.ServiceDAO - Service ID 5
+2025-02-12 14:19:59 INFO  dao.ServiceDAO - Services found
+2025-02-12 14:20:00 INFO  dao.ServiceDAO - Try QUERY SELECT * FROM Services
+2025-02-12 14:20:00 INFO  dao.ServiceDAO - Service ID 1
+2025-02-12 14:20:00 INFO  dao.ServiceDAO - Service ID 2
+2025-02-12 14:20:00 INFO  dao.ServiceDAO - Service ID 3
+2025-02-12 14:20:00 INFO  dao.ServiceDAO - Service ID 4
+2025-02-12 14:20:00 INFO  dao.ServiceDAO - Service ID 5
+2025-02-12 14:20:00 INFO  dao.ServiceDAO - Services found
+2025-02-12 14:20:03 INFO  controller.ExitController - Exit called

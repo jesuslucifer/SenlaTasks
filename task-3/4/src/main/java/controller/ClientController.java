@@ -3,6 +3,7 @@ package controller;
 import dao.ClientDAO;
 import dao.RoomDAO;
 import dao.ServiceDAO;
+import lombok.extern.slf4j.Slf4j;
 import model.Client;
 import model.Hotel;
 import model.Room;
@@ -10,7 +11,6 @@ import model.Service;
 import view.ClientView;
 
 import java.io.File;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -18,6 +18,7 @@ import java.util.Scanner;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
+@Slf4j
 public class ClientController {
     @Inject
     Hotel hotel;
@@ -31,6 +32,7 @@ public class ClientController {
     RoomDAO roomDAO;
     @Inject
     ClientView view;
+
 
     public ClientController() {
     }
@@ -102,7 +104,7 @@ public class ClientController {
             long cost = daysBetween * room.getCost();
             view.printCostPerRoom(cost);
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            log.error("Error printing cost per room ID {}", id, e);
         }
     }
 
@@ -110,9 +112,10 @@ public class ClientController {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             LocalDate.parse(date, formatter);
+            log.info("Successfully checked format date {}", date);
             return true;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
+            log.error("Error checking format date {}", date, e);
             return false;
         }
     }
@@ -120,27 +123,33 @@ public class ClientController {
     public boolean checkService(String service) {
         for (Service service1 : serviceDAO.findAll()) {
             if (service1.getServiceName().equals(service)) {
+                log.info("Successfully checked service name {}", service);
                 return true;
             }
         }
+        log.info("Service not found {}", service);
         return false;
     }
 
     public boolean checkFullName(String fullName) {
         for (Client client : clientDAO.findAll()) {
             if (client.getFullName().equals(fullName)) {
+                log.info("Successfully checked full name {}", fullName);
                 return true;
             }
         }
+        log.info("Full name not  {}", fullName);
         return false;
     }
 
     public boolean checkID(int id) {
         for (Client client : clientDAO.findAll()) {
             if (client.getId() == id) {
+                log.info("Successfully checked id {}", id);
                 return true;
             }
         }
+        log.info("ID not found {}", id);
         return false;
     }
 
@@ -148,7 +157,7 @@ public class ClientController {
         return clientDAO.findAll().isEmpty();
     }
 
-    public void importFromCSV(String fileName){
+    public void importFromCSV(String fileName) {
         try (Scanner scanner = new Scanner(new File(fileName))) {
             scanner.nextLine();
             while (scanner.hasNextLine()) {
@@ -182,9 +191,10 @@ public class ClientController {
                     }
                 }
             }
+            log.info("Success import Clients from clients.csv");
             System.out.println("Success import Clients from clients.csv");
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.error("Error import Clients from clients.csv: ", e);
         }
     }
 

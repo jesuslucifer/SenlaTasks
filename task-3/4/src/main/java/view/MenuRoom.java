@@ -43,8 +43,7 @@ public class MenuRoom {
                     case 9 -> {
                         try {
                             roomController.importFromCSV("rooms.csv");
-                        }
-                        catch (Exception e) {
+                        } catch (Exception e) {
                             System.out.println(e.getMessage());
                         }
                     }
@@ -68,8 +67,7 @@ public class MenuRoom {
                     case 9 -> {
                         try {
                             roomController.importFromCSV("rooms.csv");
-                        }
-                        catch (Exception e) {
+                        } catch (Exception e) {
                             System.out.println(e.getMessage());
                         }
                     }
@@ -79,9 +77,7 @@ public class MenuRoom {
                 }
             }
         }
-
     }
-
 //    public void printMenuPageTwo() {
 //        boolean flag = true;
 //        while (flag) {

@@ -1,14 +1,15 @@
 package controller;
 
 import dao.ServiceDAO;
+import lombok.extern.slf4j.Slf4j;
 import model.Hotel;
 import model.Service;
 import view.ServiceView;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+@Slf4j
 public class ServiceController {
     @Inject
     Hotel hotel;
@@ -44,6 +45,7 @@ public class ServiceController {
     public boolean checkService(String service) {
         for (Service service1 : serviceDAO.findAll()) {
             if (service1.getServiceName().equals(service)) {
+                log.info("Successfully checked service name");
                 return true;
             }
         }
@@ -54,7 +56,7 @@ public class ServiceController {
         return serviceDAO.findAll().isEmpty();
     }
 
-    public void importFromCSV(String fileName) throws FileNotFoundException {
+    public void importFromCSV(String fileName) {
         try (Scanner scanner = new Scanner(new File(fileName))) {
             scanner.nextLine();
             while (scanner.hasNextLine()) {
@@ -79,6 +81,9 @@ public class ServiceController {
                 }
             }
             System.out.println("Success import Services from services.csv");
+            log.info("Success import Services from services.csv");
+        } catch (Exception e) {
+            log.error("Error import services from services.csv: ", e);
         }
     }
 }

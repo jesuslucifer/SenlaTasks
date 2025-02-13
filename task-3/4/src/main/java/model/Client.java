@@ -20,7 +20,7 @@ public class Client implements IToCSV, IUpdateFromCSV, Serializable {
     private final List<Service> services = new ArrayList<>();
     private Boolean occupied;
 
-    public Client () {
+    public Client() {
         this.id = idInc++;
     }
 

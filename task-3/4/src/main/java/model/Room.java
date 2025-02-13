@@ -81,7 +81,7 @@ public class Room implements IToCSV, IUpdateFromCSV, Serializable {
         this.status = status;
     }
 
-    public int getCost(){
+    public int getCost() {
         return cost;
     }
 

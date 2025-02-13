@@ -2,6 +2,7 @@ package controller;
 
 import dao.ClientDAO;
 import dao.RoomDAO;
+import lombok.extern.slf4j.Slf4j;
 import model.Client;
 import model.Hotel;
 import model.Room;
@@ -12,13 +13,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 
+@Slf4j
 public class RoomController {
     @Inject
     Hotel hotel;
@@ -52,8 +53,10 @@ public class RoomController {
                client.setDateEvict(dateEvict);
                clientDAO.create(client);
            }
+           log.info("The clients is accommodated in {} room", room.getRoomNumber());
            System.out.println("The clients is accommodated in " + room.getRoomNumber() + " room");
        } else {
+           log.info("This room ID {} is not available", roomNumber);
            System.out.println("This room is not available");
        }
     }
@@ -69,6 +72,7 @@ public class RoomController {
             client.setOccupied(false);
             clientDAO.update(client);
         }
+        log.info("The guest's has been evicted from the {} room", roomNumber);
         System.out.println("The guest has been evicted from the " + roomNumber + " room");
     }
 
@@ -77,7 +81,9 @@ public class RoomController {
         if (!(room.isBusy() && status == RoomStatus.REPAIRED)) {
             room.setStatus(status);
             roomDAO.update(room);
+            log.info("The status room {} has been changed to {}", room.getRoomNumber(), status);
         } else {
+            log.info("The status of the room {} cannot be changed, there are visitors in the room", roomNumber);
             System.out.println("The status of the room " + roomNumber + " cannot be changed, there are visitors in the room");
         }
     }
@@ -86,6 +92,7 @@ public class RoomController {
         for (Room room : roomDAO.findAll()) {
             room.setLockedChangeStatus(lockedStatus);
             roomDAO.update(room);
+            log.info("The LockedStatusRoom, room {} has been changed to {}", room.getRoomNumber(), lockedStatus);
         }
     }
 
@@ -93,6 +100,7 @@ public class RoomController {
         Room room = getRoom(roomNumber);
         room.setCost(cost);
         roomDAO.update(room);
+        log.info("The cost of room {} has been changed to {}", room.getRoomNumber(), cost);
     }
 
     public void printRooms(String typeSort, String typeRoom) {
@@ -126,6 +134,7 @@ public class RoomController {
 
     public LocalDate formatDate(String date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        log.info("Successful formatting date ");
         return LocalDate.parse(date, formatter);
     }
 
@@ -141,9 +150,10 @@ public class RoomController {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             LocalDate.parse(date, formatter);
+            log.info("Successfully checked format date");
             return true;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
+            log.error("Error checking format date", e);
             return false;
         }
     }
@@ -152,6 +162,7 @@ public class RoomController {
         for (Room room : roomDAO.findAll()) {
             room.setCountRecordsHistory(countRecordsHistory);
             roomDAO.update(room);
+            log.info("The countRecordsHistory has been changed to {}", countRecordsHistory);
         }
     }
 
@@ -183,30 +194,33 @@ public class RoomController {
                 }
             }
             System.out.println("Success import Rooms from rooms.csv");
+            log.info("Success import Rooms from rooms.csv");
         } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
+            log.error("Error importing Rooms from rooms.csv", e);
         }
     }
 
     public void importLockedRoomProperty() {
-        try (FileInputStream fis = new FileInputStream("task-3/4/src/resources/config.property")) {
+        try (FileInputStream fis = new FileInputStream("task-3/4/src/main/java/resources/config.property")) {
             Properties prop = new Properties();
             prop.load(fis);
             changeLockedStatusRoom(Boolean.parseBoolean(prop.getProperty("room.lockedChangeStatus")));
             System.out.println("Success import locked rooms from property, lockedChangeStatus=" + prop.getProperty("room.lockedChangeStatus"));
+            log.info("Success import locked rooms from property, lockedChangeStatus={}", prop.getProperty("room.lockedChangeStatus"));
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            log.error("Error importing locked rooms from property", e);
         }
     }
 
     public void importCountRecordHistory() {
-        try (FileInputStream fis = new FileInputStream("task-3/4/src/resources/config.property")) {
+        try (FileInputStream fis = new FileInputStream("task-3/4/src/main/java/resources/config.property")) {
             Properties prop = new Properties();
             prop.load(fis);
             changeCountRecordsHistory(Integer.parseInt(prop.getProperty("room.countRecordsHistory")));
             System.out.println("Success import count records in the history room from property, countRecordsHistory=" + prop.getProperty("room.countRecordsHistory"));
+            log.info("Success import count records in the history room from property, countRecordsHistory={}", prop.getProperty("room.countRecordsHistory"));
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            log.error("Error importing count records in the history room from property", e);
         }
     }
 }

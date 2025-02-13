@@ -5,9 +5,8 @@ import controller.Configurator;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
-public class DatabaseConnection {
+public final class DatabaseConnection {
     private Connection connection;
     private static DatabaseConnection instance;
     @ConfigProperty(propertyName = "db.url")

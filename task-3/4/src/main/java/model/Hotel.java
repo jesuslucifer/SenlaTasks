@@ -18,6 +18,5 @@ public class Hotel implements Serializable {
         System.out.println("The hotel is open, there are " + (COUNT_ROOMS - 1) + " rooms available");
     }
 
-    public Hotel(int i){}
-
+    public Hotel(int i) { }
 }

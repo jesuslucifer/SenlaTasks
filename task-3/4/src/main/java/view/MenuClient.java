@@ -8,7 +8,7 @@ import controller.ServiceController;
 
 import java.util.Scanner;
 
-public class MenuClient{
+public class MenuClient {
     @Inject
     ClientController clientController;
     @Inject
@@ -20,7 +20,7 @@ public class MenuClient{
 
     private final Scanner sc = new Scanner(System.in);
 
-    public MenuClient(){
+    public MenuClient() {
     }
 
     public void printMenu() {
@@ -36,8 +36,7 @@ public class MenuClient{
                 case 5 -> {
                     try {
                         clientController.importFromCSV("clients.csv");
-                    }
-                    catch (Exception e) {
+                    } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
                 }
@@ -46,7 +45,6 @@ public class MenuClient{
                 default -> System.out.println("Invalid choice");
             }
         }
-
     }
 
     public void printClients() {
@@ -186,5 +184,4 @@ public class MenuClient{
             System.out.println("Invalid id");
         }
     }
-
 }
