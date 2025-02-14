@@ -15,7 +15,7 @@ CREATE TABLE Rooms (
     id INT PRIMARY KEY AUTO_INCREMENT,
     roomNumber INT UNIQUE,
     cost INT,
-    status ENUM('BUSY', 'FREE', 'REPAIRED'),
+    status ENUM('FREE', 'BUSY', 'REPAIRED'),
     capacity INT,
     countStars INT,
     dateCheckIn DATE NULL,

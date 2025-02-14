@@ -1,303 +1,2419 @@
-2025-02-12 14:19:38 INFO  controller.MainController - Starting Program
-2025-02-12 14:19:38 INFO  controller.MainController - Hotel initialized
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY SELECT * FROM Rooms
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 1
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 2
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 4
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 5
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 6
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 7
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 8
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 9
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 10
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 11
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 12
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 13
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 14
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 15
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 16
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 17
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 18
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 19
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 20
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Rooms found
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 1
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 1 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 2
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 2 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 3
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 3 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 4
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 4 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 5
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 5 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 6
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 6 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 7
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 7 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 8
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 8 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 9
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 9 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 10
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 10 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 11
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 1 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 12
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 2 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 13
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 3 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 14
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 4 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 15
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 5 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 16
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 6 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 17
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 7 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 18
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 8 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 19
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 9 has been changed to true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 20
-2025-02-12 14:19:38 INFO  controller.RoomController - The LockedStatusRoom, room 10 has been changed to true
-2025-02-12 14:19:38 INFO  controller.RoomController - Success import locked rooms from property, lockedChangeStatus=true
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY SELECT * FROM Rooms
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 1
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 2
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 4
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 5
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 6
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 7
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 8
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 9
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 10
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 11
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 12
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 13
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 14
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 15
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 16
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 17
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 18
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 19
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room ID 20
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Rooms found
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 1
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 2
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 3
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 4
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 5
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 6
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 7
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 8
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 9
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 10
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 11
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 12
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 13
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 14
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 15
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 16
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 17
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 18
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 19
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Try QUERY UPDATE Rooms SET cost = ?, status = ?, dateCheckIn = ?, dateEvict = ?, lockedChangeStatus = ?, countRecordsHistory = ? WHERE roomNumber = ?
-2025-02-12 14:19:38 INFO  dao.RoomDAO - Room updated ID 20
-2025-02-12 14:19:38 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-12 14:19:38 INFO  controller.RoomController - Success import count records in the history room from property, countRecordsHistory=3
-2025-02-12 14:19:41 INFO  dao.RoomDAO - Try QUERY SELECT * FROM Rooms WHERE roomNumber = ?
-2025-02-12 14:19:41 INFO  dao.RoomDAO - Room read ID 1
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Try QUERY SELECT * FROM Rooms WHERE status IN ('FREE', 'BUSY', 'REPAIRED') ORDER BY capacity
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 1
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 2
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 3
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 4
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 5
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 6
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 7
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 8
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 9
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 10
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 11
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 12
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 13
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 14
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 15
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 16
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 17
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 18
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 19
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room ID 20
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Rooms found
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Try QUERY SELECT * FROM Rooms WHERE roomNumber = ?
-2025-02-12 14:19:42 INFO  dao.RoomDAO - Room read ID 1
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Try QUERY SELECT * FROM Rooms WHERE status IN ('FREE') ORDER BY capacity
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 3
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 4
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 5
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 7
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 8
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 9
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 10
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 13
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 14
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 15
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 17
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 18
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 19
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Room ID 20
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Rooms found
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Try QUERY SELECT * FROM Rooms WHERE roomNumber = ?
-2025-02-12 14:19:44 INFO  dao.RoomDAO - Room read ID 1
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 1
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 2
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 3
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 4
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 5
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 6
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 7
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 8
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 9
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 10
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 11
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 12
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 13
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 14
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 15
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 16
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 17
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 18
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Client ID 19
-2025-02-12 14:19:50 INFO  dao.ClientDAO - Clients found
-2025-02-12 14:19:51 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients WHERE occupied = true ORDER BY fullName ASC 
-2025-02-12 14:19:51 INFO  dao.ClientDAO - Client with sort fullName ASC ID 10
-2025-02-12 14:19:51 INFO  dao.ClientDAO - Client with sort fullName ASC ID 8
-2025-02-12 14:19:51 INFO  dao.ClientDAO - Client with sort fullName ASC ID 9
-2025-02-12 14:19:51 INFO  dao.ClientDAO - Client with sort fullName ASC ID 19
-2025-02-12 14:19:51 INFO  dao.ClientDAO - Clients found with sort fullName ASC
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 1
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 2
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 3
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 4
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 5
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 6
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 7
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 8
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 9
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 10
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 11
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 12
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 13
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 14
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 15
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 16
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 17
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 18
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Client ID 19
-2025-02-12 14:19:53 INFO  dao.ClientDAO - Clients found
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 1
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 2
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 3
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 4
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 5
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 6
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 7
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 8
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 9
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 10
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 11
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 12
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 13
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 14
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 15
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 16
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 17
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 18
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Client ID 19
-2025-02-12 14:19:54 INFO  dao.ClientDAO - Clients found
-2025-02-12 14:19:54 INFO  controller.ClientController - Successfully checked id 1
-2025-02-12 14:19:55 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients WHERE id = ?
-2025-02-12 14:19:55 INFO  dao.ClientDAO - Client read ID 1
-2025-02-12 14:19:55 INFO  dao.ClientDAO - Try QUERY SELECT s.id, s.serviceName, s.cost, cs.serviceDate FROM Services s JOIN ClientService cs ON s.id = cs.serviceId WHERE cs.clientId = ? ORDER BY cost
-2025-02-12 14:19:55 INFO  dao.ClientDAO - Service ID 2
-2025-02-12 14:19:55 INFO  dao.ClientDAO - Service ID 1
-2025-02-12 14:19:55 INFO  dao.ClientDAO - Services found for client ID 1
-2025-02-12 14:19:59 INFO  dao.ServiceDAO - Try QUERY SELECT * FROM Services
-2025-02-12 14:19:59 INFO  dao.ServiceDAO - Service ID 1
-2025-02-12 14:19:59 INFO  dao.ServiceDAO - Service ID 2
-2025-02-12 14:19:59 INFO  dao.ServiceDAO - Service ID 3
-2025-02-12 14:19:59 INFO  dao.ServiceDAO - Service ID 4
-2025-02-12 14:19:59 INFO  dao.ServiceDAO - Service ID 5
-2025-02-12 14:19:59 INFO  dao.ServiceDAO - Services found
-2025-02-12 14:20:00 INFO  dao.ServiceDAO - Try QUERY SELECT * FROM Services
-2025-02-12 14:20:00 INFO  dao.ServiceDAO - Service ID 1
-2025-02-12 14:20:00 INFO  dao.ServiceDAO - Service ID 2
-2025-02-12 14:20:00 INFO  dao.ServiceDAO - Service ID 3
-2025-02-12 14:20:00 INFO  dao.ServiceDAO - Service ID 4
-2025-02-12 14:20:00 INFO  dao.ServiceDAO - Service ID 5
-2025-02-12 14:20:00 INFO  dao.ServiceDAO - Services found
-2025-02-12 14:20:03 INFO  controller.ExitController - Exit called
+2025-02-14 23:55:05 INFO  controller.MainController - Starting Program
+2025-02-14 23:55:05 INFO  controller.MainController - Hotel initialized
+2025-02-14 23:55:06 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-02-14 23:55:06 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-02-14 23:55:06 WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-02-14 23:55:06 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: com.mysql.cj.jdbc.Driver
+2025-02-14 23:55:06 INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:mysql://localhost:3306/hotel_db]
+2025-02-14 23:55:06 INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, user=root}
+2025-02-14 23:55:06 INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2025-02-14 23:55:06 INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2025-02-14 23:55:07 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-14 23:55:07 INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@1af677f8] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The LockedStatusRoom, room 1 has been changed to true
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The LockedStatusRoom, room 2 has been changed to true
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The LockedStatusRoom, room 3 has been changed to true
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The LockedStatusRoom, room 4 has been changed to true
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The LockedStatusRoom, room 5 has been changed to true
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The LockedStatusRoom, room 6 has been changed to true
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The LockedStatusRoom, room 7 has been changed to true
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The LockedStatusRoom, room 8 has been changed to true
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The LockedStatusRoom, room 9 has been changed to true
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The LockedStatusRoom, room 10 has been changed to true
+2025-02-14 23:55:07 INFO  controller.RoomController - Success import locked rooms from property, lockedChangeStatus=true
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:55:07 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-02-14 23:55:07 INFO  controller.RoomController - Success import count records in the history room from property, countRecordsHistory=3
+2025-02-14 23:55:09 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:55:09 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:55:16 INFO  controller.RoomController - Successfully checked format date
+2025-02-14 23:55:16 INFO  controller.RoomController - Successful formatting date 
+2025-02-14 23:55:16 INFO  controller.RoomController - Successful formatting date 
+2025-02-14 23:55:16 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.status<>? 
+        and (
+            (
+                r1_0.dateCheckIn is null 
+                or r1_0.dateEvict is null
+            ) 
+            or r1_0.dateEvict<?
+        )
+2025-02-14 23:55:16 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.status<>? 
+        and (
+            (
+                r1_0.dateCheckIn is null 
+                or r1_0.dateEvict is null
+            ) 
+            or r1_0.dateEvict<?
+        )
+2025-02-14 23:55:16 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:55:16 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:55:51 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.status in (?, ?, ?) 
+    order by
+        r1_0.capacity
+2025-02-14 23:55:51 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.status in (?, ?, ?) 
+    order by
+        r1_0.capacity
+2025-02-14 23:55:51 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:55:51 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:02 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:56:02 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:56:02 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:02 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:02 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients WHERE roomNumber = ? and occupied = true
+2025-02-14 23:56:02 INFO  dao.ClientDAO - Client ID 19 in room 1
+2025-02-14 23:56:02 INFO  dao.ClientDAO - Client ID 20 in room 1
+2025-02-14 23:56:02 INFO  dao.ClientDAO - Clients in room ID 1 found
+2025-02-14 23:56:02 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:02 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:10 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:56:10 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:56:12 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:12 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:13 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:13 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:13 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:13 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:17 INFO  controller.RoomController - Successfully checked format date
+2025-02-14 23:56:20 INFO  controller.RoomController - Successfully checked format date
+2025-02-14 23:56:22 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:22 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:22 INFO  controller.RoomController - This room ID 5 is not available
+2025-02-14 23:56:22 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:22 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:26 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:56:26 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:56:26 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:26 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:26 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients WHERE roomNumber = ? and occupied = true
+2025-02-14 23:56:26 INFO  dao.ClientDAO - Clients in room ID 5 found
+2025-02-14 23:56:26 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:26 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:48 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:56:48 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:56:48 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:48 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:48 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:56:48 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:56:48 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients WHERE roomNumber = ? and occupied = true
+2025-02-14 23:56:48 INFO  dao.ClientDAO - Clients in room ID 5 found
+2025-02-14 23:56:48 INFO  controller.RoomController - The guest's has been evicted from the 5 room
+2025-02-14 23:56:48 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:48 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:53 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:56:53 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:56:53 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:53 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:53 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients WHERE roomNumber = ? and occupied = true
+2025-02-14 23:56:53 INFO  dao.ClientDAO - Clients in room ID 5 found
+2025-02-14 23:56:53 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:56:53 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:57:00 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:57:00 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:57:00 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:57:00 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:57:00 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients WHERE roomNumber = ? AND occupied = false ORDER BY dateEvict DESC LIMIT ?
+2025-02-14 23:57:00 INFO  dao.ClientDAO - Client ID 13
+2025-02-14 23:57:00 INFO  dao.ClientDAO - Client ID 14
+2025-02-14 23:57:00 INFO  dao.ClientDAO - Client ID 15
+2025-02-14 23:57:00 INFO  dao.ClientDAO - Successfully printed history
+2025-02-14 23:57:00 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:57:00 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:57:00 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:57:00 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:57:47 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:57:47 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:57:47 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:57:47 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:57:47 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients WHERE roomNumber = ? and occupied = true
+2025-02-14 23:57:47 INFO  dao.ClientDAO - Client ID 19 in room 1
+2025-02-14 23:57:47 INFO  dao.ClientDAO - Client ID 20 in room 1
+2025-02-14 23:57:47 INFO  dao.ClientDAO - Clients in room ID 1 found
+2025-02-14 23:57:47 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:57:47 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:57:57 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:57:57 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:57:57 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:57:57 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:57:57 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:57:57 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:57:57 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients WHERE roomNumber = ? and occupied = true
+2025-02-14 23:57:57 INFO  dao.ClientDAO - Client ID 19 in room 1
+2025-02-14 23:57:57 INFO  dao.ClientDAO - Client ID 20 in room 1
+2025-02-14 23:57:57 INFO  dao.ClientDAO - Clients in room ID 1 found
+2025-02-14 23:57:57 INFO  dao.ClientDAO - Try QUERY UPDATE Clients SET occupied = ? WHERE id = ?
+2025-02-14 23:57:57 INFO  dao.ClientDAO - Client updated ID 19
+2025-02-14 23:57:57 INFO  dao.ClientDAO - Try QUERY UPDATE Clients SET occupied = ? WHERE id = ?
+2025-02-14 23:57:57 INFO  dao.ClientDAO - Client updated ID 20
+2025-02-14 23:57:57 INFO  controller.RoomController - The guest's has been evicted from the 1 room
+2025-02-14 23:57:57 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:57:57 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:00 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:58:00 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:58:00 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:00 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:00 INFO  dao.ClientDAO - Try QUERY SELECT * FROM Clients WHERE roomNumber = ? AND occupied = false ORDER BY dateEvict DESC LIMIT ?
+2025-02-14 23:58:00 INFO  dao.ClientDAO - Client ID 16
+2025-02-14 23:58:00 INFO  dao.ClientDAO - Client ID 17
+2025-02-14 23:58:00 INFO  dao.ClientDAO - Client ID 18
+2025-02-14 23:58:00 INFO  dao.ClientDAO - Successfully printed history
+2025-02-14 23:58:00 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:00 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:00 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:00 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:11 INFO  controller.RoomController - Successfully checked format date
+2025-02-14 23:58:11 INFO  controller.RoomController - Successful formatting date 
+2025-02-14 23:58:11 INFO  controller.RoomController - Successful formatting date 
+2025-02-14 23:58:11 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.status<>? 
+        and (
+            (
+                r1_0.dateCheckIn is null 
+                or r1_0.dateEvict is null
+            ) 
+            or r1_0.dateEvict<?
+        )
+2025-02-14 23:58:11 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.status<>? 
+        and (
+            (
+                r1_0.dateCheckIn is null 
+                or r1_0.dateEvict is null
+            ) 
+            or r1_0.dateEvict<?
+        )
+2025-02-14 23:58:11 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:11 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:20 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:58:20 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:58:22 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:22 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:22 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:58:22 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:58:22 INFO  controller.RoomController - The cost of room 1 has been changed to 300
+2025-02-14 23:58:22 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:22 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:24 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.status in (?, ?, ?) 
+    order by
+        r1_0.capacity
+2025-02-14 23:58:24 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.status in (?, ?, ?) 
+    order by
+        r1_0.capacity
+2025-02-14 23:58:24 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:24 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:29 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:58:29 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0
+2025-02-14 23:58:30 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:30 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:30 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:58:30 DEBUG org.hibernate.SQL - 
+    update
+        Rooms 
+    set
+        capacity=?,
+        cost=?,
+        countRecordsHistory=?,
+        countStars=?,
+        dateCheckIn=?,
+        dateEvict=?,
+        lockedChangeStatus=?,
+        roomNumber=?,
+        status=? 
+    where
+        id=?
+2025-02-14 23:58:30 INFO  controller.RoomController - The status room 1 has been changed to REPAIRED
+2025-02-14 23:58:30 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:30 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:32 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.status in (?, ?, ?) 
+    order by
+        r1_0.capacity
+2025-02-14 23:58:32 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.status in (?, ?, ?) 
+    order by
+        r1_0.capacity
+2025-02-14 23:58:32 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
+2025-02-14 23:58:32 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.id=?
