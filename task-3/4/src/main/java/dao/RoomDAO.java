@@ -71,6 +71,9 @@ public class RoomDAO implements IGenericDAO<Room> {
     public List<Room> findAll() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery("FROM Room").list();
+        } catch (Exception e) {
+            log.error("Error finding all rooms", e);
+            throw new RuntimeException(e);
         }
     }
 
