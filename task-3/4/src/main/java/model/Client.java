@@ -1,5 +1,13 @@
 package model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -7,17 +15,27 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "Clients")
 public class Client implements IToCSV, IUpdateFromCSV, Serializable {
     @Serial
     private static final long serialVersionUID = 2L;
     private static int idInc = 0;
-    private final int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     //private String passport;
+    @Column
     private String fullName;
+    @Column
     private int roomNumber;
+    @Column
     private LocalDate dateCheckIn;
+    @Column
     private LocalDate dateEvict;
+    @Transient
     private final List<Service> services = new ArrayList<>();
+    @Column
     private Boolean occupied;
 
     public Client() {
