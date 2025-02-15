@@ -42,9 +42,19 @@ public class RoomDAO implements IGenericDAO<Room> {
 
     @Override
     public Room read(int roomNumber) {
+        Transaction tx = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.get(Room.class, roomNumber);
+            tx = session.beginTransaction();
+            Room room = session.get(Room.class, roomNumber);
+            tx.commit();
+            return room;
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            log.error("Error reading room", e);
         }
+        return null;
     }
 
     @Override
