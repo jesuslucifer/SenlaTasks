@@ -42,18 +42,21 @@ public class Room implements IToCSV, IUpdateFromCSV, Serializable {
     private boolean lockedChangeStatus;
 
     @Column
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private RoomStatus status;
     @Column
     private int capacity;
 
     @Transient
     private final List<Client> clentList = new ArrayList<>();
+    @Column
     private LocalDate dateCheckIn;
+    @Column
     private LocalDate dateEvict;
     @Transient
     private final Deque<Client> historyClientQueue = new LinkedList<>();
 
+    @Column
     @ConfigProperty(propertyName = "room.countRecordHistory", type = Integer.class)
     private int countRecordsHistory;
 
