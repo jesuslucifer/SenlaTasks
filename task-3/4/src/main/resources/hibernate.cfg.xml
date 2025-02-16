@@ -17,5 +17,6 @@
         <mapping class="model.Service"/>
         <mapping class="model.Room"/>
         <mapping class="model.Client"/>
+        <mapping class="model.ClientService"/>
     </session-factory>
 </hibernate-configuration>

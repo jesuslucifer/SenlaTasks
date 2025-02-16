@@ -3,13 +3,13 @@ package dao;
 import connection.DatabaseConnection;
 import lombok.extern.slf4j.Slf4j;
 import model.Client;
+import model.ClientService;
 import model.Service;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -123,46 +123,34 @@ public class ClientDAO implements IGenericDAO<Client> {
     }
 
     public void addService(Client client, Service service, LocalDate date) {
-        String query = "INSERT INTO ClientService (clientId, serviceId, serviceDate) VALUES (?, ?, ?)";
-        printLogQuery(query);
-        try {
-            Connection connection = DatabaseConnection.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, client.getId());
-            preparedStatement.setInt(2, service.getId());
-            preparedStatement.setDate(3, Date.valueOf(date));
-            preparedStatement.executeUpdate();
-            log.info("Service ID {} added for client ID {}", service.getId(), client.getId());
-        } catch (SQLException e) {
-            log.error("Error adding service for client: ", e);
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            ClientService clientService = new ClientService();
+            clientService.setClient(client);
+            clientService.setService(service);
+            clientService.setServiceDate(date);
+            session.save(clientService);
+        } catch (Exception e) {
+            log.error("Error adding service", e);
         }
     }
 
     public List<Service> getServices(Client client, String typeSort) {
         List<Service> services = new ArrayList<>();
-        String query = "SELECT s.id, s.serviceName, s.cost, cs.serviceDate FROM Services s " +
-                       "JOIN ClientService cs ON s.id = cs.serviceId WHERE cs.clientId = ? ORDER BY " + typeSort;
-        printLogQuery(query);
-        try {
-            Connection connection = DatabaseConnection.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1, client.getId());
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                Service service = new Service(
-                        resultSet.getInt("id"),
-                        resultSet.getString("serviceName"),
-                        resultSet.getInt("cost"),
-                        resultSet.getDate("serviceDate").toLocalDate()
-                );
-                services.add(service);
-                log.info("Service ID {}", service.getId());
-            }
-            log.info("Services found for client ID {}", client.getId());
-        } catch (SQLException e) {
-            log.error("Error finding services for client: ", e);
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+           String query = "SELECT cs FROM ClientService cs JOIN Service s ON s.id = cs.service.id WHERE cs.client.id = :clientId ORDER BY " + typeSort;
+           List<ClientService> clientServices = session
+                   .createQuery(query)
+                   .setParameter("clientId", client.getId())
+                   .list();
+           for (ClientService cs : clientServices) {
+               services.add(cs.getService());
+               services.getLast().setServiceDate(cs.getServiceDate());
+           }
+           return services;
+       } catch (Exception e) {
+            log.error("Error getting services", e);
+            throw new RuntimeException(e);
         }
-        return services;
     }
 
     public Client toClient(ResultSet resultSet) throws SQLException {
@@ -196,9 +184,5 @@ public class ClientDAO implements IGenericDAO<Client> {
             log.error("Error finding all clients", e);
             throw new RuntimeException(e);
         }
-    }
-
-    public void printLogQuery(String query) {
-        log.info("Try QUERY {}", query);
     }
 }

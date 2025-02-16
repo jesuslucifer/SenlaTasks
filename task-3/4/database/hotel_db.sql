@@ -31,10 +31,10 @@ CREATE TABLE Services (
 );
 
 CREATE TABLE ClientService (
+    id INT PRIMARY KEY AUTO_INCREMENT,
     clientId INT,
     serviceId INT,
     serviceDate DATE,
-    PRIMARY KEY (clientId, serviceId),
     FOREIGN KEY (clientId) REFERENCES Clients(id),
     FOREIGN KEY (serviceId) REFERENCES Services(id)
 );

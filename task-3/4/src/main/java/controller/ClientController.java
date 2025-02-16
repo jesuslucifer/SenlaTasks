@@ -79,16 +79,16 @@ public class ClientController {
         List<Service> list = List.of();
         switch (typeSort) {
             case "CostI":
-                list = clientDAO.getServices(client, "cost");
+                list = clientDAO.getServices(client, "s.cost");
                 break;
             case "CostD":
-                list = clientDAO.getServices(client, "cost DESC");
+                list = clientDAO.getServices(client, "s.cost DESC");
                 break;
             case "DateI":
-                list = clientDAO.getServices(client, "serviceDate");
+                list = clientDAO.getServices(client, "cs.serviceDate");
                 break;
             case "DateD":
-                list = clientDAO.getServices(client, "serviceDate DESC");
+                list = clientDAO.getServices(client, "cs.serviceDate DESC");
                 break;
             default:
                 break;

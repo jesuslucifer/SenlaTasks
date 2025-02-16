@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -31,6 +32,7 @@ public class Service implements IToCSV, Serializable {
     @Column(name = "cost")
     private int cost;
 
+    @Transient
     private LocalDate serviceDate;
 
     public Service(String serviceName, int cost) {

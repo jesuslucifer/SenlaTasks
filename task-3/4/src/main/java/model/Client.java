@@ -1,10 +1,13 @@
 package model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
@@ -33,8 +36,10 @@ public class Client implements IToCSV, IUpdateFromCSV, Serializable {
     private LocalDate dateCheckIn;
     @Column
     private LocalDate dateEvict;
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ClientService> clientService;
     @Transient
-    private final List<Service> services = new ArrayList<>();
+    private List<Service> services = new ArrayList<>();
     @Column
     private Boolean occupied;
 
@@ -57,6 +62,14 @@ public class Client implements IToCSV, IUpdateFromCSV, Serializable {
         this.dateCheckIn = LocalDate.parse(dateCheckIn);
         this.dateEvict = LocalDate.parse(dateEvict);
         occupied = true;
+    }
+
+    public List<ClientService> getClientService() {
+        return clientService;
+    }
+
+    public void setClientService(List<ClientService> clientService) {
+        this.clientService = clientService;
     }
 
     public int getId() {
