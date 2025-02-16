@@ -3,7 +3,6 @@ package view;
 import controller.ExitController;
 import controller.HotelController;
 import controller.Inject;
-import controller.SerializableController;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -14,8 +13,6 @@ public class MenuHotel {
     private final Scanner sc = new Scanner(System.in);
     @Inject
     HotelView hotelView;
-    @Inject
-    SerializableController serializableController;
 
     public MenuHotel() {
     }

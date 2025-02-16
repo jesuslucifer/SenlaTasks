@@ -9,16 +9,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "Services")
-public class Service implements IToCSV, Serializable {
-    @Serial
-    private static final long serialVersionUID = 4L;
-    private static int idInc;
+public class Service implements IToCSV {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +31,6 @@ public class Service implements IToCSV, Serializable {
     private LocalDate serviceDate;
 
     public Service(String serviceName, int cost) {
-        this.id = idInc++;
         this.serviceName = serviceName;
         this.cost = cost;
         this.serviceDate = null;

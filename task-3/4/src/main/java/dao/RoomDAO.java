@@ -1,7 +1,5 @@
 package dao;
 
-import connection.DatabaseConnection;
-import jakarta.persistence.Query;
 import lombok.extern.slf4j.Slf4j;
 import model.Room;
 import model.RoomStatus;
@@ -9,18 +7,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 public class RoomDAO implements IGenericDAO<Room> {
-    Connection connection;
 
     public RoomDAO() {
     }
@@ -108,7 +99,7 @@ public class RoomDAO implements IGenericDAO<Room> {
         }
     }
 
-    public List<Room> findByStatus(String status) {
+    public List<Room> findByStatus(RoomStatus status) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery("FROM Room WHERE status = :status")
                     .setParameter("status", status)
@@ -117,29 +108,6 @@ public class RoomDAO implements IGenericDAO<Room> {
             log.error("Error getting rooms", e);
             throw new RuntimeException(e);
         }
-    }
-
-    public Room toRoom(ResultSet resultSet) throws SQLException {
-        Room room = new Room(
-                resultSet.getInt("id"),
-                resultSet.getInt("roomNumber"),
-                resultSet.getInt("cost"),
-                resultSet.getInt("countStars"),
-                resultSet.getString("status"),
-                resultSet.getInt("capacity"),
-                resultSet.getBoolean("lockedChangeStatus"),
-                resultSet.getInt("countRecordsHistory")
-        );
-        Date checkIn = resultSet.getDate("dateCheckIn");
-        LocalDate localCheckIn = (checkIn != null) ? checkIn.toLocalDate() : null;
-
-        Date checkOut = resultSet.getDate("dateEvict");
-        LocalDate localCheckOut = (checkOut != null) ? checkOut.toLocalDate() : null;
-
-        room.setDateCheckIn(localCheckIn);
-        room.setDateEvict(localCheckOut);
-
-        return room;
     }
 
     public List<Room> findFreeByDate(LocalDate date) {
@@ -156,9 +124,5 @@ public class RoomDAO implements IGenericDAO<Room> {
 
     public List<Room> findWithSort(String typeQuery, String typeSort) {
         return getRooms(typeQuery, typeSort);
-    }
-
-    public void printLogQuery(String query) {
-        log.info("Try QUERY {}", query);
     }
 }

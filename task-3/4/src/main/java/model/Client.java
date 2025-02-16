@@ -11,8 +11,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -20,10 +18,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Clients")
-public class Client implements IToCSV, IUpdateFromCSV, Serializable {
-    @Serial
-    private static final long serialVersionUID = 2L;
-    private static int idInc = 0;
+public class Client implements IToCSV, IUpdateFromCSV {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -43,9 +38,6 @@ public class Client implements IToCSV, IUpdateFromCSV, Serializable {
     @Column
     private Boolean occupied;
 
-    public Client() {
-        this.id = idInc++;
-    }
 
     public Client(int id, int roomNumber, String fullName, LocalDate dateCheckIn, LocalDate dateEvict) {
         this.id = id;
@@ -62,6 +54,10 @@ public class Client implements IToCSV, IUpdateFromCSV, Serializable {
         this.dateCheckIn = LocalDate.parse(dateCheckIn);
         this.dateEvict = LocalDate.parse(dateEvict);
         occupied = true;
+    }
+
+    public Client() {
+
     }
 
     public List<ClientService> getClientService() {

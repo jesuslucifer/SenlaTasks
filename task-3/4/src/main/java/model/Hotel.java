@@ -2,12 +2,7 @@ package model;
 
 import dao.RoomDAO;
 
-import java.io.Serial;
-import java.io.Serializable;
-
-public class Hotel implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class Hotel {
     private final RoomDAO roomDAO = new RoomDAO();
 
     public Hotel() {

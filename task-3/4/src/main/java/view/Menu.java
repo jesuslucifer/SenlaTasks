@@ -2,7 +2,6 @@ package view;
 
 import controller.ExitController;
 import controller.Inject;
-import controller.SerializableController;
 
 import java.util.Scanner;
 
@@ -16,8 +15,6 @@ public class Menu {
     @Inject
     MenuService menuService;
     private final Scanner sc = new Scanner(System.in);
-    @Inject
-    SerializableController serializableController;
 
     public Menu() {
     }

@@ -1,14 +1,9 @@
 package dao;
 
-import connection.DatabaseConnection;
 import jakarta.persistence.Query;
 import lombok.extern.slf4j.Slf4j;
 import model.Service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -17,7 +12,6 @@ import util.HibernateUtil;
 
 @Slf4j
 public class ServiceDAO implements IGenericDAO<Service> {
-    private Connection connection;
 
     public ServiceDAO() {
     }
@@ -79,15 +73,5 @@ public class ServiceDAO implements IGenericDAO<Service> {
             log.error("Error finding service", e);
             return null;
         }
-    }
-
-    public Service toService(ResultSet resultSet) throws SQLException {
-        return new Service(resultSet.getInt("id"),
-                           resultSet.getString("serviceName"),
-                           resultSet.getInt("cost"));
-    }
-
-    public void printLogQuery(String query) {
-        log.info("Try QUERY {}", query);
     }
 }

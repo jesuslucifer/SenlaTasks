@@ -11,9 +11,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
-
-import java.io.Serial;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Deque;
@@ -23,10 +20,8 @@ import java.util.ArrayList;
 
 @Entity
 @Table(name = "Rooms")
-public class Room implements IToCSV, IUpdateFromCSV, Serializable {
-    @Serial
-    private static final long serialVersionUID = 3L;
-    private static int idInc;
+public class Room implements IToCSV, IUpdateFromCSV {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

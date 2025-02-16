@@ -3,7 +3,6 @@ package view;
 import controller.ExitController;
 import controller.Inject;
 import controller.RoomController;
-import controller.SerializableController;
 import model.Client;
 import model.RoomStatus;
 
@@ -17,8 +16,6 @@ public class MenuRoom {
     @Inject
     RoomView roomView;
     private final Scanner sc = new Scanner(System.in);
-    @Inject
-    SerializableController serializableController;
 
     public MenuRoom() {
     }
