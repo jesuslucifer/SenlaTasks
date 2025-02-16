@@ -12,6 +12,7 @@ import util.HibernateUtil;
 
 @Slf4j
 public class ServiceDAO implements IGenericDAO<Service> {
+    private Session session;
 
     public ServiceDAO() {
     }
@@ -19,7 +20,8 @@ public class ServiceDAO implements IGenericDAO<Service> {
     @Override
     public void create(Service service) {
         Transaction tx = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getInstance().getSession();
             tx = session.beginTransaction();
             session.save(service);
             tx.commit();
@@ -39,7 +41,8 @@ public class ServiceDAO implements IGenericDAO<Service> {
     @Override
     public void update(Service service) {
         Transaction tx = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getInstance().getSession();
             tx = session.beginTransaction();
             session.update(service);
             tx.commit();
@@ -58,14 +61,19 @@ public class ServiceDAO implements IGenericDAO<Service> {
 
     @Override
     public List<Service> findAll() {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getInstance().getSession();
             Query query = session.createQuery("FROM Service", Service.class);
             return query.getResultList();
+        } catch (Exception e) {
+            log.error("Error find all services ", e);
         }
+        return null;
     }
 
     public Service findServiceName(String serviceName) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getInstance().getSession();
             Query query = session.createQuery("FROM Service WHERE serviceName = :serviceName", Service.class);
             query.setParameter("serviceName", serviceName);
             return (Service) query.getSingleResult();

@@ -12,6 +12,7 @@ import java.util.List;
 
 @Slf4j
 public class RoomDAO implements IGenericDAO<Room> {
+    private Session session;
 
     public RoomDAO() {
     }
@@ -19,7 +20,8 @@ public class RoomDAO implements IGenericDAO<Room> {
     @Override
     public void create(Room room) {
         Transaction tx = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getInstance().getSession();
             tx = session.beginTransaction();
             session.save(room);
             tx.commit();
@@ -34,7 +36,8 @@ public class RoomDAO implements IGenericDAO<Room> {
     @Override
     public Room read(int roomNumber) {
         Transaction tx = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getInstance().getSession();
             tx = session.beginTransaction();
             Room room = session.get(Room.class, roomNumber);
             tx.commit();
@@ -51,7 +54,8 @@ public class RoomDAO implements IGenericDAO<Room> {
     @Override
     public void update(Room room) {
         Transaction tx = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getInstance().getSession();
             tx = session.beginTransaction();
             session.update(room);
             tx.commit();
@@ -70,7 +74,8 @@ public class RoomDAO implements IGenericDAO<Room> {
 
     @Override
     public List<Room> findAll() {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getInstance().getSession();
             return session.createQuery("FROM Room").list();
         } catch (Exception e) {
             log.error("Error finding all rooms", e);
@@ -79,7 +84,8 @@ public class RoomDAO implements IGenericDAO<Room> {
     }
 
     private List<Room> getRooms(String queryType, String typeSort) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getInstance().getSession();
             if (queryType.equals("ALL")) {
                 String query = "FROM Room WHERE status IN (:status1, :status2, :status3) ORDER BY " + typeSort;
                 return session.createQuery(query)
@@ -100,7 +106,8 @@ public class RoomDAO implements IGenericDAO<Room> {
     }
 
     public List<Room> findByStatus(RoomStatus status) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getInstance().getSession();
             return session.createQuery("FROM Room WHERE status = :status")
                     .setParameter("status", status)
                     .list();
@@ -111,7 +118,8 @@ public class RoomDAO implements IGenericDAO<Room> {
     }
 
     public List<Room> findFreeByDate(LocalDate date) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getInstance().getSession();
             return session.createQuery("FROM Room WHERE status != :status AND ((dateCheckIn IS NULL OR dateEvict IS NULL) OR dateEvict < :date)")
                     .setParameter("status", RoomStatus.REPAIRED)
                     .setParameter("date", date)

@@ -40,7 +40,8 @@ public class MainController {
     }
 
     public boolean isHotelInitialized() {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            Session session = HibernateUtil.getInstance().getSession();
             Query<Long> query = session.createQuery("SELECT COUNT(*) FROM Room");
             if (query.uniqueResult() > 0) {
                 log.info("Hotel initialized");
