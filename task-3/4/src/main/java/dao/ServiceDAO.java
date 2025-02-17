@@ -23,7 +23,7 @@ public class ServiceDAO implements IGenericDAO<Service> {
         try {
             session = HibernateUtil.getInstance().getSession();
             tx = session.beginTransaction();
-            session.save(service);
+            session.persist(service);
             tx.commit();
         } catch (Exception e) {
             if (tx != null) {
@@ -44,7 +44,7 @@ public class ServiceDAO implements IGenericDAO<Service> {
         try {
             session = HibernateUtil.getInstance().getSession();
             tx = session.beginTransaction();
-            session.update(service);
+            session.merge(service);
             tx.commit();
         } catch (Exception e) {
             if (tx != null) {

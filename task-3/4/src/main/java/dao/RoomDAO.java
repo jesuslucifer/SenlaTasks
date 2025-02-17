@@ -23,7 +23,7 @@ public class RoomDAO implements IGenericDAO<Room> {
         try {
             session = HibernateUtil.getInstance().getSession();
             tx = session.beginTransaction();
-            session.save(room);
+            session.persist(room);
             tx.commit();
         } catch (Exception e) {
             if (tx != null) {
@@ -57,7 +57,7 @@ public class RoomDAO implements IGenericDAO<Room> {
         try {
             session = HibernateUtil.getInstance().getSession();
             tx = session.beginTransaction();
-            session.update(room);
+            session.merge(room);
             tx.commit();
         } catch (Exception e) {
             if (tx != null) {

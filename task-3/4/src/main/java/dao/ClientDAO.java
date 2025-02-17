@@ -26,7 +26,7 @@ public class ClientDAO implements IGenericDAO<Client> {
         try {
             session = HibernateUtil.getInstance().getSession();
             tx = session.beginTransaction();
-            session.save(client);
+            session.persist(client);
             tx.commit();
         } catch (Exception e) {
             if (tx != null) {
@@ -60,7 +60,7 @@ public class ClientDAO implements IGenericDAO<Client> {
         try {
             session = HibernateUtil.getInstance().getSession();
             tx = session.beginTransaction();
-            session.update(client);
+            session.merge(client);
             tx.commit();
         } catch (Exception e) {
             if (tx != null) {
@@ -76,7 +76,7 @@ public class ClientDAO implements IGenericDAO<Client> {
         try {
             session = HibernateUtil.getInstance().getSession();
             tx = session.beginTransaction();
-            session.delete(client);
+            session.remove(client);
             tx.commit();
         } catch (Exception e) {
             if (tx != null) {
@@ -100,7 +100,7 @@ public class ClientDAO implements IGenericDAO<Client> {
     public List<Client> findInRoom(int roomNumber) {
         try {
             session = HibernateUtil.getInstance().getSession();
-            return session.createQuery("FROM Client WHERE roomNumber = :roomNumber", Client.class)
+            return session.createQuery("FROM Client WHERE roomNumber = :roomNumber AND occupied = true", Client.class)
                     .setParameter("roomNumber", roomNumber)
                     .list();
         } catch (Exception e) {
@@ -116,7 +116,7 @@ public class ClientDAO implements IGenericDAO<Client> {
             clientService.setClient(client);
             clientService.setService(service);
             clientService.setServiceDate(date);
-            session.save(clientService);
+            session.persist(clientService);
         } catch (Exception e) {
             log.error("Error adding service", e);
         }
