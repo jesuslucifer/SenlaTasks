@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
@@ -38,6 +39,12 @@ public class Client implements IToCSV, IUpdateFromCSV {
     @Column
     private Boolean occupied;
 
+    @PrePersist
+    public void prePersist() {
+        if (occupied == null) {
+            occupied = true;
+        }
+    }
 
     public Client(int id, int roomNumber, String fullName, LocalDate dateCheckIn, LocalDate dateEvict) {
         this.id = id;
