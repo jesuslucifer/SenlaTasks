@@ -1,6 +1,5 @@
 package dao;
 
-import jakarta.persistence.Query;
 import lombok.extern.slf4j.Slf4j;
 import model.Service;
 
@@ -63,8 +62,7 @@ public class ServiceDAO implements IGenericDAO<Service> {
     public List<Service> findAll() {
         try {
             session = HibernateUtil.getInstance().getSession();
-            Query query = session.createQuery("FROM Service", Service.class);
-            return query.getResultList();
+            return session.createQuery("FROM Service", Service.class).list();
         } catch (Exception e) {
             log.error("Error find all services ", e);
         }
@@ -74,9 +72,9 @@ public class ServiceDAO implements IGenericDAO<Service> {
     public Service findServiceName(String serviceName) {
         try {
             session = HibernateUtil.getInstance().getSession();
-            Query query = session.createQuery("FROM Service WHERE serviceName = :serviceName", Service.class);
-            query.setParameter("serviceName", serviceName);
-            return (Service) query.getSingleResult();
+            return session.createQuery("FROM Service WHERE serviceName = :serviceName", Service.class)
+                    .setParameter("serviceName", serviceName)
+                    .getSingleResult();
         } catch (Exception e) {
             log.error("Error finding service", e);
             return null;

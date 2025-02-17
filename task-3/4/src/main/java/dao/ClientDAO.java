@@ -90,7 +90,7 @@ public class ClientDAO implements IGenericDAO<Client> {
     public List<Client> findAll() {
         try {
             session = HibernateUtil.getInstance().getSession();
-            return session.createQuery("FROM Client WHERE occupied = true").list();
+            return session.createQuery("FROM Client WHERE occupied = true", Client.class).list();
         } catch (Exception e) {
             log.error("Error finding all clients", e);
             throw new RuntimeException(e);
@@ -128,7 +128,7 @@ public class ClientDAO implements IGenericDAO<Client> {
             session = HibernateUtil.getInstance().getSession();
            String query = "SELECT cs FROM ClientService cs JOIN Service s ON s.id = cs.service.id WHERE cs.client.id = :clientId ORDER BY " + typeSort;
            List<ClientService> clientServices = session
-                   .createQuery(query)
+                   .createQuery(query, ClientService.class)
                    .setParameter("clientId", client.getId())
                    .list();
            for (ClientService cs : clientServices) {
@@ -146,7 +146,7 @@ public class ClientDAO implements IGenericDAO<Client> {
         try {
             session = HibernateUtil.getInstance().getSession();
             String query = "FROM Client WHERE occupied = true ORDER BY " + typeSort;
-            return session.createQuery(query).list();
+            return session.createQuery(query, Client.class).list();
         } catch (Exception e) {
             log.error("Error finding all clients", e);
             throw new RuntimeException(e);
@@ -157,7 +157,7 @@ public class ClientDAO implements IGenericDAO<Client> {
         try {
             session = HibernateUtil.getInstance().getSession();
             String query = "FROM Client WHERE roomNumber = :roomNumber AND occupied = false ORDER BY dateEvict DESC LIMIT :limit";
-            return session.createQuery(query)
+            return session.createQuery(query, Client.class)
                     .setParameter("roomNumber", roomNumber)
                     .setParameter("limit", countRecordsHistory)
                     .list();

@@ -76,7 +76,7 @@ public class RoomDAO implements IGenericDAO<Room> {
     public List<Room> findAll() {
         try {
             session = HibernateUtil.getInstance().getSession();
-            return session.createQuery("FROM Room").list();
+            return session.createQuery("FROM Room", Room.class).list();
         } catch (Exception e) {
             log.error("Error finding all rooms", e);
             throw new RuntimeException(e);
@@ -88,14 +88,14 @@ public class RoomDAO implements IGenericDAO<Room> {
             session = HibernateUtil.getInstance().getSession();
             if (queryType.equals("ALL")) {
                 String query = "FROM Room WHERE status IN (:status1, :status2, :status3) ORDER BY " + typeSort;
-                return session.createQuery(query)
+                return session.createQuery(query, Room.class)
                         .setParameter("status1", RoomStatus.FREE)
                         .setParameter("status2", RoomStatus.BUSY)
                         .setParameter("status3", RoomStatus.REPAIRED)
                         .list();
             } else {
                 String query = "FROM Room WHERE status = :status ORDER BY " + typeSort;
-                return session.createQuery(query)
+                return session.createQuery(query, Room.class)
                         .setParameter("status", RoomStatus.FREE)
                         .list();
             }
@@ -108,7 +108,7 @@ public class RoomDAO implements IGenericDAO<Room> {
     public List<Room> findByStatus(RoomStatus status) {
         try {
             session = HibernateUtil.getInstance().getSession();
-            return session.createQuery("FROM Room WHERE status = :status")
+            return session.createQuery("FROM Room WHERE status = :status", Room.class)
                     .setParameter("status", status)
                     .list();
         } catch (Exception e) {
@@ -120,7 +120,8 @@ public class RoomDAO implements IGenericDAO<Room> {
     public List<Room> findFreeByDate(LocalDate date) {
         try {
             session = HibernateUtil.getInstance().getSession();
-            return session.createQuery("FROM Room WHERE status != :status AND ((dateCheckIn IS NULL OR dateEvict IS NULL) OR dateEvict < :date)")
+            return session
+                    .createQuery("FROM Room WHERE status != :status AND ((dateCheckIn IS NULL OR dateEvict IS NULL) OR dateEvict < :date)", Room.class)
                     .setParameter("status", RoomStatus.REPAIRED)
                     .setParameter("date", date)
                     .list();
