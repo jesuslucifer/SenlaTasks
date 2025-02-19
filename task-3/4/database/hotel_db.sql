@@ -15,7 +15,7 @@ CREATE TABLE Rooms (
     id INT PRIMARY KEY AUTO_INCREMENT,
     roomNumber INT UNIQUE,
     cost INT,
-    status ENUM('BUSY', 'FREE', 'REPAIRED'),
+    status ENUM('FREE', 'BUSY', 'REPAIRED'),
     capacity INT,
     countStars INT,
     dateCheckIn DATE NULL,
@@ -31,10 +31,10 @@ CREATE TABLE Services (
 );
 
 CREATE TABLE ClientService (
+    id INT PRIMARY KEY AUTO_INCREMENT,
     clientId INT,
     serviceId INT,
     serviceDate DATE,
-    PRIMARY KEY (clientId, serviceId),
     FOREIGN KEY (clientId) REFERENCES Clients(id),
     FOREIGN KEY (serviceId) REFERENCES Services(id)
 );

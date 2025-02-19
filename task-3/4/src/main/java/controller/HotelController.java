@@ -8,6 +8,7 @@ import model.IToCSV;
 import model.Client;
 import model.Hotel;
 import model.Room;
+import model.RoomStatus;
 import model.Service;
 import view.HotelView;
 
@@ -38,7 +39,7 @@ public class HotelController {
     }
 
     public List<Room> getListFreeRooms() {
-        return roomDAO.findByStatus("FREE");
+        return roomDAO.findByStatus(RoomStatus.FREE);
     }
 
     public List<Room> getRooms() {

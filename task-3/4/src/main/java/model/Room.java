@@ -1,9 +1,16 @@
 package model;
 
 import controller.ConfigProperty;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Deque;
@@ -11,25 +18,40 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Room implements IToCSV, IUpdateFromCSV, Serializable {
-    @Serial
-    private static final long serialVersionUID = 3L;
-    private static int idInc;
+@Entity
+@Table(name = "Rooms")
+public class Room implements IToCSV, IUpdateFromCSV {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column
     private int roomNumber;
+    @Column
     private int cost;
+    @Column
     private int countStars;
 
+    @Column
     @ConfigProperty(propertyName = "room.lockedChangeStatus", type = Boolean.class)
     private boolean lockedChangeStatus;
 
+    @Column
+    @Enumerated(EnumType.STRING)
     private RoomStatus status;
+    @Column
     private int capacity;
+
+    @Transient
     private final List<Client> clentList = new ArrayList<>();
+    @Column
     private LocalDate dateCheckIn;
+    @Column
     private LocalDate dateEvict;
+    @Transient
     private final Deque<Client> historyClientQueue = new LinkedList<>();
 
+    @Column
     @ConfigProperty(propertyName = "room.countRecordHistory", type = Integer.class)
     private int countRecordsHistory;
 
@@ -67,6 +89,10 @@ public class Room implements IToCSV, IUpdateFromCSV, Serializable {
         this.capacity = capacity;
         this.lockedChangeStatus = lockedChangeStatus;
         this.countRecordsHistory = countRecordsHistory;
+    }
+
+    public Room() {
+
     }
 
     public int getRoomNumber() {

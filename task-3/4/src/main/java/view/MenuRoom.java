@@ -3,7 +3,6 @@ package view;
 import controller.ExitController;
 import controller.Inject;
 import controller.RoomController;
-import controller.SerializableController;
 import model.Client;
 import model.RoomStatus;
 
@@ -17,8 +16,6 @@ public class MenuRoom {
     @Inject
     RoomView roomView;
     private final Scanner sc = new Scanner(System.in);
-    @Inject
-    SerializableController serializableController;
 
     public MenuRoom() {
     }
@@ -32,7 +29,7 @@ public class MenuRoom {
                 roomView.printMenuWithChangeStatus();
 
                 switch (sc.nextInt()) {
-                    case 1 -> printRooms("'FREE', 'BUSY', 'REPAIRED'");
+                    case 1 -> printRooms("ALL");
                     case 2 -> printRooms("'FREE'");
                     case 3 -> printInfoRoom();
                     case 4 -> checkIntoRoom();

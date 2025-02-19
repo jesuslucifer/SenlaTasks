@@ -3,7 +3,6 @@ package view;
 import controller.ClientController;
 import controller.ExitController;
 import controller.Inject;
-import controller.SerializableController;
 import controller.ServiceController;
 
 import java.util.Scanner;
@@ -15,8 +14,6 @@ public class MenuClient {
     ServiceController serviceController;
     @Inject
     ClientView clientView;
-    @Inject
-    SerializableController serializableController;
 
     private final Scanner sc = new Scanner(System.in);
 
