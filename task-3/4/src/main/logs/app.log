@@ -1,26 +1,866 @@
-2025-02-17 17:06:41 INFO  controller.MainController - Starting Program
-2025-02-17 17:06:41 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
-2025-02-17 17:06:41 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-02-17 17:06:41 WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
-2025-02-17 17:06:41 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: com.mysql.cj.jdbc.Driver
-2025-02-17 17:06:41 INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:mysql://localhost:3306/hotel_db]
-2025-02-17 17:06:41 INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, user=root}
-2025-02-17 17:06:41 INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
-2025-02-17 17:06:41 INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
-2025-02-17 17:06:42 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-02-17 17:06:42 INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@4ab66127] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-2025-02-17 17:06:43 DEBUG org.hibernate.SQL - 
+2025-03-04 21:41:00 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-03-04 21:41:00 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-03-04 21:41:00 WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-03-04 21:41:00 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: com.mysql.cj.jdbc.Driver
+2025-03-04 21:41:00 INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:mysql://localhost:3306/hotel_db]
+2025-03-04 21:41:00 INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, user=root}
+2025-03-04 21:41:00 INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2025-03-04 21:41:00 INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2025-03-04 21:41:01 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-04 21:41:01 INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@6c519e47] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1062, SQLState: 23000
+2025-03-04 21:41:01 ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Duplicate entry '1' for key 'rooms.roomNumber'
+2025-03-04 21:41:01 ERROR dao.RoomDAO - Error creating room
+org.hibernate.exception.ConstraintViolationException: could not execute statement [Duplicate entry '1' for key 'rooms.roomNumber'] [insert into Rooms (capacity,cost,countRecordsHistory,countStars,dateCheckIn,dateEvict,lockedChangeStatus,roomNumber,status) values (?,?,?,?,?,?,?,?,?)]
+	at org.hibernate.dialect.MySQLDialect.lambda$buildSQLExceptionConversionDelegate$3(MySQLDialect.java:1243)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197)
+	at org.hibernate.id.insert.GetGeneratedKeysDelegate.performMutation(GetGeneratedKeysDelegate.java:116)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:47)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:95)
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:85)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:671)
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:292)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:273)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:323)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:391)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:305)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:224)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:175)
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:93)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:54)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:757)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:741)
+	at dao.RoomDAO.create(RoomDAO.java:26)
+	at model.Hotel.<init>(Hotel.java:11)
+	at config.ApplicationConfig.hotel(ApplicationConfig.java:52)
+	at config.ApplicationConfig$$SpringCGLIB$$0.CGLIB$hotel$7(<generated>)
+	at config.ApplicationConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:372)
+	at config.ApplicationConfig$$SpringCGLIB$$0.hotel(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:93)
+	at Main.main(Main.java:8)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1' for key 'rooms.roomNumber'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
+	... 52 common frames omitted
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1062, SQLState: 23000
+2025-03-04 21:41:01 ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Duplicate entry '2' for key 'rooms.roomNumber'
+2025-03-04 21:41:01 ERROR dao.RoomDAO - Error creating room
+org.hibernate.exception.ConstraintViolationException: could not execute statement [Duplicate entry '2' for key 'rooms.roomNumber'] [insert into Rooms (capacity,cost,countRecordsHistory,countStars,dateCheckIn,dateEvict,lockedChangeStatus,roomNumber,status) values (?,?,?,?,?,?,?,?,?)]
+	at org.hibernate.dialect.MySQLDialect.lambda$buildSQLExceptionConversionDelegate$3(MySQLDialect.java:1243)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197)
+	at org.hibernate.id.insert.GetGeneratedKeysDelegate.performMutation(GetGeneratedKeysDelegate.java:116)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:47)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:95)
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:85)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:671)
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:292)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:273)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:323)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:391)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:305)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:224)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:175)
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:93)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:54)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:757)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:741)
+	at dao.RoomDAO.create(RoomDAO.java:26)
+	at model.Hotel.<init>(Hotel.java:11)
+	at config.ApplicationConfig.hotel(ApplicationConfig.java:52)
+	at config.ApplicationConfig$$SpringCGLIB$$0.CGLIB$hotel$7(<generated>)
+	at config.ApplicationConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:372)
+	at config.ApplicationConfig$$SpringCGLIB$$0.hotel(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:93)
+	at Main.main(Main.java:8)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '2' for key 'rooms.roomNumber'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
+	... 52 common frames omitted
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1062, SQLState: 23000
+2025-03-04 21:41:01 ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Duplicate entry '3' for key 'rooms.roomNumber'
+2025-03-04 21:41:01 ERROR dao.RoomDAO - Error creating room
+org.hibernate.exception.ConstraintViolationException: could not execute statement [Duplicate entry '3' for key 'rooms.roomNumber'] [insert into Rooms (capacity,cost,countRecordsHistory,countStars,dateCheckIn,dateEvict,lockedChangeStatus,roomNumber,status) values (?,?,?,?,?,?,?,?,?)]
+	at org.hibernate.dialect.MySQLDialect.lambda$buildSQLExceptionConversionDelegate$3(MySQLDialect.java:1243)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197)
+	at org.hibernate.id.insert.GetGeneratedKeysDelegate.performMutation(GetGeneratedKeysDelegate.java:116)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:47)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:95)
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:85)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:671)
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:292)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:273)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:323)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:391)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:305)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:224)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:175)
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:93)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:54)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:757)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:741)
+	at dao.RoomDAO.create(RoomDAO.java:26)
+	at model.Hotel.<init>(Hotel.java:11)
+	at config.ApplicationConfig.hotel(ApplicationConfig.java:52)
+	at config.ApplicationConfig$$SpringCGLIB$$0.CGLIB$hotel$7(<generated>)
+	at config.ApplicationConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:372)
+	at config.ApplicationConfig$$SpringCGLIB$$0.hotel(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:93)
+	at Main.main(Main.java:8)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '3' for key 'rooms.roomNumber'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
+	... 52 common frames omitted
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1062, SQLState: 23000
+2025-03-04 21:41:01 ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Duplicate entry '4' for key 'rooms.roomNumber'
+2025-03-04 21:41:01 ERROR dao.RoomDAO - Error creating room
+org.hibernate.exception.ConstraintViolationException: could not execute statement [Duplicate entry '4' for key 'rooms.roomNumber'] [insert into Rooms (capacity,cost,countRecordsHistory,countStars,dateCheckIn,dateEvict,lockedChangeStatus,roomNumber,status) values (?,?,?,?,?,?,?,?,?)]
+	at org.hibernate.dialect.MySQLDialect.lambda$buildSQLExceptionConversionDelegate$3(MySQLDialect.java:1243)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197)
+	at org.hibernate.id.insert.GetGeneratedKeysDelegate.performMutation(GetGeneratedKeysDelegate.java:116)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:47)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:95)
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:85)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:671)
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:292)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:273)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:323)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:391)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:305)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:224)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:175)
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:93)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:54)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:757)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:741)
+	at dao.RoomDAO.create(RoomDAO.java:26)
+	at model.Hotel.<init>(Hotel.java:11)
+	at config.ApplicationConfig.hotel(ApplicationConfig.java:52)
+	at config.ApplicationConfig$$SpringCGLIB$$0.CGLIB$hotel$7(<generated>)
+	at config.ApplicationConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:372)
+	at config.ApplicationConfig$$SpringCGLIB$$0.hotel(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:93)
+	at Main.main(Main.java:8)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '4' for key 'rooms.roomNumber'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
+	... 52 common frames omitted
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1062, SQLState: 23000
+2025-03-04 21:41:01 ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Duplicate entry '5' for key 'rooms.roomNumber'
+2025-03-04 21:41:01 ERROR dao.RoomDAO - Error creating room
+org.hibernate.exception.ConstraintViolationException: could not execute statement [Duplicate entry '5' for key 'rooms.roomNumber'] [insert into Rooms (capacity,cost,countRecordsHistory,countStars,dateCheckIn,dateEvict,lockedChangeStatus,roomNumber,status) values (?,?,?,?,?,?,?,?,?)]
+	at org.hibernate.dialect.MySQLDialect.lambda$buildSQLExceptionConversionDelegate$3(MySQLDialect.java:1243)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197)
+	at org.hibernate.id.insert.GetGeneratedKeysDelegate.performMutation(GetGeneratedKeysDelegate.java:116)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:47)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:95)
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:85)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:671)
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:292)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:273)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:323)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:391)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:305)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:224)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:175)
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:93)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:54)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:757)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:741)
+	at dao.RoomDAO.create(RoomDAO.java:26)
+	at model.Hotel.<init>(Hotel.java:11)
+	at config.ApplicationConfig.hotel(ApplicationConfig.java:52)
+	at config.ApplicationConfig$$SpringCGLIB$$0.CGLIB$hotel$7(<generated>)
+	at config.ApplicationConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:372)
+	at config.ApplicationConfig$$SpringCGLIB$$0.hotel(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:93)
+	at Main.main(Main.java:8)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '5' for key 'rooms.roomNumber'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
+	... 52 common frames omitted
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1062, SQLState: 23000
+2025-03-04 21:41:01 ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Duplicate entry '6' for key 'rooms.roomNumber'
+2025-03-04 21:41:01 ERROR dao.RoomDAO - Error creating room
+org.hibernate.exception.ConstraintViolationException: could not execute statement [Duplicate entry '6' for key 'rooms.roomNumber'] [insert into Rooms (capacity,cost,countRecordsHistory,countStars,dateCheckIn,dateEvict,lockedChangeStatus,roomNumber,status) values (?,?,?,?,?,?,?,?,?)]
+	at org.hibernate.dialect.MySQLDialect.lambda$buildSQLExceptionConversionDelegate$3(MySQLDialect.java:1243)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197)
+	at org.hibernate.id.insert.GetGeneratedKeysDelegate.performMutation(GetGeneratedKeysDelegate.java:116)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:47)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:95)
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:85)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:671)
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:292)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:273)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:323)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:391)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:305)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:224)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:175)
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:93)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:54)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:757)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:741)
+	at dao.RoomDAO.create(RoomDAO.java:26)
+	at model.Hotel.<init>(Hotel.java:11)
+	at config.ApplicationConfig.hotel(ApplicationConfig.java:52)
+	at config.ApplicationConfig$$SpringCGLIB$$0.CGLIB$hotel$7(<generated>)
+	at config.ApplicationConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:372)
+	at config.ApplicationConfig$$SpringCGLIB$$0.hotel(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:93)
+	at Main.main(Main.java:8)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '6' for key 'rooms.roomNumber'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
+	... 52 common frames omitted
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1062, SQLState: 23000
+2025-03-04 21:41:01 ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Duplicate entry '7' for key 'rooms.roomNumber'
+2025-03-04 21:41:01 ERROR dao.RoomDAO - Error creating room
+org.hibernate.exception.ConstraintViolationException: could not execute statement [Duplicate entry '7' for key 'rooms.roomNumber'] [insert into Rooms (capacity,cost,countRecordsHistory,countStars,dateCheckIn,dateEvict,lockedChangeStatus,roomNumber,status) values (?,?,?,?,?,?,?,?,?)]
+	at org.hibernate.dialect.MySQLDialect.lambda$buildSQLExceptionConversionDelegate$3(MySQLDialect.java:1243)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197)
+	at org.hibernate.id.insert.GetGeneratedKeysDelegate.performMutation(GetGeneratedKeysDelegate.java:116)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:47)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:95)
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:85)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:671)
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:292)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:273)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:323)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:391)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:305)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:224)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:175)
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:93)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:54)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:757)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:741)
+	at dao.RoomDAO.create(RoomDAO.java:26)
+	at model.Hotel.<init>(Hotel.java:11)
+	at config.ApplicationConfig.hotel(ApplicationConfig.java:52)
+	at config.ApplicationConfig$$SpringCGLIB$$0.CGLIB$hotel$7(<generated>)
+	at config.ApplicationConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:372)
+	at config.ApplicationConfig$$SpringCGLIB$$0.hotel(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:93)
+	at Main.main(Main.java:8)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '7' for key 'rooms.roomNumber'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
+	... 52 common frames omitted
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1062, SQLState: 23000
+2025-03-04 21:41:01 ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Duplicate entry '8' for key 'rooms.roomNumber'
+2025-03-04 21:41:01 ERROR dao.RoomDAO - Error creating room
+org.hibernate.exception.ConstraintViolationException: could not execute statement [Duplicate entry '8' for key 'rooms.roomNumber'] [insert into Rooms (capacity,cost,countRecordsHistory,countStars,dateCheckIn,dateEvict,lockedChangeStatus,roomNumber,status) values (?,?,?,?,?,?,?,?,?)]
+	at org.hibernate.dialect.MySQLDialect.lambda$buildSQLExceptionConversionDelegate$3(MySQLDialect.java:1243)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197)
+	at org.hibernate.id.insert.GetGeneratedKeysDelegate.performMutation(GetGeneratedKeysDelegate.java:116)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:47)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:95)
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:85)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:671)
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:292)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:273)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:323)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:391)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:305)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:224)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:175)
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:93)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:54)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:757)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:741)
+	at dao.RoomDAO.create(RoomDAO.java:26)
+	at model.Hotel.<init>(Hotel.java:11)
+	at config.ApplicationConfig.hotel(ApplicationConfig.java:52)
+	at config.ApplicationConfig$$SpringCGLIB$$0.CGLIB$hotel$7(<generated>)
+	at config.ApplicationConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:372)
+	at config.ApplicationConfig$$SpringCGLIB$$0.hotel(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:93)
+	at Main.main(Main.java:8)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '8' for key 'rooms.roomNumber'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
+	... 52 common frames omitted
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1062, SQLState: 23000
+2025-03-04 21:41:01 ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Duplicate entry '9' for key 'rooms.roomNumber'
+2025-03-04 21:41:01 ERROR dao.RoomDAO - Error creating room
+org.hibernate.exception.ConstraintViolationException: could not execute statement [Duplicate entry '9' for key 'rooms.roomNumber'] [insert into Rooms (capacity,cost,countRecordsHistory,countStars,dateCheckIn,dateEvict,lockedChangeStatus,roomNumber,status) values (?,?,?,?,?,?,?,?,?)]
+	at org.hibernate.dialect.MySQLDialect.lambda$buildSQLExceptionConversionDelegate$3(MySQLDialect.java:1243)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197)
+	at org.hibernate.id.insert.GetGeneratedKeysDelegate.performMutation(GetGeneratedKeysDelegate.java:116)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:47)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:95)
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:85)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:671)
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:292)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:273)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:323)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:391)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:305)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:224)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:175)
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:93)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:54)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:757)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:741)
+	at dao.RoomDAO.create(RoomDAO.java:26)
+	at model.Hotel.<init>(Hotel.java:11)
+	at config.ApplicationConfig.hotel(ApplicationConfig.java:52)
+	at config.ApplicationConfig$$SpringCGLIB$$0.CGLIB$hotel$7(<generated>)
+	at config.ApplicationConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:372)
+	at config.ApplicationConfig$$SpringCGLIB$$0.hotel(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:93)
+	at Main.main(Main.java:8)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '9' for key 'rooms.roomNumber'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
+	... 52 common frames omitted
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Rooms
+        (capacity, cost, countRecordsHistory, countStars, dateCheckIn, dateEvict, lockedChangeStatus, roomNumber, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-03-04 21:41:01 WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1062, SQLState: 23000
+2025-03-04 21:41:01 ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Duplicate entry '10' for key 'rooms.roomNumber'
+2025-03-04 21:41:01 ERROR dao.RoomDAO - Error creating room
+org.hibernate.exception.ConstraintViolationException: could not execute statement [Duplicate entry '10' for key 'rooms.roomNumber'] [insert into Rooms (capacity,cost,countRecordsHistory,countStars,dateCheckIn,dateEvict,lockedChangeStatus,roomNumber,status) values (?,?,?,?,?,?,?,?,?)]
+	at org.hibernate.dialect.MySQLDialect.lambda$buildSQLExceptionConversionDelegate$3(MySQLDialect.java:1243)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197)
+	at org.hibernate.id.insert.GetGeneratedKeysDelegate.performMutation(GetGeneratedKeysDelegate.java:116)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:47)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:95)
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:85)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:671)
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:292)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:273)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:323)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:391)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:305)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:224)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:175)
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:93)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:54)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:757)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:741)
+	at dao.RoomDAO.create(RoomDAO.java:26)
+	at model.Hotel.<init>(Hotel.java:11)
+	at config.ApplicationConfig.hotel(ApplicationConfig.java:52)
+	at config.ApplicationConfig$$SpringCGLIB$$0.CGLIB$hotel$7(<generated>)
+	at config.ApplicationConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:372)
+	at config.ApplicationConfig$$SpringCGLIB$$0.hotel(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:93)
+	at Main.main(Main.java:8)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '10' for key 'rooms.roomNumber'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
+	... 52 common frames omitted
+2025-03-04 21:41:01 INFO  controller.MainController - Starting Program
+2025-03-04 21:41:02 DEBUG org.hibernate.SQL - 
     select
         count(*) 
     from
         Rooms r1_0
-2025-02-17 17:06:43 DEBUG org.hibernate.SQL - 
+2025-03-04 21:41:02 DEBUG org.hibernate.SQL - 
     select
         count(*) 
     from
         Rooms r1_0
-2025-02-17 17:06:43 INFO  controller.MainController - Hotel initialized
-2025-02-17 17:06:43 DEBUG org.hibernate.SQL - 
+2025-03-04 21:41:02 INFO  controller.MainController - Hotel initialized
+2025-03-04 21:41:02 DEBUG org.hibernate.SQL - 
     select
         r1_0.id,
         r1_0.capacity,
@@ -34,7 +874,7 @@
         r1_0.status 
     from
         Rooms r1_0
-2025-02-17 17:06:43 DEBUG org.hibernate.SQL - 
+2025-03-04 21:41:02 DEBUG org.hibernate.SQL - 
     select
         r1_0.id,
         r1_0.capacity,
@@ -48,18 +888,18 @@
         r1_0.status 
     from
         Rooms r1_0
-2025-02-17 17:06:43 INFO  controller.RoomController - The LockedStatusRoom, room 1 has been changed to true
-2025-02-17 17:06:43 INFO  controller.RoomController - The LockedStatusRoom, room 2 has been changed to true
-2025-02-17 17:06:43 INFO  controller.RoomController - The LockedStatusRoom, room 3 has been changed to true
-2025-02-17 17:06:43 INFO  controller.RoomController - The LockedStatusRoom, room 4 has been changed to true
-2025-02-17 17:06:43 INFO  controller.RoomController - The LockedStatusRoom, room 5 has been changed to true
-2025-02-17 17:06:43 INFO  controller.RoomController - The LockedStatusRoom, room 6 has been changed to true
-2025-02-17 17:06:43 INFO  controller.RoomController - The LockedStatusRoom, room 7 has been changed to true
-2025-02-17 17:06:43 INFO  controller.RoomController - The LockedStatusRoom, room 8 has been changed to true
-2025-02-17 17:06:43 INFO  controller.RoomController - The LockedStatusRoom, room 9 has been changed to true
-2025-02-17 17:06:43 INFO  controller.RoomController - The LockedStatusRoom, room 10 has been changed to true
-2025-02-17 17:06:43 INFO  controller.RoomController - Success import locked rooms from property, lockedChangeStatus=true
-2025-02-17 17:06:43 DEBUG org.hibernate.SQL - 
+2025-03-04 21:41:02 INFO  controller.RoomController - The LockedStatusRoom, room 1 has been changed to true
+2025-03-04 21:41:02 INFO  controller.RoomController - The LockedStatusRoom, room 2 has been changed to true
+2025-03-04 21:41:02 INFO  controller.RoomController - The LockedStatusRoom, room 3 has been changed to true
+2025-03-04 21:41:02 INFO  controller.RoomController - The LockedStatusRoom, room 4 has been changed to true
+2025-03-04 21:41:02 INFO  controller.RoomController - The LockedStatusRoom, room 5 has been changed to true
+2025-03-04 21:41:02 INFO  controller.RoomController - The LockedStatusRoom, room 6 has been changed to true
+2025-03-04 21:41:02 INFO  controller.RoomController - The LockedStatusRoom, room 7 has been changed to true
+2025-03-04 21:41:02 INFO  controller.RoomController - The LockedStatusRoom, room 8 has been changed to true
+2025-03-04 21:41:02 INFO  controller.RoomController - The LockedStatusRoom, room 9 has been changed to true
+2025-03-04 21:41:02 INFO  controller.RoomController - The LockedStatusRoom, room 10 has been changed to true
+2025-03-04 21:41:02 INFO  controller.RoomController - Success import locked rooms from property, lockedChangeStatus=true
+2025-03-04 21:41:02 DEBUG org.hibernate.SQL - 
     select
         r1_0.id,
         r1_0.capacity,
@@ -73,7 +913,7 @@
         r1_0.status 
     from
         Rooms r1_0
-2025-02-17 17:06:43 DEBUG org.hibernate.SQL - 
+2025-03-04 21:41:02 DEBUG org.hibernate.SQL - 
     select
         r1_0.id,
         r1_0.capacity,
@@ -87,18 +927,18 @@
         r1_0.status 
     from
         Rooms r1_0
-2025-02-17 17:06:43 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-17 17:06:43 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-17 17:06:43 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-17 17:06:43 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-17 17:06:43 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-17 17:06:43 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-17 17:06:43 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-17 17:06:43 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-17 17:06:43 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-17 17:06:43 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
-2025-02-17 17:06:43 INFO  controller.RoomController - Success import count records in the history room from property, countRecordsHistory=3
-2025-02-17 17:06:52 DEBUG org.hibernate.SQL - 
+2025-03-04 21:41:02 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-03-04 21:41:02 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-03-04 21:41:02 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-03-04 21:41:02 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-03-04 21:41:02 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-03-04 21:41:02 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-03-04 21:41:02 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-03-04 21:41:02 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-03-04 21:41:02 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-03-04 21:41:02 INFO  controller.RoomController - The countRecordsHistory has been changed to 3
+2025-03-04 21:41:02 INFO  controller.RoomController - Success import count records in the history room from property, countRecordsHistory=3
+2025-03-04 21:41:05 DEBUG org.hibernate.SQL - 
     select
         r1_0.id,
         r1_0.capacity,
@@ -111,52 +951,26 @@
         r1_0.roomNumber,
         r1_0.status 
     from
-        Rooms r1_0
-2025-02-17 17:06:52 DEBUG org.hibernate.SQL - 
-    select
-        r1_0.id,
-        r1_0.capacity,
-        r1_0.cost,
-        r1_0.countRecordsHistory,
-        r1_0.countStars,
-        r1_0.dateCheckIn,
-        r1_0.dateEvict,
-        r1_0.lockedChangeStatus,
-        r1_0.roomNumber,
-        r1_0.status 
-    from
-        Rooms r1_0
-2025-02-17 17:06:52 DEBUG org.hibernate.SQL - 
-    update
-        Rooms 
-    set
-        capacity=?,
-        cost=?,
-        countRecordsHistory=?,
-        countStars=?,
-        dateCheckIn=?,
-        dateEvict=?,
-        lockedChangeStatus=?,
-        roomNumber=?,
-        status=? 
+        Rooms r1_0 
     where
-        id=?
-2025-02-17 17:06:52 DEBUG org.hibernate.SQL - 
-    update
-        Rooms 
-    set
-        capacity=?,
-        cost=?,
-        countRecordsHistory=?,
-        countStars=?,
-        dateCheckIn=?,
-        dateEvict=?,
-        lockedChangeStatus=?,
-        roomNumber=?,
-        status=? 
+        r1_0.status=?
+2025-03-04 21:41:05 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
     where
-        id=?
-2025-02-17 17:06:52 DEBUG org.hibernate.SQL - 
+        r1_0.status=?
+2025-03-04 21:41:07 DEBUG org.hibernate.SQL - 
     select
         c1_0.id,
         c1_0.dateCheckIn,
@@ -167,9 +981,8 @@
     from
         Clients c1_0 
     where
-        c1_0.roomNumber=? 
-        and c1_0.occupied=1
-2025-02-17 17:06:52 DEBUG org.hibernate.SQL - 
+        c1_0.occupied=1
+2025-03-04 21:41:07 DEBUG org.hibernate.SQL - 
     select
         c1_0.id,
         c1_0.dateCheckIn,
@@ -180,10 +993,8 @@
     from
         Clients c1_0 
     where
-        c1_0.roomNumber=? 
-        and c1_0.occupied=1
-2025-02-17 17:06:52 INFO  controller.RoomController - The guest's has been evicted from the 1 room
-2025-02-17 17:06:55 DEBUG org.hibernate.SQL - 
+        c1_0.occupied=1
+2025-03-04 21:41:12 DEBUG org.hibernate.SQL - 
     select
         r1_0.id,
         r1_0.capacity,
@@ -196,168 +1007,30 @@
         r1_0.roomNumber,
         r1_0.status 
     from
-        Rooms r1_0
-2025-02-17 17:06:55 DEBUG org.hibernate.SQL - 
-    select
-        r1_0.id,
-        r1_0.capacity,
-        r1_0.cost,
-        r1_0.countRecordsHistory,
-        r1_0.countStars,
-        r1_0.dateCheckIn,
-        r1_0.dateEvict,
-        r1_0.lockedChangeStatus,
-        r1_0.roomNumber,
-        r1_0.status 
-    from
-        Rooms r1_0
-2025-02-17 17:07:01 INFO  controller.RoomController - Successfully checked format date
-2025-02-17 17:07:05 INFO  controller.RoomController - Successfully checked format date
-2025-02-17 17:07:13 DEBUG org.hibernate.SQL - 
-    update
-        Rooms 
-    set
-        capacity=?,
-        cost=?,
-        countRecordsHistory=?,
-        countStars=?,
-        dateCheckIn=?,
-        dateEvict=?,
-        lockedChangeStatus=?,
-        roomNumber=?,
-        status=? 
+        Rooms r1_0 
     where
-        id=?
-2025-02-17 17:07:13 DEBUG org.hibernate.SQL - 
-    update
-        Rooms 
-    set
-        capacity=?,
-        cost=?,
-        countRecordsHistory=?,
-        countStars=?,
-        dateCheckIn=?,
-        dateEvict=?,
-        lockedChangeStatus=?,
-        roomNumber=?,
-        status=? 
-    where
-        id=?
-2025-02-17 17:07:13 DEBUG org.hibernate.SQL - 
-    insert 
-    into
-        Clients
-        (dateCheckIn, dateEvict, fullName, occupied, roomNumber) 
-    values
-        (?, ?, ?, ?, ?)
-2025-02-17 17:07:13 DEBUG org.hibernate.SQL - 
-    insert 
-    into
-        Clients
-        (dateCheckIn, dateEvict, fullName, occupied, roomNumber) 
-    values
-        (?, ?, ?, ?, ?)
-2025-02-17 17:07:13 INFO  controller.RoomController - The clients is accommodated in 1 room
-2025-02-17 17:07:15 DEBUG org.hibernate.SQL - 
-    select
-        r1_0.id,
-        r1_0.capacity,
-        r1_0.cost,
-        r1_0.countRecordsHistory,
-        r1_0.countStars,
-        r1_0.dateCheckIn,
-        r1_0.dateEvict,
-        r1_0.lockedChangeStatus,
-        r1_0.roomNumber,
-        r1_0.status 
-    from
-        Rooms r1_0
-2025-02-17 17:07:15 DEBUG org.hibernate.SQL - 
-    select
-        r1_0.id,
-        r1_0.capacity,
-        r1_0.cost,
-        r1_0.countRecordsHistory,
-        r1_0.countStars,
-        r1_0.dateCheckIn,
-        r1_0.dateEvict,
-        r1_0.lockedChangeStatus,
-        r1_0.roomNumber,
-        r1_0.status 
-    from
-        Rooms r1_0
-2025-02-17 17:07:15 DEBUG org.hibernate.SQL - 
-    select
-        c1_0.id,
-        c1_0.dateCheckIn,
-        c1_0.dateEvict,
-        c1_0.fullName,
-        c1_0.occupied,
-        c1_0.roomNumber 
-    from
-        Clients c1_0 
-    where
-        c1_0.roomNumber=? 
-        and c1_0.occupied=1
-2025-02-17 17:07:15 DEBUG org.hibernate.SQL - 
-    select
-        c1_0.id,
-        c1_0.dateCheckIn,
-        c1_0.dateEvict,
-        c1_0.fullName,
-        c1_0.occupied,
-        c1_0.roomNumber 
-    from
-        Clients c1_0 
-    where
-        c1_0.roomNumber=? 
-        and c1_0.occupied=1
-2025-02-17 17:07:42 DEBUG org.hibernate.SQL - 
-    select
-        r1_0.id,
-        r1_0.capacity,
-        r1_0.cost,
-        r1_0.countRecordsHistory,
-        r1_0.countStars,
-        r1_0.dateCheckIn,
-        r1_0.dateEvict,
-        r1_0.lockedChangeStatus,
-        r1_0.roomNumber,
-        r1_0.status 
-    from
-        Rooms r1_0
-2025-02-17 17:07:42 DEBUG org.hibernate.SQL - 
-    select
-        r1_0.id,
-        r1_0.capacity,
-        r1_0.cost,
-        r1_0.countRecordsHistory,
-        r1_0.countStars,
-        r1_0.dateCheckIn,
-        r1_0.dateEvict,
-        r1_0.lockedChangeStatus,
-        r1_0.roomNumber,
-        r1_0.status 
-    from
-        Rooms r1_0
-2025-02-17 17:07:42 DEBUG org.hibernate.SQL - 
-    select
-        c1_0.id,
-        c1_0.dateCheckIn,
-        c1_0.dateEvict,
-        c1_0.fullName,
-        c1_0.occupied,
-        c1_0.roomNumber 
-    from
-        Clients c1_0 
-    where
-        c1_0.roomNumber=? 
-        and c1_0.occupied=0 
+        r1_0.status in (?, ?, ?) 
     order by
-        c1_0.dateEvict desc 
-    limit
-        ?
-2025-02-17 17:07:42 DEBUG org.hibernate.SQL - 
+        r1_0.capacity
+2025-03-04 21:41:12 DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.capacity,
+        r1_0.cost,
+        r1_0.countRecordsHistory,
+        r1_0.countStars,
+        r1_0.dateCheckIn,
+        r1_0.dateEvict,
+        r1_0.lockedChangeStatus,
+        r1_0.roomNumber,
+        r1_0.status 
+    from
+        Rooms r1_0 
+    where
+        r1_0.status in (?, ?, ?) 
+    order by
+        r1_0.capacity
+2025-03-04 21:41:17 DEBUG org.hibernate.SQL - 
     select
         c1_0.id,
         c1_0.dateCheckIn,
@@ -368,9 +1041,58 @@
     from
         Clients c1_0 
     where
-        c1_0.roomNumber=? 
-        and c1_0.occupied=0 
+        c1_0.occupied=1
+2025-03-04 21:41:17 DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.dateCheckIn,
+        c1_0.dateEvict,
+        c1_0.fullName,
+        c1_0.occupied,
+        c1_0.roomNumber 
+    from
+        Clients c1_0 
+    where
+        c1_0.occupied=1
+2025-03-04 21:41:18 DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.dateCheckIn,
+        c1_0.dateEvict,
+        c1_0.fullName,
+        c1_0.occupied,
+        c1_0.roomNumber 
+    from
+        Clients c1_0 
+    where
+        c1_0.occupied=1 
     order by
-        c1_0.dateEvict desc 
-    limit
-        ?
+        c1_0.fullName
+2025-03-04 21:41:18 DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.dateCheckIn,
+        c1_0.dateEvict,
+        c1_0.fullName,
+        c1_0.occupied,
+        c1_0.roomNumber 
+    from
+        Clients c1_0 
+    where
+        c1_0.occupied=1 
+    order by
+        c1_0.fullName
+2025-03-04 21:41:22 DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.cost,
+        s1_0.serviceName 
+    from
+        Services s1_0
+2025-03-04 21:41:22 DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.cost,
+        s1_0.serviceName 
+    from
+        Services s1_0

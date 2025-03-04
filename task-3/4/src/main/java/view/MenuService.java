@@ -1,16 +1,16 @@
 package view;
 
 import controller.ExitController;
-import controller.Inject;
 import controller.ServiceController;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Scanner;
 
 public class MenuService {
     private final Scanner sc = new Scanner(System.in);
-    @Inject
+    @Autowired
     ServiceController serviceController;
-    @Inject
+    @Autowired
     ServiceView serviceView;
 
     public MenuService() {

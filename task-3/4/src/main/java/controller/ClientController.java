@@ -8,6 +8,7 @@ import model.Client;
 import model.Hotel;
 import model.Room;
 import model.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import view.ClientView;
 
 import java.io.File;
@@ -20,17 +21,17 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 @Slf4j
 public class ClientController {
-    @Inject
+    @Autowired
     Hotel hotel;
-    @Inject
+    @Autowired
     HotelController hotelController;
-    @Inject
+    @Autowired
     ClientDAO clientDAO;
-    @Inject
+    @Autowired
     ServiceDAO serviceDAO;
-    @Inject
+    @Autowired
     RoomDAO roomDAO;
-    @Inject
+    @Autowired
     ClientView view;
 
 

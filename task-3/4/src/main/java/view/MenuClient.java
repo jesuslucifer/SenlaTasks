@@ -2,17 +2,17 @@ package view;
 
 import controller.ClientController;
 import controller.ExitController;
-import controller.Inject;
 import controller.ServiceController;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Scanner;
 
 public class MenuClient {
-    @Inject
+    @Autowired
     ClientController clientController;
-    @Inject
+    @Autowired
     ServiceController serviceController;
-    @Inject
+    @Autowired
     ClientView clientView;
 
     private final Scanner sc = new Scanner(System.in);

@@ -1,19 +1,19 @@
 package view;
 
 import controller.ExitController;
-import controller.Inject;
 import controller.RoomController;
 import model.Client;
 import model.RoomStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class MenuRoom {
-    @Inject
+    @Autowired
     RoomController roomController;
-    @Inject
+    @Autowired
     RoomView roomView;
     private final Scanner sc = new Scanner(System.in);
 

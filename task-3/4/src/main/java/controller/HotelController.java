@@ -10,6 +10,8 @@ import model.Hotel;
 import model.Room;
 import model.RoomStatus;
 import model.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import view.HotelView;
 
 import java.io.FileNotFoundException;
@@ -19,19 +21,18 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@Component
 @Slf4j
 public class HotelController {
-
-    @Inject
+    @Autowired
     Hotel hotel;
-
-    @Inject
+    @Autowired
     HotelView view;
-    @Inject
+    @Autowired
     RoomDAO roomDAO;
-    @Inject
+    @Autowired
     ServiceDAO serviceDAO;
-    @Inject
+    @Autowired
     ClientDAO clientDAO;
 
 

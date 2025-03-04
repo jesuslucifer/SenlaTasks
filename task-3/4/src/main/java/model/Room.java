@@ -1,6 +1,5 @@
 package model;
 
-import controller.ConfigProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -10,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -33,7 +33,7 @@ public class Room implements IToCSV, IUpdateFromCSV {
     private int countStars;
 
     @Column
-    @ConfigProperty(propertyName = "room.lockedChangeStatus", type = Boolean.class)
+    @Value("${room.lockedChangeStatus}")
     private boolean lockedChangeStatus;
 
     @Column
@@ -52,7 +52,7 @@ public class Room implements IToCSV, IUpdateFromCSV {
     private final Deque<Client> historyClientQueue = new LinkedList<>();
 
     @Column
-    @ConfigProperty(propertyName = "room.countRecordHistory", type = Integer.class)
+    @Value("${room.countRecordHistory}")
     private int countRecordsHistory;
 
     public Room(int roomNumber) {

@@ -1,18 +1,18 @@
 package view;
 
 import controller.ExitController;
-import controller.Inject;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Scanner;
 
 public class Menu {
-    @Inject
+    @Autowired
     MenuRoom menuRoom;
-    @Inject
+    @Autowired
     MenuHotel menuHotel;
-    @Inject
+    @Autowired
     MenuClient menuClient;
-    @Inject
+    @Autowired
     MenuService menuService;
     private final Scanner sc = new Scanner(System.in);
 

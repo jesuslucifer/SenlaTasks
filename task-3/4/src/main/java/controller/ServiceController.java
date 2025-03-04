@@ -4,6 +4,7 @@ import dao.ServiceDAO;
 import lombok.extern.slf4j.Slf4j;
 import model.Hotel;
 import model.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import view.ServiceView;
 
 import java.io.File;
@@ -11,11 +12,11 @@ import java.util.Scanner;
 
 @Slf4j
 public class ServiceController {
-    @Inject
+    @Autowired
     Hotel hotel;
-    @Inject
+    @Autowired
     ServiceDAO serviceDAO;
-    @Inject
+    @Autowired
     ServiceView view;
 
     public ServiceController() {

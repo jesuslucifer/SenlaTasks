@@ -4,21 +4,24 @@ import lombok.extern.slf4j.Slf4j;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import util.HibernateUtil;
 import view.Menu;
 import model.Hotel;
 
+@Component
 @Slf4j
 public class MainController {
-    @Inject
+    @Autowired
     Hotel hotel;
-    @Inject
+    @Autowired
     Menu menu;
-    @Inject
+    @Autowired
     RoomController roomController;
-    @Inject
+    @Autowired
     ClientController clientController;
-    @Inject
+    @Autowired
     ServiceController serviceController;
 
 
@@ -32,8 +35,6 @@ public class MainController {
         } else {
             hotel = new Hotel(1);
         }
-        DI.register(Hotel.class, hotel);
-        DI.injectDependencies(this);
         roomController.importLockedRoomProperty();
         roomController.importCountRecordHistory();
         menu.printMenu();

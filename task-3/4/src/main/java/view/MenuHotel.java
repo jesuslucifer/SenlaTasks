@@ -2,16 +2,16 @@ package view;
 
 import controller.ExitController;
 import controller.HotelController;
-import controller.Inject;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class MenuHotel {
-    @Inject
+    @Autowired
     HotelController hotelController;
     private final Scanner sc = new Scanner(System.in);
-    @Inject
+    @Autowired
     HotelView hotelView;
 
     public MenuHotel() {

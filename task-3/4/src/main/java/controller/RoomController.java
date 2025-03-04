@@ -7,6 +7,7 @@ import model.Client;
 import model.Hotel;
 import model.Room;
 import model.RoomStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import view.RoomView;
 
 import java.io.File;
@@ -21,15 +22,15 @@ import java.util.Scanner;
 
 @Slf4j
 public class RoomController {
-    @Inject
+    @Autowired
     Hotel hotel;
-    @Inject
+    @Autowired
     HotelController hotelController;
-    @Inject
+    @Autowired
     RoomDAO roomDAO;
-    @Inject
+    @Autowired
     ClientDAO clientDAO;
-    @Inject
+    @Autowired
     RoomView view;
 
     public RoomController() {
