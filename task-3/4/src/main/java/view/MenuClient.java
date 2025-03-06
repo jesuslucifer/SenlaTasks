@@ -3,21 +3,22 @@ package view;
 import controller.ClientController;
 import controller.ExitController;
 import controller.ServiceController;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class MenuClient {
-    @Autowired
-    ClientController clientController;
-    @Autowired
-    ServiceController serviceController;
-    @Autowired
-    ClientView clientView;
+    private final ClientController clientController;
+    private final ServiceController serviceController;
+    private final ClientView clientView;
 
     private final Scanner sc = new Scanner(System.in);
 
-    public MenuClient() {
+    public MenuClient(ClientController clientController, ServiceController serviceController, ClientView clientView) {
+        this.clientController = clientController;
+        this.serviceController = serviceController;
+        this.clientView = clientView;
     }
 
     public void printMenu() {

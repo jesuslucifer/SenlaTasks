@@ -1,22 +1,23 @@
 package view;
 
 import controller.ExitController;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class Menu {
-    @Autowired
-    MenuRoom menuRoom;
-    @Autowired
-    MenuHotel menuHotel;
-    @Autowired
-    MenuClient menuClient;
-    @Autowired
-    MenuService menuService;
+    private final MenuRoom menuRoom;
+    private final MenuHotel menuHotel;
+    private final MenuClient menuClient;
+    private final MenuService menuService;
     private final Scanner sc = new Scanner(System.in);
 
-    public Menu() {
+    public Menu(MenuRoom menuRoom, MenuHotel menuHotel, MenuClient menuClient, MenuService menuService) {
+        this.menuRoom = menuRoom;
+        this.menuHotel = menuHotel;
+        this.menuClient = menuClient;
+        this.menuService = menuService;
     }
 
     public void printMenu() {

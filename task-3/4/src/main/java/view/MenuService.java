@@ -2,18 +2,19 @@ package view;
 
 import controller.ExitController;
 import controller.ServiceController;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class MenuService {
     private final Scanner sc = new Scanner(System.in);
-    @Autowired
-    ServiceController serviceController;
-    @Autowired
-    ServiceView serviceView;
+    private final ServiceController serviceController;
+    private final ServiceView serviceView;
 
-    public MenuService() {
+    public MenuService(ServiceController serviceController, ServiceView serviceView) {
+        this.serviceController = serviceController;
+        this.serviceView = serviceView;
     }
 
     public void printMenu() {

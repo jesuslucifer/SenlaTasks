@@ -54,27 +54,27 @@ public class ApplicationConfig {
 
     @Bean
     public MainController mainController() {
-        return new MainController();
+        return new MainController(hotel(), menu(), roomController(), clientController(), serviceController());
     }
 
     @Bean
     public HotelController hotelController() {
-        return new HotelController();
+        return new HotelController(hotel(), hotelView(), roomDAO(), serviceDAO(), clientDAO());
     }
 
     @Bean
     public RoomController roomController() {
-        return new RoomController();
+        return new RoomController(hotel(), hotelController(), roomDAO(), clientDAO(), roomView());
     }
 
     @Bean
     public ServiceController serviceController() {
-        return new ServiceController();
+        return new ServiceController(hotel(), serviceDAO(), serviceView());
     }
 
     @Bean
     public ClientController clientController() {
-        return new ClientController();
+        return new ClientController(hotel(), hotelController(), clientDAO(), serviceDAO(), roomDAO(), clientView());
     }
 
     @Bean
@@ -99,26 +99,26 @@ public class ApplicationConfig {
 
     @Bean
     public Menu menu() {
-        return new Menu();
+        return new Menu(menuRoom(), menuHotel(), menuClient(), menuService());
     }
 
     @Bean
     public MenuRoom menuRoom() {
-        return new MenuRoom();
+        return new MenuRoom(roomController(), roomView());
     }
 
     @Bean
     public MenuClient menuClient() {
-        return new MenuClient();
+        return new MenuClient(clientController(), serviceController(), clientView());
     }
 
     @Bean
     public MenuService menuService() {
-        return new MenuService();
+        return new MenuService(serviceController(), serviceView());
     }
 
     @Bean
     public MenuHotel menuHotel() {
-        return new MenuHotel();
+        return new MenuHotel(hotelController(), hotelView());
     }
  }

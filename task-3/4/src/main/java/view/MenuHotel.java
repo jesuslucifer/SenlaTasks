@@ -2,19 +2,20 @@ package view;
 
 import controller.ExitController;
 import controller.HotelController;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+@Component
 public class MenuHotel {
-    @Autowired
-    HotelController hotelController;
+    private final HotelController hotelController;
     private final Scanner sc = new Scanner(System.in);
-    @Autowired
-    HotelView hotelView;
+    private final HotelView hotelView;
 
-    public MenuHotel() {
+    public MenuHotel(HotelController hotelController, HotelView hotelView) {
+        this.hotelController = hotelController;
+        this.hotelView = hotelView;
     }
 
     public void printMenu() {

@@ -7,7 +7,7 @@ import model.Client;
 import model.Hotel;
 import model.Room;
 import model.RoomStatus;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import view.RoomView;
 
 import java.io.File;
@@ -20,20 +20,21 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 
+@Component
 @Slf4j
 public class RoomController {
-    @Autowired
-    Hotel hotel;
-    @Autowired
-    HotelController hotelController;
-    @Autowired
-    RoomDAO roomDAO;
-    @Autowired
-    ClientDAO clientDAO;
-    @Autowired
-    RoomView view;
+    private final Hotel hotel;
+    private final HotelController hotelController;
+    private final RoomDAO roomDAO;
+    private final ClientDAO clientDAO;
+    private final RoomView view;
 
-    public RoomController() {
+    public RoomController(Hotel hotel, HotelController hotelController, RoomDAO roomDAO, ClientDAO clientDAO, RoomView view) {
+        this.hotel = hotel;
+        this.hotelController = hotelController;
+        this.roomDAO = roomDAO;
+        this.clientDAO = clientDAO;
+        this.view = view;
     }
 
     public Room getRoom(int roomNumber) {

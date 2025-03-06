@@ -4,20 +4,21 @@ import controller.ExitController;
 import controller.RoomController;
 import model.Client;
 import model.RoomStatus;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+@Component
 public class MenuRoom {
-    @Autowired
-    RoomController roomController;
-    @Autowired
-    RoomView roomView;
+    private final RoomController roomController;
+    private final RoomView roomView;
     private final Scanner sc = new Scanner(System.in);
 
-    public MenuRoom() {
+    public MenuRoom(RoomController roomController, RoomView roomView) {
+        this.roomController = roomController;
+        this.roomView = roomView;
     }
 
     public void printMenuPageOne() {

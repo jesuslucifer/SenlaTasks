@@ -4,22 +4,23 @@ import dao.ServiceDAO;
 import lombok.extern.slf4j.Slf4j;
 import model.Hotel;
 import model.Service;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import view.ServiceView;
 
 import java.io.File;
 import java.util.Scanner;
 
+@Component
 @Slf4j
 public class ServiceController {
-    @Autowired
-    Hotel hotel;
-    @Autowired
-    ServiceDAO serviceDAO;
-    @Autowired
-    ServiceView view;
+    private final Hotel hotel;
+    private final ServiceDAO serviceDAO;
+    private final ServiceView view;
 
-    public ServiceController() {
+    public ServiceController(Hotel hotel, ServiceDAO serviceDAO, ServiceView view) {
+        this.hotel = hotel;
+        this.serviceDAO = serviceDAO;
+        this.view = view;
     }
 
     public Service getService(String serviceName) {

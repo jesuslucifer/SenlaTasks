@@ -10,7 +10,6 @@ import model.Hotel;
 import model.Room;
 import model.RoomStatus;
 import model.Service;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import view.HotelView;
 
@@ -24,19 +23,19 @@ import java.util.NoSuchElementException;
 @Component
 @Slf4j
 public class HotelController {
-    @Autowired
-    Hotel hotel;
-    @Autowired
-    HotelView view;
-    @Autowired
-    RoomDAO roomDAO;
-    @Autowired
-    ServiceDAO serviceDAO;
-    @Autowired
-    ClientDAO clientDAO;
+    private final Hotel hotel;
+    private final HotelView view;
+    private final RoomDAO roomDAO;
+    private final ServiceDAO serviceDAO;
+    private final ClientDAO clientDAO;
 
 
-    public HotelController() {
+    public HotelController(Hotel hotel, HotelView view, RoomDAO roomDAO, ServiceDAO serviceDAO, ClientDAO clientDAO) {
+        this.hotel = hotel;
+        this.view = view;
+        this.roomDAO = roomDAO;
+        this.serviceDAO = serviceDAO;
+        this.clientDAO = clientDAO;
     }
 
     public List<Room> getListFreeRooms() {
