@@ -33,7 +33,11 @@ public class ServiceController {
     }
 
     public void changeCostService(String serviceName, int cost) {
-        serviceDAO.update(new Service(serviceName, cost));
+        Service service = serviceDAO.findServiceName(serviceName);
+        if (service != null) {
+            service.setCost(cost);
+        }
+        serviceDAO.update(service);
     }
 
     public void printServices() {
