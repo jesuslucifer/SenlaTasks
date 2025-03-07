@@ -10,6 +10,7 @@ import model.Hotel;
 import model.Room;
 import model.RoomStatus;
 import model.Service;
+import org.springframework.stereotype.Component;
 import view.HotelView;
 
 import java.io.FileNotFoundException;
@@ -19,23 +20,22 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@Component
 @Slf4j
 public class HotelController {
-
-    @Inject
-    Hotel hotel;
-
-    @Inject
-    HotelView view;
-    @Inject
-    RoomDAO roomDAO;
-    @Inject
-    ServiceDAO serviceDAO;
-    @Inject
-    ClientDAO clientDAO;
+    private final Hotel hotel;
+    private final HotelView view;
+    private final RoomDAO roomDAO;
+    private final ServiceDAO serviceDAO;
+    private final ClientDAO clientDAO;
 
 
-    public HotelController() {
+    public HotelController(Hotel hotel, HotelView view, RoomDAO roomDAO, ServiceDAO serviceDAO, ClientDAO clientDAO) {
+        this.hotel = hotel;
+        this.view = view;
+        this.roomDAO = roomDAO;
+        this.serviceDAO = serviceDAO;
+        this.clientDAO = clientDAO;
     }
 
     public List<Room> getListFreeRooms() {

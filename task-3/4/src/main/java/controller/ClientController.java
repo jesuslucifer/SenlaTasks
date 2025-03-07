@@ -8,6 +8,7 @@ import model.Client;
 import model.Hotel;
 import model.Room;
 import model.Service;
+import org.springframework.stereotype.Component;
 import view.ClientView;
 
 import java.io.File;
@@ -18,23 +19,23 @@ import java.util.Scanner;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
+@Component
 @Slf4j
 public class ClientController {
-    @Inject
-    Hotel hotel;
-    @Inject
-    HotelController hotelController;
-    @Inject
-    ClientDAO clientDAO;
-    @Inject
-    ServiceDAO serviceDAO;
-    @Inject
-    RoomDAO roomDAO;
-    @Inject
-    ClientView view;
+    private final Hotel hotel;
+    private final HotelController hotelController;
+    private final ClientDAO clientDAO;
+    private final ServiceDAO serviceDAO;
+    private final RoomDAO roomDAO;
+    private final ClientView view;
 
-
-    public ClientController() {
+    public ClientController(Hotel hotel, HotelController hotelController, ClientDAO clientDAO, ServiceDAO serviceDAO, RoomDAO roomDAO, ClientView view) {
+        this.hotel = hotel;
+        this.hotelController = hotelController;
+        this.clientDAO = clientDAO;
+        this.serviceDAO = serviceDAO;
+        this.roomDAO = roomDAO;
+        this.view = view;
     }
 
     public Client getClient(String fullName) {

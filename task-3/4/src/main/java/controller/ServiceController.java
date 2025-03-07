@@ -4,21 +4,23 @@ import dao.ServiceDAO;
 import lombok.extern.slf4j.Slf4j;
 import model.Hotel;
 import model.Service;
+import org.springframework.stereotype.Component;
 import view.ServiceView;
 
 import java.io.File;
 import java.util.Scanner;
 
+@Component
 @Slf4j
 public class ServiceController {
-    @Inject
-    Hotel hotel;
-    @Inject
-    ServiceDAO serviceDAO;
-    @Inject
-    ServiceView view;
+    private final Hotel hotel;
+    private final ServiceDAO serviceDAO;
+    private final ServiceView view;
 
-    public ServiceController() {
+    public ServiceController(Hotel hotel, ServiceDAO serviceDAO, ServiceView view) {
+        this.hotel = hotel;
+        this.serviceDAO = serviceDAO;
+        this.view = view;
     }
 
     public Service getService(String serviceName) {
@@ -31,7 +33,11 @@ public class ServiceController {
     }
 
     public void changeCostService(String serviceName, int cost) {
-        serviceDAO.update(new Service(serviceName, cost));
+        Service service = serviceDAO.findServiceName(serviceName);
+        if (service != null) {
+            service.setCost(cost);
+        }
+        serviceDAO.update(service);
     }
 
     public void printServices() {
